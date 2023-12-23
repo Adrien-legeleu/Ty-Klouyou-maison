@@ -1,0 +1,26 @@
+.page2{
+    padding: 50px 0 50px;
+    .page2-container{
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        width: 400px;
+        background: $green2;
+        position: relative;
+
+        .slider{
+            display: flex;
+            overflow: hidden;
+            img{
+                width: 200px;
+            }
+        }
+        span{
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateX(50%);
+            cursor: pointer;
+        }
+    }
+}
