@@ -1,12 +1,16 @@
 import React from "react";
 
-const Page2Slider = ({ data, index }) => {
+const Page2Slider = ({ data, index, currentSlide }) => {
   return (
-    <div className={"page2-slider slider" + index}>
-      <h2>{data.title}</h2>
-      <img src={"./assets/img/" + data.img} alt={data.title} />
+    <div className={`slide ${index === currentSlide ? "current" : ""}`}>
+      <div className="title">
+        <h2>{data.title}</h2>
+      </div>
+      <div className="img">
+        <img src={"./assets/img/" + data.img} alt={data.title} />
+      </div>
       <p>{data.para}</p>
-      <a href="#">
+      <a href="#" className="slider-button">
         <button>{data.btn}</button>
       </a>
     </div>

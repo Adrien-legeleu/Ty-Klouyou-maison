@@ -40,3 +40,19 @@ body{
     background: $colorM;
     color: $white;
 }
+
+button{
+    padding: 10px 13px;
+    font-family: $font2;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    background: $green1;
+    border: none;
+    color: $white;
+    transition: 0.3s ease;
+    cursor: pointer;
+
+    &:hover{
+        scale: 1.2;
+    }
+}

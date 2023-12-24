@@ -1,14 +1,14 @@
 .page1{
     height: 100vh;
     width: 100%;
-    background: url(../../assets/img/Vector1.svg)rgba(0, 0, 0, 0.100)  center/cover;
+    background: url(../../assets/img/Vector1.svg) center/cover;
     background-position: bottom;
     background-blend-mode: darken;
     cursor: default;
     transition: 0.5s ease;
 
     &:hover{
-        background: url(../../assets/img/Vector1.svg)rgba(0, 0, 0, 0.200)  center/cover;
+        background: url(../../assets/img/Vector1.svg) center/cover;
         background-position: bottom;
     }
 
