@@ -1,0 +1,11 @@
+.page4{
+    width: 100%;
+    padding: 100px 20px 40px;
+
+    .notice-reservation-container{
+        width: 80%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+    }
+}

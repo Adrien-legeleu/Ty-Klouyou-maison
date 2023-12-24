@@ -41,7 +41,7 @@ body{
     color: $white;
 }
 
-button{
+button , input[type="submit"]{
     padding: 10px 13px;
     font-family: $font2;
     font-size: 1.3rem;
