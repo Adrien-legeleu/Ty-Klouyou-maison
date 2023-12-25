@@ -58,7 +58,7 @@ const Page2 = () => {
       <div className="page2-container">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-arrow-big-left-line-filled"
+          className="icon icon-tabler icon-tabler-arrow-big-left-line-filled"
           width="44"
           height="44"
           viewBox="0 0 24 24"
@@ -89,7 +89,7 @@ const Page2 = () => {
         </svg>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-arrow-big-right-line-filled"
+          className="icon icon-tabler icon-tabler-arrow-big-right-line-filled"
           width="44"
           height="44"
           viewBox="0 0 24 24"
