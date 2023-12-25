@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Page4 = () => {
   let inputArrival = document.querySelector(".arrival");
@@ -20,15 +20,15 @@ const Page4 = () => {
   };
 
   // Date programmation ------------------
-  let today = new Date().toISOString().split("T")[0];
-  inputArrival.value = today;
-  inputArrival.min = today;
+  //   let today = new Date().toISOString().split("T")[0];
+  //   inputArrival.value = today;
+  //   inputArrival.min = today;
 
-  let tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 2);
-  let tomorrowFormat = tomorrow.toISOString().split("T")[0];
-  inputDeparture.value = tomorrowFormat;
-  inputDeparture.min = tomorrowFormat;
+  //   let tomorrow = new Date();
+  //   tomorrow.setDate(tomorrow.getDate() + 2);
+  //   let tomorrowFormat = tomorrow.toISOString().split("T")[0];
+  //   inputDeparture.value = tomorrowFormat;
+  //   inputDeparture.min = tomorrowFormat;
 
   const dateArrival = (e) => {
     inputArrival.textContent = e.target.value;
@@ -51,10 +51,16 @@ const Page4 = () => {
 
   // input programmation
 
-  const [adultValue, setAdultValue] = useState(2);
-  const [childrenValue, setChildrenValue] = useState(3);
-  let inputAdult = document.getElementById("inputAdult");
-  let inputChildren = document.getElementById("inputchildren");
+  let alertInput = document.querySelector(".alert-input");
+  const [nbAdult, setNbAdult] = useState(0);
+  const [nbChild, setNbChild] = useState(0);
+
+  useEffect(() => {
+    let nbPersonn = parseInt(nbAdult) + parseInt(nbChild);
+    // nbPersonn > 10
+    //   ? (alertInput.style.display = "block")
+    //   : (alertInput.style.display = "none");
+  }, [nbAdult, nbChild]);
 
   return (
     <div className="page4">
@@ -62,6 +68,8 @@ const Page4 = () => {
         <div className="notice-container container">
           <h2>Noté 4.9 sur AirBnb</h2>
           <div className="notices">
+            <i class="fa-solid fa-angle-left left"></i>
+            <i class="fa-solid fa-angle-right right"></i>
             <div className="notice">
               <img
                 src="./assets/img/empty-hallway-background.jpg"
@@ -96,28 +104,28 @@ const Page4 = () => {
             />
             <div className="nb-adult">
               <label htmlFor="adult" id="textAdult">
-                Nombre d'adultes: <span>{adultValue}</span>
+                Nombre d'adultes:
               </label>
               <input
                 type="number"
-                name="adult"
+                name="nb-adult"
                 min="1"
                 max="10"
                 defaultValue="2"
-                onChange={(e) => setAdultValue(e.target.value)}
+                onChange={(e) => setNbAdult(e.target.value)}
               />
             </div>
             <div className="nb-children">
               <label htmlFor="child" id="textChildren">
-                Nombre d'enfants: <span>{childrenValue}</span>
+                Nombre d'enfants:
               </label>
               <input
                 type="number"
                 name="child"
-                min="1"
-                max="10"
+                min="0"
+                max="8"
                 defaultValue="3"
-                onChange={(e) => setChildrenValue(e.target.value)}
+                onChange={(e) => setNbChild(e.target.value)}
               />
             </div>
             <div className="prix">
@@ -126,6 +134,9 @@ const Page4 = () => {
                 <span className="pricePerNight">440 euros</span>.
               </p>
             </div>
+            <p className="alert-input">
+              Le nombre de personnes maximums autorisées est 10
+            </p>
             <div className="btn-submit">
               <input type="submit" value="Réservez" />
             </div>

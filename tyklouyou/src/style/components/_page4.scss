@@ -33,6 +33,27 @@
                 border-radius: 30px;
                 padding: 0 0 10px;
                 color: $black;
+                position: relative;
+                .left{
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateX(-50%);
+                    font-size: 2rem;
+                    color: $white;
+                    z-index: 100;
+                    cursor: pointer;
+                }
+                .right{
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateX(50%);
+                    font-size: 2rem;
+                    color: $white;
+                    z-index: 100;
+                    cursor: pointer;
+                }
 
                 .notice{
                     position: relative;
@@ -63,7 +84,7 @@
 
             .reservation{
                 display: grid;
-                grid-template-areas: "a b" "c e" " d e" " f f";
+                grid-template-areas: "a b" "c e" " d e" "f f" "g g";
                 grid-template-rows: 1fr 1fr 1fr 1fr;
                 grid-template-columns: 1fr 1fr;
                 align-items: center;
@@ -119,8 +140,28 @@
                         }
                     }
                 }
-                .btn-submit{
+                .alert-input{
                     grid-area: f;
+                    text-align: center;
+                    color: rgb(226, 16, 16);
+                    text-shadow:  0 1px 3px rgba(255, 255, 255, 0.295);
+                    display: none;
+                    animation: alert 1.5s ease-in-out infinite;
+
+                    @keyframes alert {
+                        0%{
+                            transform: translateY(-10px) scale(1.05);
+                        }
+                        50%{
+                            transform: none;
+                        }
+                        100%{
+                            transform: translateY(-10px) scale(1.05);
+                        }
+                    }
+                }
+                .btn-submit{
+                    grid-area: g;
                     margin-top: 20px;
                     input{
                         background: red ;
