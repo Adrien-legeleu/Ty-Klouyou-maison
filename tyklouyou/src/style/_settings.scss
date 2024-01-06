@@ -1,24 +1,30 @@
 @font-face {
-    font-family: Montserrat;
-    src: url(../assets/fonts/Montserrat/Montserrat-Medium.ttf);
+    font-family: LobsterRegular;
+    src: url(../assets/fonts/Lobster/LobsterTwo-Regular.ttf);
 }
 @font-face {
-    font-family: RobotoLight;
-    src: url(../assets/fonts/Roboto/Roboto-Light.ttf);
+    font-family: LobsterBold;
+    src: url(../assets/fonts/Lobster/LobsterTwo-Bold.ttf);
 }
 @font-face {
-    font-family: RobotoRegular;
-    src: url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+    font-family: QuicksandLight;
+    src: url(../assets/fonts/Quicksand/Quicksand-Light.ttf);
+}
+@font-face {
+    font-family: QuicksandRegular;
+    src: url(../assets/fonts/Quicksand/Quicksand-Regular.ttf);
 }
 
-$fontM:Montserrat;
-$font1:RobotoLight;
-$font2:RobotoRegular;
 
-$colorM:#022635;
+$fontTB:LobsterBold;
+$fontTR:LobsterRegular;
+$fontR:QuicksandRegular;
+$fontL:QuicksandLight;
+
+$colorM:#10253D;
 $green1:#006D77;
 $green2:#003444;
-$cream:#FFBFB0;
+$cream:#d6ca26;
 $white:white;
 $black:black;
 
@@ -38,21 +44,5 @@ $black:black;
 }
 body{
     background: $colorM;
-    color: $white;
 }
 
-button , input[type="submit"]{
-    padding: 10px 13px;
-    font-family: $font2;
-    font-size: 1.3rem;
-    border-radius: 10px;
-    background: $green1;
-    border: none;
-    color: $white;
-    transition: 0.3s ease;
-    cursor: pointer;
-
-    &:hover{
-        scale: 1.2;
-    }
-}

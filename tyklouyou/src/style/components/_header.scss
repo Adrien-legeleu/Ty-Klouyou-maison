@@ -1,0 +1,60 @@
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    color: white;
+    padding: 10px;
+    .date{
+        color: white;
+        @include AlignChild(row , center,baseline);
+        margin-left: 35px;
+        .icon{
+            width: 35px;
+            height: 35px;
+            margin-right: 10px
+        }
+    }
+    .title{
+        @include AlignChild(row, center, center);
+        span{
+            font-size: 2rem;
+            font-family: $fontTR;
+            letter-spacing: 2px;
+            text-transform: capitalize
+        }
+    }
+    .menu{
+        @include AlignChild(row, center, end);
+        margin-right: 35px;
+        button{
+            @include AlignChild(row, center, center);
+            gap: 15px;
+            padding: 15px 30px;
+            background: transparent;
+            border: 1px solid $white;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+            .icon-menu{
+                position: relative;
+                width: 20px;
+                height: 10px;
+                div{
+                    position: absolute;
+                    background: $white;
+                    width:110%;
+                    height: 2px;
+
+                    &:nth-child(1){
+                        top: 0;
+                    }
+                    &:nth-child(2){
+                        bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
