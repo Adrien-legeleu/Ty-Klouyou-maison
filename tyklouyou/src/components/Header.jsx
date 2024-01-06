@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Navgiation from "./Navigation";
 
 const Header = () => {
     const [currentTime , setCurrentTime]=useState("13:06");
     const [navigationShow , setNavigationShow]=useState(false);
     const Navigation=document.querySelector(".navigation-container")
+    const NavigationSun=document.querySelector(".navigation")
     const IconMenu1=document.querySelector(".icon1")
     const IconMenu2=document.querySelector(".icon2")
 
@@ -12,6 +14,7 @@ const Header = () => {
         if (Navigation) {
             if (!navigationShow) {
                 Navigation.style.display="block"
+                NavigationSun.style.animation="ShowNav 1.5s ease forwards"
                 setNavigationShow(true)
                 IconMenu1.style.transform="rotate(120deg)"
                 IconMenu2.style.transform="rotate(60deg)"
@@ -52,6 +55,7 @@ const Header = () => {
           </div>
         </button>
       </div>
+      <Navgiation/>
     </div>
   );
 };

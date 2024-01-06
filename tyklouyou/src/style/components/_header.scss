@@ -4,7 +4,7 @@
     grid-template-rows: 1fr;
     align-items: center;
     color: white;
-    padding: 10px;
+    padding: 30px 20px 0;
     .date{
         color: white;
         @include AlignChild(row , center,baseline);
@@ -46,6 +46,7 @@
                     background: $white;
                     width:110%;
                     height: 2px;
+                    transition: 0.5s ease-in-out;
 
                     &:nth-child(1){
                         top: 0;
