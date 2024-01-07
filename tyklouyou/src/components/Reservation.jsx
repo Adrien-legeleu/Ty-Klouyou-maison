@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {  useRef, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 
 const Reservation = () => {
+    const dateContainer = useRef()
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -26,6 +27,29 @@ const downNumber = () => {
   }
 };
 
+
+const [toggleDate , setToggleDate]=useState(false)
+const [toggleDateAngle , setToggleDateAngle]=useState(false)
+
+const ShowDateContainer=()=>{
+    dateContainer.current.style.transition="0.25s ease-in"
+    if (!toggleDate) {
+        dateContainer.current.style.opacity="1"
+        dateContainer.current.style.backgroundColor="#003444"
+        setToggleDate(true)
+    }else{
+         dateContainer.current.style.opacity="0"
+        dateContainer.current.style.backgroundColor=""  
+        setToggleDate(false)
+    }
+}
+const AngleDateRotate = () => {
+  setToggleDateAngle(!toggleDateAngle);
+};
+
+
+
+
   return (
     <div className="reservation">
       <div className="reservation-container">
@@ -35,7 +59,13 @@ const downNumber = () => {
             date[0].endDate,
             "MM/dd/yyyy"
           )}`}</span>
-          <img src="./assets/img/fleche-vers-le-bas.png" alt="angle-down" className="angle" />
+          <img src="./assets/img/fleche-vers-le-bas.png" alt="angle-down" className={`${toggleDateAngle ? "angle-rotated angle-true" : "angle-false"}`}
+            
+          onClick={()=>{
+            ShowDateContainer()
+            AngleDateRotate()
+            }} 
+            />
         </div>
         <div className="people-button">
           <div className="people">
@@ -54,7 +84,7 @@ const downNumber = () => {
           </div>
         </div>
       </div>
-      <div className="date-container">
+      <div className="date-container" ref={dateContainer}>
         <DateRange
           minDate={new Date()}
           editableDateInputs={true}
