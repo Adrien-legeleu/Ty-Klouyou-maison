@@ -4,28 +4,8 @@ import Navgiation from "./Navigation";
 const Header = ({toggleDate , setToggleDate}) => {
     const [currentTime , setCurrentTime]=useState("13:06");
     const [navigationShow , setNavigationShow]=useState(false);
-    const Navigation=document.querySelector(".navigation-container")
-    const NavigationSun=document.querySelector(".navigation")
-    const IconMenu1=document.querySelector(".icon1")
-    const IconMenu2=document.querySelector(".icon2")
 
 
-    const ShowNavigation=()=>{
-        if (Navigation) {
-            if (!navigationShow) {
-                Navigation.style.display="block"
-                NavigationSun.style.animation="ShowNav 1.5s ease forwards"
-                setNavigationShow(true)
-                IconMenu1.style.transform="rotate(120deg)"
-                IconMenu2.style.transform="rotate(60deg)"
-            }else{
-                Navigation.style.display="none"
-                setNavigationShow(false)
-                IconMenu1.style.transform="rotate(0)"
-                IconMenu2.style.transform="rotate(0)"
-            }         
-        }
-    }
 
 
 
@@ -47,15 +27,15 @@ const Header = ({toggleDate , setToggleDate}) => {
         <span>Ty Klouyou</span>
       </div>
       <div className="menu" style={{display:toggleDate ? "none" : "flex"}}>
-        <button onClick={()=>ShowNavigation()}>
+        <button onClick={()=>setNavigationShow(!navigationShow)}>
           Menu
           <div className="icon-menu">
-            <div className="icon1"></div>
-            <div className="icon2"></div>
+            <div className="icon1" style={{transform: navigationShow ? "rotate(130deg)" : "rotate(0)" , top: navigationShow ? "50%" : "0"}}></div>
+            <div className="icon2" style={{transform: navigationShow ? "rotate(-130deg)" : "rotate(0)" , top: navigationShow ? "50%" : "100%"}}></div>
           </div>
         </button>
       </div>
-      <Navgiation/>
+      <Navgiation navigationShow={navigationShow}/>
     </div>
   );
 };

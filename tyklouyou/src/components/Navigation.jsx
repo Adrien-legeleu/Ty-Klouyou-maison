@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Navgiation = () => {
+const Navgiation = ({navigationShow}) => {
   return (
-    <div className="navigation-container">
+    <div className="navigation-container" style={{visibility:navigationShow ? "visible" : "hidden"}}>
       <div className="navigation">
         <div className="navigation-sun">
           <div></div>
@@ -15,15 +15,21 @@ const Navgiation = () => {
         <div className="navigation-menu">
           <NavLink to="/" className="menu">
             <h2>Accueil</h2>
+            <img src="./assets/img/icons8-arrow-96.png" alt="arrow-left" />
+
           </NavLink>
           <NavLink className="menu">
-            <h3>Photos</h3>
+            <h2>Photos</h2>
+            <img src="./assets/img/icons8-arrow-96.png" alt="arrow-left" />
+
           </NavLink>
           <NavLink className="menu">
-            <h3>Activités</h3>
+            <h2>Activités</h2>
+            <img src="./assets/img/icons8-arrow-96.png" alt="arrow-left" />
           </NavLink>
           <NavLink className="menu">
-            <h3>Contactez</h3>
+            <h2>Contactez</h2>
+            <img src="./assets/img/icons8-arrow-96.png" alt="arrow-left" />
           </NavLink>
         </div>
       </div>

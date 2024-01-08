@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, {  useState, useRef } from "react";
 import Header from "./Header";
 import Reservation from "./Reservation";
 
@@ -6,14 +6,14 @@ const Page1 = () => {
   const spanRef = useRef();
   const [toggleDate , setToggleDate]=useState(false)
 
-  const phrases = [
-    "En bord de mer !",
-    "Une grande terrasse !",
-    "Vue sur mer !",
-    "Une énorme villa !",
-    "Pleins d'activités !",
-    "Une Incroyable maison !"
-  ];
+  // const phrases = [
+  //   "En bord de mer !",
+  //   "Une grande terrasse !",
+  //   "Vue sur mer !",
+  //   "Une énorme villa !",
+  //   "Pleins d'activités !",
+  //   "Une Incroyable maison !"
+  // ];
 
 
   return (

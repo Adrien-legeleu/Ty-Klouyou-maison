@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
     .date{
         color: white;
         @include AlignChild(row , center,baseline);
@@ -58,7 +58,7 @@
                         top: 0;
                     }
                     &:nth-child(2){
-                        bottom: 0;
+                        top: 100%;
                     }
                 }
             }
