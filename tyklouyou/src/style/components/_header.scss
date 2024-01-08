@@ -32,6 +32,7 @@
     .menu{
         @include AlignChild(row, center, end);
         margin-right: 35px;
+        display: flex;
         button{
             @include AlignChild(row, center, center);
             gap: 15px;

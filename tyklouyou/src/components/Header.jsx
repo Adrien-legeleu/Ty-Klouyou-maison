@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navgiation from "./Navigation";
 
-const Header = () => {
+const Header = ({toggleDate , setToggleDate}) => {
     const [currentTime , setCurrentTime]=useState("13:06");
     const [navigationShow , setNavigationShow]=useState(false);
     const Navigation=document.querySelector(".navigation-container")

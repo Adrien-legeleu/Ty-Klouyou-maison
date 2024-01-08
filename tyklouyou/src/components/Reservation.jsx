@@ -4,7 +4,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 
-const Reservation = () => {
+const Reservation = ({setToggleDate , toggleDate}) => {
     const dateContainer = useRef()
   const [date, setDate] = useState([
     {
@@ -28,7 +28,6 @@ const downNumber = () => {
 };
 
 
-const [toggleDate , setToggleDate]=useState(false)
 const [toggleDateAngle , setToggleDateAngle]=useState(false)
 
 const ShowDateContainer=()=>{
@@ -52,7 +51,7 @@ const AngleDateRotate = () => {
 
   return (
     <div className="reservation">
-      <div className="reservation-container">
+      <div className="reservation-container" style={{ transition:"1s" , backgroundColor: toggleDate ? "#006D77"  : "#003444"}}>
         <div className="date-text">
           <img src="./assets/img/time-and-calendar.png" alt="calendar" />
           <span>{`du ${format(date[0].startDate, "MM/dd/yyyy")} au ${format(
@@ -74,13 +73,13 @@ const AngleDateRotate = () => {
                 <p>Voyageurs</p>
             </div>
             <div className="number">
-              <span onClick={()=>downNumber()}>-</span>
+              <span onClick={()=>downNumber()} style={{transition:"1s" ,backgroundColor: toggleDate ? "#003444"  : "#006D77"}}>-</span>
               <input type="number"  value={"0" + inputvalue}/>
-              <span onClick={()=>upNumber()}>+</span>
+              <span onClick={()=>upNumber()} style={{transition:"1s" ,backgroundColor: toggleDate ? "#003444"  : "#006D77"}}>+</span>
             </div>
           </div>
           <div className="reserve">
-            <button>Réserver</button>
+            <button style={{transition:"1s" ,backgroundColor: toggleDate ? "#003444"  : "#006D77"}}>Réserver</button>
           </div>
         </div>
       </div>

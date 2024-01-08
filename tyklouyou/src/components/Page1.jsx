@@ -4,6 +4,7 @@ import Reservation from "./Reservation";
 
 const Page1 = () => {
   const spanRef = useRef();
+  const [toggleDate , setToggleDate]=useState(false)
 
   const phrases = [
     "En bord de mer !",
@@ -17,7 +18,7 @@ const Page1 = () => {
 
   return (
     <div className="page1">
-      <Header />
+      <Header toggleDate={toggleDate} setToggleDate={setToggleDate}/>
       <div className="page1-container">
         <img src="./assets/img/logoSea.png" alt="" />
         <h1>Ty Klouyou</h1>
@@ -26,7 +27,7 @@ const Page1 = () => {
           Create by <i>W3bLuxury Design</i>
         </p>
       </div>
-      <Reservation/>
+      <Reservation toggleDate={toggleDate} setToggleDate={setToggleDate}/>
     </div>
   );
 };
