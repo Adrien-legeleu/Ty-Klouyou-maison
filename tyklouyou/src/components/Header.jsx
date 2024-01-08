@@ -46,7 +46,7 @@ const Header = ({toggleDate , setToggleDate}) => {
       <div className="title">
         <span>Ty Klouyou</span>
       </div>
-      <div className="menu">
+      <div className="menu" style={{display:toggleDate ? "none" : "flex"}}>
         <button onClick={()=>ShowNavigation()}>
           Menu
           <div className="icon-menu">

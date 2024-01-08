@@ -32,7 +32,7 @@
     .menu{
         @include AlignChild(row, center, end);
         margin-right: 35px;
-        display: flex;
+        transition: 0.25s ease-in-out;
         button{
             @include AlignChild(row, center, center);
             gap: 15px;

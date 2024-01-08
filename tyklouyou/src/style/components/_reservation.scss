@@ -115,7 +115,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    opacity: 0;
+    transition: 0.25s ease-in-out;
     .date {
       position: fixed;
       top: 50%;
@@ -135,6 +135,32 @@
         span{
             color: white;
         }
+      }
+    }
+    .close{
+      width: 50px;
+      background: #8f8484;
+      border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      left: 85%;
+      cursor: pointer;
+      transition: 0.25s ease-in-out;
+
+      &:hover{
+        filter: brightness(1.2);
+        transform: scale(1.05) rotate(-90deg);
+      }
+    }
+    .close-animation{
+      animation: CloseRotate 2s ease-in-out;
+    }
+    @keyframes CloseRotate {
+      0%{
+        transform: rotate(90deg);
+      }
+      100%{
+        transform: rotate(360deg) scale(0.8);
       }
     }
   }

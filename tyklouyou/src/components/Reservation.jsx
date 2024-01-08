@@ -1,11 +1,10 @@
-import React, {  useRef, useState } from "react";
+import React, {   useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 
 const Reservation = ({setToggleDate , toggleDate}) => {
-    const dateContainer = useRef()
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -27,28 +26,6 @@ const downNumber = () => {
   }
 };
 
-
-const [toggleDateAngle , setToggleDateAngle]=useState(false)
-
-const ShowDateContainer=()=>{
-    dateContainer.current.style.transition="0.25s ease-in"
-    if (!toggleDate) {
-        dateContainer.current.style.opacity="1"
-        dateContainer.current.style.backgroundColor="#003444"
-        setToggleDate(true)
-    }else{
-         dateContainer.current.style.opacity="0"
-        dateContainer.current.style.backgroundColor=""  
-        setToggleDate(false)
-    }
-}
-const AngleDateRotate = () => {
-  setToggleDateAngle(!toggleDateAngle);
-};
-
-
-
-
   return (
     <div className="reservation">
       <div className="reservation-container" style={{ transition:"1s" , backgroundColor: toggleDate ? "#006D77"  : "#003444"}}>
@@ -58,11 +35,10 @@ const AngleDateRotate = () => {
             date[0].endDate,
             "MM/dd/yyyy"
           )}`}</span>
-          <img src="./assets/img/fleche-vers-le-bas.png" alt="angle-down" className={`${toggleDateAngle ? "angle-rotated angle-true" : "angle-false"}`}
+          <img src="./assets/img/fleche-vers-le-bas.png" alt="angle-down" className={`${toggleDate ? "angle-rotated angle-true" : "angle-false"}`}
             
           onClick={()=>{
-            ShowDateContainer()
-            AngleDateRotate()
+            setToggleDate(!toggleDate)
             }} 
             />
         </div>
@@ -83,7 +59,11 @@ const AngleDateRotate = () => {
           </div>
         </div>
       </div>
-      <div className="date-container" ref={dateContainer}>
+      <div className="date-container" style={{ backgroundColor: toggleDate ? "#003444" : "", opacity:toggleDate ? "1" : "0",}}>
+        <img src="./assets/img/croix-petit.png" alt="close-croix" className={`close ${toggleDate ? "close" : "close close-animation"}`} onClick={()=>{
+            setToggleDate(!toggleDate)
+            }}
+            />
         <DateRange
           minDate={new Date()}
           editableDateInputs={true}
