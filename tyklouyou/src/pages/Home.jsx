@@ -1,13 +1,19 @@
-import React from "react";
-import Navgiation from "../components/Navigation";
+import React, { useState } from "react";
+import Page1 from "./Page1";
+import Page2 from "./Page2";
 import Header from "../components/Header";
-import Page1 from "../components/Page1";
+import Reservation from "../components/Reservation";
 
 const Home = () => {
+
+    const [toggleDate , setToggleDate]=useState(false)
+
   return (
     <div className="accueil">
+      <Header  toggleDate={toggleDate}/>
+      <Reservation toggleDate={toggleDate} setToggleDate={setToggleDate}/>
       <Page1/>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora dolorem at magni illo, excepturi nihil autem ipsam maiores aut adipisci modi minus dignissimos, exercitationem unde placeat praesentium. Laboriosam sequi expedita sapiente incidunt molestiae eligendi dolorem quibusdam qui iusto. Suscipit dolorem ipsam quae voluptate asperiores commodi est quaerat voluptas fugiat hic, delectus, doloremque mollitia vitae doloribus animi cum in consectetur, nihil veritatis sint modi vero provident! Ut consequuntur accusantium pariatur nemo dicta earum nam, autem reiciendis ipsam aut sapiente maiores placeat tempore eos, quasi amet repudiandae esse omnis mollitia non molestiae fuga! Molestias numquam delectus deleniti voluptatem accusamus ipsam beatae minus.</p>
+      <Page2/>
     </div>
   );
 };

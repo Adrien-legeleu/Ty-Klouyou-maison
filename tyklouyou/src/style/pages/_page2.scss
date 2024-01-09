@@ -1,0 +1,50 @@
+.page2{
+    background: $green1;
+    box-shadow: 0 0 35px 40px $green1;
+    padding: 100px 50px 50px;
+    display: flex;
+
+    .title{
+        flex: 1;
+        @include AlignChild(row,baseline,center);
+        h2{
+        color: $white;
+        font-family: $fontTR;
+        letter-spacing: 5px;
+        width: 50%;
+        font-size: 3rem;
+    }
+    }
+    .img{
+        flex: 1;
+        position: relative;
+        height: 90vh;
+        img{
+            position: absolute;
+            object-fit: cover;
+            border-radius: 15px;
+            transform: translate(-50% ,0);
+            z-index: 0;
+
+            &:nth-child(1){
+                width: 400px;
+                left: 50%;
+            }
+            &:nth-child(2){
+                width: 250px;
+                height: 180px;
+                top: 50%;
+                left: 25%;
+                transform: translate(-50%, 0) rotate(-15deg);
+            }
+            &:nth-child(3){
+                width: 260px;
+                height: 300px;
+                left: 70%;
+                top: 30%;
+                transform: translate(-50%, 0) rotate(20deg);
+            }
+        }
+    }
+
+}

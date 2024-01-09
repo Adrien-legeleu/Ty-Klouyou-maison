@@ -3,6 +3,7 @@
   width: 100%;
   height: 100vh;
   @include AlignChild(row, center, center);
+  z-index: 100;
 
   img {
     width: 40px;
@@ -22,11 +23,18 @@
     font-weight: 900;
     font-family: $fontR;
     z-index: 100;
+    @media screen and (max-width:1000px) {
+        grid-template-columns: 1fr;
+        width: 50%;
+    }
 
     .date-text {
       @include AlignChild(row, center, space-around);
       margin-left: 20px;
       border-right: 1px solid rgb(187, 182, 182);
+      @media screen and (max-width:1000px) {
+          border-right: none;
+        }
 
       .angle-true {
         background: $green2;
@@ -34,6 +42,10 @@
         padding: 5px;
         cursor: pointer;
         transition: 0.25s ease-in;
+        @media screen and (max-width:1000px) {
+            height: 30px;
+            width: 30px;
+          }
 
         &:hover {
           filter: brightness(120%);
@@ -46,6 +58,10 @@
         padding: 5px;
         cursor: pointer;
         transition: 0.25s ease-in;
+        @media screen and (max-width:1000px) {
+            height: 30px;
+            width: 30px;
+          }
 
         &:hover {
           filter: brightness(120%);
@@ -62,7 +78,15 @@
       grid-template-columns: 0.8fr 0.2fr;
       align-items: center;
       justify-content: center;
-
+      @media screen and (max-width:1000px) {
+        position: fixed;
+        opacity: 0;
+        background-color: $green1;
+        padding: 10px;
+        border-radius: 20px;
+        width: 50%;
+      }
+      
       .people {
         @include AlignChild(row, center, space-between);
         border-right: 1px solid gray;
@@ -75,6 +99,9 @@
           @include AlignChild(row, center, center);
           gap: 10px;
           margin-right: 30px;
+          @media screen and (max-width:1050px) {
+          margin-right: 10px;
+        }
           span {
             border-radius: 50%;
             height: 40px;
@@ -83,6 +110,10 @@
             font-size: 2rem;
             cursor: pointer;
             transition: 0.25s ease-in;
+            @media screen and (max-width:1050px) {
+                height: 30px;
+                width: 30px;
+              }
             &:hover {
               filter: brightness(120%);
               transform: scale(0.95);
@@ -108,6 +139,43 @@
       }
       .reserve {
         margin-left: 30px;
+        @media screen and (max-width:1050px) {
+          margin-left: 10px;
+        }
+      }
+    }
+    .people-button-open-responsive{
+      opacity: 1;
+      transform: translate(0 , -130%);
+      animation: peopleButtonResponsiveOpen 1s forwards;
+    }
+    .people-button-close-responsive{
+      opacity: 0;
+      transform: translate(-50% , 0);
+      animation: peopleButtonResponsiveClose 1s forwards;
+    }
+
+    @keyframes peopleButtonResponsiveOpen {
+      0%{
+        opacity: 0.4;
+        transform: translate(0, 0);
+      }
+      100%{
+        opacity: 1;
+        transform: translate(0, -130%);
+      }
+    }
+    @keyframes peopleButtonResponsiveClose {
+      0%{
+        opacity: 1;
+        transform: translate(0, -130%);
+      }
+      50%{
+        opacity: 0;
+        transform: translate(0, 0);
+      }
+      100%{
+        display: none;
       }
     }
   }
@@ -123,6 +191,11 @@
       transform: translate(-50%, -50%);
       border-radius: 50px;
       background: transparent;
+      @media screen and (max-width:1000px) {
+          top: 42%;
+          transform: translate(-50%, -50%) scale(0.9);
+      }
+      
 
       * {
         border-radius: 20px;

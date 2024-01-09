@@ -1,7 +1,7 @@
 .page1{
     height: 100vh;
     width: 100%;
-    background: url("../../assets/img/outdoor-deck.jpg") rgba(0, 0, 0, 0.2) center/cover;
+    background: url("../../assets/img/outdoor-deck.jpg") rgba(0, 0, 0, 0.2) fixed center/cover;
     background-blend-mode: darken;
     cursor: default;
     @include AlignChild(column, center, center);
@@ -50,7 +50,6 @@
             filter: opacity(0.8);
             font-family: $fontR;
             opacity: 0;
-            width: 100%;
         }
         .span-animation{
             animation: spanShow 4s ease-in-out forwards;

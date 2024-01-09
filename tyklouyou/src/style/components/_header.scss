@@ -3,7 +3,6 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     align-items: center;
-    color: white;
     padding: 30px 20px 0;
     position: fixed;
     top: 0;
@@ -11,13 +10,12 @@
     width: 100%;
     z-index: 1000;
     .date{
-        color: white;
         @include AlignChild(row , center,baseline);
         margin-left: 35px;
         .icon{
             width: 35px;
             height: 35px;
-            margin-right: 10px
+            margin-right: 10px;
         }
     }
     .title{
@@ -40,7 +38,6 @@
             background: transparent;
             border: 1px solid $white;
             border-radius: 30px;
-            color: white;
             cursor: pointer;
             z-index: 1000;
             .icon-menu{

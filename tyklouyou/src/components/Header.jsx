@@ -1,12 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navgiation from "./Navigation";
+import { motion } from "framer-motion";
 
-const Header = ({toggleDate , setToggleDate}) => {
+const Header = ({toggleDate }) => {
     const [currentTime , setCurrentTime]=useState("13:06");
     const [navigationShow , setNavigationShow]=useState(false);
+    const [ColorText , setColorText]=useState(false);
+    const header=useRef()
 
+  window.addEventListener("scroll", () => {
+  const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
 
-
+  if (scrollPercentage > 60) {
+    setColorText(true);
+  } else {
+    setColorText(false);
+  }
+});
 
 
   useEffect(() => {
@@ -18,20 +28,20 @@ const Header = ({toggleDate , setToggleDate}) => {
   },[]);
 
   return (
-    <div className="header">
+    <div className="header" ref={header} style={{color: ColorText ? "white" : (navigationShow ? "white" : "black")}}>
       <div className="date">
-        <img className="icon" src="./assets/img/soleil.svg" alt="" />
-        <span><span>{currentTime}</span> | Saint-gildas de rhuys</span>
+        <img className="icon" src={`${ColorText ? "./assets/img/soleil.svg" : "./assets/img/icons8-sun.svg" }`} alt="sun/moon tyklouyou"/>
+        <span ><span>{currentTime}</span> | Saint-gildas de rhuys</span>
       </div>
       <div className="title">
-        <span>Ty Klouyou</span>
+        <motion.span drag dragConstraints={header} dragSnapToOrigin="true" >Ty Klouyou</motion.span>
       </div>
       <div className="menu" style={{display:toggleDate ? "none" : "flex"}}>
-        <button onClick={()=>setNavigationShow(!navigationShow)}>
+        <button onClick={()=>setNavigationShow(!navigationShow)} style={{color: ColorText ? "white" : (navigationShow ? "white" : "black" ), border: ColorText ? "1px solid white" : (navigationShow ? "1px solid white" : "1px solid black")}}>
           Menu
           <div className="icon-menu">
-            <div className="icon1" style={{transform: navigationShow ? "rotate(130deg)" : "rotate(0)" , top: navigationShow ? "50%" : "0"}}></div>
-            <div className="icon2" style={{transform: navigationShow ? "rotate(-130deg)" : "rotate(0)" , top: navigationShow ? "50%" : "100%"}}></div>
+            <div className="icon1" style={{transform: navigationShow ? "rotate(130deg)" : "rotate(0)" , top: navigationShow ? "50%" : "0" , backgroundColor:  ColorText ? "white" : (navigationShow ? "white" : "black")}}></div>
+            <div className="icon2" style={{transform: navigationShow ? "rotate(-130deg)" : "rotate(0)" , top: navigationShow ? "50%" : "100%" , backgroundColor:  ColorText ? "white" : (navigationShow ? "white" : "black")}}></div>
           </div>
         </button>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
@@ -13,6 +13,7 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
     },
   ]);
   const [inputvalue, setInputvalue] = useState(3);
+  const [peopleReservationResponsive, setPeopleReservationResponsive] = useState(false);
 
   const upNumber = () => {
     if (inputvalue < 8) {
@@ -25,6 +26,21 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
       setInputvalue(inputvalue - 1);
     }
   };
+  const reservationPeopleResponsive=()=>{
+    if (window.innerWidth < 1000) {
+      setPeopleReservationResponsive(true)
+      console.log("good");
+    }else{
+      setPeopleReservationResponsive(false)
+    }
+  }
+  useEffect(()=>{
+    if (toggleDate) {
+        reservationPeopleResponsive()
+    }else{
+      setPeopleReservationResponsive(false)
+    }
+  },[toggleDate])
 
   return (
     <div className="reservation">
@@ -54,7 +70,7 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
             }`}
           />
         </div>
-        <div className="people-button">
+        <div className={`${peopleReservationResponsive ? "people-button people-button-open-responsive" : "people-button people-button-close-responsive"}`}>
           <div className="people">
             <div className="people-container">
               <img src="./assets/img/la-personne.png" alt="personn" />
