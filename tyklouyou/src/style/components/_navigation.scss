@@ -19,6 +19,7 @@
 
     .menu{
       position: relative;
+      visibility: hidden;
     }
 
     h2{
@@ -61,7 +62,6 @@
       background: #0A436C;
       border-radius: 20px ;
       position: relative;
-      transform: rotate(20deg);
 
       h2{
         top: 50%;
@@ -78,7 +78,6 @@
       background: #FF9E2C;
       border-radius: 50% ;
       position: relative;
-      transform: rotate(-30deg);
       top: 10px;
       left: 50px;
 
@@ -109,5 +108,161 @@
         left: 85%;
       }
     }
+    .menu1-anim-open{
+      animation: MenuOpen 0.8s ease-out forwards;
+      animation-delay: 0.8s;
+    }
+    .menu2-anim-open{
+      animation: MenuOpen2 0.8s ease-out forwards;
+      animation-delay: 1s;
+    }
+    .menu3-anim-open{
+      animation: MenuOpen3 0.8s ease-out forwards;
+      animation-delay: 1.2s;
+    }
+    .menu4-anim-open{
+      animation: MenuOpen 0.8s ease-out forwards;
+      animation-delay: 1.4s;
+    }
+    @keyframes MenuOpen {
+      0%{
+        visibility: visible;
+        opacity: 0.5;
+        transform: scale(0.2);
+      }
+      100%{
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes MenuOpen2 {
+      0%{
+        visibility: visible;
+        opacity: 0.5;
+        transform: scale(0.2) rotate(0);
+      }
+      100%{
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1) rotate(20deg);
+      }
+    }
+    @keyframes MenuOpen3 {
+      0%{
+        visibility: visible;
+        opacity: 0.5;
+        transform: scale(0.2) rotate(0);
+      }
+      100%{
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1) rotate(-30deg);
+      }
+    }
+
+
+    .menu1-anim-close{
+      animation: MenuClose 0.8s ease-out forwards;
+      animation-delay: 0.1s;
+    }
+    .menu2-anim-close{
+      animation: MenuClose2 0.8s ease-out forwards;
+      animation-delay: 0.4s;
+    }
+    .menu3-anim-close{
+      animation: MenuClose3 0.8s ease-out forwards;
+      animation-delay: 0.8s;
+    }
+    .menu4-anim-close{
+      animation: MenuClose 0.8s ease-out forwards;
+      animation-delay: 1.2s;
+    }
+    @keyframes MenuClose {
+      0%{
+        visibility: visible;
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      99%{
+        visibility: visible;
+        opacity: 0.2;
+        transform: scale(0.2);
+      }
+      100%{
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+    @keyframes MenuClose2 {
+      0%{
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1) rotate(20deg);
+      }
+      99%{
+        visibility: visible;
+        opacity: 0.3;
+        transform: scale(0) rotate(0);
+      }
+      100%{
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(0) rotate(0);
+      }
+    }
+    @keyframes MenuClose3 {
+      0%{
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1) rotate(-30deg);
+      }
+      99%{
+        visibility: visible;
+        opacity: 0.3;
+        transform: scale(0) rotate(0);
+      }
+      100%{
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(0) rotate(0);
+      }
+    }
   }
+}
+.menu-animation-open{
+  animation: MenuContainerOpen 1s ease-out forwards;
+}
+.menu-animation-close {
+  animation: MenuContainerClose 1s ease-out forwards;
+  animation-delay: 1.5s;
+}
+@keyframes MenuContainerOpen {
+  0% {
+      visibility: visible;
+    }
+  1%{
+    transform: translateX(100%);
+    border-radius: 50px;
+  }
+  100%{
+    transform: translateX(0);
+    border-radius: 0;
+  }
+  
+}
+@keyframes MenuContainerClose {
+  0% {
+    transform: translateX(0);
+    border-radius: 0;
+  }
+
+  99% {
+    transform: translateX(100%);
+    border-radius: 50px;
+  }
+  100% {
+      visibility: hidden;
+    }
 }
