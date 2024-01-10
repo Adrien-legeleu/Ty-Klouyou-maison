@@ -29,6 +29,11 @@
       font-weight: 100;
       font-size: 2.5rem;
       letter-spacing: 3px;
+      
+      @media screen and (max-width:1000px) {
+        font-size: 2.2rem;
+      }
+
     }
     img {
       transform: rotate(180deg) translate(50%, 50%);
@@ -45,6 +50,11 @@
       border-radius: 100px ;
       position: relative;
       left: 25px;
+      @media screen and (max-width:1000px) {
+          top: 50px;
+          width: 320px;
+          height: 165px;
+      }
 
       h2{
         top: 50%;
@@ -61,6 +71,12 @@
       background: #0A436C;
       border-radius: 20px ;
       position: relative;
+      @media screen and (max-width:1000px) {
+          top: 90px;
+          left: 20px;
+          width: 320px;
+          height: 105px;
+      }
 
       h2{
         top: 50%;
@@ -79,6 +95,12 @@
       position: relative;
       top: 10px;
       left: 50px;
+      @media screen and (max-width:1000px) {
+          top: 60px;
+          left: 80px;
+          width: 250px;
+          height: 250px;
+        }
 
       h2{
         top: 15%;
@@ -97,6 +119,13 @@
       position: relative;
       bottom: 45px;
       left: 30px;
+      @media screen and (max-width:1000px) {
+          top: 40px;
+          left: 80px;
+          width: 240px;
+          height: 260px;
+          border-radius: 30px 100% 30px 30px;
+        }
 
       h2{
         top: 85%;

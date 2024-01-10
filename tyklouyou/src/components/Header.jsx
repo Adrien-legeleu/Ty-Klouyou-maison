@@ -6,6 +6,7 @@ const Header = ({toggleDate }) => {
     const [currentTime , setCurrentTime]=useState("13:06");
     const [navigationShow , setNavigationShow]=useState(false);
     const [ColorText , setColorText]=useState(false);
+    const [titleResponsive , setTitleResponsive]=useState(false);
     const header=useRef()
 
   window.addEventListener("scroll", () => {
@@ -18,7 +19,6 @@ const Header = ({toggleDate }) => {
   }
 });
 
-
   useEffect(() => {
     setInterval(()=>{
         const today= new Date().toLocaleTimeString()
@@ -27,13 +27,25 @@ const Header = ({toggleDate }) => {
     },30000)
   },[]);
 
+  useEffect(()=>{
+    if (toggleDate) {
+      if (window.innerWidth <700) {
+        setTitleResponsive(true)
+      }else{
+        setTitleResponsive(false)
+      }
+    }else{
+      setTitleResponsive(false)
+    }
+  },[toggleDate])
+
   return (
     <div className="header" ref={header} style={{color: ColorText ? "white" : (navigationShow || toggleDate ? "white" : "black")}}>
       <div className="date">
         <img className="icon" src={`${ColorText ? "./assets/img/soleil.svg" : (navigationShow || toggleDate ? "./assets/img/soleil.svg" : "./assets/img/icons8-sun.svg") }`} alt="sun/moon tyklouyou"/>
         <span ><span>{currentTime}</span> | Saint-gildas de rhuys</span>
       </div>
-      <div className="title">
+      <div className="title" style={{display: titleResponsive ? "none" : "flex"}}>
         <motion.span drag dragConstraints={header} dragSnapToOrigin="true" >Ty Klouyou</motion.span>
       </div>
       <div className="menu" style={{display:toggleDate ? "none" : "flex"}}>

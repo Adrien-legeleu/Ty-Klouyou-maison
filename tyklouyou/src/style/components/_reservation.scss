@@ -10,6 +10,9 @@
     @media screen and (max-width: 750px) {
       width: 30px;
     }
+    @media screen and (max-width: 650px) {
+        width: 20px;
+      }
   }
 
   .reservation-container {
@@ -44,7 +47,19 @@
       @media screen and (max-width: 750px) {
         font-size: 0.9rem;
         letter-spacing: 1px;
+        margin-left: 5px;
       }
+      @media screen and (max-width: 700px) {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        margin-left: 5px;
+      }
+      @media screen and (max-width: 700px) {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+        margin-left: 5px;
+      }
+      
 
       .angle-true {
         background: $green2;
@@ -106,7 +121,7 @@
       @media screen and (max-width: 700px) {
         display: flex;
         flex-direction: column-reverse;
-        gap: 20px;
+        gap: 10px;
         background: transparent;
       }
 
@@ -115,6 +130,8 @@
         border-right: 1px solid gray;
         @media screen and (max-width: 700px) {
           border-right: none;
+          border-radius: 15px;
+          padding: 10px;
         }
 
         .people-container {
@@ -224,7 +241,7 @@
 
   .people-button-open-responsive2 {
     opacity: 1;
-    transform: translate(0, -90%);
+    transform: translate(0, -80%);
     animation: peopleButtonResponsiveOpen2 1s forwards;
   }
 
@@ -242,14 +259,14 @@
 
     100% {
       opacity: 1;
-      transform: translate(0, -90%);
+      transform: translate(0, -80%);
     }
   }
 
   @keyframes peopleButtonResponsiveClose2 {
     0% {
       opacity: 1;
-      transform: translate(0, -90%);
+      transform: translate(0, -80%);
     }
 
     50% {

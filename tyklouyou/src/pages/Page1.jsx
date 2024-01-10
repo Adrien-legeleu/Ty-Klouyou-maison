@@ -1,6 +1,6 @@
 import React, {  useState, useRef, useEffect } from "react";
 
-const Page1 = ({toggleDate , setToggleDate}) => {
+const Page1 = () => {
   const spanRef = useRef();
   const [phraseIndex , setPhraseIndex] = useState(0)
   const [currentPhrase , setCurrentPhrase] = useState("Une magnifique aventure !")
@@ -44,7 +44,7 @@ const Page1 = ({toggleDate , setToggleDate}) => {
         <h1>Ty Klouyou</h1>
         <span className="span" ref={spanRef}>{currentPhrase}</span>
         <p>
-          Create by <i>W3bLuxury Design</i>
+           by <i>W3bLuxury Design</i>
         </p>
       </div>
     </div>

@@ -80,7 +80,7 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
           />
         </div>
         <div className={`${!responsive ? "people-button" : (peopleReservationResponsive1 ? "people-button people-button-open-responsive1" : (peopleReservationResponsive2 ? "people-button people-button-open-responsive2" : (peopleReservationResponsive1 ? "people-button people-button-close-responsive1" : "people-button people-button-close-responsive2" )))}`}>
-          <div className="people">
+          <div className="people" style={{ backgroundColor:peopleReservationResponsive2 ? (toggleDate ? "#006D77" : "#003444") : ""}}>
             <div className="people-container">
               <img src="./assets/img/la-personne.png" alt="personn" />
               <p>Voyageurs</p>
