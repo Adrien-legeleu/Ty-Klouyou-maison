@@ -13,7 +13,9 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
     },
   ]);
   const [inputvalue, setInputvalue] = useState(3);
-  const [peopleReservationResponsive, setPeopleReservationResponsive] = useState(false);
+  const [peopleReservationResponsive1, setPeopleReservationResponsive1] = useState(false);
+  const [peopleReservationResponsive2, setPeopleReservationResponsive2] = useState(false);
+  const [responsive, setResponsive] = useState(false);
 
   const upNumber = () => {
     if (inputvalue < 8) {
@@ -28,17 +30,24 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
   };
   const reservationPeopleResponsive=()=>{
     if (window.innerWidth < 1000) {
-      setPeopleReservationResponsive(true)
-      console.log("good");
+      setResponsive(true)
+      if (window.innerWidth > 700) {
+        setPeopleReservationResponsive1(true)
+      }else{
+        setPeopleReservationResponsive2(true)
+      }
     }else{
-      setPeopleReservationResponsive(false)
+      setPeopleReservationResponsive1(false)
+      setPeopleReservationResponsive2(false)
+      setResponsive(false)
     }
   }
   useEffect(()=>{
     if (toggleDate) {
         reservationPeopleResponsive()
     }else{
-      setPeopleReservationResponsive(false)
+      setPeopleReservationResponsive1(false)
+      setPeopleReservationResponsive2(false)
     }
   },[toggleDate])
 
@@ -70,7 +79,7 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
             }`}
           />
         </div>
-        <div className={`${peopleReservationResponsive ? "people-button people-button-open-responsive" : "people-button people-button-close-responsive"}`}>
+        <div className={`${!responsive ? "people-button" : (peopleReservationResponsive1 ? "people-button people-button-open-responsive1" : (peopleReservationResponsive2 ? "people-button people-button-open-responsive2" : (peopleReservationResponsive1 ? "people-button people-button-close-responsive1" : "people-button people-button-close-responsive2" )))}`}>
           <div className="people">
             <div className="people-container">
               <img src="./assets/img/la-personne.png" alt="personn" />
@@ -102,7 +111,7 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
             <button
               style={{
                 transition: "1s",
-                backgroundColor: toggleDate ? "#003444" : "#006D77",
+                backgroundColor: responsive ? "red" :  (toggleDate ? "#003444" : "#006D77"),
               }}
             >
               Réserver

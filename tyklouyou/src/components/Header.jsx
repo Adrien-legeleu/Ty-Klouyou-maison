@@ -28,9 +28,9 @@ const Header = ({toggleDate }) => {
   },[]);
 
   return (
-    <div className="header" ref={header} style={{color: ColorText ? "white" : (navigationShow ? "white" : "black")}}>
+    <div className="header" ref={header} style={{color: ColorText ? "white" : (navigationShow || toggleDate ? "white" : "black")}}>
       <div className="date">
-        <img className="icon" src={`${ColorText ? "./assets/img/soleil.svg" : "./assets/img/icons8-sun.svg" }`} alt="sun/moon tyklouyou"/>
+        <img className="icon" src={`${ColorText ? "./assets/img/soleil.svg" : (navigationShow || toggleDate ? "./assets/img/soleil.svg" : "./assets/img/icons8-sun.svg") }`} alt="sun/moon tyklouyou"/>
         <span ><span>{currentTime}</span> | Saint-gildas de rhuys</span>
       </div>
       <div className="title">

@@ -7,6 +7,9 @@
 
   img {
     width: 40px;
+    @media screen and (max-width: 750px) {
+      width: 30px;
+    }
   }
 
   .reservation-container {
@@ -23,18 +26,25 @@
     font-weight: 900;
     font-family: $fontR;
     z-index: 100;
-    @media screen and (max-width:1000px) {
-        grid-template-columns: 1fr;
-        width: 50%;
+    @media screen and (max-width: 1000px) {
+      grid-template-columns: 1fr;
+      width: 50%;
+    }
+    @media screen and (max-width: 700px) {
+      bottom: 20px;
     }
 
     .date-text {
       @include AlignChild(row, center, space-around);
       margin-left: 20px;
       border-right: 1px solid rgb(187, 182, 182);
-      @media screen and (max-width:1000px) {
-          border-right: none;
-        }
+      @media screen and (max-width: 1000px) {
+        border-right: none;
+      }
+      @media screen and (max-width: 750px) {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+      }
 
       .angle-true {
         background: $green2;
@@ -42,14 +52,17 @@
         padding: 5px;
         cursor: pointer;
         transition: 0.25s ease-in;
-        @media screen and (max-width:1000px) {
-            height: 30px;
-            width: 30px;
-          }
+        @media screen and (max-width: 1000px) {
+          height: 30px;
+          width: 30px;
+        }
 
         &:hover {
           filter: brightness(120%);
           transform: translateY(5px) rotate(170deg);
+          @media screen and (max-width: 1000px) {
+            transform: translateY(0) rotate(180deg);
+          }
         }
       }
       .angle-false {
@@ -58,14 +71,17 @@
         padding: 5px;
         cursor: pointer;
         transition: 0.25s ease-in;
-        @media screen and (max-width:1000px) {
-            height: 30px;
-            width: 30px;
-          }
+        @media screen and (max-width: 1000px) {
+          height: 30px;
+          width: 30px;
+        }
 
         &:hover {
           filter: brightness(120%);
           transform: translateY(-5px) rotate(10deg);
+          @media screen and (max-width: 1000px) {
+            transform: translateY(0) rotate(0);
+          }
         }
       }
       .angle-rotated {
@@ -78,30 +94,43 @@
       grid-template-columns: 0.8fr 0.2fr;
       align-items: center;
       justify-content: center;
-      @media screen and (max-width:1000px) {
+      @media screen and (max-width: 1000px) {
         position: fixed;
         opacity: 0;
         background-color: $green1;
         padding: 10px;
         border-radius: 20px;
         width: 50%;
+        z-index: -1;
       }
-      
+      @media screen and (max-width: 700px) {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 20px;
+        background: transparent;
+      }
+
       .people {
         @include AlignChild(row, center, space-between);
         border-right: 1px solid gray;
+        @media screen and (max-width: 700px) {
+          border-right: none;
+        }
 
         .people-container {
           @include AlignChild(row, center, center);
           margin-right: 20px;
+          @media screen and (max-width: 750px) {
+            font-size: 0.9rem;
+          }
         }
         .number {
           @include AlignChild(row, center, center);
           gap: 10px;
           margin-right: 30px;
-          @media screen and (max-width:1050px) {
-          margin-right: 10px;
-        }
+          @media screen and (max-width: 1050px) {
+            margin-right: 10px;
+          }
           span {
             border-radius: 50%;
             height: 40px;
@@ -110,10 +139,15 @@
             font-size: 2rem;
             cursor: pointer;
             transition: 0.25s ease-in;
-            @media screen and (max-width:1050px) {
-                height: 30px;
-                width: 30px;
-              }
+            @media screen and (max-width: 1050px) {
+              height: 30px;
+              width: 30px;
+            }
+            @media screen and (max-width: 750px) {
+              font-size: 1.2rem;
+              width: 25px;
+              height: 25px;
+            }
             &:hover {
               filter: brightness(120%);
               transform: scale(0.95);
@@ -134,153 +168,201 @@
               -webkit-appearance: none;
               margin: 0;
             }
+            @media screen and (max-width: 750px) {
+              font-size: 0.9rem;
+            }
           }
         }
       }
       .reserve {
         margin-left: 30px;
-        @media screen and (max-width:1050px) {
+        @media screen and (max-width: 1050px) {
           margin-left: 10px;
+        }
+        button{
+          @media screen and (max-width: 700px) {
+            background: red;
+          }
         }
       }
     }
-    .people-button-open-responsive{
+    .people-button-open-responsive1 {
       opacity: 1;
-      transform: translate(0 , -130%);
-      animation: peopleButtonResponsiveOpen 1s forwards;
+      transform: translate(0, -130%);
+      animation: peopleButtonResponsiveOpen1 1s forwards;
     }
-    .people-button-close-responsive{
+    .people-button-close-responsive1 {
       opacity: 0;
-      transform: translate(-50% , 0);
-      animation: peopleButtonResponsiveClose 1s forwards;
+      transform: translate(-50%, 0);
+      animation: peopleButtonResponsiveClose1 1s forwards;
     }
 
-    @keyframes peopleButtonResponsiveOpen {
-      0%{
+    @keyframes peopleButtonResponsiveOpen1 {
+      0% {
         opacity: 0.4;
         transform: translate(0, 0);
       }
-      100%{
+      100% {
         opacity: 1;
         transform: translate(0, -130%);
       }
     }
-    @keyframes peopleButtonResponsiveClose {
-      0%{
+    @keyframes peopleButtonResponsiveClose1 {
+      0% {
         opacity: 1;
         transform: translate(0, -130%);
       }
-      50%{
+      50% {
         opacity: 0;
         transform: translate(0, 0);
       }
-      100%{
+      100% {
         display: none;
       }
     }
   }
-  .date-container {
+
+  .people-button-open-responsive2 {
+    opacity: 1;
+    transform: translate(0, -90%);
+    animation: peopleButtonResponsiveOpen2 1s forwards;
+  }
+
+  .people-button-close-responsive2 {
+    opacity: 0;
+    transform: translate(-50%, 0);
+    animation: peopleButtonResponsiveClose2 1s forwards;
+  }
+
+  @keyframes peopleButtonResponsiveOpen2 {
+    0% {
+      opacity: 0.4;
+      transform: translate(0, 0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0, -90%);
+    }
+  }
+
+  @keyframes peopleButtonResponsiveClose2 {
+    0% {
+      opacity: 1;
+      transform: translate(0, -90%);
+    }
+
+    50% {
+      opacity: 0;
+      transform: translate(0, 0);
+    }
+
+    100% {
+      display: none;
+    }
+  }
+}
+
+.date-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s ease-in-out;
+  .date {
     position: fixed;
-    width: 100%;
-    height: 100%;
-    transition: 0.5s ease-in-out;
-    .date {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50px;
-      background: transparent;
-      @media screen and (max-width:1000px) {
-          top: 42%;
-          transform: translate(-50%, -50%) scale(0.9);
-      }
-      
-
-      * {
-        border-radius: 20px;
-      }
-      button.rdrDay.rdrDayDisabled {
-        background: #7a7474;
-        border-radius: 15px;
-      }
-      button.rdrDay {
-        span {
-          color: white;
-        }
-      }
-    }
-    .close {
-      width: 50px;
-      background: #8f8484;
-      border-radius: 50%;
-      position: absolute;
-      top: 10%;
-      left: 85%;
-      cursor: pointer;
-      transition: 0.25s ease-in-out;
-
-      &:hover {
-        filter: brightness(1.2);
-        transform: scale(1.05) rotate(-90deg);
-      }
-    }
-    .close-animation {
-      animation: CloseRotate 2s ease-in-out;
-    }
-    @keyframes CloseRotate {
-      0% {
-        transform: rotate(90deg);
-      }
-      100% {
-        transform: rotate(360deg) scale(0.8);
-      }
-    }
-  }
-  .date-container-animation-show {
-    animation: ShowDate 1s ease forwards;
-  }
-  .date-container-animation-hide {
-    animation: HideDate 1s ease forwards;
-  }
-  @keyframes ShowDate {
-    0% {
-      transform: translateY(100%);
-      opacity: 0;
-      border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    background: transparent;
+    @media screen and (max-width: 1000px) {
+      top: 35%;
+      transform: translate(-50%, -50%) scale(0.9);
     }
 
-    50% {
-      opacity: 1;
-    }
-
-    100% {
-      transform: translateY(0);
-      opacity: 1;
+    * {
       border-radius: 20px;
     }
+    button.rdrDay.rdrDayDisabled {
+      background: #7a7474;
+      border-radius: 15px;
+    }
+    button.rdrDay {
+      span {
+        color: white;
+      }
+    }
+  }
+  .close {
+    width: 35px;
+    background: #8f8484;
+    border-radius: 50%;
+    position: absolute;
+    top: 18%;
+    left: 80%;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+
+    &:hover {
+      filter: brightness(1.2);
+      transform: scale(1.05) rotate(-90deg);
+    }
+  }
+  .close-animation {
+    animation: CloseRotate 2s ease-in-out;
+  }
+  @keyframes CloseRotate {
+    0% {
+      transform: rotate(90deg);
+    }
+    100% {
+      transform: rotate(360deg) scale(0.8);
+    }
+  }
+}
+.date-container-animation-show {
+  animation: ShowDate 1s ease forwards;
+}
+.date-container-animation-hide {
+  animation: HideDate 1s ease forwards;
+}
+@keyframes ShowDate {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+    border-radius: 50%;
   }
 
-  @keyframes HideDate {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-      border-radius: 20px;
-    }
+  50% {
+    opacity: 1;
+  }
 
-    50% {
-      opacity: 1;
-    }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    border-radius: 20px;
+  }
+}
 
-    99% {
-      transform: translateY(100%);
-      opacity: 0;
-      border-radius: 50%;
-    }
+@keyframes HideDate {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+    border-radius: 20px;
+  }
 
-    100% {
-      transform: translateY(100%);
-      opacity: 0;
-    }
+  50% {
+    opacity: 1;
+  }
+
+  99% {
+    transform: translateY(100%);
+    opacity: 0;
+    border-radius: 50%;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
   }
 }
