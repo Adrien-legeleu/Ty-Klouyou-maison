@@ -16,6 +16,13 @@
     width: 800px;
     max-width: 800px;
     flex-wrap: wrap;
+    @media screen and (min-height:700px) {
+        top: 20%;
+    }
+    @media screen and (min-height:900px) {
+      top: 30%;
+      gap: 20px;
+    }
 
     @media screen and (max-width:730px) {
         width: 600px;
@@ -82,6 +89,12 @@
           width: 220px;
           height: 100px;
       }
+      @media screen and (max-width:500px) {
+        left: 80px;
+      }
+      @media screen and (min-height:900px) {
+      bottom: 150px;
+    }
 
       h2{
         top: 50%;
@@ -116,6 +129,14 @@
           width: 220px;
           height: 70px;
       }
+      @media screen and (max-width:500px) {
+        left: 00px;
+        top: 220px;
+      }
+      @media screen and (min-height:900px) {
+      left: 20px;
+      top: 80px;
+    }
 
       h2{
         top: 50%;
@@ -152,6 +173,14 @@
           width: 180px;
           height: 180px;
         }
+        @media screen and (max-width:500px) {
+        left: 70px;
+        top: 160px;
+      }
+      @media screen and (min-height:900px) {
+      left: -20px;
+      top: -10px;
+    }
 
       h2{
         top: 15%;
@@ -189,6 +218,14 @@
           width: 180px;
           height: 190px;
         }
+        @media screen and (max-width:500px) {
+        left: 70px;
+        top: 250px;
+      }
+      @media screen and (min-height:900px) {
+      top: 100px;
+      left: 90px;
+    }
 
       h2{
         top: 85%;
@@ -200,20 +237,20 @@
       }
     }
     .menu1-anim-open{
-      animation: MenuOpen 0.8s ease-out forwards;
-      animation-delay: 0.8s;
+      animation: MenuOpen 0.5s ease-out forwards;
+      animation-delay: 0.5s;
     }
     .menu2-anim-open{
-      animation: MenuOpen2 0.8s ease-out forwards;
-      animation-delay: 1s;
+      animation: MenuOpen2 0.5s ease-out forwards;
+      animation-delay: 0.7s;
     }
     .menu3-anim-open{
-      animation: MenuOpen3 0.8s ease-out forwards;
-      animation-delay: 1.2s;
+      animation: MenuOpen3 0.5s ease-out forwards;
+      animation-delay: 0.9s;
     }
     .menu4-anim-open{
-      animation: MenuOpen 0.8s ease-out forwards;
-      animation-delay: 1.4s;
+      animation: MenuOpen 0.5s ease-out forwards;
+      animation-delay: 1.1s;
     }
     @keyframes MenuOpen {
       0%{
@@ -254,19 +291,19 @@
 
 
     .menu1-anim-close{
-      animation: MenuClose 0.6s ease-out forwards;
+      animation: MenuClose 0.4s ease-out forwards;
       animation-delay: 0.1s;
     }
     .menu2-anim-close{
-      animation: MenuClose2 0.6s ease-out forwards;
+      animation: MenuClose2 0.4s ease-out forwards;
       animation-delay: 0.3s;
     }
     .menu3-anim-close{
-      animation: MenuClose3 0.6s ease-out forwards;
+      animation: MenuClose3 0.4s ease-out forwards;
       animation-delay: 0.5s;
     }
     .menu4-anim-close{
-      animation: MenuClose 0.6s ease-out forwards;
+      animation: MenuClose 0.4s ease-out forwards;
       animation-delay: 0.7s;
     }
     @keyframes MenuClose {
@@ -323,11 +360,11 @@
   }
 }
 .menu-animation-open{
-  animation: MenuContainerOpen 1s ease-out forwards;
+  animation: MenuContainerOpen 0.7s ease-out forwards;
 }
 .menu-animation-close {
-  animation: MenuContainerClose 1s ease-out forwards;
-  animation-delay: 1.5s;
+  animation: MenuContainerClose 0.7s ease-out forwards;
+  animation-delay: 1s;
 }
 @keyframes MenuContainerOpen {
   0% {
