@@ -43,9 +43,13 @@ $black:black;
     list-style: none;
     text-decoration: none;
 }
+html{
+    touch-action: none;
+}
 body{
     background: $colorM;
     overflow-x: hidden;
+    touch-action: none;
 }
 
 button{

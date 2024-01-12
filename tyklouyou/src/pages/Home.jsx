@@ -3,6 +3,7 @@ import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Header from "../components/Header";
 import Reservation from "../components/Reservation";
+import Page3 from "./Page3";
 
 const Home = () => {
 
@@ -14,6 +15,7 @@ const Home = () => {
       <Reservation toggleDate={toggleDate} setToggleDate={setToggleDate}/>
       <Page1/>
       <Page2/>
+      <Page3/>
     </div>
   );
 };
