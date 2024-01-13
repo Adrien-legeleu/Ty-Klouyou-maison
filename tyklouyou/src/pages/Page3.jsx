@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Page3 = () => {
   return (
@@ -13,9 +14,14 @@ const Page3 = () => {
               alt="ile proche de villa ty klouyou"
             />
           </div>
-          <NavLink to="/" className="link">
+          <motion.NavLink
+            to="/"
+            className="link"
+            drag
+            dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+          >
             <h4>Découvrir les Iles Bretonnes</h4>
-          </NavLink>
+          </motion.NavLink>
         </div>
         <div className="activity">
           <div className="image">
@@ -24,9 +30,14 @@ const Page3 = () => {
               alt="Vannes"
             />
           </div>
-          <NavLink to="/" className="link">
+          <motion.NavLink
+            to="/"
+            className="link"
+            drag
+            dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+          >
             <h4>Découvrir Vannes</h4>
-          </NavLink>
+          </motion.NavLink>
         </div>
         <div className="activity">
           <div className="image">
@@ -35,14 +46,17 @@ const Page3 = () => {
               alt="golfe du morbihan"
             />
           </div>
-          <NavLink to="/" className="link">
+          <motion.NavLink
+            to="/"
+            className="link"
+            drag
+      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+          >
             <h4>Découvrir le Golfe du Morbihan</h4>
-          </NavLink>
+          </motion.NavLink>
         </div>
       </div>
-      <button>
-        Voir toutes les activités
-      </button>
+      <button>Voir toutes les activités</button>
     </div>
   );
 };

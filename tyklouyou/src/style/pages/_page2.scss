@@ -1,6 +1,6 @@
 .page2 {
-  background: $green1;
-  box-shadow: 0 0 35px 40px $green1;
+  background: url("../../assets/img/blob-haikei.svg") center/cover;
+  box-shadow: 0 0 35px 40px transparent;
   padding: 100px 50px 50px;
   display: flex;
   @media screen and (max-width: 700px) {
