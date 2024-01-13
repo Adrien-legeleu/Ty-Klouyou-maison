@@ -1,0 +1,93 @@
+.page3-container {
+    height: 100%;
+    width: 100%;
+    padding: 100px 10px;
+    background: $blue;
+
+    h2{
+        text-align: center;
+        color: white;
+        font-family: $fontTR;
+        font-size: 2rem;
+    }
+    .activities-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 0 30px;
+        margin-top: 150px;
+        width: 100%;
+
+        .activity{
+            position: relative;
+            .image{
+                width: 250px;
+                height: 300px;
+                position: relative;
+                border-radius: 35px;
+                transition: 0.5s ease-in-out;
+                &:hover{
+                    overflow: hidden;
+                }
+                &:hover img{
+                    scale: 1.2;
+                }               
+
+    
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 35px;
+                    box-shadow: 0 5px 30px rgba(255, 255, 255, 0.2);
+                    transition: 0.5s ease-in-out;
+                }
+            }
+            &:nth-child(1){
+                .image{
+                    left: 40px;
+                    bottom: 50px;
+                    transform: rotate(-10deg);
+                }
+            }
+            &:nth-child(2){
+                .image{
+                    left: 20px;
+                    top: 60px;
+                    transform: rotate(5deg);
+                }
+            }
+            &:nth-child(3){
+                .image{
+                    left: 40px;
+                    bottom: 20px;
+                    transform: rotate(10deg);
+                }
+            }
+            .link{
+                position: absolute;
+                font-family: $fontR;
+                font-size: 1.5rem;
+                color: black;
+            }
+             &:nth-child(1){
+                .link{
+                    bottom: 0;
+                }
+            }
+            &:nth-child(2){
+                .link{
+                    top: 0;
+                }
+            }
+            &:nth-child(3){
+                .link{
+                    bottom: -20px;
+                }
+            }
+        }
+
+    }
+}
