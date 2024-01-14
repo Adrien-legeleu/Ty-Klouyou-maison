@@ -1,0 +1,170 @@
+.page4 {
+  background: $green1;
+  position: relative;
+  width: 100%;
+  padding: 450px 0 0;
+  @include AlignChild(column, center, center);
+  cursor: default;
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background: url("../../assets/img/maps.png") fixed center/cover;
+    width: 100%;
+    height: 400px;
+    cursor: pointer;
+  }
+
+  h2 {
+    font-family: $fontTR;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: white;
+    text-align: center;
+  }
+
+  .slider{
+    @include AlignChild(column,center,center);
+    margin-top: 100px;
+    gap: 50px;
+    .slide{
+        display: flex;
+        width: 50%;
+        overflow: auto;
+        .image{
+            width: 400px;
+            height: 450px;
+            min-width: 400px;
+            min-height: 450px;
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 50px;
+                object-fit: cover;        
+            }
+        }
+    }
+  }
+
+  .card-infos {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 100vw;
+    height: 300px;
+    overflow-y: hidden;
+    .cards-container {
+        display: flex;
+        width: 750px;
+        height: 260px;
+      .card {
+        flex: 1;
+        background: var(--i);
+        border-radius: 15px 15px 0 0;
+        position: relative;
+        height: 370px;
+        transition: 0.5s ease-in-out;
+        top: 80px;
+
+        &:hover {
+          top: 0;
+        }
+
+        &:hover ul {
+          bottom: 130px;
+        }
+
+        &:hover h3 {
+          top: 8%;
+        }
+
+        h3 {
+          font-family: $fontR;
+          font-size: 2rem;
+          text-align: center;
+          color: white;
+          position: absolute;
+          top: 25%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: 0.5s ease-in-out;
+        }
+
+        ul {
+          color: white;
+          font-family: $fontR;
+          font-size: 1.1rem;
+          flex-direction: column;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 100%;
+          transform: translate(-50%, 0);
+          transition: 0.5s ease-in-out;
+          display: flex;
+          gap: 5px;
+          align-items: flex-start;
+          margin-left: 15px;
+          li{
+            @include AlignChild(row, center, center);
+            &:last-child{
+                margin-top: 15px;
+                position: relative;
+                left: 45%;
+                transform: translateX(-50%);
+                padding-bottom: 5px;
+                &::after{
+                    content: "";
+                    position: absolute;
+                    width: 0%;
+                    height: 2px;
+                    background: white;
+                    bottom: 0;
+                    left: 0;
+                }
+                &:hover::after{
+                    animation: LineNavLink 0.5s ease-in forwards;
+                }
+            }
+            @keyframes LineNavLink {
+                0%{
+                    width: 0%;
+                    left: 50%;
+                }
+                100%{
+                    width: 100%;
+                    left: 0;
+                }
+            }
+          }
+
+          img{
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+          }
+
+          span {
+            color: white;
+            font-family: $fontL;
+            font-size: 1.2rem;
+          }
+        }
+
+        &:nth-child(1) {
+          transform: rotate(-10deg);
+          left: 20px;
+        }
+        &:nth-child(2) {
+          transform: rotate(-1deg);
+        }
+        &:nth-child(3) {
+          transform: rotate(8deg);
+          right: 15px;
+        }
+      }
+    }
+  }
+}

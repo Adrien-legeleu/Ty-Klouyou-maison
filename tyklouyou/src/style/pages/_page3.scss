@@ -1,117 +1,201 @@
-.page3-container {
-    height: 100%;
+.page3-container{
+    background:$blue;
+    padding: 100px 0;
     width: 100%;
-    padding: 100px 10px;
-    background: $blue;
-    @include AlignChild(column,center,center);
-    position: relative;
-    cursor: default;
-    user-select: none;
-
+    @include AlignChild(column, center, center);
     h2{
         text-align: center;
-        color: white;
         font-family: $fontTR;
-        font-size: 2.2rem;
+        color: $white;
         letter-spacing: 5px;
+        font-size: 2rem;
+        margin-bottom: 100px;
+        padding: 0 25px;
     }
     .activities-container{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        padding: 0 30px;
-        margin-top: 200px;
+        margin-bottom: 100px;       
+        position: relative;
         width: 100%;
+        @media screen and (max-width:900px) {
+                grid-template-columns: 1fr;
+                margin-bottom:-50px;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: $blue;
+            filter: brightness(0.85);
+            top: -25px;
+            right: 50px;
+            animation: circleGrow 30s ease-in infinite;
+            @media screen  and (max-width:700px){
+                width: 400px;
+                height: 400px;
+            }
+            @media screen  and (max-width:500px){
+                width: 320px;
+                height: 320px;
+            }
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: $blue;
+            filter: brightness(0.9);
+            bottom: 25px;
+            left: 50px;
+            animation: circleGrow 20s ease-in infinite;
+            @media screen  and (max-width:500px){
+                width: 250px;
+                height: 250px;
+            }
+        }
+        @keyframes circleGrow {
+            0%{
+                transform: scale(0.7)
+            }
+            50%{
+                transform: scale(1.2);
+            }
+            100%{
+                transform: scale(0.7)
+            }
+        }
 
         .activity{
+            @include AlignChild(column,center,center);
             position: relative;
-            .image{
-                width: 250px;
-                height: 300px;
-                position: relative;
-                border-radius: 35px;
-                transition: 0.5s ease-in-out;
-                z-index: 1;
-                &:hover{
-                    overflow: hidden;
-                }
-                &:hover img{
-                    scale: 1.2;
-                }               
+            z-index: 1;
 
-    
+            .image{
+                width: 270px;
+                height: 320px;
+                @media screen and (max-width:1050px) {
+                    width: 220px;
+                    height: 270px;
+                }
+                @media screen and (max-width:500px) {
+                    width: 180px;
+                    height: 230px;
+                }
+
                 img{
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    border-radius: 35px;
-                    box-shadow: 0 5px 30px rgba(255, 255, 255, 0.2);
-                    transition: 0.5s ease-in-out;
-                    
-                }
-            }
-            &:nth-child(1){
-                .image{
-                    left: 40px;
-                    bottom: 50px;
-                    transform: rotate(-10deg);
-                }
-            }
-            &:nth-child(2){
-                .image{
-                    left: 20px;
-                    top: 60px;
-                    transform: rotate(5deg);
-                }
-            }
-            &:nth-child(3){
-                .image{
-                    left: 40px;
-                    bottom: 20px;
-                    transform: rotate(10deg);
+                    border-radius: 45px;
                 }
             }
             .link{
-                position: absolute;
-                @include AlignChild(row,center,center);
-                font-family: $fontR;
-                font-size: 1.5rem;
-                color: black;
-                background: rgb(231, 228, 228);
-                padding: 10px;
+                position: relative;
+                background: rgba(233, 229, 229, 0.8);
                 width: 200px;
                 height: 200px;
                 border-radius: 50%;
+                padding: 20px;
+                @include AlignChild(column, center, center);
                 text-align: center;
+                font-size: 1.5rem;
+                font-family: $fontR;
+                backdrop-filter: blur(5px);
                 cursor: pointer;
-
+                @media screen and (max-width:1050px) {
+                    width:150px;
+                    height: 150px;
+                    font-size: 1.1em;
+                }
+                @media screen and (max-width:500px) {
+                    width: 120px;
+                    height: 120px;
+                }
+                h4{
+                    color: black;
+                }
             }
-             &:nth-child(1){
+
+            &:nth-child(1){
+                top: -10px;
+                @media screen and (max-width:900px) {
+                   top: 0;
+                   right: 180px;
+                }
+                 @media screen and (max-width:650px) {
+                   right: 100px;
+                }
+                @media screen and (max-width:500px) {
+                   right: 80px;
+                }
+
+                .image{
+                    transform: rotate(-10deg);
+                }
                 .link{
-                    bottom: -120px;
-                    left: 50px;
+                    bottom: 35px;
+                    right: 35px;
                 }
             }
             &:nth-child(2){
+                top: 80px;
+                @media screen and (max-width:900px) {
+                   top: -50px;
+                   left: 150px;
+                }
+                @media screen and (max-width:650px) {
+                   left: 100px;
+                   top: -60px;
+                }
+                 @media screen and (max-width:500px) {
+                   left: 80px;
+                   top: -80px;
+                }
+
+                .image{
+                    transform: rotate(-1deg);
+                    @media screen and (max-width:900px) {
+                        transform: rotate(5deg);
+                }
+                }
                 .link{
-                    top: -120px;
-                    left: 80px;
+                    bottom: 25px;
+                    right: 15px;
                 }
             }
             &:nth-child(3){
+                top: 30px;
+                @media screen and (max-width:900px) {
+                   top:-100px;
+                   right: 130px;
+                }
+                @media screen and (max-width:650px) {
+                   right: 120px;
+                }
+                 @media screen and (max-width:500px) {
+                   right:80px;
+                }
+
+                .image{
+                    transform: rotate(7deg);
+                    @media screen and (max-width:900px) {
+                        transform: rotate(-3deg);
+                }
+                }
                 .link{
-                    bottom: -150px;
-                    left: 50px;
+                    bottom: 30px;
+                    left: 25px;
                 }
             }
         }
     }
     button{
-        margin: 150px 0 0 ;
-        font-size: 1.5rem;
-        background: $green2;
-        padding: 25px 20px;
+        font-size: 1.3rem;
+        z-index: 1;
     }
 }

@@ -4,6 +4,7 @@ import Page2 from "./Page2";
 import Header from "../components/Header";
 import Reservation from "../components/Reservation";
 import Page3 from "./Page3";
+import Page4 from "./Page4";
 
 const Home = () => {
 
@@ -16,6 +17,7 @@ const Home = () => {
       <Page1/>
       <Page2/>
       <Page3/>
+      <Page4/>
     </div>
   );
 };

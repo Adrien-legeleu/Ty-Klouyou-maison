@@ -14,14 +14,15 @@ const Page3 = () => {
               alt="ile proche de villa ty klouyou"
             />
           </div>
-          <motion.NavLink
-            to="/"
+          <motion.div
             className="link"
             drag
             dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
           >
-            <h4>Découvrir les Iles Bretonnes</h4>
-          </motion.NavLink>
+            <NavLink to="/">
+              <h4>Découvrir les Iles Bretonnes</h4>
+            </NavLink>
+          </motion.div>
         </div>
         <div className="activity">
           <div className="image">
@@ -30,14 +31,15 @@ const Page3 = () => {
               alt="Vannes"
             />
           </div>
-          <motion.NavLink
-            to="/"
+          <motion.div
             className="link"
             drag
             dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
           >
-            <h4>Découvrir Vannes</h4>
-          </motion.NavLink>
+            <NavLink to="/">
+              <h4>Découvrir Vannes</h4>
+            </NavLink>
+          </motion.div>
         </div>
         <div className="activity">
           <div className="image">
@@ -46,14 +48,15 @@ const Page3 = () => {
               alt="golfe du morbihan"
             />
           </div>
-          <motion.NavLink
-            to="/"
+          <motion.div
             className="link"
             drag
-      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+            dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
           >
-            <h4>Découvrir le Golfe du Morbihan</h4>
-          </motion.NavLink>
+            <NavLink to="/">
+              <h4>Découvrir le Golfe du Morbihan</h4>
+            </NavLink>
+          </motion.div>
         </div>
       </div>
       <button>Voir toutes les activités</button>
