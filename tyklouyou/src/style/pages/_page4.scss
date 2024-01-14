@@ -2,19 +2,35 @@
   background: $green1;
   position: relative;
   width: 100%;
-  padding: 450px 0 0;
+  padding: 500px 0 40px;
   @include AlignChild(column, center, center);
   cursor: default;
 
-  &::before {
+  .before-page{
     position: absolute;
-    content: "";
     top: 0;
     left: 0;
-    background: url("../../assets/img/maps.png") fixed center/cover;
+    background: url("../../assets/img/maps.png") fixed center/cover rgba(0, 0, 0, 0.267);
+    background-blend-mode: darken;
     width: 100%;
-    height: 400px;
+    height: 500px;
     cursor: pointer;
+    @include AlignChild(column, center, center);
+    font-size: 2rem;
+    color: rgb(196, 187, 187);
+    font-family: $fontTR;
+    text-align: center;
+
+    p{
+        font-size: 1.2rem;
+        color: rgb(221, 214, 214);
+        margin-top: 5px;
+    }
+    img{
+        width: 40px;
+        height: 40px;
+        margin-top: 20px;
+    }
   }
 
   h2 {
@@ -23,42 +39,66 @@
     letter-spacing: 4px;
     color: white;
     text-align: center;
+    margin-top: 50px
   }
 
-  .slider{
-    @include AlignChild(column,center,center);
-    margin-top: 100px;
+  .slider {
+    @include AlignChild(column, center, center);
+    margin-top: 50px;
     gap: 50px;
-    .slide{
-        display: flex;
-        width: 50%;
-        overflow: auto;
-        .image{
-            width: 400px;
-            height: 450px;
-            min-width: 400px;
-            min-height: 450px;
-            img{
-                width: 100%;
-                height: 100%;
-                border-radius: 50px;
-                object-fit: cover;        
-            }
+    .slide {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      .image {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 350px;
+        border-radius: 50px;
+        overflow: hidden;
+        @media screen and (max-width:800px) {
+            width: 200px;
+            height: 250px;
+            border-radius: 25px;
         }
+        img {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .swiper-pagination {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Style des points de pagination inactifs */
+      .swiper-pagination-bullet {
+        background-color: #ffffff;
+        width: 8px;
+        height: 8px;
+        margin: 0 5px;
+      }
     }
   }
+
+
 
   .card-infos {
     display: flex;
     align-items: end;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     height: 300px;
     overflow-y: hidden;
     .cards-container {
-        display: flex;
-        width: 750px;
-        height: 260px;
+      display: flex;
+      width: 750px;
+      height: 260px;
       .card {
         flex: 1;
         background: var(--i);
@@ -74,14 +114,35 @@
 
         &:hover ul {
           bottom: 130px;
+          @media screen and (max-width:800px) {
+            bottom: 180px;
+        }
         }
 
         &:hover h3 {
           top: 8%;
         }
+        &:hover .icon-angle {
+            top: -15px;
+          opacity: 0;
+        }
+        .icon-angle{
+            width: 50px;
+            height: 50px;
+            filter: invert(100%) brightness(0.95);
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 1;
+            transition: 0.45s ease-in-out;
+        }
 
         h3 {
-          font-family: $fontR;
+            display: flex;
+            flex-direction: column;
+          font-family: $fontTR;
+          letter-spacing: 4px;
           font-size: 2rem;
           text-align: center;
           color: white;
@@ -107,43 +168,48 @@
           gap: 5px;
           align-items: flex-start;
           margin-left: 15px;
-          li{
+          li {
             @include AlignChild(row, center, center);
-            &:last-child{
-                margin-top: 15px;
-                position: relative;
-                left: 45%;
-                transform: translateX(-50%);
-                padding-bottom: 5px;
-                &::after{
-                    content: "";
-                    position: absolute;
-                    width: 0%;
-                    height: 2px;
-                    background: white;
-                    bottom: 0;
-                    left: 0;
-                }
-                &:hover::after{
-                    animation: LineNavLink 0.5s ease-in forwards;
-                }
+            text-transform: capitalize;
+            &:last-child {
+              margin-top: 15px;
+              position: relative;
+              left: 45%;
+              transform: translateX(-50%);
+              padding-bottom: 5px;
+              &::after {
+                content: "";
+                position: absolute;
+                width: 0%;
+                height: 2px;
+                background: white;
+                bottom: 0;
+                left: 0;
+              }
+              &:hover::after {
+                animation: LineNavLink 0.5s ease-in forwards;
+              }
             }
             @keyframes LineNavLink {
-                0%{
-                    width: 0%;
-                    left: 50%;
-                }
-                100%{
-                    width: 100%;
-                    left: 0;
-                }
+              0% {
+                width: 0%;
+                left: 50%;
+              }
+              100% {
+                width: 100%;
+                left: 0;
+              }
             }
           }
 
-          img{
+          img {
             width: 40px;
             height: 40px;
             margin-right: 15px;
+            @media screen and (max-width:800px) {
+            width: 25px;
+            height: 25px;
+        }
           }
 
           span {
