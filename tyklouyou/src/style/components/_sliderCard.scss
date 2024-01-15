@@ -1,7 +1,12 @@
 .slider-container {
   width: 280px;
   height: 380px;
-  margin-top: 80px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media screen and (max-width:500px) {
+    width: 260px;
+    height: 350px;
+  }
   .slide {
     border-radius: 35px;
     @include AlignChild(column, center, center);

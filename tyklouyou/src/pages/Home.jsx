@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Reservation from "../components/Reservation";
 import Page3 from "./Page3";
 import Page4 from "./Page4";
+import Footer from "../components/Footer";
 
 const Home = () => {
 
@@ -18,6 +19,7 @@ const Home = () => {
       <Page2/>
       <Page3/>
       <Page4/>
+      <Footer/>
     </div>
   );
 };

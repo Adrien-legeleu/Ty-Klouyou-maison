@@ -1,0 +1,111 @@
+.footer{
+    padding: 20px 40px 20px;
+    @include AlignChild(column,center,center);
+    background: white;
+    font-family: $fontR;
+    width: 100%;
+    cursor: default;
+    position: relative;
+    transition: 1s ease;
+    .sun-night{
+        position: absolute;
+        top: 20px;
+        right: 50px;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 2s ease-in-out;
+        }
+    }
+    .logo-container{
+        text-align: center;
+        width: 60%;
+        margin-bottom: 30px;
+        padding: 80px 50px 60px;
+        border-radius: 3px;
+        position: relative;
+        transition: 1s ease-in-out;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.151);
+        h3{
+            font-family: $fontTR;
+            letter-spacing: 5px;
+            font-size: 2rem;
+            a{
+                font-family: $fontR;
+                letter-spacing: 2px;
+                font-size: 2.3rem;
+                color: black;
+            }
+        }
+        p{
+            margin: 10px 0 35px;
+            font-size: 1.2rem;
+        }
+        &:hover{
+            box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.2);
+        }
+        &:hover::before{
+            width: 100%;
+            height: 100%;
+        }
+        &:hover::after{
+            width: 100%;
+            height: 100%;
+        }
+
+        &::before{
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 15px;
+            height: 15px;
+            border-top: 3px solid ;
+            border-left: 3px solid ;
+            transition: 1s ease-out;
+            transition-property: width, height;
+            transition-delay: 0s, 0.2s;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 15px;
+            height: 15px;
+            border-bottom: 3px solid ;
+            border-right: 3px solid ;
+            transition: 1s ease-out;
+            transition-property: width, height;
+            transition-delay: 0s, 0.2s;
+        }
+    }
+    .link-container{
+        display: grid;
+        grid-template-columns: 50% 30% 20% ;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5px;
+        width: 100%;
+        ul{
+            @include AlignChild(row,center,space-around);
+            transition: 0.5s ease-in;
+            li{
+                cursor: pointer;
+                &:hover{
+                    color: $cream;
+                }
+            }
+        }
+        .legal{
+            font-family: $fontL;
+        }
+        .btn{
+            @include AlignChild(row, center, center);
+        }   
+    }
+}
