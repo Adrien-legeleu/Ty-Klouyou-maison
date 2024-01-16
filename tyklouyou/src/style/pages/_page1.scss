@@ -30,7 +30,7 @@
             }
         }
 
-        p{
+        a{
             position: absolute;
             top: 35%;
             right: 20px;
@@ -40,9 +40,18 @@
             font-family: $fontR;
             font-size: 1rem;
             text-transform: capitalize;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             i{
                 font-size: 1.2rem;
                 color: white;
+            }
+            img{
+                width: 60px;
+                height: 60px;
+                transform: rotate(-90deg) translateX(-1px);
             }
         }
 

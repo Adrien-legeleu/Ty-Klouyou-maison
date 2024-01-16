@@ -1,11 +1,5 @@
 .reservation {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  @include AlignChild(row, center, center);
-  z-index: 100;
-  display: none;
-
+  @include AlignChild(row,center,center);
   img {
     width: 40px;
     @media screen and (max-width: 750px) {
@@ -21,7 +15,7 @@
     bottom: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 80%;
+    width: 80vw;
     padding: 15px 0px;
     align-items: center;
     justify-content: center;
@@ -32,11 +26,11 @@
     z-index: 100;
     @media screen and (max-width: 1000px) {
       grid-template-columns: 1fr;
-      width: 50%;
+      width: 50vw;
     }
     @media screen and (max-width: 600px) {
       bottom: 20px;
-      width: 70%;
+      width: 70vw;
     }
 
     .date-text {
@@ -284,12 +278,25 @@
     }
   }
 }
+@keyframes isOnFooter {
+  0%{
+    bottom: 50px;
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    bottom: -300px;
+  }
+}
 
 .date-container {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   transition: 0.5s ease-in-out;
+  top: 0;
+  left: 0;
+  z-index: 10;
   .date {
     position: fixed;
     top: 50%;
@@ -354,7 +361,7 @@
 }
 @keyframes ShowDate {
   0% {
-    transform: translateY(100%);
+    transform: translateY(100vw);
     opacity: 0;
     border-radius: 50%;
   }
@@ -382,13 +389,13 @@
   }
 
   99% {
-    transform: translateY(100%);
+    transform: translateY(100vw);
     opacity: 0;
     border-radius: 50%;
   }
 
   100% {
-    transform: translateY(100%);
+    transform: translateY(100vw);
     opacity: 0;
   }
 }

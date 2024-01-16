@@ -25,9 +25,9 @@ $colorM:#10253D;
 $green1:#485A4F;
 $green2:#003444;
 $blue:#141342;
-$cream:#d6ca26;
 $white:white;
 $black:black;
+$cream:#FF9E2C;
 
 @mixin AlignChild($direction,$align,$justify){
     display: flex;
@@ -45,6 +45,7 @@ $black:black;
 }
 html{
     touch-action: none;
+    scroll-behavior: smooth;
 }
 body{
     background: $colorM;

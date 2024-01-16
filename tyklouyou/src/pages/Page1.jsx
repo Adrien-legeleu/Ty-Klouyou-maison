@@ -43,9 +43,9 @@ const Page1 = () => {
         <img src="./assets/img/logoSea.png" alt="" />
         <h1>Ty Klouyou</h1>
         <span className="span" ref={spanRef}>{currentPhrase}</span>
-        <p>
-           by <i>W3bLuxury Design</i>
-        </p>
+        <a href="#footer">
+           by <i>W3bLuxury Design</i><img src="./assets/img/angle-vers-le-haut.png" alt="arrow-down-webLuxury" />
+        </a>
       </div>
     </div>
   );
