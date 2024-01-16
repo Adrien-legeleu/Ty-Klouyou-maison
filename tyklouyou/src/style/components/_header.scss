@@ -33,6 +33,7 @@
 
     .title {
         @include AlignChild(row, center, center);
+        transition: 1s ease;
         @media screen and (max-width:900px) {
             @include AlignChild(row, center, flex-start);
         }

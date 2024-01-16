@@ -9,6 +9,16 @@
         width: 20px;
       }
   }
+  .on-footer{
+    animation:isOnFooter 1.25s ease-in-out forwards ;
+    bottom: -300px;
+    opacity: 0;
+  }
+  .not-on-footer{
+    animation:notIsOnFooter 1s ease-in-out forwards ;
+    bottom: 50px;
+    opacity: 1;
+  }
 
   .reservation-container {
     position: fixed;
@@ -286,6 +296,17 @@
   100%{
     opacity: 0;
     bottom: -300px;
+  }
+}
+@keyframes notIsOnFooter {
+  0% {
+    bottom: -300px;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: 50px;
   }
 }
 

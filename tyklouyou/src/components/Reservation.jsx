@@ -16,6 +16,22 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
   const [peopleReservationResponsive1, setPeopleReservationResponsive1] = useState(false);
   const [peopleReservationResponsive2, setPeopleReservationResponsive2] = useState(false);
   const [responsive, setResponsive] = useState(false);
+   const [isOnFooter, setIsOnFooter] = useState(false);
+
+
+  const handleScroll = () => {
+    const footer = document.getElementById("footer");
+    const footerRect = footer.getBoundingClientRect();
+    setIsOnFooter(footerRect.top <= window.innerHeight && footerRect.bottom >= 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const upNumber = () => {
     if (inputvalue < 8) {
@@ -54,7 +70,7 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
   return (
     <div className="reservation">
       <div
-        className="reservation-container"
+        className={`reservation-container ${isOnFooter ? "on-footer" : "not-on-footer"} `}
         style={{
           transition: "1s",
           backgroundColor: toggleDate ? "#006D77" : "#003444",
