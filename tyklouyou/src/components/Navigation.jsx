@@ -21,7 +21,7 @@ const Navgiation = ({ navigationShow }) => {
           <h2>Accueil</h2>
           <img src="./assets/img/icons8-arrow-96.png" alt="arrow-left" />
         </NavLink>
-        <NavLink
+        <NavLink to="/"
           className={`${
             navigationShow ? "menu menu2-anim-open" : "menu menu2-anim-close"
           }`}
@@ -33,7 +33,7 @@ const Navgiation = ({ navigationShow }) => {
           <h2>Photos</h2>
           <img src="./assets/img/icons8-arrow-96.png" alt="arrow-left" />
         </NavLink>
-        <NavLink
+        <NavLink to="/activity"
           className={`${
             navigationShow ? "menu menu3-anim-open" : "menu menu3-anim-close"
           }`}

@@ -15,6 +15,10 @@
     src: url(../assets/fonts/Quicksand/Quicksand-Regular.ttf);
 }
 
+// ::-webkit-scrollbar {
+//     display: none;
+// }
+
 
 $fontTB:LobsterBold;
 $fontTR:LobsterRegular;
@@ -46,6 +50,7 @@ $cream:#FF9E2C;
 html{
     touch-action: none;
     scroll-behavior: smooth;
+    overscroll-behavior: none;
 }
 body{
     background: $colorM;
