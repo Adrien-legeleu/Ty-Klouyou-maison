@@ -1,32 +1,46 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import dataAct from "../data/dataAct"
+import Act2 from "./Act2";
 gsap.registerPlugin(ScrollTrigger);
 
 const Act1 = () => {
   const imgContent = useRef(null);
   const img = useRef(null);
   const text = useRef(null);
-  const bg = useRef(null);
+  const span1 = useRef(null);
+  const span2 = useRef(null);
 
-  useEffect(() => {
-    gsap.to(img.current , {
-    scale:1.5,
-    duration:8,
-    scrollTrigger:{
-        trigger:bg.current,
-        start:"top top",
-        end:"bottom bottom",
-        scrub:1,
-        toggleActions:"restart none none none",
-        pin:true,
-        scrub:1,
-    }
-  })
+  useLayoutEffect(() => {
+    let ctx=gsap.context(()=>{
+        gsap.timeline({
+            scrollTrigger:{
+                trigger:imgContent.current,
+                pin:imgContent.current,
+                scrub:1,
+                start:"top top",
+            }
+        })
+        .to(img.current,{transform:"rotate(0) scale(4)"})
+        .to(span1.current, {x:-800 , transform:"scale(4)" , opacity:0},0.01,"<")
+        .to(span2.current, {x:800 , transform:"scale(4)" , opacity:0},0.01,"<")
+
+        gsap.timeline({
+            scrollTrigger:{
+                trigger:text.current,
+                pin:text.current,
+                scrub:1,
+                start:"top top",
+            }
+        })
+
+    })
+    return()=>ctx.revert()
   }, []);
 
   return (
-    <div className="act1" ref={bg}>
+    <div className="act1">
       <div className="img-content" ref={imgContent}>
         <div className="img" ref={img}>
           <img
@@ -34,32 +48,21 @@ const Act1 = () => {
             alt=""
           />
         </div>
+        <div className="title">
+            <h1>
+                <span ref={span1}>
+                    Acti
+                </span>
+                <span ref={span2}>
+                    Vité
+                </span>
+            </h1>
+        </div>
       </div>
-      <div className="text" ref={text}>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-          placeat ipsa provident quae recusandae aliquid quaerat molestiae
-          facilis, reprehenderit, accusantium ipsum deleniti similique, assumenda
-          dolore voluptate veniam dicta delectus repellat. Possimus esse doloremque
-          eaque omnis cupiditate quod quisquam dolorum dolore illum iste debitis
-          eius officia et est, magni delectus optio expedita velit. Omnis dolorum,
-          totam sint tenetur voluptas tempore, repudiandae, facere harum quae nam
-          eum recusandae quam debitis. Et molestiae optio sequi eligendi animi
-          rerum? Provident sunt accusantium recusandae vel tempore est, dolorem
-          repudiandae dolorum voluptates eveniet, quam reiciendis dicta facere
-          impedit porro, totam molestias rem optio aperiam doloremque cum
-          eligendi. Ducimus, enim perferendis. Quos enim hic, quia ex quo
-          exercitationem asperiores officia nostrum in non laudantium ullam. Dicta
-          dignissimos molestiae atque provident neque a ipsa ut delectus, modi,
-          quidem nostrum facilis accusamus quibusdam eaque obcaecati reiciendis
-          quaerat illo laborum, nisi in maxime? Quibusdam sapiente numquam
-          reprehenderit deserunt repellendus, illum officiis cupiditate quidem
-          quas! Tempora repudiandae numquam nesciunt assumenda impedit, amet
-          libero accusamus alias ut ab ex consequatur dolores cum rerum odit
-          architecto cupiditate sapiente cumque unde quasi animi officia optio?
-          Nobis vel ipsa dolores! At quaerat vel quasi soluta numquam atque
-          quibusdam voluptates ratione quod sint, eos voluptate ducimus.
-        </p>
+      <div className="actSlider">
+        {dataAct.map((data , id)=>(
+                <Act2 data={data} key={id} />
+        ))}
       </div>
     </div>
   );
