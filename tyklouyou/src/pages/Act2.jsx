@@ -1,7 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 
 const Act2 = ({ data , isSun }) => {
 

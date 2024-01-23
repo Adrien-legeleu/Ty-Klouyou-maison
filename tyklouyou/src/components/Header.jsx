@@ -35,6 +35,11 @@ useEffect(()=>{
       setTitleResponsive(false)
     }
   },[toggleDate])
+  useEffect(()=>{
+      if (navigationShow) {
+        window.scrollTo(0, 0)
+      }
+  },[navigationShow])
 
   return (
     <div className="header" ref={header} style={{color: navigationShow || toggleDate ? "white" : "black"}} onMouseOver={()=>setIsNotHoverHeader(false)}>

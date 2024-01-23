@@ -10,7 +10,7 @@ const Page3 = () => {
         <div className="activity">
           <div className="image">
             <img
-              src="./assets/img/ile/10 choses à savoir sur le Golfe du Morbihan.jpg"
+              src="./assets/img/ile/houat.jpg"
               alt="ile proche de villa ty klouyou"
             />
           </div>
@@ -44,7 +44,7 @@ const Page3 = () => {
         <div className="activity">
           <div className="image">
             <img
-              src="./assets/img/ile/5 Plages De Rêve Sur Les îles Bretonnes.jpg"
+              src="./assets/img/ile/golfe.jpg"
               alt="golfe du morbihan"
             />
           </div>

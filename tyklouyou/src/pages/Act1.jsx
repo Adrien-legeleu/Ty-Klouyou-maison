@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dataAct from "../data/dataAct";
 import Act2 from "./Act2";
 import Footer from "../components/Footer";
-import Navgiation from "../components/Navigation";
 import Header from "../components/Header";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,27 +51,34 @@ const Act1 = () => {
   const slides = useRef(null);
   const slide_container = useRef(null);
 
-  useLayoutEffect(() => {
-    if (slides.current) {
+useLayoutEffect(() => {
+    if (slides.current && slide_container.current && timeBar.current) {
       const slidesWidth = slide_container.current.offsetWidth;
       const amountToScroll = slidesWidth - window.innerWidth;
 
       let ctx = gsap.context(() => {
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: slides.current,
-              pin: slides.current,
-              scrub: 1,
-            },
-          })
-          .to(slide_container.current, { x: -amountToScroll })
-          .to(timeBar.current, { width: "60%" });
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: slides.current,
+            pin: slides.current,
+            scrub: 1,
+          },
+        })
+        .to(slide_container.current, { x: -amountToScroll });
+
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: slides.current,
+            start: 'top top',
+            scrub: 1,
+          },
+        })
+        .to(timeBar.current, { width: '60%' });
       });
 
       return () => ctx.revert();
     }
-  }, [slides]);
+  }, [slides, slide_container, timeBar]);
 
   return (
     <div className="act1">
@@ -101,23 +107,23 @@ const Act1 = () => {
       </div>
       <div className="actSlider-container" ref={slides}>
         <div className="control-night" onClick={() => setIsSun(!isSun)}>
-            <img
-              src={
-                isSun
-                  ? "./assets/img/icons8-sun.svg"
-                  : "./assets/img/icons8-symbole-de-la-lune-60.png"
-              }
-              alt="sun-moon-tyKlouyou"
-            />
-          </div>
-          <div className="time-bar" ref={timeBar}></div>
+          <img
+            src={
+              isSun
+                ? "./assets/img/icons8-sun.svg"
+                : "./assets/img/icons8-symbole-de-la-lune-60.png"
+            }
+            alt="sun-moon-tyKlouyou"
+          />
+        </div>
+        <div className="time-bar" ref={timeBar}></div>
         <div
           className="actSlider"
           style={{
             background: isSun ? "whitesmoke" : "#141342",
             boxShadow: isSun
-              ? "0 5px 10px 8px whitesmoke"
-              : "0 5px 10px 8px #141342",
+              ? "0 5px 20px 15px whitesmoke"
+              : "0 5px 20px 15px #141342",
           }}
           ref={slide_container}
         >

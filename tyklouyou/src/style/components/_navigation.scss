@@ -73,7 +73,8 @@
       background: #485A4F;
       border-radius: 100px ;
       position: relative;
-      left: 25px;
+      left: 15px;
+      top: -10px;
       @media screen and (max-width:1000px) {
           top: 50px;
           width: 320px;
@@ -110,7 +111,10 @@
       height: 120px;
       background: #0A436C;
       border-radius: 20px ;
+      top: 20px;
+      left: 25px;
       position: relative;
+      transform: rotate(20deg);
       @media screen and (max-width:1000px) {
           top: 90px;
           left: 20px;
@@ -153,8 +157,9 @@
       background: #FF9E2C;
       border-radius: 50% ;
       position: relative;
-      top: 10px;
-      left: 50px;
+      top: 15px;
+      left: 30px;
+      transform: rotate(-30deg);
       @media screen and (max-width:1000px) {
           top: 60px;
           left: 80px;
@@ -197,8 +202,8 @@
       background: #DE554E;
       border-radius: 30px 50% 30px 30px ;
       position: relative;
-      bottom: 45px;
-      left: 30px;
+      top: -5px;
+      left: 60px;
       @media screen and (max-width:1000px) {
           top: 40px;
           left: 80px;
