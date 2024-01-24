@@ -22,6 +22,7 @@ const PhtSlider = ({slideIndex , setSlideIndex , isSliderShow ,setIsSliderShow})
         </div>
         <div className="slide">
             <img src={dataPhtAll[slideIndex].src} alt="" />
+            <h3>{dataPhtAll[slideIndex].text}</h3>
         </div>
       </div>
     </div>

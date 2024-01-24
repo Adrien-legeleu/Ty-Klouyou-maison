@@ -1,79 +1,77 @@
 @font-face {
-    font-family: LobsterRegular;
-    src: url(../assets/fonts/Lobster/LobsterTwo-Regular.ttf);
+  font-family: LobsterRegular;
+  src: url(../assets/fonts/Lobster/LobsterTwo-Regular.ttf);
 }
 @font-face {
-    font-family: LobsterBold;
-    src: url(../assets/fonts/Lobster/LobsterTwo-Bold.ttf);
+  font-family: LobsterBold;
+  src: url(../assets/fonts/Lobster/LobsterTwo-Bold.ttf);
 }
 @font-face {
-    font-family: QuicksandLight;
-    src: url(../assets/fonts/Quicksand/Quicksand-Light.ttf);
+  font-family: QuicksandLight;
+  src: url(../assets/fonts/Quicksand/Quicksand-Light.ttf);
 }
 @font-face {
-    font-family: QuicksandRegular;
-    src: url(../assets/fonts/Quicksand/Quicksand-Regular.ttf);
+  font-family: QuicksandRegular;
+  src: url(../assets/fonts/Quicksand/Quicksand-Regular.ttf);
 }
 
 // ::-webkit-scrollbar {
 //     display: none;
 // }
 
+$fontTB: LobsterBold;
+$fontTR: LobsterRegular;
+$fontR: QuicksandRegular;
+$fontL: QuicksandLight;
 
-$fontTB:LobsterBold;
-$fontTR:LobsterRegular;
-$fontR:QuicksandRegular;
-$fontL:QuicksandLight;
+$colorM: #10253d;
+$green1: #485a4f;
+$green2: #003444;
+$blue: #141342;
+$white: white;
+$black: black;
+$cream: #ff9e2c;
 
-$colorM:#10253D;
-$green1:#485A4F;
-$green2:#003444;
-$blue:#141342;
-$white:white;
-$black:black;
-$cream:#FF9E2C;
-
-@mixin AlignChild($direction,$align,$justify){
-    display: flex;
-    flex-direction: $direction;
-    align-items: $align;
-    justify-content: $justify;
+@mixin AlignChild($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
 }
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
-    user-select: none;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  user-select: none;
 }
-html{
-    touch-action: none;
-    scroll-behavior: smooth;
-    overscroll-behavior: none;
+html {
+  touch-action: none;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
-body{
-    background: $colorM;
-    overflow-x: hidden;
-     touch-action: none;
-}
-
-button{
-    padding: 10px 15px;
-    border-radius: 15px;
-    background:$green2;
-    border: none;
-    font-size: 1.2rem;
-    color: $white;
-    cursor: pointer;
-    transition: 0.25s ease-in-out;
-    @media screen and (max-width:1050px) {
-        font-size: 1rem;
-    }
-
-    &:hover{
-        transform: scale(1.2);
-    }
+body {
+  background: $colorM;
+  overflow-x: hidden;
+  touch-action: none;
 }
 
+button {
+  padding: 10px 15px;
+  border-radius: 15px;
+  background: $green2;
+  border: none;
+  font-size: 1.2rem;
+  color: $white;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  @media screen and (max-width: 1050px) {
+    font-size: 1rem;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}

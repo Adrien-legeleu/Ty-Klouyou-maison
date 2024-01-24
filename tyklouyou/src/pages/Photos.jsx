@@ -3,6 +3,9 @@ import dataPht from "../data/dataPht";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Pht2 from "./Pht2";
+import Pht3 from "./Pht3";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 gsap.registerPlugin(ScrollTrigger)
 
 const Photos = () => {
@@ -33,6 +36,7 @@ useEffect(() => {
 
   return (
     <div className="Photos-container">
+      <Header/>
       <div className="photos-accueil" ref={accueil}>
         <div className="title" ref={title}>
           <h1>Photos</h1>
@@ -46,6 +50,8 @@ useEffect(() => {
         </div>
       </div>
       <Pht2/>
+      <Pht3/>
+      <Footer/>
     </div>
   );
 };
