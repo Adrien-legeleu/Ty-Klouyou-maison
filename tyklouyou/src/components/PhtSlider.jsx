@@ -5,9 +5,8 @@ const PhtSlider = ({slideIndex , setSlideIndex , isSliderShow ,setIsSliderShow})
 
     const ShowSlider = (e) => {
         let element=e.target
-        console.log(element.classList);
     if (element.classList.contains("slider-all-photos")) {
-        console.log("bien");
+        setIsSliderShow(false)
     }
 };
 
