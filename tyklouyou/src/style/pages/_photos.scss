@@ -4,6 +4,12 @@
 
   .infos-container {
     padding: 50px 50px 80px;
+    @media screen and (max-width: 900px) {
+      @include AlignChild(column, center, center);
+    }
+    @media screen and (max-width: 750px) {
+      padding: 50px 30px 80px;
+    }
 
     h2 {
       font-family: $fontTR;
@@ -13,12 +19,26 @@
       text-align: center;
       text-transform: capitalize;
       margin-bottom: 50px;
+      @media screen and (max-width: 900px) {
+        margin-top: 80px;
+      }
     }
 
     .map-infos {
       display: flex;
       flex-direction: row-reverse;
       gap: 50px;
+      @media screen and (max-width: 900px) {
+        flex-direction: column-reverse;
+        max-width: 80%;
+      }
+      @media screen and (max-width: 750px) {
+        max-width: 95%;
+      }
+
+      @media screen and (max-width: 750px) {
+        max-width: 100%;
+      }
       .map {
         flex: 1;
         iframe {
@@ -26,23 +46,32 @@
           height: 100%;
           border: none;
           border-radius: 20px;
+          @media screen and (max-width: 1000px) {
+            height: 80%;
+          }
+          @media screen and (max-width: 900px) {
+            height: 350px;
+          }
         }
       }
       .infos-content {
         flex: 1;
         height: 450px;
+        overflow: hidden;
         border-radius: 10px;
         position: relative;
         width: 100%;
 
         .infos {
-          overflow-y: scroll;
+          overflow-y: auto;
           height: 100%;
+          max-height: 450px;
           width: 100%;
           gap: 20px;
           display: flex;
           flex-direction: column;
           border-radius: 50px 50px 0 0;
+          padding: 50px 0 50px;
 
           &::-webkit-scrollbar {
             width: 0;
@@ -51,14 +80,25 @@
 
           &::before {
             position: absolute;
-            top: 0;
+            top: -25px;
             left: 0;
             content: "";
             height: 50px;
             width: 100%;
-            background: black;
-            backdrop-filter: blur(5px);
-            border-radius: 80px 80px 0 0;
+            background: #141342;
+            box-shadow: 0 0px 50px 30px #141342b2;
+            z-index: 1;
+          }
+          &::after {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            content: "";
+            height: 50px;
+            width: 100%;
+            background: #141342;
+            box-shadow: 0 0px 50px 30px #141342b2;
+            z-index: 1;
           }
 
           .contact {
@@ -115,6 +155,9 @@
               gap: 20px;
               margin-left: 25px;
               position: relative;
+            @media screen and (max-width: 600px) {
+                    margin-left: 0;
+                }
 
               &::after {
                 content: "";
@@ -139,6 +182,9 @@
                   font-family: $fontR;
                   font-size: 1.2rem;
                   text-transform: capitalize;
+                  @media screen and (max-width: 750px) {
+                    font-size: 0.9rem;
+                  }
                 }
               }
             }
@@ -161,6 +207,22 @@
       width: 60%;
       height: 80%;
       position: relative;
+      @media screen and (max-width: 1000px) {
+        width: 550px;
+        height: 380px;
+      }
+      @media screen and (max-width: 750px) {
+        width: 450px;
+        height: 300px;
+      }
+      @media screen and (max-width: 550px) {
+        width: 350px;
+        height: 230px;
+      }
+      @media screen and (max-width: 400px) {
+        width: 300px;
+        height: 180px;
+      }
 
       h3 {
         font-size: 2.5rem;
@@ -280,6 +342,11 @@
         width: 250px;
         min-width: 250px;
         height: 180px;
+        @media screen and (max-width: 700px) {
+          width: 200px;
+          min-width: 200px;
+          height: 150px;
+        }
         img {
           height: 100%;
           width: 100%;
@@ -306,7 +373,30 @@
         font-family: $fontTR;
         letter-spacing: 80px;
         color: white;
-        mix-blend-mode: difference;
+        @media screen and (max-width: 1250px) {
+          font-size: 14rem;
+          letter-spacing: 65px;
+        }
+        @media screen and (max-width: 1000px) {
+          font-size: 10rem;
+          letter-spacing: 50px;
+        }
+        @media screen and (max-width: 800px) {
+          font-size: 8.5rem;
+          letter-spacing: 30px;
+        }
+        @media screen and (max-width: 600px) {
+          font-size: 7rem;
+          letter-spacing: 20px;
+        }
+        @media screen and (max-width: 450px) {
+          font-size: 5rem;
+          letter-spacing: 10px;
+        }
+        @media screen and (max-width: 450px) {
+          font-size: 3.5rem;
+          letter-spacing: 10px;
+        }
       }
     }
     .images {
@@ -319,6 +409,18 @@
         position: absolute;
         width: 200px;
         height: 250px;
+        @media screen and (max-width: 1250px) {
+          width: 160px;
+          height: 200px;
+        }
+        @media screen and (max-width: 1000px) {
+          width: 140px;
+          height: 170px;
+        }
+        @media screen and (max-width: 550px) {
+          width: 125px;
+          height: 150px;
+        }
         img {
           width: 100%;
           height: 100%;
@@ -332,14 +434,56 @@
         &:nth-child(2) {
           bottom: 100px;
           left: 340px;
+          @media screen and (max-width: 1200px) {
+            left: 300px;
+          }
+          @media screen and (max-width: 1000px) {
+            left: 250px;
+          }
+          @media screen and (max-width: 850px) {
+            left: 200px;
+          }
+          @media screen and (max-width: 800px) {
+            bottom: 50px;
+            left: 150px;
+          }
+          @media screen and (max-width: 600px) {
+            bottom: 50px;
+            left: 100px;
+          }
         }
         &:nth-child(3) {
           bottom: 30px;
           right: 400px;
+          @media screen and (max-width: 1200px) {
+            right: 300px;
+          }
+          @media screen and (max-width: 950px) {
+            right: 230px;
+          }
+          @media screen and (max-width: 800px) {
+            bottom: 50px;
+            right: 80px;
+          }
+          @media screen and (max-width: 700px) {
+            bottom: 200px;
+            right: 100px;
+          }
+          @media screen and (max-width: 600px) {
+            bottom: 200px;
+            right: 50px;
+          }
         }
         &:nth-child(4) {
           top: 100px;
           right: 50px;
+          @media screen and (max-width: 800px) {
+            top: 70px;
+            right: 220px;
+          }
+          @media screen and (max-width: 700px) {
+            display: none;
+          }
         }
       }
     }
@@ -362,6 +506,22 @@
           left: 100px;
           bottom: -50px;
           transform: rotate(30deg);
+          @media screen and (max-width: 1100px) {
+            width: 400px;
+            height: 200px;
+          }
+          @media screen and (max-width: 950px) {
+            width: 300px;
+            height: 150px;
+            left: 35px;
+            bottom: 0;
+          }
+          @media screen and (max-width: 700px) {
+            width: 250px;
+            height: 180px;
+            left: 100px;
+            bottom: 0;
+          }
         }
         &:nth-child(2) {
           width: 350px;
@@ -369,6 +529,22 @@
           right: 100px;
           bottom: 0px;
           transform: rotate(-10deg);
+          @media screen and (max-width: 1100px) {
+            width: 300px;
+            height: 220px;
+          }
+          @media screen and (max-width: 950px) {
+            width: 250px;
+            height: 180px;
+            right: 30px;
+            bottom: 20px;
+          }
+          @media screen and (max-width: 700px) {
+            width: 250px;
+            height: 180px;
+            right: 130px;
+            bottom: 50%;
+          }
         }
       }
     }

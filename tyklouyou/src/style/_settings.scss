@@ -75,17 +75,3 @@ button {
     transform: scale(1.2);
   }
 }
-
-body::-webkit-scrollbar-track {
-    background: transparent;
-}
-body::-webkit-scrollbar-thumb{
-    color: white;
-    border-radius: 80px;
-}
-body {
-    scrollbar-width: thin;
-    /* "auto" or "thin" */
-    scrollbar-color: blue orange;
-    /* scroll thumb and track */
-}
