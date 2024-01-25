@@ -42,6 +42,14 @@ const Photos = () => {
             </div>
           ))}
         </div>
+        <div className="images-behind">
+            <div className="image-behind">
+              <img src="./assets/img/extérieur/beautiful-shot-chaplin-s-world-museum-switzerland-surrounded-by-lush-nature.jpg" alt="icon-img-tyKlouyou-behind" />
+            </div>
+            <div className="image-behind">
+              <img src="./assets/img/extérieur/outdoor-deck.jpg" alt="icon-img-tyKlouyou-behind" />
+            </div>
+        </div>
       </div>
       <Pht2 />
       <Pht3 />

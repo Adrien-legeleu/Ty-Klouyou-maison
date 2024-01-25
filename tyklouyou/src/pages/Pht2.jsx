@@ -11,7 +11,7 @@ const Pht2 = () => {
   const [width, setWidth] = useState(0);
   useEffect(() => {
     setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
-    console.log(slider.current.scrollWidth);
+    
   }, []);
 
   const showSliderAll = (index) => {
@@ -26,6 +26,7 @@ const Pht2 = () => {
         drag
         dragConstraints={{ right: 0, left: -width, top: 0, bottom: 0 }}
         className="slider-photos"
+        
       >
         <div className="slide">
           {dataPhtAll.map((pht, index) => (
