@@ -187,9 +187,7 @@
       }
     }
   }
-  .slider-photos-container {
-    padding: 150px 0;
-  }
+
   .text-infos {
     display: flex;
     align-items: center;
@@ -238,6 +236,8 @@
     padding: 0 20px 0 30px;
     cursor: pointer;
     white-space: nowrap;
+
+
     .slide {
       @include AlignChild(row, center, baseline);
       gap: 50px;

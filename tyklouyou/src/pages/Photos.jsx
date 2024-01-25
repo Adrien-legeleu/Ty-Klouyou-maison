@@ -6,52 +6,46 @@ import Pht2 from "./Pht2";
 import Pht3 from "./Pht3";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const Photos = () => {
-    const accueil=useRef(null)
-    const image=useRef(null)
-    const title=useRef(null)
+  const accueil = useRef(null);
+  const images = useRef([]);
 
-
-useEffect(() => {
+  useEffect(() => {
     let ctx = gsap.context(() => {
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: accueil.current,
-                pin: accueil.current,
-                scrub: 1,
-            },
-        })
-        .to(title.current, { x: "-100%", opacity: 0, scale: 0.5 }, 0)
-        .to(image.current , {transform: "rotate(-3deg)" , y:"-50%"}, 0)
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: accueil.current,
+          pin: accueil.current,
+          scrub: 1,
+        },
+      })
+        .to(".title", { x: "-100%", opacity: 0, scale: 0.5 }, 0)
+        .to(images.current, { y: () => Math.random() * -50-50 +"%", rotate:() => Math.random() * -5 }, 0);
     });
 
     return () => ctx.revert();
-}, []);
-
-
-
-
+  }, []);
 
   return (
     <div className="Photos-container">
-      <Header/>
+      <Header />
       <div className="photos-accueil" ref={accueil}>
-        <div className="title" ref={title}>
+        <div className="title">
           <h1>Photos</h1>
         </div>
-        <div className="images" ref={image}>
+        <div className="images">
           {dataPht.map((pht) => (
-            <div className="image" key={pht.id} >
+            <div className="image" key={pht.id} ref={(el) => images.current.push(el)}>
               <img src={pht.src} alt="photos ty klouyou" />
             </div>
           ))}
         </div>
       </div>
-      <Pht2/>
-      <Pht3/>
-      <Footer/>
+      <Pht2 />
+      <Pht3 />
+      <Footer />
     </div>
   );
 };
