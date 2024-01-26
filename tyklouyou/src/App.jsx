@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Activity from "./pages/Activity";
 import Photos from "./pages/Photos";
+import Pht3 from "./pages/Pht3";
 
 const App = () => {
   return (

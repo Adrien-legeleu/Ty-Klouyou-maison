@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navgiation from "./Navigation";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const Header = ({toggleDate }) => {
     const [currentTime , setCurrentTime]=useState("13:06");
@@ -47,9 +48,11 @@ useEffect(()=>{
         <img className="icon" src={`${navigationShow || toggleDate ? "./assets/img/soleil.svg" : "./assets/img/icons8-sun.svg"}`} alt="sun/moon tyklouyou"/>
         <span ><span>{currentTime}</span> | Saint-gildas de rhuys</span>
       </div>
-      <div className="title" style={{display:titleResponsive ? "none" : "flex" , opacity:isNotHoverHeader ? "0" : "1"}}>
+      <NavLink to="/" onClick={()=>window.scrollY(0)}>
+        <div className="title" style={{display:titleResponsive ? "none" : "flex" , opacity:isNotHoverHeader ? "0" : "1"}}>
         <motion.span drag dragConstraints={header} dragSnapToOrigin="true" >Ty Klouyou</motion.span>
       </div>
+      </NavLink>
       <div className="menu" style={{display:toggleDate ? "none" : "flex"}}>
         <button onClick={()=>setNavigationShow(!navigationShow)} style={{color:navigationShow ? "white" : "black" , border: navigationShow ? "1px solid white" : "1px solid black"}}>
           Menu

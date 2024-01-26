@@ -34,12 +34,13 @@
     .title {
         @include AlignChild(row, center, center);
         transition: 1s ease;
+        color: black;
         @media screen and (max-width:900px) {
             @include AlignChild(row, center, flex-start);
         }
 
         span {
-            font-size: 2rem;
+            font-size: 2.5rem;
             display: inline-block;
             font-family: $fontTR;
             letter-spacing: 2px;

@@ -19,7 +19,7 @@ const Page3 = () => {
             drag
             dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
           >
-            <NavLink to="/">
+            <NavLink to="/activity" onClick={()=>window.scrollY(0)}>
               <h4>Découvrir les Iles Bretonnes</h4>
             </NavLink>
           </motion.div>
@@ -36,7 +36,7 @@ const Page3 = () => {
             drag
             dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
           >
-            <NavLink to="/">
+            <NavLink to="/activity" onClick={()=>window.scrollY(0)}>
               <h4>Découvrir Vannes</h4>
             </NavLink>
           </motion.div>
@@ -53,13 +53,16 @@ const Page3 = () => {
             drag
             dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
           >
-            <NavLink to="/">
+            <NavLink to="/activity" onClick={()=>window.scrollY(0)}>
               <h4>Découvrir le Golfe du Morbihan</h4>
             </NavLink>
           </motion.div>
         </div>
       </div>
+      <NavLink to="/activity" onClick={()=>window.scrollY(0)}>
+
       <button>Voir toutes les activités</button>
+      </NavLink>
     </div>
   );
 };

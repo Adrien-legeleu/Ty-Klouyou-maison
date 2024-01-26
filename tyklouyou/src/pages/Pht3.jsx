@@ -3,7 +3,7 @@ import dataInfos from "../data/dataPhtInfos";
 
 const Pht3 = () => {
   return (
-    <div className="infos-container">
+    <div className="infos-container" id="pht3">
       <h2>toutes les infos</h2>
       <div className="map-infos">
         <div className="map">

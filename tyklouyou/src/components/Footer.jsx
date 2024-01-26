@@ -21,16 +21,16 @@ const Footer = () => {
           <li>© WebLuxury Design 2024</li>
         </ul>
         <ul className="pages">
-          <NavLink to="/" style={{color: isSun ? "black" : "white"}}>
+          <NavLink to="/" style={{color: isSun ? "black" : "white"}} onClick={()=>window.scrollY(0)}>
             <li>Accueil</li>
           </NavLink>
-          <NavLink to="/" style={{color: isSun ? "black" : "white"}}>
+          <NavLink to="/photos" style={{color: isSun ? "black" : "white"}} onClick={()=>window.scrollY(0)}>
             <li>Photos</li>
           </NavLink>
-          <NavLink to="/" style={{color: isSun ? "black" : "white"}}>
+          <NavLink to="/activity" style={{color: isSun ? "black" : "white"}} onClick={()=>window.scrollY(0)}>
             <li>Activités</li>
           </NavLink>
-          <NavLink to="/" style={{color: isSun ? "black" : "white"}}>
+          <NavLink to="/contact" style={{color: isSun ? "black" : "white"}} onClick={()=>window.scrollY(0)}>
             <li>Contact</li>
           </NavLink>
         </ul>

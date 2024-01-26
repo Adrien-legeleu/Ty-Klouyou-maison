@@ -31,7 +31,10 @@ useEffect(() => {
       <div className="infos">
         <div className="slider">
           <SliderPhotos />
+          <NavLink to="/photos"  onClick={()=>window.scrollY(0)}>
+
           <button>Voir toutes les photos</button>
+          </NavLink>
         </div>
         {isSliderResponsive ? (
           <SliderCard/>
@@ -68,7 +71,7 @@ useEffect(() => {
                     2 lits doubles
                   </li>
                   <li>
-                    <NavLink to="/">
+                    <NavLink to="/photos" onClick={()=>window.scrollY(0)}>
                       <span>voir plus</span>
                     </NavLink>
                   </li>
@@ -104,7 +107,7 @@ useEffect(() => {
                     vue sur la mer
                   </li>
                   <li>
-                    <NavLink to="/">
+                    <NavLink  to="/photos" onClick={()=>window.scrollY(0)}>
                       <span>voir plus</span>
                     </NavLink>
                   </li>
@@ -140,7 +143,7 @@ useEffect(() => {
                     grand jardin
                   </li>
                   <li>
-                    <NavLink to="/">
+                    <NavLink  to="/photos#pht3" >
                       <span>voir plus</span>
                     </NavLink>
                   </li>
