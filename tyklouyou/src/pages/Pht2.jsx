@@ -20,7 +20,7 @@ const Pht2 = () => {
   };
 
   return (
-    <div className="slider-photos-container" ref={slider_container}>
+    <div className="slider-photos-container">
       <motion.div
         ref={slider}
         drag
@@ -54,12 +54,12 @@ const Pht2 = () => {
           <img src="./assets/img/cliquez-sur.png" alt="click" />
           slide & click</h3>
       </div>
-      <PhtSlider
+      {/* <PhtSlider
         setSlideIndex={setSlideIndex}
         slideIndex={slideIndex}
         setIsSliderShow={setIsSliderShow}
         isSliderShow={isSliderShow}
-      />
+      /> */}
     </div>
   );
 };

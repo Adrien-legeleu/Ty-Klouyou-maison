@@ -2,6 +2,7 @@
   background: $blue;
   cursor: default;
 
+
   .infos-container {
     padding: 50px 50px 80px;
     @media screen and (max-width: 900px) {
@@ -195,81 +196,90 @@
   }
 
   .slider-all-photos {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    backdrop-filter: blur(8px);
-    @include AlignChild(row, center, center);
-    z-index: 1000000;
-    .slider {
-      width: 60%;
-      height: 80%;
-      position: relative;
-      @media screen and (max-width: 1000px) {
-        width: 550px;
-        height: 380px;
-      }
-      @media screen and (max-width: 750px) {
-        width: 450px;
-        height: 300px;
-      }
-      @media screen and (max-width: 550px) {
-        width: 350px;
-        height: 230px;
-      }
-      @media screen and (max-width: 400px) {
-        width: 300px;
-        height: 180px;
-      }
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      backdrop-filter: blur(8px);
+      @include AlignChild(row, center, center);
+      z-index: 1000000;
 
-      h3 {
-        font-size: 2.5rem;
-        font-family: $fontTR;
-        position: absolute;
-        left: 50%;
-        bottom: 30px;
-        transform: translateX(-50%);
-        background: rgba(53, 53, 53, 0.5);
-        box-shadow: 0 0 50px 50px rgba(53, 53, 53, 0.5);
-        border-radius: 50px;
-        color: white;
-        letter-spacing: 8px;
-        padding: 10px;
-        text-transform: capitalize;
-      }
+      .slider {
+          width: 60%;
+          height: 80%;
+          position: relative;
 
-      .angle {
-        z-index: 5;
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        filter: invert(100%);
-        cursor: pointer;
-        img {
-          height: 100%;
-          width: 100%;
-        }
+          @media screen and (max-width: 1000px) {
+              width: 550px;
+              height: 380px;
+          }
+
+          @media screen and (max-width: 750px) {
+              width: 450px;
+              height: 300px;
+          }
+
+          @media screen and (max-width: 550px) {
+              width: 350px;
+              height: 230px;
+          }
+
+          @media screen and (max-width: 400px) {
+              width: 300px;
+              height: 180px;
+          }
+
+          h3 {
+              font-size: 2.5rem;
+              font-family: $fontTR;
+              position: absolute;
+              left: 50%;
+              bottom: 30px;
+              transform: translateX(-50%);
+              background: rgba(53, 53, 53, 0.5);
+              box-shadow: 0 0 50px 50px rgba(53, 53, 53, 0.5);
+              border-radius: 50px;
+              color: white;
+              letter-spacing: 8px;
+              padding: 10px;
+              text-transform: capitalize;
+          }
+
+          .angle {
+              z-index: 5;
+              position: absolute;
+              width: 50px;
+              height: 50px;
+              filter: invert(100%);
+              cursor: pointer;
+
+              img {
+                  height: 100%;
+                  width: 100%;
+              }
+          }
+
+          .left {
+              transform: rotate(-90deg) translate(0, -50%);
+              left: 0;
+              top: 50%;
+          }
+
+          .right {
+              transform: rotate(90deg) translate(0, -50%);
+              right: 0;
+              top: 50%;
+          }
+
+          img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              position: absolute;
+              border-radius: 50px;
+          }
       }
-      .left {
-        transform: rotate(-90deg) translate(0, -50%);
-        left: 0;
-        top: 50%;
-      }
-      .right {
-        transform: rotate(90deg) translate(0, -50%);
-        right: 0;
-        top: 50%;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        border-radius: 50px;
-      }
-    }
   }
 
   .text-infos {
@@ -312,54 +322,63 @@
       }
     }
   }
-  .slider-photos {
-    @include AlignChild(row, center, baseline);
-    color: white;
-    height: 300px;
-    gap: 50px;
-    padding: 0 20px 0 30px;
-    cursor: pointer;
-    white-space: nowrap;
-    &:hover .slide {
-      animation: none;
-    }
-
-    .slide {
-      @include AlignChild(row, center, baseline);
-      gap: 50px;
-      animation: scroll 20s linear infinite;
-
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
+  .slider-photos-container{
+    width: 100%;
+    height: 500px;
+    .slider-photos {
+            @include AlignChild(row, center, baseline);
+            color: white;
+            height: 300px;
+            gap: 50px;
+            padding: 0 20px 0 30px;
+            cursor: pointer;
+            white-space: nowrap;
+    
+            &:hover .slide {
+                animation: none;
+            }
+    
+            .slide {
+                @include AlignChild(row, center, baseline);
+                gap: 50px;
+                animation: scroll 20s linear infinite;
+    
+                @keyframes scroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+    
+                    100% {
+                        transform: translateX(-2690px);
+                    }
+                }
+    
+                .photo {
+                    width: 250px;
+                    min-width: 250px;
+                    height: 180px;
+    
+                    @media screen and (max-width: 700px) {
+                        width: 200px;
+                        min-width: 200px;
+                        height: 150px;
+                    }
+    
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 5px;
+                        pointer-events: none;
+                    }
+                }
+            }
         }
-        100% {
-          transform: translateX(-2690px);
-        }
-      }
-
-      .photo {
-        width: 250px;
-        min-width: 250px;
-        height: 180px;
-        @media screen and (max-width: 700px) {
-          width: 200px;
-          min-width: 200px;
-          height: 150px;
-        }
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-          border-radius: 5px;
-          pointer-events: none;
-        }
-      }
-    }
   }
 
   .photos-accueil {
     height: 100vh;
+    max-height: 100vh;
     width: 100%;
     position: relative;
     display: flex;
