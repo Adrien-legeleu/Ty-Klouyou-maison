@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 
 const Page3 = () => {
   return (
-    <div className="page3-container">
+    <div className="page3">
+      <div className="page3-container">
       <h2>Des activités à couper le souffle !</h2>
       <div className="activities-container">
         <div className="activity">
@@ -63,6 +64,7 @@ const Page3 = () => {
 
       <button>Voir toutes les activités</button>
       </NavLink>
+    </div>
     </div>
   );
 };

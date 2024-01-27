@@ -1,8 +1,14 @@
+.page2-container{
+  background: $blue;
+  @include AlignChild(column, center, center);
+}
+
 .page2 {
   background: $blue;
   box-shadow: 0 0 35px 40px transparent;
   padding: 100px 50px 50px;
   display: flex;
+  max-width: 1400px;
   position: relative;
   z-index: 1;
   @media screen and (max-width: 700px) {

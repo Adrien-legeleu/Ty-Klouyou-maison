@@ -57,6 +57,10 @@
         height: 350px;
         border-radius: 50px;
         overflow: hidden;
+        @media screen and (min-width:1400px) {
+            width: 400px;
+            height: 450px;
+          }
         @media screen and (max-width:800px) {
             width: 200px;
             height: 250px;

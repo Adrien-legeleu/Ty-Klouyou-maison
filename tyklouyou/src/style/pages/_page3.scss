@@ -1,7 +1,13 @@
+.page3 {
+    background: $blue;
+    @include AlignChild(column, center, center);
+}
+
 .page3-container{
     background:$blue;
     padding: 100px 0;
     width: 100%;
+    max-width: 1600px;
     @include AlignChild(column, center, center);
     h2{
         text-align: center;
@@ -33,6 +39,10 @@
             top: -25px;
             right: 50px;
             animation: circleGrow 30s ease-in infinite;
+            @media screen and (min-width:1400px) {
+                    width: 800px;
+                    height: 800px;
+                }
             @media screen  and (max-width:700px){
                 width: 400px;
                 height: 400px;
@@ -53,6 +63,10 @@
             bottom: 25px;
             left: 50px;
             animation: circleGrow 20s ease-in infinite;
+            @media screen and (min-width:1400px) {
+                    width: 650px;
+                    height: 650px;
+                }
             @media screen  and (max-width:500px){
                 width: 250px;
                 height: 250px;
@@ -78,6 +92,10 @@
             .image{
                 width: 270px;
                 height: 320px;
+                @media  screen and (min-width:1400px) {
+                    width: 320px;
+                    height: 400px;
+                }
                 @media screen and (max-width:1050px) {
                     width: 220px;
                     height: 270px;
@@ -107,6 +125,10 @@
                 font-family: $fontR;
                 backdrop-filter: blur(5px);
                 cursor: pointer;
+                @media screen and (min-width:1400px) {
+                        width: 250px;
+                        height: 250px;
+                    }
                 @media screen and (max-width:1050px) {
                     width:150px;
                     height: 150px;

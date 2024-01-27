@@ -1,9 +1,15 @@
+
+.footer-container{
+    background: white;
+    @include AlignChild(column, center, center);
+}
 .footer{
     padding: 50px 40px 20px;
     @include AlignChild(column,center,center);
     background: white;
     font-family: $fontR;
     width: 100%;
+    max-width: 1300px;
     cursor: default;
     position: relative;
     transition: 1s ease;
