@@ -2,14 +2,17 @@
   font-family: LobsterRegular;
   src: url(../assets/fonts/Lobster/LobsterTwo-Regular.ttf);
 }
+
 @font-face {
   font-family: LobsterBold;
   src: url(../assets/fonts/Lobster/LobsterTwo-Bold.ttf);
 }
+
 @font-face {
   font-family: QuicksandLight;
   src: url(../assets/fonts/Quicksand/Quicksand-Light.ttf);
 }
+
 @font-face {
   font-family: QuicksandRegular;
   src: url(../assets/fonts/Quicksand/Quicksand-Regular.ttf);
@@ -47,15 +50,32 @@ $cream: #ff9e2c;
   text-decoration: none;
   user-select: none;
 }
+
 html {
   touch-action: none;
   scroll-behavior: smooth;
   overscroll-behavior: none;
 }
+
 body {
   background: $colorM;
   overflow-x: hidden;
   touch-action: none;
+
+  /* Custom Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+  }
 }
 
 button {
@@ -67,6 +87,7 @@ button {
   color: $white;
   cursor: pointer;
   transition: 0.25s ease-in-out;
+
   @media screen and (max-width: 1050px) {
     font-size: 1rem;
   }

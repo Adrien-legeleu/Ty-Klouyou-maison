@@ -8,7 +8,6 @@ import Header from "../components/Header";
 gsap.registerPlugin(ScrollTrigger);
 
 const Act1 = () => {
-  const [isSun, setIsSun] = useState(true);
   const imgContent = useRef(null);
   const img = useRef(null);
   const span1 = useRef(null);
@@ -106,29 +105,17 @@ useLayoutEffect(() => {
         </div>
       </div>
       <div className="actSlider-container" ref={slides}>
-        <div className="control-night" onClick={() => setIsSun(!isSun)}>
-          <img
-            src={
-              isSun
-                ? "./assets/img/icons8-sun.svg"
-                : "./assets/img/icons8-symbole-de-la-lune-60.png"
-            }
-            alt="sun-moon-tyKlouyou"
-          />
-        </div>
         <div className="time-bar" ref={timeBar}></div>
         <div
           className="actSlider"
           style={{
-            background: isSun ? "whitesmoke" : "#141342",
-            boxShadow: isSun
-              ? "0 5px 20px 15px whitesmoke"
-              : "0 5px 20px 15px #141342",
+            background: "whitesmoke",
+            boxShadow: "0 0 10px whitesmoke",
           }}
           ref={slide_container}
         >
           {dataAct.map((data, id) => (
-            <Act2 data={data} key={id} isSun={isSun} />
+            <Act2 data={data} key={id} />
           ))}
         </div>
       </div>

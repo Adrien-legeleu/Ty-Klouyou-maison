@@ -1,12 +1,12 @@
 import React from "react";
 
-const Act2 = ({ data , isSun }) => {
+const Act2 = ({ data }) => {
 
   return (
     <div className="slide">
       <div className="text">
-        <h2 style={{color:isSun? "black" : "white"}}>{data.title}</h2>
-        <p style={{color:isSun? "black" : "white"}}>{data.text}</p>
+        <h2 style={{color: "black"}}>{data.title}</h2>
+        <p style={{color: "black"}}>{data.text}</p>
       </div>
       <div className="video-container">
         <div className="video">

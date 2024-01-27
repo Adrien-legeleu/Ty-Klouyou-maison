@@ -52,7 +52,7 @@ const Photos = () => {
         </div>
       </div>
       <Pht2 />
-      <Pht3 id="pht3"/>
+      <Pht3 />
       <Footer />
     </div>
   );
