@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Activity from "./pages/Activity";
 import Photos from "./pages/Photos";
-import Pht3 from "./pages/Pht3";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
@@ -12,6 +12,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/activity" element={<Activity/>} />
         <Route path="/photos" element={<Photos/>}/>
+        <Route path="/contact" element={<Contact/>}/>
       </Routes>
     </BrowserRouter>
   );
