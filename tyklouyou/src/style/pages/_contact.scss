@@ -8,8 +8,8 @@
   .contact {
     width: 65%;
     height: 80%;
-    backdrop-filter: blur(5px);
     @include AlignChild(row-reverse, center, center);
+    font-family: $fontR;
 
     .contact-form {
       height: 100%;
@@ -27,12 +27,23 @@
         height: 100%;
         padding: 30px;
 
-        input {
-          border: none;
-          border-bottom: 1px solid rgb(255, 255, 255);
-          background: transparent;
-          outline: none;
-          padding: 10px;
+        .input{
+            @include AlignChild(row,center,center);
+            padding:10px;
+            input{
+                &::placeholder{
+                    color: rgba(216, 216, 216, 0.6);
+                }
+                padding: 10px;
+                display: inline-block;
+                width: 100%;
+                border: none;
+                border-bottom: 1px solid white;
+                background: transparent;
+                outline: none;
+                color: white;
+                font-size: 0.9rem;
+            }
         }
 
         textarea {
@@ -42,29 +53,51 @@
           outline: none;
           border: none;
           background: transparent;
-          border: 1px dashed rgb(255, 255, 255);
+          border: 1px solid rgb(255, 255, 255);
           padding: 10px;
           border-radius: 5px;
+          resize: none;
+          min-width: 100%;
+          color: white;
         }
 
-        .date {
+        .stay {
           grid-area: f;
           @include AlignChild(row, center, center);
-          gap: 15px;
+          color: white;
 
           p {
-            margin-right: 15px;
+            font-size: 0.8rem;
+            flex: 1;
+          }
+          .date-content{
+            padding-left: 20px;
+            box-sizing: border-box;
+            @include AlignChild(row, center, center);
+            gap: 5px;
+              input{
+                background: transparent;
+                color: white;
+                border: none;
+              }
           }
         }
         .btn {
           grid-area: g;
           @include AlignChild(row, center, center);
+          button{
+            background: $green1;
+          }
         }
       }
     }
     .contact-text {
       padding: 20px;
       flex: 1;
+    height: 90%;
+        width: 90%;
+        border-radius: 15px 0 0 15px;
+      background: #14134283;
       @include AlignChild(column, center, center);
       text-align: center;
       h1,

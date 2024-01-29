@@ -7,21 +7,35 @@ const Contact = () => {
       <Header />
       <div className="contact">
         <div className="contact-form">
-            <form className="form">
-          <input type="text" placeholder="prénom" />
-          <input type="text" placeholder="nom" />
-          <input type="text" placeholder="e-mail" />
-          <input type="text" placeholder="téléphone" />
-          <div className="date">
-            <p>Départ / Arrivée : </p>
-            <input type="date" />
-            <input type="date" />
-          </div>
-          <textarea placeholder="entrez un message"></textarea>
-          <div className="btn">
-            <button type="submit">Envoyer</button>
-          </div>
-        </form>
+          <form className="form">
+            <div className="input">
+              <input type="text" placeholder="Prénom" />
+            </div>
+            <div className="input">
+              <input type="text" placeholder="Nom" />
+            </div>
+            <div className="input">
+              <input type="text" placeholder="E-mail" />
+            </div>
+            <div className="input">
+              <input type="text" placeholder="Téléphone" />
+            </div>
+
+            <div className="stay-container">
+              <p>Votre séjour :</p>
+              <div className="stay">
+                <p>Départ / Arrivée : </p>
+              <div className="date-content">
+                <span>15 janvier 2023</span>
+                <span>25 janvier 2023</span>
+              </div>
+              </div>
+            </div>
+            <textarea placeholder="Entrez un message"></textarea>
+            <div className="btn">
+              <button type="submit">Envoyer</button>
+            </div>
+          </form>
         </div>
         <div className="contact-text">
           <div className="title">
