@@ -22,13 +22,14 @@ const Contact = () => {
             </div>
 
             <div className="stay-container">
-              <p>Votre séjour :</p>
+              <p className="text-visible">Informations sur votre séjour</p>
               <div className="stay">
                 <p>Départ / Arrivée : </p>
-              <div className="date-content">
-                <span>15 janvier 2023</span>
-                <span>25 janvier 2023</span>
-              </div>
+                <div className="date-content">
+                  <span>15/01/24</span>
+                  <span>28/01/24</span>
+                </div>
+                <button>Changer date</button>
               </div>
             </div>
             <textarea placeholder="Entrez un message"></textarea>
