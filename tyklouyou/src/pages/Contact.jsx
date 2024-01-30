@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
+import { gsap } from "gsap";
 
 const Contact = () => {
+
+    const [isVisibleStay , setIsVisibleStay]=useState(false);
+    const stay=useRef()
+
+
+    useEffect(()=>{
+        if (isVisibleStay) {
+      gsap.to(stay.current, { duration: 1.5, visibility:"visible", height:"100%", marginTop: "10px" , padding:"8px"});
+    } else {
+      gsap.to(stay.current, { duration: 1.5, height: 0, visibility: "hidden", marginTop: "0px" , padding:"0" });
+    }
+  }, [isVisibleStay]);
+
+
+
+
+
   return (
     <div className="contact-container">
       <Header />
@@ -22,14 +40,16 @@ const Contact = () => {
             </div>
 
             <div className="stay-container">
-              <p className="text-visible">Informations sur votre séjour</p>
-              <div className="stay">
+              <p className={`text-visible ${isVisibleStay ? "croix" : ""}`} onClick={()=>setIsVisibleStay(!isVisibleStay)}>Informations sur votre séjour</p>
+              <div className="stay" ref={stay}>
                 <p>Départ / Arrivée : </p>
                 <div className="date-content">
                   <span>15/01/24</span>
                   <span>28/01/24</span>
                 </div>
-                <button>Changer date</button>
+                <div className="btn-date">
+                    <button>Changer date</button>
+                </div>
               </div>
             </div>
             <textarea placeholder="Entrez un message"></textarea>
@@ -41,7 +61,7 @@ const Contact = () => {
         <div className="contact-text">
           <div className="title">
             <h1>Contactez-nous !</h1>
-            <h2>et passez vos meilleures vacances !</h2>
+            <h2>et passez vos <span>MEILLEURES</span> vacances !</h2>
           </div>
           <div className="text">
             <p>
