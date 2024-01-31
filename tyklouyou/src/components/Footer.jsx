@@ -5,7 +5,7 @@ const Footer = () => {
   const [isSun , setIsSun]=useState(true)
   return (
     <div className="footer-container">
-      <div className='footer' id='footer' style={{backgroundColor: isSun ? "white" : "black"}}>
+      <div className='footer' style={{backgroundColor: isSun ? "white" : "black"}}>
       <div className="sun-night" onClick={()=>setIsSun(!isSun)}>
       <img src={isSun ? "./assets/img/icons8-sun.svg" : "./assets/img/icons8-symbole-de-la-lune-60.png"} alt="sun-moon-tyKlouyou" />
       </div>
