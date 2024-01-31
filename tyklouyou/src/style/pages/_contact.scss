@@ -2,20 +2,51 @@
   background: url("./../../assets/img/sea-night.jpeg") center/cover;
   width: 100%;
   height: 100vh;
-  @include AlignChild(row, center, center);
+  @include AlignChild(column, center, center);
   position: relative;
+  @media screen and (max-width: 850px) {
+    height: 100%;
+  }
 
   .contact {
     width: 65%;
     height: 80%;
     @include AlignChild(row-reverse, center, center);
     font-family: $fontR;
-    @media screen and (max-width:1100px) {
-            width: 70%;
-        }
-        @media screen and (max-width:1000px) {
-            width: 80%;
-        }
+    @media screen and (max-width: 1100px) {
+      width: 70%;
+    }
+    @media screen and (max-width: 1000px) {
+      width: 80%;
+    }
+    @media screen and (max-width: 850px) {
+      flex-direction: column-reverse;
+      gap: 20px;
+      width: 80%;
+      height: 100%;
+      padding: 100px;
+    }
+    @media screen and (max-width: 700px) {
+      flex-direction: column-reverse;
+      gap: 20px;
+      width: 70%;
+      height: 100%;
+      padding: 100px 30px 100px;
+    }
+    @media screen and (max-width: 600px) {
+      flex-direction: column-reverse;
+      gap: 20px;
+      width: 80%;
+      height: 100%;
+      padding: 100px 30px 100px;
+    }
+    @media screen and (max-width: 500px) {
+      flex-direction: column-reverse;
+      gap: 20px;
+      width: 90%;
+      height: 100%;
+      padding: 100px 30px 100px;
+    }
 
     .contact-form {
       height: 100%;
@@ -23,6 +54,10 @@
       border-radius: 15px;
       background: $blue;
       flex: 1;
+      @media screen and (max-width: 850px) {
+          width: 90%;
+          padding: 0 0 10px;
+        }
 
       .form {
         display: grid;
@@ -32,6 +67,9 @@
         justify-content: center;
         height: 100%;
         padding: 5px 22px;
+        @media screen and (max-width:850px) {
+            gap: 25px;
+        }
 
         .input {
           @include AlignChild(row, center, center);
@@ -65,13 +103,14 @@
           resize: none;
           height: 100px;
           min-width: 100%;
-          color: white;
+          color: rgb(240, 240, 240);
+          letter-spacing: 1px;
         }
 
         .stay-container {
           grid-area: f;
           color: white;
-          background:#0e0e31;
+          background: #0e0e31;
           border-radius: 10px;
           .text-visible {
             position: relative;
@@ -117,22 +156,23 @@
 
         .stay {
           font-size: 0.8rem;
-        background: #0d0d31;
-        border-radius: 10px;
+          background: #0d0d31;
+          border-radius: 10px;
           gap: 10px;
           width: 100%;
-          @include AlignChild(row,center,space-between);
+          @include AlignChild(row, center, space-between);
           position: relative;
 
-          @media screen and (max-width:1250px) {
+          @media screen and (max-width: 1250px) {
             display: grid;
             grid-template-areas: "a b " "c c";
+            grid-template-columns: 1fr 1fr;
             align-items: center;
             justify-content: space-evenly;
             gap: 8px;
           }
 
-          &::before{
+          &::before {
             content: "";
             position: absolute;
             width: 90%;
@@ -143,23 +183,23 @@
             border-top: 3px dashed #877f9c2f;
           }
 
-          .btn-date{
-            @media screen and (max-width:1250px) {
-                    @include AlignChild(row, center,flex-end);
-                    grid-area: c;
-                }
+          .btn-date {
+            @media screen and (max-width: 1250px) {
+              @include AlignChild(row, center, flex-end);
+              grid-area: c;
+            }
             button {
-                    font-size: 0.7rem;
-                    padding: 12px 10px;
-                    border-radius: 10px;
-          }
+              font-size: 0.7rem;
+              padding: 12px 10px;
+              border-radius: 10px;
+            }
           }
           .date-content {
             @include AlignChild(row, center, center);
             gap: 8px;
-            @media screen and (max-width:1250px) {
-            grid-area: b;
-          }
+            @media screen and (max-width: 1250px) {
+              grid-area: b;
+            }
           }
         }
         .btn {
@@ -180,23 +220,36 @@
       background: #14134283;
       @include AlignChild(column, center, space-between);
       text-align: center;
+      @media screen and (max-width:850px) {
+            border-radius: 15px;
+            gap: 30px;
+            width: 100%;
+            height: 100%;
+            padding: 30px 20px 30px;
+        }
       h1,
       h2 {
         font-family: $fontTR;
         letter-spacing: 5px;
         color: white;
-        @media screen and (max-width:1150px) {
-            font-size: 1.2rem;
+        @media screen and (max-width: 1150px) {
+          font-size: 1.2rem;
+        }
+        @media screen and (max-width: 850px) {
+          font-size: 1.5rem;
+        }
+        @media screen and (max-width: 700px) {
+          font-size: 1.2rem;
         }
       }
       h2 {
         margin-top: 15px;
-        span{
-            color: $cream;
-            letter-spacing: 2px;
-            display: inline-block;
-            transform: scale(1.1);
-            margin-left: 5px;
+        span {
+          color: $cream;
+          letter-spacing: 2px;
+          display: inline-block;
+          transform: scale(1.1);
+          margin-left: 5px;
         }
       }
       .text {
@@ -210,38 +263,60 @@
         gap: 15px;
         margin: 15px 0 10px;
         color: rgb(228, 228, 228);
-         @media screen and (max-width:1150px) {
-            font-size: 0.8rem;
-            line-height: 18px;
+        @media screen and (max-width: 1150px) {
+          font-size: 0.8rem;
+          line-height: 18px;
+        }
+        @media screen and (max-width: 1000px) {
+          font-size: 0.7rem;
+          gap: 10px;
+        }
+        @media screen and (max-width: 850px) {
+          font-size: 0.9rem;
+          line-height: 22px;
+          text-align: center;
+        }
+        @media screen and (max-width: 850px) {
+          font-size: 0.9rem;
         }
       }
-      .info-legal{
-        @include AlignChild(row,center,center);
+      .info-legal {
+        @include AlignChild(row, center, center);
         gap: 25px;
-        li{
-            color: white;
-            font-size: 0.75rem;
-            transition: 0.25s ease-in-out;
-            cursor: pointer;
-             @media screen and (max-width:1150px) {
-            font-size: 0.6rem;
+        @media screen and (max-width: 850px) {
+          display: none;
         }
-            &:hover{
-                color: $cream;
-                transform: translate(3px , -4px) scale(1.05);
-            }
+        li {
+          color: white;
+          font-size: 0.75rem;
+          transition: 0.25s ease-in-out;
+          cursor: pointer;
+          @media screen and (max-width: 1150px) {
+            font-size: 0.6rem;
+          }
+          &:hover {
+            color: $cream;
+            transform: translate(3px, -4px) scale(1.05);
+          }
         }
       }
     }
   }
   .signature {
     position: absolute;
-    bottom:10px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     color: rgb(175, 175, 175);
     font-family: $fontTR;
     font-size: 1rem;
     letter-spacing: 3px;
+  }
+  .footer-container {
+      display: none;
+    @media screen and (max-width:850px) {
+            display: block;
+            width: 100%;
+        }
   }
 }

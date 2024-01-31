@@ -1,24 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 import { gsap } from "gsap";
+import Footer from "../components/Footer";
 
 const Contact = () => {
+  const [isVisibleStay, setIsVisibleStay] = useState(false);
+  const stay = useRef();
 
-    const [isVisibleStay , setIsVisibleStay]=useState(false);
-    const stay=useRef()
-
-
-    useEffect(()=>{
-        if (isVisibleStay) {
-      gsap.to(stay.current, { duration: 1.5, visibility:"visible", height:"100%", marginTop: "10px" , padding:"8px"});
+  useEffect(() => {
+    if (isVisibleStay) {
+      gsap.to(stay.current, {
+        duration: 1.5,
+        visibility: "visible",
+        height: "100%",
+        marginTop: "10px",
+        padding: "8px",
+      });
     } else {
-      gsap.to(stay.current, { duration: 1.5, height: 0, visibility: "hidden", marginTop: "0px" , padding:"0" });
+      gsap.to(stay.current, {
+        duration: 1.5,
+        height: 0,
+        visibility: "hidden",
+        marginTop: "0px",
+        padding: "0",
+      });
     }
   }, [isVisibleStay]);
-
-
-
-
 
   return (
     <div className="contact-container">
@@ -40,7 +47,12 @@ const Contact = () => {
             </div>
 
             <div className="stay-container">
-              <p className={`text-visible ${isVisibleStay ? "croix" : ""}`} onClick={()=>setIsVisibleStay(!isVisibleStay)}>Informations sur votre séjour</p>
+              <p
+                className={`text-visible ${isVisibleStay ? "croix" : ""}`}
+                onClick={() => setIsVisibleStay(!isVisibleStay)}
+              >
+                Informations sur votre séjour
+              </p>
               <div className="stay" ref={stay}>
                 <p>Départ / Arrivée : </p>
                 <div className="date-content">
@@ -48,7 +60,7 @@ const Contact = () => {
                   <span>28/01/24</span>
                 </div>
                 <div className="btn-date">
-                    <button>Changer date</button>
+                  <button>Changer date</button>
                 </div>
               </div>
             </div>
@@ -61,7 +73,9 @@ const Contact = () => {
         <div className="contact-text">
           <div className="title">
             <h1>Contactez-nous !</h1>
-            <h2>et passez vos <span>MEILLEURES</span> vacances !</h2>
+            <h2>
+              et passez vos <span>MEILLEURES</span> vacances !
+            </h2>
           </div>
           <div className="text">
             <p>
@@ -83,6 +97,7 @@ const Contact = () => {
         </div>
       </div>
       <span className="signature">designed by WebLuxury</span>
+      <Footer className="footer-container" />
     </div>
   );
 };
