@@ -135,33 +135,6 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
           </div>
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: toggleDate ? "#003444" : "",
-        }}
-        className={`${
-          toggleDate
-            ? "date-container date-container-animation-show"
-            : "date-container date-container-animation-hide"
-        }`}
-      >
-        <img
-          src="./assets/img/croix-petit.png"
-          alt="close-croix"
-          className={`close ${toggleDate ? "close" : "close close-animation"}`}
-          onClick={() => {
-            setToggleDate(!toggleDate);
-          }}
-        />
-        <DateRange
-          minDate={new Date()}
-          editableDateInputs={true}
-          onChange={(item) => setDate([item.selection])}
-          moveRangeOnFirstSelection={false}
-          ranges={date}
-          className="date"
-        />
-      </div>
     </div>
   );
 };

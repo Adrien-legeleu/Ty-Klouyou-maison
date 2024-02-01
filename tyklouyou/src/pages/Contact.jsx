@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 import { gsap } from "gsap";
 import Footer from "../components/Footer";
+import Calendar from "../components/Calendar";
 
 const Contact = () => {
   const [isVisibleStay, setIsVisibleStay] = useState(false);
@@ -97,6 +98,7 @@ const Contact = () => {
         </div>
       </div>
       <span className="signature">designed by WebLuxury</span>
+      <Calendar/>
       <Footer className="footer-container" />
     </div>
   );

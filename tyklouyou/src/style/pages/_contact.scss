@@ -11,6 +11,7 @@
   .contact {
     width: 65%;
     height: 80%;
+    opacity: 0;
     @include AlignChild(row-reverse, center, center);
     font-family: $fontR;
     @media screen and (min-height: 750px) {
@@ -237,7 +238,7 @@
             height: 100%;
             padding: 30px 20px 30px;
         }
-        @media screen and (min-width:750px) {
+        @media screen and (min-width:750px) and (max-width:1000px) {
             border-radius: 15px;
             gap: 30px;
             width: 100%;
