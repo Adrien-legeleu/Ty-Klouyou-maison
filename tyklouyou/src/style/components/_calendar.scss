@@ -1,4 +1,53 @@
 .calendar{
     background: white;
     padding: 50px;
+    border-radius: 30px;
+
+    h2{
+        font-size: 2rem;
+        text-align: center;
+        letter-spacing: 3px;
+        font-family: $fontTR;
+
+    }
+    .choice-month{
+        display: grid;
+        grid-template-columns: 60% 40%;
+        align-items: center;
+        justify-content: center;
+
+        .month{
+            @include AlignChild(row,center,flex-start);
+            padding: 20px 0;
+            h2{
+                font-family: $fontR;
+                letter-spacing: 1px
+            }
+        }
+
+        .btn-choice-month{
+            @include AlignChild(row,center,flex-end);
+            gap: 5px;
+            .img{
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                
+                &:nth-child(1){
+                    transform: rotate(-90deg);
+                }
+                &:nth-child(2){
+                    transform: rotate(90deg);
+                }
+                img{
+                    width: 100%;
+                    height: 100%;
+                                    transition: 0.25s ease-in-out;
+                    &:hover {
+                            transform: scale(1.2);
+                        }
+                }
+            }
+        }
+    }
 }
