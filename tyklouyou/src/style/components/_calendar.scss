@@ -1,13 +1,19 @@
 .calendar{
     background: white;
-    padding: 50px;
+    padding: 10px 30px 20px;
     border-radius: 30px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
 
-    h2{
-        font-size: 2rem;
+    .title{
+        font-size: 1.5rem;
         text-align: center;
         letter-spacing: 3px;
         font-family: $fontTR;
+        width: 80%;
+        margin: 0 auto;
 
     }
     .choice-month{
@@ -15,13 +21,14 @@
         grid-template-columns: 60% 40%;
         align-items: center;
         justify-content: center;
+        padding: 10px 0 0;
 
         .month{
             @include AlignChild(row,center,flex-start);
-            padding: 20px 0;
-            h2{
+            
+            .month-text{
                 font-family: $fontR;
-                letter-spacing: 1px
+                letter-spacing: 1px;
             }
         }
 
@@ -29,8 +36,8 @@
             @include AlignChild(row,center,flex-end);
             gap: 5px;
             .img{
-                width: 40px;
-                height: 40px;
+                width: 30px;
+                height: 30px;
                 cursor: pointer;
                 
                 &:nth-child(1){
@@ -49,5 +56,43 @@
                 }
             }
         }
+    }
+    .calendar-date{
+        width: 90%;
+        background: whitesmoke;
+        padding: 20px;
+        border-radius: 20px;
+        margin: 15px auto;
+        display: grid;
+        grid-template-columns: repeat(7,1fr);
+        grid-template-rows: repeat(4 , 50px);
+        align-items: center;
+        justify-content: center;
+
+        .day{
+            @include AlignChild(row, center, center);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-family: $fontR;
+            cursor: pointer;
+            transition: 0.2s ease-out;
+            &:hover{
+                background: #1413428a;
+                color: white
+            }
+        }
+        .disabled{
+            background: rgb(172, 172, 172);
+            cursor: not-allowed;
+            &:hover{
+                background: rgb(172, 172, 172);
+                color: black
+            }
+        }
+    }
+
+    .btn-reserve{
+        @include AlignChild(row,center,center);
     }
 }

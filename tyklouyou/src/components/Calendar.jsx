@@ -1,7 +1,10 @@
+import { setDate } from "date-fns";
+import { getDate } from "date-fns";
 import React, { useEffect, useState } from "react";
 
 const Calendar = () => {
   const [monthIndex, setMonthIndex] = useState(0);
+  const [arrayDays , setArrayDays]=useState([])
   const month = [
     "Janvier",
     "Février",
@@ -16,17 +19,18 @@ const Calendar = () => {
     "Novembre",
     "Décembre",
   ];
+  let nbrMonth = 30;
+  
 
   useEffect(() => {
-      let year=new Date().getFullYear()
-      let nbrMonth = 30;
+    let year = new Date().getFullYear();
     switch (monthIndex) {
       case 0:
         nbrMonth = 31;
         break;
-        case 1:
-          nbrMonth = year%4 == 0 ? 29 : 28;
-          break;
+      case 1:
+        nbrMonth = year % 4 == 0 ? 29 : 28;
+        break;
       case 2:
         nbrMonth = 31;
         break;
@@ -61,15 +65,33 @@ const Calendar = () => {
       default:
         break;
     }
+    const daysArray = Array.from({ length: nbrMonth }, (_, index) => index + 1);
+    setArrayDays(daysArray)
+
   }, [monthIndex]);
+
+  const today=new Date();
+  const tomorrow=new Date()
+  tomorrow.setDate(today.getDate()+1)
+
+
+  const colorReservation=(e)=>{
+    const day=e.target
+    if (day.classList.contains("disabled")) {
+        console.log("tete");
+    }else{
+        console.log("reerre");
+    }
+}
+
 
   return (
     <div className="calendar-container">
       <div className="calendar">
-        <h2>Choisissez dès maintenant vos dates</h2>
+        <h2 className="title">Choisissez dès maintenant vos dates !</h2>
         <div className="choice-month">
           <div className="month">
-            <h2>{month[monthIndex]}</h2>
+            <h2 className="month-text">{month[monthIndex]}</h2>
           </div>
           <div className="btn-choice-month">
             <div
@@ -91,7 +113,15 @@ const Calendar = () => {
           </div>
         </div>
         <div className="calendar-date">
-            
+          {arrayDays.map((day) => (
+            <div
+              className={`day ${new Date(tomorrow.getFullYear(), monthIndex, day) < tomorrow ? "disabled" : ""}`}
+              key={day}
+              onClick={colorReservation}
+            >
+              <p>{day}</p>
+            </div>
+          ))}
         </div>
         <div className="btn-reserve">
           <button>Réservez</button>
