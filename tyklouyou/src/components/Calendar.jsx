@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 
 const Calendar = () => {
   const [monthIndex, setMonthIndex] = useState(0);
+  const [firstDay, setFirstDay] = useState("");
+  const [secondDay, setSecondDay] = useState("");
   const [arrayDays , setArrayDays]=useState([])
   const month = [
     "Janvier",
@@ -78,9 +80,10 @@ const Calendar = () => {
   const colorReservation=(e)=>{
     const day=e.target
     if (day.classList.contains("disabled")) {
-        console.log("tete");
+        console.log("afficher paragraphe");
     }else{
-        console.log("reerre");
+        const dateDay=new Date(tomorrow.getFullYear() , monthIndex , day.textContent)
+        setFirstDay(dateDay)
     }
 }
 
@@ -119,7 +122,7 @@ const Calendar = () => {
               key={day}
               onClick={colorReservation}
             >
-              <p>{day}</p>
+              {day}
             </div>
           ))}
         </div>
