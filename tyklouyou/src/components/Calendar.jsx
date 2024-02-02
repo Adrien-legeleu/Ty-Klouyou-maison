@@ -6,7 +6,7 @@ const Calendar = () => {
   const [monthIndex, setMonthIndex] = useState(0);
   const [firstDay, setFirstDay] = useState("");
   const [secondDay, setSecondDay] = useState("");
-  const [arrayDays , setArrayDays]=useState([])
+  const [arrayDays, setArrayDays] = useState([]);
   const month = [
     "Janvier",
     "Février",
@@ -22,7 +22,6 @@ const Calendar = () => {
     "Décembre",
   ];
   let nbrMonth = 30;
-  
 
   useEffect(() => {
     let year = new Date().getFullYear();
@@ -68,24 +67,50 @@ const Calendar = () => {
         break;
     }
     const daysArray = Array.from({ length: nbrMonth }, (_, index) => index + 1);
-    setArrayDays(daysArray)
-
+    setArrayDays(daysArray);
   }, [monthIndex]);
 
-  const today=new Date();
-  const tomorrow=new Date()
-  tomorrow.setDate(today.getDate()+1)
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  
+  const removeDate=(day)=>{
+    setFirstDay("")
+    setSecondDay("")
+    day.style.backgroundColor=""
+  }
 
-
-  const colorReservation=(e)=>{
-    const day=e.target
-    if (day.classList.contains("disabled")) {
-        console.log("afficher paragraphe");
-    }else{
-        const dateDay=new Date(tomorrow.getFullYear() , monthIndex , day.textContent)
-        setFirstDay(dateDay)
+  const colorReservation = (e) => {
+    const day = e.target;
+    if (firstDay  && secondDay) {
+        removeDate(day)
     }
-}
+    if (!firstDay) {
+      if (day.classList.contains("disabled")) {
+        console.log("afficher paragraphe");
+      } else {
+        const startDateDay = new Date(
+          tomorrow.getFullYear(),
+          monthIndex,
+          day.textContent
+        );
+        day.style.backgroundColor="blue";
+        setFirstDay(startDateDay);
+      }
+    } else if (firstDay && !secondDay) {
+      if (day.classList.contains("disabled")) {
+        console.log("afficher paragraphe");
+      } else {
+        const lastDateDay = new Date(
+          tomorrow.getFullYear(),
+          monthIndex,
+          day.textContent
+        );
+        day.style.backgroundColor="blue";
+        setSecondDay(lastDateDay);
+      }
+    }
+  };
 
 
   return (
@@ -118,7 +143,11 @@ const Calendar = () => {
         <div className="calendar-date">
           {arrayDays.map((day) => (
             <div
-              className={`day ${new Date(tomorrow.getFullYear(), monthIndex, day) < tomorrow ? "disabled" : ""}`}
+              className={`day ${
+                new Date(tomorrow.getFullYear(), monthIndex, day) < tomorrow
+                  ? "disabled"
+                  : ""
+              }`}
               key={day}
               onClick={colorReservation}
             >
