@@ -1,12 +1,28 @@
-import { setDate } from "date-fns";
-import { getDate } from "date-fns";
+
 import React, { useEffect, useState } from "react";
 
 const Calendar = () => {
-  const [monthIndex, setMonthIndex] = useState(0);
+  const [yearChoice, setYearChoice] = useState([2024,2025,2026]);
+  const [monthYearIndex, setMonthYearIndex] = useState([0 , yearChoice[0]]);
+  const [firstDayName, setFirstDayName] = useState("");
   const [firstDay, setFirstDay] = useState("");
+  const [secondDayName, setSecondDayName] = useState("");
   const [secondDay, setSecondDay] = useState("");
   const [arrayDays, setArrayDays] = useState([]);
+
+
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  useEffect(()=>{
+    const currentMonth=today.toLocaleDateString().split("/")[1][1]
+    const currentYear=today.getFullYear()
+    const maxYear=currentYear+2
+    setYearChoice([currentYear , currentYear+1 , maxYear])
+    setMonthYearIndex([currentMonth-1 , yearChoice[0]])
+  },[])
+
   const month = [
     "Janvier",
     "Février",
@@ -25,7 +41,7 @@ const Calendar = () => {
 
   useEffect(() => {
     let year = new Date().getFullYear();
-    switch (monthIndex) {
+    switch (monthYearIndex[0]) {
       case 0:
         nbrMonth = 31;
         break;
@@ -68,22 +84,22 @@ const Calendar = () => {
     }
     const daysArray = Array.from({ length: nbrMonth }, (_, index) => index + 1);
     setArrayDays(daysArray);
-  }, [monthIndex]);
+  }, [monthYearIndex[0]]);
 
-  const today = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
   
-  const removeDate=(day)=>{
+  const removeDate=()=>{
     setFirstDay("")
     setSecondDay("")
-    day.style.backgroundColor=""
+    secondDayName.style.backgroundColor="";
+    secondDayName.style.color="";
+    firstDayName.style.backgroundColor="";
+    firstDayName.style.color="";
   }
 
   const colorReservation = (e) => {
     const day = e.target;
     if (firstDay  && secondDay) {
-        removeDate(day)
+        removeDate()
     }
     if (!firstDay) {
       if (day.classList.contains("disabled")) {
@@ -91,11 +107,13 @@ const Calendar = () => {
       } else {
         const startDateDay = new Date(
           tomorrow.getFullYear(),
-          monthIndex,
+          monthYearIndex[0],
           day.textContent
         );
-        day.style.backgroundColor="blue";
+        day.style.backgroundColor="#141342";
+        day.style.color="white";
         setFirstDay(startDateDay);
+        setFirstDayName(day);
       }
     } else if (firstDay && !secondDay) {
       if (day.classList.contains("disabled")) {
@@ -103,15 +121,57 @@ const Calendar = () => {
       } else {
         const lastDateDay = new Date(
           tomorrow.getFullYear(),
-          monthIndex,
+          monthYearIndex[0],
           day.textContent
         );
-        day.style.backgroundColor="blue";
+        day.style.backgroundColor="#141342";
+        day.style.color="white";
         setSecondDay(lastDateDay);
+        setSecondDayName(day);
       }
     }
   };
 
+  const colorDateBetween=(day)=>{
+    if (new Date(tomorrow.getFullYear(), monthYearIndex[0], day) <secondDay && new Date(tomorrow.getFullYear(), monthYearIndex[0], day) > firstDay) {
+      return ["#141342" , "white"]
+    } else {
+      return ["" , ""]
+    }
+  }
+
+  const monthYearIndexDown=()=>{
+    let currentMonth=monthYearIndex[0]
+    let currentYear=monthYearIndex[1]
+    if (currentMonth == 0) {
+      if (currentYear==yearChoice[0]) {
+        currentMonth=0
+        currentYear=yearChoice[0]
+      } else {
+        currentMonth=11
+        currentYear-=1
+      }
+    } else {
+      currentMonth-=1
+    }
+    return [currentMonth , currentYear]
+  }
+  const monthYearIndexUp=()=>{
+    let currentMonth=monthYearIndex[0]
+    let currentYear=monthYearIndex[1]
+    if (currentMonth == 11) {
+      if (currentYear==yearChoice[2]) {
+        currentMonth=11
+        currentYear=yearChoice[2]
+      } else {
+        currentMonth=0
+        currentYear+=1
+      }
+    } else {
+      currentMonth+=1
+    }
+    return [currentMonth , currentYear]
+  }
 
   return (
     <div className="calendar-container">
@@ -119,13 +179,19 @@ const Calendar = () => {
         <h2 className="title">Choisissez dès maintenant vos dates !</h2>
         <div className="choice-month">
           <div className="month">
-            <h2 className="month-text">{month[monthIndex]}</h2>
+            <h2 className="month-text">{month[monthYearIndex[0]]}</h2>
           </div>
+            <select className="year-select" >
+              <option value="an" disabled style={{backgroundColor:"#485a4f"}}>année</option>
+              <option  value={yearChoice[0]}>{yearChoice[0]}</option>
+              <option value={yearChoice[1]}>{yearChoice[1]}</option>
+              <option value={yearChoice[2]}>{yearChoice[2]}</option>
+            </select>
           <div className="btn-choice-month">
             <div
               className="img"
               onClick={() =>
-                setMonthIndex(monthIndex == 0 ? 11 : monthIndex - 1)
+                setMonthYearIndex(monthYearIndexDown())
               }
             >
               <img src="./assets/img/angle-up-solid (1).svg" alt="" />
@@ -133,7 +199,7 @@ const Calendar = () => {
             <div
               className="img"
               onClick={() =>
-                setMonthIndex(monthIndex == 11 ? 0 : monthIndex + 1)
+                setMonthYearIndex(monthYearIndexUp())
               }
             >
               <img src="./assets/img/angle-up-solid (1).svg" alt="" />
@@ -144,12 +210,13 @@ const Calendar = () => {
           {arrayDays.map((day) => (
             <div
               className={`day ${
-                new Date(tomorrow.getFullYear(), monthIndex, day) < tomorrow
+                new Date(tomorrow.getFullYear(), monthYearIndex[0], day) < tomorrow
                   ? "disabled"
                   : ""
               }`}
               key={day}
               onClick={colorReservation}
+              style={{ backgroundColor: colorDateBetween(day)[0] , color:colorDateBetween(day)[1]  }}
             >
               {day}
             </div>

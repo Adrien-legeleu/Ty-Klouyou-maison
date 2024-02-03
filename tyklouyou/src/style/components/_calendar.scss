@@ -18,7 +18,7 @@
     }
     .choice-month{
         display: grid;
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 40% 30% 30%;
         align-items: center;
         justify-content: center;
         padding: 10px 0 0;
@@ -29,6 +29,17 @@
             .month-text{
                 font-family: $fontR;
                 letter-spacing: 1px;
+            }
+        }
+        .year-select{
+            background: $green1;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            color: white;
+            option{
+                background: $blue;
+                cursor: pointer;
             }
         }
 
