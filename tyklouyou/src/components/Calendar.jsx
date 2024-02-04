@@ -106,7 +106,7 @@ const Calendar = () => {
         console.log("afficher paragraphe");
       } else {
         const startDateDay = new Date(
-          tomorrow.getFullYear(),
+          monthYearIndex[1],
           monthYearIndex[0],
           day.textContent
         );
@@ -120,7 +120,7 @@ const Calendar = () => {
         console.log("afficher paragraphe");
       } else {
         const lastDateDay = new Date(
-          tomorrow.getFullYear(),
+          monthYearIndex[1],
           monthYearIndex[0],
           day.textContent
         );
@@ -150,6 +150,7 @@ const Calendar = () => {
       } else {
         currentMonth=11
         currentYear-=1
+        document.getElementById("yearSelect").value=currentYear
       }
     } else {
       currentMonth-=1
@@ -166,6 +167,7 @@ const Calendar = () => {
       } else {
         currentMonth=0
         currentYear+=1
+        document.getElementById("yearSelect").value=currentYear
       }
     } else {
       currentMonth+=1
@@ -181,7 +183,7 @@ const Calendar = () => {
           <div className="month">
             <h2 className="month-text">{month[monthYearIndex[0]]}</h2>
           </div>
-            <select className="year-select" >
+            <select className="year-select" id="yearSelect" onChange={(e)=>setMonthYearIndex([monthYearIndex[0] , e.target.value ])} >
               <option value="an" disabled style={{backgroundColor:"#485a4f"}}>année</option>
               <option  value={yearChoice[0]}>{yearChoice[0]}</option>
               <option value={yearChoice[1]}>{yearChoice[1]}</option>
@@ -210,7 +212,7 @@ const Calendar = () => {
           {arrayDays.map((day) => (
             <div
               className={`day ${
-                new Date(tomorrow.getFullYear(), monthYearIndex[0], day) < tomorrow
+                new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
                   ? "disabled"
                   : ""
               }`}
