@@ -7,7 +7,7 @@ const Calendar = () => {
   tomorrow.setDate(today.getDate() + 1);
 
   const [yearChoice, setYearChoice] = useState([2024,2025,2026]);
-  const [monthYearIndex, setMonthYearIndex] = useState([0 , yearChoice[0]]);
+  const [monthYearIndex, setMonthYearIndex] = useState([today.getMonth() , yearChoice[0]]);
   const [dayName, setDayName] = useState(["" , ""]);
   const [firstDay, setFirstDay] = useState();
   const [secondDay, setSecondDay] = useState();
@@ -104,43 +104,49 @@ const Calendar = () => {
     dayName[0].style.color="";
   }
 
-  const colorReservation = (e) => {
+const colorReservation = (e) => {
     const day = e.target;
-    if (firstDay  && secondDay) {
-        removeDate()
+    
+    if (firstDay && secondDay) {
+        removeDate();
     }
+    
     if (!firstDay) {
-      if (day.classList.contains("disabled")) {
-        console.log("afficher paragraphe");
-      } else {
-        const startDateDay = new Date(
-          monthYearIndex[1],
-          monthYearIndex[0],
-          day.textContent
-        );
-        day.style.backgroundColor="#141342";
-        day.style.color="white"; 
-        setFirstDay(startDateDay);      
-         setDayName([day, dayName[1]])    
-         }
+        if (day.classList.contains("disabled")) {
+            console.log("afficher paragraphe");
+        } else {
+            const startDateDay = new Date(
+                monthYearIndex[1],
+                monthYearIndex[0],
+                day.textContent
+            );
+            setFirstDay(startDateDay);
+            setDayStyles(day, "#141342", "white");
+        }
     } else if (firstDay && !secondDay) {
-      if (day.classList.contains("disabled")) {
-        console.log("afficher paragraphe");
-      } else {
-        const lastDateDay = new Date(
-          monthYearIndex[1],
-          monthYearIndex[0],
-          day.textContent
-        );
-        day.style.backgroundColor="#141342";
-        day.style.color="white";
-        setSecondDay(lastDateDay);   
-        setDayName([dayName[0] , day ])
-            }
+        if (day.classList.contains("disabled")) {
+            console.log("afficher paragraphe");
+        } else {
+            const lastDateDay = new Date(
+                monthYearIndex[1],
+                monthYearIndex[0],
+                day.textContent
+            );
+            setSecondDay(lastDateDay);
+            setDayStyles(day, "#141342", "white");
+        }
     }
-  };
+
+    colorDateBetween(day.textContent);
+};
+
+const setDayStyles = (day, backgroundColor, color) => {
+    day.style.backgroundColor = backgroundColor;
+    day.style.color = color;
+};
  
   const colorDateBetween=(day)=>{
+    console.log(day);
     if (new Date(monthYearIndex[1], monthYearIndex[0], day) <secondDay && new Date(monthYearIndex[1], monthYearIndex[0], day) > firstDay) {
       return ["#141342" , "white"]
     } else {
@@ -193,12 +199,12 @@ const Calendar = () => {
   }
 };
 
-useEffect(() => {
-  const dayElements = document.querySelectorAll(".day");
-  dayElements.forEach((day) => {
-    console.log(day);
-  });
-}, [monthYearIndex[0], firstDay]);
+// useEffect(() => {
+//   const dayElements = document.querySelectorAll(".day");
+//   dayElements.forEach((day) => {
+//     console.log(day);
+//   });
+// }, [monthYearIndex[0], firstDay]);
 
 
 
@@ -238,26 +244,25 @@ useEffect(() => {
           </div>
         </div>
         <div className="calendar-date">
-          {arrayDays.map((day) => (
-            <div
-              className={`day ${monthYearIndex[0] + "m"} ${
+    {arrayDays.map((day) => (
+        <div
+            className={`day ${monthYearIndex[0] + "m"} ${
                 new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
-                  ? "disabled"
-                  : ""
-              }`}
-              key={day}
-              onClick={colorReservation}
-              style={{ backgroundColor: colorDateBetween(day)[0] , color:colorDateBetween(day)[1]  }}
-            >
-              {day}
-            </div>
-          ))}
+                    ? "disabled"
+                    : ""
+            }`}
+            key={day}
+            onClick={colorReservation}
+        >
+            {day}
         </div>
+    ))}
+</div>
         <div className="btn-reserve">
           <button>Réservez</button>
           <div className="text-reserve">
-            <p>du {transformDate(firstDay)} au {transformDate(secondDay)} </p>
-            <p>prix: z</p>
+            <p>du <span> {transformDate(firstDay)} </span> au <span>{transformDate(secondDay)}</span> </p>
+            <p>prix: <span>432$</span></p>
           </div>
         </div>
       </div>

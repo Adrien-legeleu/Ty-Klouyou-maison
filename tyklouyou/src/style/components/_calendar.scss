@@ -104,6 +104,15 @@
     }
 
     .btn-reserve{
-        @include AlignChild(row,center,center);
+        @include AlignChild(row,center,space-evenly);
+        gap: 15px;
+        .text-reserve{
+            text-align: center;
+            font-family: $fontR;
+            color: rgb(51, 51, 51);
+            span{
+                color: black;
+            }
+        }
     }
 }
