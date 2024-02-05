@@ -2,18 +2,17 @@
 import React, { useEffect, useState } from "react";
 
 const Calendar = () => {
-  const [yearChoice, setYearChoice] = useState([2024,2025,2026]);
-  const [monthYearIndex, setMonthYearIndex] = useState([0 , yearChoice[0]]);
-  const [firstDayName, setFirstDayName] = useState("");
-  const [firstDay, setFirstDay] = useState("");
-  const [secondDayName, setSecondDayName] = useState("");
-  const [secondDay, setSecondDay] = useState("");
-  const [arrayDays, setArrayDays] = useState([]);
-
-
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
+
+  const [yearChoice, setYearChoice] = useState([2024,2025,2026]);
+  const [monthYearIndex, setMonthYearIndex] = useState([0 , yearChoice[0]]);
+  const [dayName, setDayName] = useState(["" , ""]);
+  const [firstDay, setFirstDay] = useState();
+  const [secondDay, setSecondDay] = useState();
+  const [arrayDays, setArrayDays] = useState([]);
+
 
   useEffect(()=>{
     const currentMonth=today.toLocaleDateString().split("/")[1][1]
@@ -38,6 +37,15 @@ const Calendar = () => {
     "Décembre",
   ];
   let nbrMonth = 30;
+
+  useEffect(()=>{
+    if (secondDay < firstDay) {
+      let dayChange=secondDay
+      setSecondDay(firstDay)
+      setFirstDay(dayChange)
+    }
+
+  },[secondDay ])
 
   useEffect(() => {
     let year = new Date().getFullYear();
@@ -80,7 +88,7 @@ const Calendar = () => {
         break;
 
       default:
-        break;
+        break; 
     }
     const daysArray = Array.from({ length: nbrMonth }, (_, index) => index + 1);
     setArrayDays(daysArray);
@@ -90,10 +98,10 @@ const Calendar = () => {
   const removeDate=()=>{
     setFirstDay("")
     setSecondDay("")
-    secondDayName.style.backgroundColor="";
-    secondDayName.style.color="";
-    firstDayName.style.backgroundColor="";
-    firstDayName.style.color="";
+    dayName[1].style.backgroundColor="";
+    dayName[1].style.color="";
+    dayName[0].style.backgroundColor="";
+    dayName[0].style.color="";
   }
 
   const colorReservation = (e) => {
@@ -111,10 +119,10 @@ const Calendar = () => {
           day.textContent
         );
         day.style.backgroundColor="#141342";
-        day.style.color="white";
-        setFirstDay(startDateDay);
-        setFirstDayName(day);
-      }
+        day.style.color="white"; 
+        setFirstDay(startDateDay);      
+         setDayName([day, dayName[1]])    
+         }
     } else if (firstDay && !secondDay) {
       if (day.classList.contains("disabled")) {
         console.log("afficher paragraphe");
@@ -126,14 +134,14 @@ const Calendar = () => {
         );
         day.style.backgroundColor="#141342";
         day.style.color="white";
-        setSecondDay(lastDateDay);
-        setSecondDayName(day);
-      }
+        setSecondDay(lastDateDay);   
+        setDayName([dayName[0] , day ])
+            }
     }
   };
-
+ 
   const colorDateBetween=(day)=>{
-    if (new Date(tomorrow.getFullYear(), monthYearIndex[0], day) <secondDay && new Date(tomorrow.getFullYear(), monthYearIndex[0], day) > firstDay) {
+    if (new Date(monthYearIndex[1], monthYearIndex[0], day) <secondDay && new Date(monthYearIndex[1], monthYearIndex[0], day) > firstDay) {
       return ["#141342" , "white"]
     } else {
       return ["" , ""]
@@ -174,6 +182,15 @@ const Calendar = () => {
     }
     return [currentMonth , currentYear]
   }
+
+  const transformDate = (date) => {
+  if (date) {
+    return date.toLocaleDateString();
+  } else {
+    return today.toLocaleDateString()
+  }
+};
+
 
   return (
     <div className="calendar-container">
@@ -226,6 +243,10 @@ const Calendar = () => {
         </div>
         <div className="btn-reserve">
           <button>Réservez</button>
+          <div className="text-reserve">
+            <p>du {transformDate(firstDay)} au {transformDate(secondDay)} </p>
+            <p>prix: </p>
+          </div>
         </div>
       </div>
     </div>
