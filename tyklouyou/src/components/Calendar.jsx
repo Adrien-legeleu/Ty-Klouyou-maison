@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Calendar = () => {
   const today = new Date();
@@ -183,6 +183,8 @@ const Calendar = () => {
     return [currentMonth , currentYear]
   }
 
+
+
   const transformDate = (date) => {
   if (date) {
     return date.toLocaleDateString();
@@ -190,6 +192,16 @@ const Calendar = () => {
     return today.toLocaleDateString()
   }
 };
+
+useEffect(() => {
+  const dayElements = document.querySelectorAll(".day");
+  dayElements.forEach((day) => {
+    console.log(day);
+  });
+}, [monthYearIndex[0], firstDay]);
+
+
+
 
 
   return (
@@ -228,7 +240,7 @@ const Calendar = () => {
         <div className="calendar-date">
           {arrayDays.map((day) => (
             <div
-              className={`day ${
+              className={`day ${monthYearIndex[0] + "m"} ${
                 new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
                   ? "disabled"
                   : ""
@@ -245,7 +257,7 @@ const Calendar = () => {
           <button>Réservez</button>
           <div className="text-reserve">
             <p>du {transformDate(firstDay)} au {transformDate(secondDay)} </p>
-            <p>prix: </p>
+            <p>prix: z</p>
           </div>
         </div>
       </div>
