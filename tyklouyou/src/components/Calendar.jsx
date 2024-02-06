@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 
 const Calendar = () => {
@@ -6,21 +5,23 @@ const Calendar = () => {
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
 
-  const [yearChoice, setYearChoice] = useState([2024,2025,2026]);
-  const [monthYearIndex, setMonthYearIndex] = useState([today.getMonth() , yearChoice[0]]);
-  const [dayName, setDayName] = useState(["" , ""]);
+  const [yearChoice, setYearChoice] = useState([2024, 2025, 2026]);
+  const [monthYearIndex, setMonthYearIndex] = useState([
+    today.getMonth(),
+    yearChoice[0],
+  ]);
+  const [dayName, setDayName] = useState(["", ""]);
   const [firstDay, setFirstDay] = useState();
   const [secondDay, setSecondDay] = useState();
   const [arrayDays, setArrayDays] = useState([]);
 
-
-  useEffect(()=>{
-    const currentMonth=today.toLocaleDateString().split("/")[1][1]
-    const currentYear=today.getFullYear()
-    const maxYear=currentYear+2
-    setYearChoice([currentYear , currentYear+1 , maxYear])
-    setMonthYearIndex([currentMonth-1 , yearChoice[0]])
-  },[])
+  useEffect(() => {
+    const currentMonth = today.toLocaleDateString().split("/")[1][1];
+    const currentYear = today.getFullYear();
+    const maxYear = currentYear + 2;
+    setYearChoice([currentYear, currentYear + 1, maxYear]);
+    setMonthYearIndex([currentMonth - 1, yearChoice[0]]);
+  }, []);
 
   const month = [
     "Janvier",
@@ -38,14 +39,14 @@ const Calendar = () => {
   ];
   let nbrMonth = 30;
 
-  useEffect(()=>{
+  useEffect(() => {
     if (secondDay < firstDay) {
-      let dayChange=secondDay
-      setSecondDay(firstDay)
-      setFirstDay(dayChange)
+      let dayChange = secondDay;
+      setSecondDay(firstDay);
+      setFirstDay(dayChange);
     }
-
-  },[secondDay ])
+    totalPrice()
+  }, [secondDay]);
 
   useEffect(() => {
     let year = new Date().getFullYear();
@@ -88,133 +89,134 @@ const Calendar = () => {
         break;
 
       default:
-        break; 
+        break;
     }
     const daysArray = Array.from({ length: nbrMonth }, (_, index) => index + 1);
     setArrayDays(daysArray);
   }, [monthYearIndex[0]]);
 
-  
-  const removeDate=()=>{
-    setFirstDay("")
-    setSecondDay("")
-    dayName[1].style.backgroundColor="";
-    dayName[1].style.color="";
-    dayName[0].style.backgroundColor="";
-    dayName[0].style.color="";
-  }
+  const removeDate = () => {
+    setFirstDay("");
+    setSecondDay("");
+    dayName[1].style.backgroundColor = "";
+    dayName[1].style.color = "";
+    dayName[0].style.backgroundColor = "";
+    dayName[0].style.color = "";
+  };
 
-const colorReservation = (e) => {
+  const colorReservation = (e) => {
     const day = e.target;
-    
+
     if (firstDay && secondDay) {
-        removeDate();
+      removeDate();
     }
-    
+
     if (!firstDay) {
-        if (day.classList.contains("disabled")) {
-            console.log("afficher paragraphe");
-        } else {
-            const startDateDay = new Date(
-                monthYearIndex[1],
-                monthYearIndex[0],
-                day.textContent
-            );
-            setFirstDay(startDateDay);
-            setDayName([day , dayName[1]])
-            
-        }
+      if (day.classList.contains("disabled")) {
+        console.log("afficher paragraphe");
+      } else {
+        const startDateDay = new Date(
+          monthYearIndex[1],
+          monthYearIndex[0],
+          day.textContent
+        );
+        setFirstDay(startDateDay);
+        setDayName([day, dayName[1]]);
+      }
     } else if (firstDay && !secondDay) {
-        if (day.classList.contains("disabled")) {
-            console.log("afficher paragraphe");
-        } else {
-            const lastDateDay = new Date(
-                monthYearIndex[1],
-                monthYearIndex[0],
-                day.textContent
-            );
-            setSecondDay(lastDateDay);
-            setDayName([dayName[0] , day])
-            
+      if (day.classList.contains("disabled")) {
+        console.log("afficher paragraphe");
+      } else {
+        const lastDateDay = new Date(
+          monthYearIndex[1],
+          monthYearIndex[0],
+          day.textContent
+        );
+        setSecondDay(lastDateDay);
+        setDayName([dayName[0], day]);
+      }
+    }
+  };
+
+  const colorDateBetween = (day) => {
+    const dayCompare = new Date(monthYearIndex[1], monthYearIndex[0], day);
+    const dayYear = dayCompare.getFullYear();
+    const dayMonth = dayCompare.getMonth();
+    const dayDate = dayCompare.getDate();
+
+    if (firstDay) {
+      const dayStartYear = firstDay.getFullYear();
+      const dayStartMonth = firstDay.getMonth();
+      const dayStart = firstDay.getDate();
+      if (dayMonth === dayStartMonth && dayDate === dayStart && dayYear === dayStartYear) {
+        return ["#141342", "white"];
+      } else if (secondDay) {
+        const dayEndYear = secondDay.getFullYear();
+        const dayEndMonth = secondDay.getMonth();
+        const dayEnd = secondDay.getDate();
+        if ((dayMonth === dayEndMonth && dayDate === dayEnd &&dayYear ===dayEndYear) || (dayCompare > firstDay && dayCompare < secondDay)) {
+          return ["#141342", "white"];
+        }else{
+          return ["" , ""]
         }
-    }
-};
- 
-  const colorDateBetween=(day)=>{
-    const dayCompare=new Date(monthYearIndex[1], monthYearIndex[0], day);
-    const dayMonth=dayCompare.getMonth()
-    const dayDate=dayCompare.getDate()
-    
-    if (firstDay ) {
-      const dayStartMonth=firstDay.getMonth()
-      const dayStart=firstDay.getDate()
-      if (dayMonth === dayStartMonth && dayDate=== dayStart) {
-        return ["#141342" , "white"]
-      }else{
-        return ["" , ""] 
+      }else {
+        return ["", ""];
       }
 
-    }else{
-      return ["" , ""] 
+    } else {
+      return ["", ""];
     }
+  };
 
-  }
-
-  const monthYearIndexDown=()=>{
-    let currentMonth=monthYearIndex[0]
-    let currentYear=monthYearIndex[1]
+  const monthYearIndexDown = () => {
+    let currentMonth = monthYearIndex[0];
+    let currentYear = monthYearIndex[1];
     if (currentMonth == 0) {
-      if (currentYear==yearChoice[0]) {
-        currentMonth=0
-        currentYear=yearChoice[0]
+      if (currentYear == yearChoice[0]) {
+        currentMonth = 0;
+        currentYear = yearChoice[0];
       } else {
-        currentMonth=11
-        currentYear-=1
-        document.getElementById("yearSelect").value=currentYear
+        currentMonth = 11;
+        currentYear -= 1;
+        document.getElementById("yearSelect").value = currentYear;
       }
     } else {
-      currentMonth-=1
+      currentMonth -= 1;
     }
-    return [currentMonth , currentYear]
-  }
-  const monthYearIndexUp=()=>{
-    let currentMonth=monthYearIndex[0]
-    let currentYear=monthYearIndex[1]
+    return [currentMonth, currentYear];
+  };
+  const monthYearIndexUp = () => {
+    let currentMonth = monthYearIndex[0];
+    let currentYear = monthYearIndex[1];
     if (currentMonth == 11) {
-      if (currentYear==yearChoice[2]) {
-        currentMonth=11
-        currentYear=yearChoice[2]
+      if (currentYear == yearChoice[2]) {
+        currentMonth = 11;
+        currentYear = yearChoice[2];
       } else {
-        currentMonth=0
-        currentYear+=1
-        document.getElementById("yearSelect").value=currentYear
+        currentMonth = 0;
+        currentYear += 1;
+        document.getElementById("yearSelect").value = currentYear;
       }
     } else {
-      currentMonth+=1
+      currentMonth += 1;
     }
-    return [currentMonth , currentYear]
-  }
-
-
+    return [currentMonth, currentYear];
+  };
 
   const transformDate = (date) => {
-  if (date) {
-    return date.toLocaleDateString();
-  } else {
-    return today.toLocaleDateString()
+    if (date) {
+      return date.toLocaleDateString();
+    } else {
+      return today.toLocaleDateString();
+    }
+  };
+
+  const totalPrice=()=>{
+    const pricePernight=280
+    const night=(secondDay-firstDay)/1000/360/24/3600
+
+    console.log(night);
   }
-};
-
-// useEffect(() => {
-//   const dayElements = document.querySelectorAll(".day");
-//   dayElements.forEach((day) => {
-//     console.log(day);
-//   });
-// }, [monthYearIndex[0], firstDay]);
-
-
-
-
 
   return (
     <div className="calendar-container">
@@ -224,52 +226,64 @@ const colorReservation = (e) => {
           <div className="month">
             <h2 className="month-text">{month[monthYearIndex[0]]}</h2>
           </div>
-            <select className="year-select" id="yearSelect" onChange={(e)=>setMonthYearIndex([monthYearIndex[0] , e.target.value ])} >
-              <option value="an" disabled style={{backgroundColor:"#485a4f"}}>année</option>
-              <option  value={yearChoice[0]}>{yearChoice[0]}</option>
-              <option value={yearChoice[1]}>{yearChoice[1]}</option>
-              <option value={yearChoice[2]}>{yearChoice[2]}</option>
-            </select>
+          <select
+            className="year-select"
+            id="yearSelect"
+            onChange={(e) =>
+              setMonthYearIndex([monthYearIndex[0], e.target.value])
+            }
+          >
+            <option value="an" disabled style={{ backgroundColor: "#485a4f" }}>
+              année
+            </option>
+            <option value={yearChoice[0]}>{yearChoice[0]}</option>
+            <option value={yearChoice[1]}>{yearChoice[1]}</option>
+            <option value={yearChoice[2]}>{yearChoice[2]}</option>
+          </select>
           <div className="btn-choice-month">
             <div
               className="img"
-              onClick={() =>
-                setMonthYearIndex(monthYearIndexDown())
-              }
+              onClick={() => setMonthYearIndex(monthYearIndexDown())}
             >
               <img src="./assets/img/angle-up-solid (1).svg" alt="" />
             </div>
             <div
               className="img"
-              onClick={() =>
-                setMonthYearIndex(monthYearIndexUp())
-              }
+              onClick={() => setMonthYearIndex(monthYearIndexUp())}
             >
               <img src="./assets/img/angle-up-solid (1).svg" alt="" />
             </div>
           </div>
         </div>
         <div className="calendar-date">
-    {arrayDays.map((day) => (
-        <div
-            className={`day ${monthYearIndex[0] +"m"} ${
+          {arrayDays.map((day) => (
+            <div
+              className={`day ${
                 new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
-                    ? "disabled"
-                    : ""
-            }`}
-            key={day}
-            onClick={colorReservation}
-            style={{backgroundColor: colorDateBetween(day)[0] , color:colorDateBetween(day)[1] }}
-        >
-            {day}
+                  ? "disabled"
+                  : ""
+              }`}
+              key={day}
+              onClick={colorReservation}
+              style={{
+                backgroundColor: colorDateBetween(day)[0],
+                color: colorDateBetween(day)[1],
+              }}
+            >
+              {day}
+            </div>
+          ))}
         </div>
-    ))}
-</div>
         <div className="btn-reserve">
           <button>Réservez</button>
           <div className="text-reserve">
-            <p>du <span> {transformDate(firstDay)} </span> au <span>{transformDate(secondDay)}</span> </p>
-            <p>prix: <span>432$</span></p>
+            <p>
+              du <span> {transformDate(firstDay)} </span> au{" "}
+              <span>{transformDate(secondDay)}</span>{" "}
+            </p>
+            <p>
+              prix: <span>432$</span>
+            </p>
           </div>
         </div>
       </div>
