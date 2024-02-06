@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Calendar = () => {
   const today = new Date();
@@ -121,7 +121,8 @@ const colorReservation = (e) => {
                 day.textContent
             );
             setFirstDay(startDateDay);
-            setDayStyles(day, "#141342", "white");
+            setDayName([day , dayName[1]])
+            
         }
     } else if (firstDay && !secondDay) {
         if (day.classList.contains("disabled")) {
@@ -133,25 +134,22 @@ const colorReservation = (e) => {
                 day.textContent
             );
             setSecondDay(lastDateDay);
-            setDayStyles(day, "#141342", "white");
+            setDayName([dayName[0] , day])
+            
         }
     }
-
-    colorDateBetween(day.textContent);
-};
-
-const setDayStyles = (day, backgroundColor, color) => {
-    day.style.backgroundColor = backgroundColor;
-    day.style.color = color;
 };
  
   const colorDateBetween=(day)=>{
-    console.log(day);
-    if (new Date(monthYearIndex[1], monthYearIndex[0], day) <secondDay && new Date(monthYearIndex[1], monthYearIndex[0], day) > firstDay) {
-      return ["#141342" , "white"]
-    } else {
-      return ["" , ""]
+    const dayCompare=new Date(monthYearIndex[1], monthYearIndex[0], day);
+
+    if (firstDay) {
+      console.log("hizhrihizrirhzhriz");
+      return ["white" , "white"]
+    }else{
+      return ["" , ""]  // ca marche ca
     }
+
   }
 
   const monthYearIndexDown=()=>{
@@ -246,13 +244,14 @@ const setDayStyles = (day, backgroundColor, color) => {
         <div className="calendar-date">
     {arrayDays.map((day) => (
         <div
-            className={`day ${monthYearIndex[0] + "m"} ${
+            className={`day ${monthYearIndex[0] +"m"} ${
                 new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
                     ? "disabled"
                     : ""
             }`}
             key={day}
             onClick={colorReservation}
+            style={{backgroundColor: colorDateBetween(day)[0] , color:colorDateBetween(day)[1] }}
         >
             {day}
         </div>
