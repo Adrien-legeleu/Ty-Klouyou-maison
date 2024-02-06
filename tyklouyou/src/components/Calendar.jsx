@@ -142,12 +142,20 @@ const colorReservation = (e) => {
  
   const colorDateBetween=(day)=>{
     const dayCompare=new Date(monthYearIndex[1], monthYearIndex[0], day);
+    const dayMonth=dayCompare.getMonth()
+    const dayDate=dayCompare.getDate()
+    
+    if (firstDay ) {
+      const dayStartMonth=firstDay.getMonth()
+      const dayStart=firstDay.getDate()
+      if (dayMonth === dayStartMonth && dayDate=== dayStart) {
+        return ["#141342" , "white"]
+      }else{
+        return ["" , ""] 
+      }
 
-    if (firstDay) {
-      console.log("hizhrihizrirhzhriz");
-      return ["white" , "white"]
     }else{
-      return ["" , ""]  // ca marche ca
+      return ["" , ""] 
     }
 
   }
