@@ -250,6 +250,45 @@ const Calendar = () => {
   setTotalPrice(totalPrice);
 };
 
+const [ dayColorHover , setDayColorHover ] = useState([])
+
+const handleColorHoverEnter = (e) => {
+  const dayHover = e.target;
+  const dayHoverDate = new Date(monthYearIndex[1], monthYearIndex[0], dayHover.textContent);
+  const allDayMonth = document.querySelectorAll(".day");
+  
+  let newDayColorHover = [];
+
+  if ((dayHoverDate-firstDay)/1000/24/3600 > 18){
+    let newDate= new Date(firstDay)
+    newDate.setDate(firstDay.getDate()+1)
+    console.log(newDate);
+  }
+
+  allDayMonth.forEach((day) => {
+    const dayDate = new Date(monthYearIndex[1], monthYearIndex[0], day.textContent);
+
+    if (firstDay && !secondDay && dayDate > firstDay && dayDate < dayHoverDate) {
+      day.style.backgroundColor = "#1413428a";
+      day.style.color = "white";
+      newDayColorHover.push(day);
+    }
+  });
+
+  setDayColorHover(newDayColorHover);
+};
+
+const handleColorHoverLeave = () => {
+  if (!secondDay) {
+    dayColorHover.forEach((day)=>{
+    day.style.color=""
+    day.style.backgroundColor=""
+  })
+  }
+};
+
+
+
 
   return (
     <div className="calendar-container">
