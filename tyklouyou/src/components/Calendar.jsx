@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 
 const Calendar = () => {
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
+  const textInfo=useRef()
 
   const [yearChoice, setYearChoice] = useState([2024, 2025, 2026]);
   const [monthYearIndex, setMonthYearIndex] = useState([
@@ -14,6 +16,7 @@ const Calendar = () => {
   const [firstDay, setFirstDay] = useState();
   const [secondDay, setSecondDay] = useState();
   const [arrayDays, setArrayDays] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(280);
 
   useEffect(() => {
     const currentMonth = today.toLocaleDateString().split("/")[1][1];
@@ -45,7 +48,7 @@ const Calendar = () => {
       setSecondDay(firstDay);
       setFirstDay(dayChange);
     }
-    totalPrice()
+    calculTotalPrice();
   }, [secondDay]);
 
   useEffect(() => {
@@ -113,7 +116,10 @@ const Calendar = () => {
 
     if (!firstDay) {
       if (day.classList.contains("disabled")) {
-        console.log("afficher paragraphe");
+        textInfo.current.textContent="Voux ne pouvez pas réservez à cette date"
+        setTimeout(()=>{
+          textInfo.current.textContent=""
+        },2000)
       } else {
         const startDateDay = new Date(
           monthYearIndex[1],
@@ -148,25 +154,45 @@ const Calendar = () => {
       const dayStartYear = firstDay.getFullYear();
       const dayStartMonth = firstDay.getMonth();
       const dayStart = firstDay.getDate();
-      if (dayMonth === dayStartMonth && dayDate === dayStart && dayYear === dayStartYear) {
+      if (
+        dayMonth === dayStartMonth &&
+        dayDate === dayStart &&
+        dayYear === dayStartYear
+      ) {
         return ["#141342", "white"];
       } else if (secondDay) {
         const dayEndYear = secondDay.getFullYear();
         const dayEndMonth = secondDay.getMonth();
         const dayEnd = secondDay.getDate();
-        if ((dayMonth === dayEndMonth && dayDate === dayEnd &&dayYear ===dayEndYear) || (dayCompare > firstDay && dayCompare < secondDay)) {
-          return ["#141342", "white"];
-        }else{
-          return ["" , ""]
+
+        if ((secondDay - firstDay)/1000/24/3600 > 18) {
+          let newSecondDate=new Date(firstDay)
+          newSecondDate.setDate(firstDay.getDate()+18)
+          setSecondDay(newSecondDate)
+          textInfo.current.textContent="La durée du séjour est de 18 jours au maximum"
+          setTimeout(()=>{
+            textInfo.current.textContent=""
+          },2000)
         }
-      }else {
+
+        if (
+          (dayMonth === dayEndMonth &&
+            dayDate === dayEnd &&
+            dayYear === dayEndYear) ||
+          (dayCompare > firstDay && dayCompare < secondDay)
+        ) {
+          return ["#141342", "white"];
+        } else {
+          return ["", ""];
+        }
+      } else {
         return ["", ""];
       }
-
     } else {
       return ["", ""];
     }
   };
+  
 
   const monthYearIndexDown = () => {
     let currentMonth = monthYearIndex[0];
@@ -211,12 +237,19 @@ const Calendar = () => {
     }
   };
 
-  const totalPrice=()=>{
-    const pricePernight=280
-    const night=(secondDay-firstDay)/1000/360/24/3600
+  const calculTotalPrice = () => {
+  const pricePerNight = 280;
+  let totalPrice = 0;
 
-    console.log(night);
+  if (secondDay && firstDay) {
+    const oneDay = 24 * 60 * 60 * 1000; 
+    const night = Math.round(Math.abs((secondDay - firstDay) / oneDay));
+    totalPrice = night * pricePerNight;
   }
+
+  setTotalPrice(totalPrice);
+};
+
 
   return (
     <div className="calendar-container">
@@ -265,6 +298,8 @@ const Calendar = () => {
               }`}
               key={day}
               onClick={colorReservation}
+              onMouseEnter={handleColorHoverEnter}
+              onMouseLeave={handleColorHoverLeave}
               style={{
                 backgroundColor: colorDateBetween(day)[0],
                 color: colorDateBetween(day)[1],
@@ -273,6 +308,7 @@ const Calendar = () => {
               {day}
             </div>
           ))}
+        <p className="text-infos" ref={textInfo}></p>
         </div>
         <div className="btn-reserve">
           <button>Réservez</button>
@@ -282,7 +318,7 @@ const Calendar = () => {
               <span>{transformDate(secondDay)}</span>{" "}
             </p>
             <p>
-              prix: <span>432$</span>
+              prix: <span>{totalPrice}€</span>
             </p>
           </div>
         </div>
