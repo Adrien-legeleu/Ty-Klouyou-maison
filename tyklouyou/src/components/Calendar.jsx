@@ -24,6 +24,7 @@ const Calendar = () => {
     const maxYear = currentYear + 2;
     setYearChoice([currentYear, currentYear + 1, maxYear]);
     setMonthYearIndex([currentMonth - 1, yearChoice[0]]);
+    
   }, []);
 
   const month = [
@@ -96,6 +97,8 @@ const Calendar = () => {
     }
     const daysArray = Array.from({ length: nbrMonth }, (_, index) => index + 1);
     setArrayDays(daysArray);
+
+    console.log(new Date(monthYearIndex[1], monthYearIndex[0], 1).getDay());
   }, [monthYearIndex[0]]);
 
   const removeDate = () => {
