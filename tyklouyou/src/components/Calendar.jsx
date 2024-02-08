@@ -259,10 +259,13 @@ const handleColorHoverEnter = (e) => {
   
   let newDayColorHover = [];
 
-  if ((dayHoverDate-firstDay)/1000/24/3600 > 18){
+  if ( firstDay && (dayHoverDate-firstDay)/1000/24/3600 > 18){
     let newDate= new Date(firstDay)
     newDate.setDate(firstDay.getDate()+18)
-    console.log(newDate);
+    textInfo.current.textContent="La durée du séjour est de 18 jours au maximum"
+          setTimeout(()=>{
+            textInfo.current.textContent=""
+          },2000)
   }
 
   allDayMonth.forEach((day) => {
@@ -286,6 +289,51 @@ const handleColorHoverLeave = () => {
   })
   }
 };
+
+const prevDayMonth=()=>{
+  let nbrDay=[]
+  switch (arrayDays.length) {
+    case 31:
+      nbrDay.push(29,30)
+      break;
+    case 30:
+      nbrDay.push(29,30,31)
+      break;
+    case 29:
+      nbrDay.push(29,30,31)
+      break;
+    case 28:
+      nbrDay.push(28,29,30,31)
+      break;  
+    default:
+      break;
+  }
+
+  return nbrDay
+}
+
+const nextDayMonth=()=>{
+  let nbrDay=[]
+  switch (arrayDays.length) {
+    case 31:
+      nbrDay.push(1,2)
+      break;
+    case 30:
+      nbrDay.push(1,2)
+      break;
+    case 29:
+      nbrDay.push(1,2,3)
+      break;
+    case 28:
+      nbrDay.push(1,2,3)
+      break;  
+    default:
+      break;
+  }
+
+  return nbrDay
+}
+
 
 
 
@@ -338,9 +386,16 @@ const handleColorHoverLeave = () => {
             <li>dim</li>
           </ul>
           <div className="date">
-            <div className="prev-date">29</div>
-            <div className="prev-date">30</div>
-            <div className="prev-date">31</div>
+            {
+  prevDayMonth().map((day) => {
+    return (
+      <div className="prev-date" key={day}>
+        {day}
+      </div>
+    );
+  })
+}
+
               {arrayDays.map((day) => (
             <div
               className={`day ${
@@ -360,9 +415,13 @@ const handleColorHoverLeave = () => {
               {day}
             </div>
           ))}
-          <div className="next-date">1</div>
-            <div className="next-date">2</div>
-            <div className="next-date">3</div>
+          {
+            nextDayMonth().map((day)=>{
+              return (
+                <div className="next-date">{day}</div>
+              )
+            })
+          }
           </div>
         <p className="text-infos" ref={textInfo}></p>
         </div>
