@@ -261,7 +261,7 @@ const handleColorHoverEnter = (e) => {
 
   if ((dayHoverDate-firstDay)/1000/24/3600 > 18){
     let newDate= new Date(firstDay)
-    newDate.setDate(firstDay.getDate()+1)
+    newDate.setDate(firstDay.getDate()+18)
     console.log(newDate);
   }
 
@@ -328,7 +328,20 @@ const handleColorHoverLeave = () => {
           </div>
         </div>
         <div className="calendar-date">
-          {arrayDays.map((day) => (
+          <ul className="day-text">
+            <li>lun</li>
+            <li>mar</li>
+            <li>mer</li>
+            <li>jeu</li>
+            <li>ven</li>
+            <li>sam</li>
+            <li>dim</li>
+          </ul>
+          <div className="date">
+            <div className="prev-date">29</div>
+            <div className="prev-date">30</div>
+            <div className="prev-date">31</div>
+              {arrayDays.map((day) => (
             <div
               className={`day ${
                 new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
@@ -347,6 +360,10 @@ const handleColorHoverLeave = () => {
               {day}
             </div>
           ))}
+          <div className="next-date">1</div>
+            <div className="next-date">2</div>
+            <div className="next-date">3</div>
+          </div>
         <p className="text-infos" ref={textInfo}></p>
         </div>
         <div className="btn-reserve">

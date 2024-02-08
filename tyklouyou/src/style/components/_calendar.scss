@@ -75,32 +75,65 @@
         padding: 20px;
         border-radius: 20px;
         margin:15px auto;
-        display: grid;
-        grid-template-columns: repeat(7,1fr);
-        grid-template-rows: repeat(4 , 50px);
-        align-items: center;
-        justify-content: center;
 
-        .day{
-            @include AlignChild(row, center, center);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-family: $fontR;
-            cursor: pointer;
-            transition: 0.2s ease-out;
-            &:hover{
-                background: #1413428a;
-                color: white
-            }
+        .day-text{
+            display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                margin-bottom: 5px;
+                li{
+                    background: #ffffff;
+                    width: 40px;
+                    text-transform: uppercase;
+                    font-family: $fontR;
+                    padding: 5px;
+                    border-radius: 5px;
+                }
         }
-        .disabled{
-            background: rgb(172, 172, 172);
-            cursor: not-allowed;
-            &:hover{
-                background: rgb(172, 172, 172);
-                color: black
+        
+
+        .date{
+            display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                grid-template-rows: repeat(4, 50px);
+                align-items: center;
+                justify-content: center;
+            
+            .next-date , .prev-date{
+                color: gray;
+                height: 40px;
+                width: 40px;
+                @include AlignChild(row, center, center);
+                background: rgb(240, 240, 240);
+                border-radius: 50%;
             }
+
+            .day {
+                    @include AlignChild(row, center, center);
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    font-family: $fontR;
+                    cursor: pointer;
+                    transition: 0.2s ease-out;
+            
+                    &:hover {
+                        background: #1413428a;
+                        color: white
+                    }
+                }
+            
+                .disabled {
+                    background: rgb(172, 172, 172);
+                    cursor: not-allowed;
+            
+                    &:hover {
+                        background: rgb(172, 172, 172);
+                        color: black
+                    }
+                }
         }
         .text-infos{
             text-align: center;
@@ -118,6 +151,9 @@
     .btn-reserve{
         @include AlignChild(row,center,space-evenly);
         gap: 15px;
+        background: whitesmoke;
+        padding: 10px;
+        border-radius: 50px;
         .text-reserve{
             text-align: center;
             font-family: $fontR;
