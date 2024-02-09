@@ -1,11 +1,10 @@
-
 import React, { useEffect, useRef, useState } from "react";
 
 const Calendar = () => {
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
-  const textInfo=useRef()
+  const textInfo = useRef();
 
   const [yearChoice, setYearChoice] = useState([2024, 2025, 2026]);
   const [monthYearIndex, setMonthYearIndex] = useState([
@@ -24,7 +23,6 @@ const Calendar = () => {
     const maxYear = currentYear + 2;
     setYearChoice([currentYear, currentYear + 1, maxYear]);
     setMonthYearIndex([currentMonth - 1, yearChoice[0]]);
-    
   }, []);
 
   const month = [
@@ -97,8 +95,6 @@ const Calendar = () => {
     }
     const daysArray = Array.from({ length: nbrMonth }, (_, index) => index + 1);
     setArrayDays(daysArray);
-
-    console.log(new Date(monthYearIndex[1], monthYearIndex[0], 1).getDay());
   }, [monthYearIndex[0]]);
 
   const removeDate = () => {
@@ -119,10 +115,11 @@ const Calendar = () => {
 
     if (!firstDay) {
       if (day.classList.contains("disabled")) {
-        textInfo.current.textContent="Voux ne pouvez pas réservez à cette date"
-        setTimeout(()=>{
-          textInfo.current.textContent=""
-        },2000)
+        textInfo.current.textContent =
+          "Voux ne pouvez pas réservez à cette date";
+        setTimeout(() => {
+          textInfo.current.textContent = "";
+        }, 2000);
       } else {
         const startDateDay = new Date(
           monthYearIndex[1],
@@ -168,14 +165,15 @@ const Calendar = () => {
         const dayEndMonth = secondDay.getMonth();
         const dayEnd = secondDay.getDate();
 
-        if ((secondDay - firstDay)/1000/24/3600 > 18) {
-          let newSecondDate=new Date(firstDay)
-          newSecondDate.setDate(firstDay.getDate()+18)
-          setSecondDay(newSecondDate)
-          textInfo.current.textContent="La durée du séjour est de 18 jours au maximum"
-          setTimeout(()=>{
-            textInfo.current.textContent=""
-          },2000)
+        if ((secondDay - firstDay) / 1000 / 24 / 3600 > 18) {
+          let newSecondDate = new Date(firstDay);
+          newSecondDate.setDate(firstDay.getDate() + 18);
+          setSecondDay(newSecondDate);
+          textInfo.current.textContent =
+            "La durée du séjour est de 18 jours au maximum";
+          setTimeout(() => {
+            textInfo.current.textContent = "";
+          }, 2000);
         }
 
         if (
@@ -195,7 +193,6 @@ const Calendar = () => {
       return ["", ""];
     }
   };
-  
 
   const monthYearIndexDown = () => {
     let currentMonth = monthYearIndex[0];
@@ -241,105 +238,110 @@ const Calendar = () => {
   };
 
   const calculTotalPrice = () => {
-  const pricePerNight = 280;
-  let totalPrice = 0;
+    const pricePerNight = 280;
+    let totalPrice = 0;
 
-  if (secondDay && firstDay) {
-    const oneDay = 24 * 60 * 60 * 1000; 
-    const night = Math.round(Math.abs((secondDay - firstDay) / oneDay));
-    totalPrice = night * pricePerNight;
-  }
-
-  setTotalPrice(totalPrice);
-};
-
-const [ dayColorHover , setDayColorHover ] = useState([])
-
-const handleColorHoverEnter = (e) => {
-  const dayHover = e.target;
-  const dayHoverDate = new Date(monthYearIndex[1], monthYearIndex[0], dayHover.textContent);
-  const allDayMonth = document.querySelectorAll(".day");
-  
-  let newDayColorHover = [];
-
-  if ( firstDay && (dayHoverDate-firstDay)/1000/24/3600 > 18){
-    let newDate= new Date(firstDay)
-    newDate.setDate(firstDay.getDate()+18)
-    textInfo.current.textContent="La durée du séjour est de 18 jours au maximum"
-          setTimeout(()=>{
-            textInfo.current.textContent=""
-          },2000)
-  }
-
-  allDayMonth.forEach((day) => {
-    const dayDate = new Date(monthYearIndex[1], monthYearIndex[0], day.textContent);
-
-    if (firstDay && !secondDay && dayDate > firstDay && dayDate < dayHoverDate) {
-      day.style.backgroundColor = "#1413428a";
-      day.style.color = "white";
-      newDayColorHover.push(day);
+    if (secondDay && firstDay) {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const night = Math.round(Math.abs((secondDay - firstDay) / oneDay));
+      totalPrice = night * pricePerNight;
     }
-  });
 
-  setDayColorHover(newDayColorHover);
-};
+    setTotalPrice(totalPrice);
+  };
 
-const handleColorHoverLeave = () => {
-  if (!secondDay) {
-    dayColorHover.forEach((day)=>{
-    day.style.color=""
-    day.style.backgroundColor=""
-  })
-  }
-};
+  const [dayColorHover, setDayColorHover] = useState([]);
 
-const prevDayMonth=()=>{
-  let nbrDay=[]
-  switch (arrayDays.length) {
-    case 31:
-      nbrDay.push(29,30)
-      break;
-    case 30:
-      nbrDay.push(29,30,31)
-      break;
-    case 29:
-      nbrDay.push(29,30,31)
-      break;
-    case 28:
-      nbrDay.push(28,29,30,31)
-      break;  
-    default:
-      break;
-  }
+  const handleColorHoverEnter = (e) => {
+    const dayHover = e.target;
+    const dayHoverDate = new Date(
+      monthYearIndex[1],
+      monthYearIndex[0],
+      dayHover.textContent
+    );
+    const allDayMonth = document.querySelectorAll(".day");
 
-  return nbrDay
-}
+    let newDayColorHover = [];
 
-const nextDayMonth=()=>{
-  let nbrDay=[]
-  switch (arrayDays.length) {
-    case 31:
-      nbrDay.push(1,2)
-      break;
-    case 30:
-      nbrDay.push(1,2)
-      break;
-    case 29:
-      nbrDay.push(1,2,3)
-      break;
-    case 28:
-      nbrDay.push(1,2,3)
-      break;  
-    default:
-      break;
-  }
+    if (firstDay && (dayHoverDate - firstDay) / 1000 / 24 / 3600 > 18) {
+      let newDate = new Date(firstDay);
+      newDate.setDate(firstDay.getDate() + 18);
+      textInfo.current.textContent =
+        "La durée du séjour est de 18 jours au maximum";
+      setTimeout(() => {
+        textInfo.current.textContent = "";
+      }, 2000);
+    }
 
-  return nbrDay
-}
+    allDayMonth.forEach((day) => {
+      const dayDate = new Date(
+        monthYearIndex[1],
+        monthYearIndex[0],
+        day.textContent
+      );
 
+      if (
+        firstDay &&
+        !secondDay &&
+        dayDate > firstDay &&
+        dayDate < dayHoverDate
+      ) {
+        day.style.backgroundColor = "#1413428a";
+        day.style.color = "white";
+        newDayColorHover.push(day);
+      }
+    });
 
+    setDayColorHover(newDayColorHover);
+  };
 
+  const handleColorHoverLeave = () => {
+    if (!secondDay) {
+      dayColorHover.forEach((day) => {
+        day.style.color = "";
+        day.style.backgroundColor = "";
+      });
+    }
+  };
 
+  const prevDayMonth = () => {
+    const nbrDayPrev =
+      new Date(monthYearIndex[1], monthYearIndex[0], 1).getDay() - 1;
+    let nbrDay = [];
+    let dayMax = 31;
+    switch (arrayDays.length) {
+      case 31:
+        dayMax = monthYearIndex[0] === 0 || monthYearIndex[0] === 6 ? 31 : 30;
+        break;
+      case 30:
+        dayMax = 31;
+        break;
+      case (29, 28):
+        dayMax = 31;
+        break;
+      default:
+        break;
+    }
+    for (let i = dayMax; i > dayMax - nbrDayPrev; i--) {
+      nbrDay.push(i);
+    }
+
+    return nbrDay;
+  };
+
+  const nextDayMonth = () => {
+    const maxDaysOnCalendar = 42;
+    const nbrDayPrev =
+      new Date(monthYearIndex[1], monthYearIndex[0], 1).getDay() - 1;
+    const nbrDaysNext = maxDaysOnCalendar - nbrDayPrev - arrayDays.length;
+    let nbrDay = [];
+
+    for (let i = 1; i <= nbrDaysNext; i++) {
+      nbrDay.push(i);
+    }
+
+    return nbrDay;
+  };
 
   return (
     <div className="calendar-container">
@@ -389,44 +391,46 @@ const nextDayMonth=()=>{
             <li>dim</li>
           </ul>
           <div className="date">
-            {
-  prevDayMonth().map((day) => {
-    return (
-      <div className="prev-date" key={day}>
-        {day}
-      </div>
-    );
-  })
-}
-
-              {arrayDays.map((day) => (
-            <div
-              className={`day ${
-                new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
-                  ? "disabled"
-                  : ""
-              }`}
-              key={day}
-              onClick={colorReservation}
-              onMouseEnter={handleColorHoverEnter}
-              onMouseLeave={handleColorHoverLeave}
-              style={{
-                backgroundColor: colorDateBetween(day)[0],
-                color: colorDateBetween(day)[1],
-              }}
-            >
-              {day}
-            </div>
-          ))}
-          {
-            nextDayMonth().map((day)=>{
+            {prevDayMonth().map((day) => {
               return (
-                <div className="next-date">{day}</div>
-              )
-            })
-          }
+                <div
+                  className={`prev-date ${
+                  new Date((monthYearIndex[0] === 0 ? monthYearIndex[1]-1  : monthYearIndex[1])  , (monthYearIndex[1] === 0 ? 11 : monthYearIndex[1]-1) , day) < tomorrow
+                    ? "disabled"
+                    : ""
+                }`}
+                  key={day}
+                  
+                >
+                  {day}
+                </div>
+              );
+            })}
+
+            {arrayDays.map((day) => (
+              <div
+                className={`day ${
+                  new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
+                    ? "disabled"
+                    : ""
+                }`}
+                key={day}
+                onClick={colorReservation}
+                onMouseEnter={handleColorHoverEnter}
+                onMouseLeave={handleColorHoverLeave}
+                style={{
+                  backgroundColor: colorDateBetween(day)[0],
+                  color: colorDateBetween(day)[1],
+                }}
+              >
+                {day}
+              </div>
+            ))}
+            {nextDayMonth().map((day) => {
+              return <div className="next-date">{day}</div>;
+            })}
           </div>
-        <p className="text-infos" ref={textInfo}></p>
+          <p className="text-infos" ref={textInfo}></p>
         </div>
         <div className="btn-reserve">
           <button>Réservez</button>

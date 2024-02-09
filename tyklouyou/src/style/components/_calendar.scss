@@ -1,166 +1,165 @@
-.calendar{
-    background: white;
-    padding: 10px 30px 20px;
-    border-radius: 30px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% , -50%);
+.calendar {
+  background: white;
+  padding: 10px 30px 20px;
+  border-radius: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    .title{
-        font-size: 1.5rem;
-        text-align: center;
-        letter-spacing: 3px;
-        font-family: $fontTR;
-        width: 80%;
-        margin: 0 auto;
+  .title {
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 3px;
+    font-family: $fontTR;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .choice-month {
+    display: grid;
+    grid-template-columns: 40% 30% 30%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 0;
 
+    .month {
+      @include AlignChild(row, center, flex-start);
+
+      .month-text {
+        font-family: $fontR;
+        letter-spacing: 1px;
+      }
     }
-    .choice-month{
-        display: grid;
-        grid-template-columns: 40% 30% 30%;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 0 0;
-
-        .month{
-            @include AlignChild(row,center,flex-start);
-            
-            .month-text{
-                font-family: $fontR;
-                letter-spacing: 1px;
-            }
-        }
-        .year-select{
-            background: $green1;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 15px;
-            color: white;
-            option{
-                background: $blue;
-                cursor: pointer;
-            }
-        }
-
-        .btn-choice-month{
-            @include AlignChild(row,center,flex-end);
-            gap: 5px;
-            .img{
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-                
-                &:nth-child(1){
-                    transform: rotate(-90deg);
-                }
-                &:nth-child(2){
-                    transform: rotate(90deg);
-                }
-                img{
-                    width: 100%;
-                    height: 100%;
-                                    transition: 0.25s ease-in-out;
-                    &:hover {
-                            transform: scale(1.2);
-                        }
-                }
-            }
-        }
-    }
-    .calendar-date{
-        position: relative;
-        width: 90%;
-        background: whitesmoke;
-        padding: 20px;
-        border-radius: 20px;
-        margin:15px auto;
-
-        .day-text{
-            display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                margin-bottom: 5px;
-                li{
-                    background: #ffffff;
-                    width: 40px;
-                    text-transform: uppercase;
-                    font-family: $fontR;
-                    padding: 5px;
-                    border-radius: 5px;
-                }
-        }
-        
-
-        .date{
-            display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                grid-template-rows: repeat(4, 50px);
-                align-items: center;
-                justify-content: center;
-            
-            .next-date , .prev-date{
-                color: gray;
-                height: 40px;
-                width: 40px;
-                @include AlignChild(row, center, center);
-                background: rgb(240, 240, 240);
-                border-radius: 50%;
-            }
-
-            .day {
-                    @include AlignChild(row, center, center);
-                    border-radius: 50%;
-                    width: 40px;
-                    height: 40px;
-                    font-family: $fontR;
-                    cursor: pointer;
-                    transition: 0.2s ease-out;
-            
-                    &:hover {
-                        background: #1413428a;
-                        color: white
-                    }
-                }
-            
-                .disabled {
-                    background: rgb(172, 172, 172);
-                    cursor: not-allowed;
-            
-                    &:hover {
-                        background: rgb(172, 172, 172);
-                        color: black
-                    }
-                }
-        }
-        .text-infos{
-            text-align: center;
-            color: rgb(226, 43, 43);
-            font-size: 1rem;
-            font-family: $fontR;
-            margin:  0 0 15px;
-            position: absolute;
-            bottom:-10px;
-            left: 0;
-            width: 100%;
-        }
+    .year-select {
+      background: $green1;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 15px;
+      color: white;
+      option {
+        background: $blue;
+        cursor: pointer;
+      }
     }
 
-    .btn-reserve{
-        @include AlignChild(row,center,space-evenly);
-        gap: 15px;
-        background: whitesmoke;
-        padding: 10px;
-        border-radius: 50px;
-        .text-reserve{
-            text-align: center;
-            font-family: $fontR;
-            color: rgb(51, 51, 51);
-            span{
-                color: black;
-            }
+    .btn-choice-month {
+      @include AlignChild(row, center, flex-end);
+      gap: 5px;
+      .img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+
+        &:nth-child(1) {
+          transform: rotate(-90deg);
         }
+        &:nth-child(2) {
+          transform: rotate(90deg);
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          transition: 0.25s ease-in-out;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
     }
+  }
+  .calendar-date {
+    position: relative;
+    width: 90%;
+    background: whitesmoke;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 15px auto;
+
+    .day-text {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 5px;
+      li {
+        background: #ffffff;
+        width: 40px;
+        text-transform: uppercase;
+        font-family: $fontR;
+        padding: 5px;
+        border-radius: 5px;
+      }
+    }
+
+    .date {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(4, 50px);
+      align-items: center;
+      justify-content: center;
+
+      .next-date,
+      .prev-date {
+        color: gray;
+        height: 40px;
+        width: 40px;
+        @include AlignChild(row, center, center);
+        background: rgb(240, 240, 240);
+        border-radius: 50%;
+      }
+
+      .day {
+        @include AlignChild(row, center, center);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-family: $fontR;
+        cursor: pointer;
+        transition: 0.2s ease-out;
+
+        &:hover {
+          background: #1413428a;
+          color: white;
+        }
+      }
+
+      .disabled {
+        background: rgb(172, 172, 172);
+        cursor: not-allowed;
+
+        &:hover {
+          background: rgb(172, 172, 172);
+          color: black;
+        }
+      }
+    }
+    .text-infos {
+      text-align: center;
+      color: rgb(226, 43, 43);
+      font-size: 1rem;
+      font-family: $fontR;
+      margin: 0 0 15px;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  .btn-reserve {
+    @include AlignChild(row, center, space-evenly);
+    gap: 15px;
+    background: whitesmoke;
+    padding: 10px;
+    border-radius: 50px;
+    .text-reserve {
+      text-align: center;
+      font-family: $fontR;
+      color: rgb(51, 51, 51);
+      span {
+        color: black;
+      }
+    }
+  }
 }
