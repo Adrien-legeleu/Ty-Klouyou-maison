@@ -347,30 +347,16 @@ const Calendar = () => {
     <div className="calendar-container">
       <div className="calendar">
         <h2 className="title">Choisissez dès maintenant vos dates !</h2>
-        <div className="choice-month">
-          <div className="month">
-            <h2 className="month-text">{month[monthYearIndex[0]]}</h2>
-          </div>
-          <select
-            className="year-select"
-            id="yearSelect"
-            onChange={(e) =>
-              setMonthYearIndex([monthYearIndex[0], e.target.value])
-            }
-          >
-            <option value="an" disabled style={{ backgroundColor: "#485a4f" }}>
-              année
-            </option>
-            <option value={yearChoice[0]}>{yearChoice[0]}</option>
-            <option value={yearChoice[1]}>{yearChoice[1]}</option>
-            <option value={yearChoice[2]}>{yearChoice[2]}</option>
-          </select>
+        <div className="calendar-date">
           <div className="btn-choice-month">
             <div
               className="img"
               onClick={() => setMonthYearIndex(monthYearIndexDown())}
             >
               <img src="./assets/img/angle-up-solid (1).svg" alt="" />
+            </div>
+            <div className="month">
+              <h2 className="month-text">{month[monthYearIndex[0]]}</h2>
             </div>
             <div
               className="img"
@@ -379,8 +365,6 @@ const Calendar = () => {
               <img src="./assets/img/angle-up-solid (1).svg" alt="" />
             </div>
           </div>
-        </div>
-        <div className="calendar-date">
           <ul className="day-text">
             <li>lun</li>
             <li>mar</li>
@@ -395,12 +379,17 @@ const Calendar = () => {
               return (
                 <div
                   className={`prev-date ${
-                  new Date((monthYearIndex[0] === 0 ? monthYearIndex[1]-1  : monthYearIndex[1])  , (monthYearIndex[1] === 0 ? 11 : monthYearIndex[1]-1) , day) < tomorrow
-                    ? "disabled"
-                    : ""
-                }`}
+                    new Date(
+                      monthYearIndex[0] === 0
+                        ? monthYearIndex[1] - 1
+                        : monthYearIndex[1],
+                      monthYearIndex[1] === 0 ? 11 : monthYearIndex[1] - 1,
+                      day
+                    ) < tomorrow
+                      ? "disabled"
+                      : ""
+                  }`}
                   key={day}
-                  
                 >
                   {day}
                 </div>
@@ -432,7 +421,14 @@ const Calendar = () => {
           </div>
           <p className="text-infos" ref={textInfo}></p>
         </div>
-        <div className="btn-reserve">
+      </div>
+    </div>
+  );
+};
+
+export default Calendar;
+
+{/* <div className="btn-reserve">
           <button>Réservez</button>
           <div className="text-reserve">
             <p>
@@ -443,10 +439,22 @@ const Calendar = () => {
               prix: <span>{totalPrice}€</span>
             </p>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+        </div> */}
 
-export default Calendar;
+
+{/* <div className="choice-month">
+          <select
+            className="year-select"
+            id="yearSelect"
+            onChange={(e) =>
+              setMonthYearIndex([monthYearIndex[0], e.target.value])
+            }
+          >
+            <option value="an" disabled style={{ backgroundColor: "#485a4f" }}>
+              année
+            </option>
+            <option value={yearChoice[0]}>{yearChoice[0]}</option>
+            <option value={yearChoice[1]}>{yearChoice[1]}</option>
+            <option value={yearChoice[2]}>{yearChoice[2]}</option>
+          </select>
+        </div> */}
