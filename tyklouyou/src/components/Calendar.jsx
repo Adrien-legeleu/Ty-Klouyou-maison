@@ -1,3 +1,4 @@
+import { isCursorAtEnd } from "@testing-library/user-event/dist/utils";
 import React, { useEffect, useRef, useState } from "react";
 
 const Calendar = () => {
@@ -19,6 +20,10 @@ const Calendar = () => {
 
   const [prevYearChoiced, setPrevYearChoiced] = useState(null);
   const [isCurrentYear, setIsCurrentYear] = useState(true);
+
+  const [rangeValue, setRangeValue] = useState(4);
+
+
 
   useEffect(() => {
     const currentMonth = today.toLocaleDateString().split("/")[1][1];
@@ -360,6 +365,7 @@ const Calendar = () => {
     }
 
     setPrevYearChoiced(yearClicked)
+    setMonthYearIndex([monthYearIndex[0] , yearClicked.textContent])
     yearClicked.style.color="white"
     yearClicked.style.opacity="1"
     yearClicked.style.transform="scale(1.3)"
@@ -369,7 +375,6 @@ const Calendar = () => {
   return (
     <div className="calendar-container">
       <div className="calendar">
-        <h2 className="title">Choisissez dès maintenant vos dates !</h2>
         <div className="calendar-date">
           <div className="btn-choice-month">
             <div
@@ -461,14 +466,15 @@ const Calendar = () => {
           </div>
           <div className="choice-parameter">
             <ul className="choice-year">
-              <li style={{color: isCurrentYear ? "white" : ""}} onClick={(e)=>choiceYear(e)}>
+              <li style={{color: isCurrentYear ? "white" : "" , transform : isCurrentYear ? 'scale(1.3)' : "" , textShadow: isCurrentYear ? "0 0px 10px rgba(255, 255, 255, 0.5)" : "" , opacity : isCurrentYear ? "1" : ""}} onClick={(e)=>choiceYear(e)}>
                 {yearChoice[0]}
               </li>
               <li onClick={(e)=>choiceYear(e)}>{yearChoice[1]}</li>
               <li onClick={(e)=>choiceYear(e)}>{yearChoice[2]}</li>
             </ul>
             <div className="choice-personn">
-              <input type="range" max="8" defaultValue="4" />
+              <input type="range" max="8" min="1" defaultValue="4"  id="inputRange"  onChange={(e)=>setRangeValue(e.target.value)}/>
+              <span style={{left:"0"}} className="range-value">{rangeValue}</span>
             </div>
           </div>
         </div>
