@@ -17,6 +17,9 @@ const Calendar = () => {
   const [arrayDays, setArrayDays] = useState([]);
   const [totalPrice, setTotalPrice] = useState(280);
 
+  const [prevYearChoiced, setPrevYearChoiced] = useState(null);
+  const [isCurrentYear, setIsCurrentYear] = useState(true);
+
   useEffect(() => {
     const currentMonth = today.toLocaleDateString().split("/")[1][1];
     const currentYear = today.getFullYear();
@@ -51,13 +54,12 @@ const Calendar = () => {
   }, [secondDay]);
 
   useEffect(() => {
-    let year = new Date().getFullYear();
     switch (monthYearIndex[0]) {
       case 0:
         nbrMonth = 31;
         break;
       case 1:
-        nbrMonth = year % 4 == 0 ? 29 : 28;
+        nbrMonth = monthYearIndex[1] % 4 === 0 ? 29 : 28;
         break;
       case 2:
         nbrMonth = 31;
@@ -95,7 +97,7 @@ const Calendar = () => {
     }
     const daysArray = Array.from({ length: nbrMonth }, (_, index) => index + 1);
     setArrayDays(daysArray);
-  }, [monthYearIndex[0]]);
+  }, [monthYearIndex[0], monthYearIndex[1]]);
 
   const removeDate = () => {
     setFirstDay("");
@@ -343,6 +345,27 @@ const Calendar = () => {
     return nbrDay;
   };
 
+  const choiceYear = (e) => {
+    const yearClicked=e.target
+    if (prevYearChoiced) {  
+    prevYearChoiced.style.color=""
+    prevYearChoiced.style.opacity=""
+    prevYearChoiced.style.transform=""
+    prevYearChoiced.style.textShadow=""
+    }
+    if (yearClicked.textContent !== yearChoice[0]) {
+      setIsCurrentYear(false)
+    }else{
+      setIsCurrentYear(true)
+    }
+
+    setPrevYearChoiced(yearClicked)
+    yearClicked.style.color="white"
+    yearClicked.style.opacity="1"
+    yearClicked.style.transform="scale(1.3)"
+    yearClicked.style.textShadow="0 0px 10px rgba(255, 255, 255, 0.5)"
+  };
+
   return (
     <div className="calendar-container">
       <div className="calendar">
@@ -365,61 +388,89 @@ const Calendar = () => {
               <img src="./assets/img/angle-up-solid (1).svg" alt="" />
             </div>
           </div>
-          <ul className="day-text">
-            <li>lun</li>
-            <li>mar</li>
-            <li>mer</li>
-            <li>jeu</li>
-            <li>ven</li>
-            <li>sam</li>
-            <li>dim</li>
-          </ul>
-          <div className="date">
-            {prevDayMonth().map((day) => {
-              return (
+          <div className="calendar-content">
+            <ul className="day-text">
+              <li>lun</li>
+              <li>mar</li>
+              <li>mer</li>
+              <li>jeu</li>
+              <li>ven</li>
+              <li>sam</li>
+              <li>dim</li>
+            </ul>
+            <div className="date">
+              {prevDayMonth().map((day) => {
+                const prevMonth =
+                  monthYearIndex[0] === 0 ? 11 : monthYearIndex[0] - 1;
+                const prevYear =
+                  monthYearIndex[0] === 0
+                    ? monthYearIndex[1] - 1
+                    : monthYearIndex[1];
+                return (
+                  <div
+                    className={`prev-date ${
+                      new Date(prevYear, prevMonth, day) < tomorrow
+                        ? "disabled"
+                        : ""
+                    }`}
+                    key={day}
+                  >
+                    {day}
+                  </div>
+                );
+              })}
+
+              {arrayDays.map((day) => (
                 <div
-                  className={`prev-date ${
-                    new Date(
-                      monthYearIndex[0] === 0
-                        ? monthYearIndex[1] - 1
-                        : monthYearIndex[1],
-                      monthYearIndex[1] === 0 ? 11 : monthYearIndex[1] - 1,
-                      day
-                    ) < tomorrow
+                  className={`day ${
+                    new Date(monthYearIndex[1], monthYearIndex[0], day) <
+                    tomorrow
                       ? "disabled"
                       : ""
                   }`}
                   key={day}
+                  onClick={colorReservation}
+                  onMouseEnter={handleColorHoverEnter}
+                  onMouseLeave={handleColorHoverLeave}
+                  style={{
+                    backgroundColor: colorDateBetween(day)[0],
+                    color: colorDateBetween(day)[1],
+                  }}
                 >
                   {day}
                 </div>
-              );
-            })}
-
-            {arrayDays.map((day) => (
-              <div
-                className={`day ${
-                  new Date(monthYearIndex[1], monthYearIndex[0], day) < tomorrow
-                    ? "disabled"
-                    : ""
-                }`}
-                key={day}
-                onClick={colorReservation}
-                onMouseEnter={handleColorHoverEnter}
-                onMouseLeave={handleColorHoverLeave}
-                style={{
-                  backgroundColor: colorDateBetween(day)[0],
-                  color: colorDateBetween(day)[1],
-                }}
-              >
-                {day}
-              </div>
-            ))}
-            {nextDayMonth().map((day) => {
-              return <div className="next-date">{day}</div>;
-            })}
+              ))}
+              {nextDayMonth().map((day) => {
+                return <div className="next-date">{day}</div>;
+              })}
+            </div>
+            <p className="text-infos" ref={textInfo}></p>
           </div>
-          <p className="text-infos" ref={textInfo}></p>
+        </div>
+        <div className="btn">
+          <button>Valider</button>
+        </div>
+        <div className="infos-container">
+          <h3>Infos</h3>
+          <div className="info-date">
+            <p>
+              du <span> {transformDate(firstDay)} </span> au{" "}
+              <span>{transformDate(secondDay)}</span>{" "}
+            </p>
+            <p>{totalPrice}€</p>
+          </div>
+          <div className="choice-parameter">
+            <ul className="choice-year">
+              <li style={{color: isCurrentYear ? "white" : ""}} onClick={(e)=>choiceYear(e)}>
+                {yearChoice[0]}
+              </li>
+              <li onClick={(e)=>choiceYear(e)}>{yearChoice[1]}</li>
+              <li onClick={(e)=>choiceYear(e)}>{yearChoice[2]}</li>
+            </ul>
+            <div className="choice-personn">
+              <input type="range" max="8" defaultValue="4" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -427,34 +478,3 @@ const Calendar = () => {
 };
 
 export default Calendar;
-
-{/* <div className="btn-reserve">
-          <button>Réservez</button>
-          <div className="text-reserve">
-            <p>
-              du <span> {transformDate(firstDay)} </span> au{" "}
-              <span>{transformDate(secondDay)}</span>{" "}
-            </p>
-            <p>
-              prix: <span>{totalPrice}€</span>
-            </p>
-          </div>
-        </div> */}
-
-
-{/* <div className="choice-month">
-          <select
-            className="year-select"
-            id="yearSelect"
-            onChange={(e) =>
-              setMonthYearIndex([monthYearIndex[0], e.target.value])
-            }
-          >
-            <option value="an" disabled style={{ backgroundColor: "#485a4f" }}>
-              année
-            </option>
-            <option value={yearChoice[0]}>{yearChoice[0]}</option>
-            <option value={yearChoice[1]}>{yearChoice[1]}</option>
-            <option value={yearChoice[2]}>{yearChoice[2]}</option>
-          </select>
-        </div> */}
