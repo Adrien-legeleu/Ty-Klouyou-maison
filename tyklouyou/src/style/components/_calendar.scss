@@ -7,14 +7,14 @@
   height: 75vh;
   top: 53%;
   left: 50%;
-  transform: translate(-50% , -50%);
+  transform: translate(-50%, -50%);
   @include AlignChild(row, center, center);
 
   .calendar {
     height: 95%;
     width: 90%;
     display: grid;
-    grid-template-areas:  "b c" "b d";
+    grid-template-areas: "b c" "b d";
     grid-template-columns: 60% 40%;
     grid-template-rows: 80% 20%;
 
@@ -31,7 +31,7 @@
         padding: 10px;
 
         .img {
-            cursor: pointer;
+          cursor: pointer;
           filter: invert(100%);
           &:first-child {
             transform: rotate(-90deg);
@@ -85,11 +85,11 @@
             font-family: $fontR;
             color: black;
             cursor: pointer;
-            transition: .25s ease-in-out;
+            transition: 0.25s ease-in-out;
 
-            &:hover{
-                background: $green2;
-                color: white;
+            &:hover {
+              background: $green2;
+              color: white;
             }
           }
           .prev-date,
@@ -103,7 +103,7 @@
             font-family: $fontR;
             opacity: 0.35;
           }
-          .disabled{
+          .disabled {
             background: gray;
             color: rgb(49, 49, 49);
             cursor: not-allowed;
@@ -111,108 +111,106 @@
         }
       }
     }
-    .btn{
-        grid-area: d;
-        @include AlignChild(row,center,center);
+    .btn {
+      grid-area: d;
+      @include AlignChild(row, center, center);
     }
-    .infos-container{
-        grid-area: c;
-        margin-top:30px;
-        padding: 0 20px ;
+    .infos-container {
+      grid-area: c;
+      margin-top: 30px;
+      padding: 0 20px;
 
-        h3{
-            color: white;
-            font-family: $fontTR;
-            font-size:1.3rem;
-            letter-spacing: 2px;
-            text-align: center;
-            margin-bottom: 15px;
+      h3 {
+        color: white;
+        font-family: $fontTR;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      .info-date {
+        color: white;
+        padding: 10px;
+        font-family: $fontR;
+        background: $green1;
+        border-radius: 15px;
+        text-align: center;
+      }
+      .choice-parameter {
+        padding: 10px;
+        font-family: $fontR;
+        background: $green1;
+        border-radius: 15px;
+        text-align: center;
+        margin: 35px 0 0;
+
+        .choice-year {
+          color: rgb(199, 199, 199);
+          opacity: 0.7;
+          li {
+            cursor: pointer;
+            transition: 0.5s ease-out;
+          }
         }
-        .info-date{
+
+        .choice-personn {
+          position: relative;
+          width: 50%;
+          margin: 40px auto 0;
+
+          #inputRange {
+            background: $blue;
+            height: 2px;
+            width: 100%;
+            border-radius: 50%;
+            appearance: none;
+
+            &::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              appearance: none;
+              background: $blue;
+              filter: brightness(1.5);
+              border-radius: 50%;
+              transition: 0.25s ease-in-out;
+              cursor: pointer;
+              &:active {
+                filter: brightness(2);
+                transform: scale(0.85);
+              }
+            }
+          }
+
+          .range-value {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            width: 30px;
             color: white;
             padding: 10px;
-            font-family: $fontR;
-            background: $green1;
-            border-radius: 15px;
-            text-align: center;
-        }
-        .choice-parameter{
-            padding: 10px;
-                font-family: $fontR;
-                background: $green1;
-                border-radius: 15px;
-                text-align: center;
-                margin: 35px 0 0;
-            
-            .choice-year{
-                color: rgb(199, 199, 199);
-                opacity: 0.7;
-                li{
-                    cursor: pointer;
-                    transition: .5s ease-out;
-                }
+            z-index: 2;
+            font-size: 0.9rem;
+            transform: translateY(-100%);
+            @include AlignChild(row, end, center);
+
+            &::after {
+              position: absolute;
+              content: "";
+              height: 100%;
+              width: 100%;
+              background: $blue;
+              top: -1px;
+              left: -1px;
+              z-index: -1;
+              transform: rotate(45deg);
+              border: 1.5px solid white;
+              border-bottom-left-radius: 50%;
+              border-top-right-radius: 50%;
+              border-top-left-radius: 50%;
             }
-
-                        .choice-personn {
-                            margin-top: 40px;
-                            position: relative;
-            
-                            #inputRange {
-                                background: $blue;
-                                height: 2px;
-                                border-radius: 50%;
-                                box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.7);
-                                appearance: none;
-            
-                                &::-webkit-slider-thumb {
-                                    -webkit-appearance: none;
-                                    appearance: none;
-                                    height: 20px;
-                                    width: 20px;
-                                    background:$blue;
-                                    filter: brightness(1.5);
-                                    border-radius: 50%;
-                                    transition: .25s ease-in-out;
-                                    cursor: pointer;
-                                    &:active{
-                                        filter: brightness(2);
-                                        transform: scale(0.85);
-                                    }
-                                }
-                            }
-                        
-
-                .range-value{
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    height: 30px;
-                    width: 30px;
-                    color: white;
-                    padding: 10px;
-                    z-index: 2;
-                    font-size: 0.9rem;
-                    transform: translateY(-100%);
-                    @include AlignChild(row,end,center);
-
-                    &::after{
-                        position: absolute;
-                        content: "";
-                        height: 100%;
-                        width: 100%;
-                        background: $blue;
-                        top: -1px;
-                        left: -1px;
-                        z-index: -1;
-                        transform: rotate(45deg);
-                        border: 1.5px solid white;
-                        border-bottom-left-radius: 50%;
-                        border-top-right-radius: 50%;
-                        border-top-left-radius: 50%;
-                    }
-                }
-            }
+          }
         }
+      }
     }
   }
 }
