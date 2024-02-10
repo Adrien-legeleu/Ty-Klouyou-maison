@@ -23,8 +23,6 @@ const Calendar = () => {
 
   const [rangeValue, setRangeValue] = useState(4);
 
-
-
   useEffect(() => {
     const currentMonth = today.toLocaleDateString().split("/")[1][1];
     const currentYear = today.getFullYear();
@@ -351,25 +349,25 @@ const Calendar = () => {
   };
 
   const choiceYear = (e) => {
-    const yearClicked=e.target
-    if (prevYearChoiced) {  
-    prevYearChoiced.style.color=""
-    prevYearChoiced.style.opacity=""
-    prevYearChoiced.style.transform=""
-    prevYearChoiced.style.textShadow=""
+    const yearClicked = e.target;
+    if (prevYearChoiced) {
+      prevYearChoiced.style.color = "";
+      prevYearChoiced.style.opacity = "";
+      prevYearChoiced.style.transform = "";
+      prevYearChoiced.style.textShadow = "";
     }
     if (yearClicked.textContent !== yearChoice[0]) {
-      setIsCurrentYear(false)
-    }else{
-      setIsCurrentYear(true)
+      setIsCurrentYear(false);
+    } else {
+      setIsCurrentYear(true);
     }
 
-    setPrevYearChoiced(yearClicked)
-    setMonthYearIndex([monthYearIndex[0] , yearClicked.textContent])
-    yearClicked.style.color="white"
-    yearClicked.style.opacity="1"
-    yearClicked.style.transform="scale(1.3)"
-    yearClicked.style.textShadow="0 0px 10px rgba(255, 255, 255, 0.5)"
+    setPrevYearChoiced(yearClicked);
+    setMonthYearIndex([monthYearIndex[0], yearClicked.textContent]);
+    yearClicked.style.color = "white";
+    yearClicked.style.opacity = "1";
+    yearClicked.style.transform = "scale(1.3)";
+    yearClicked.style.textShadow = "0 0px 10px rgba(255, 255, 255, 0.5)";
   };
 
   return (
@@ -395,13 +393,13 @@ const Calendar = () => {
           </div>
           <div className="calendar-content">
             <ul className="day-text">
-              <li>lun</li>
-              <li>mar</li>
-              <li>mer</li>
-              <li>jeu</li>
-              <li>ven</li>
-              <li>sam</li>
-              <li>dim</li>
+              <li>lun.</li>
+              <li>mar.</li>
+              <li>mer.</li>
+              <li>jeu.</li>
+              <li>ven.</li>
+              <li>sam.</li>
+              <li>dim.</li>
             </ul>
             <div className="date">
               {prevDayMonth().map((day) => {
@@ -466,25 +464,54 @@ const Calendar = () => {
           </div>
           <div className="choice-parameter">
             <ul className="choice-year">
-              <li style={{color: isCurrentYear ? "white" : "" , transform : isCurrentYear ? 'scale(1.3)' : "" , textShadow: isCurrentYear ? "0 0px 10px rgba(255, 255, 255, 0.5)" : "" , opacity : isCurrentYear ? "1" : ""}} onClick={(e)=>choiceYear(e)}>
+              <li
+                style={{
+                  color: isCurrentYear ? "white" : "",
+                  transform: isCurrentYear ? "scale(1.3)" : "",
+                  textShadow: isCurrentYear
+                    ? "0 0px 10px rgba(255, 255, 255, 0.5)"
+                    : "",
+                  opacity: isCurrentYear ? "1" : "",
+                }}
+                onClick={(e) => choiceYear(e)}
+              >
                 {yearChoice[0]}
               </li>
-              <li onClick={(e)=>choiceYear(e)}>{yearChoice[1]}</li>
-              <li onClick={(e)=>choiceYear(e)}>{yearChoice[2]}</li>
+              <li onClick={(e) => choiceYear(e)}>{yearChoice[1]}</li>
+              <li onClick={(e) => choiceYear(e)}>{yearChoice[2]}</li>
             </ul>
             <div className="choice-personn">
-              <input type="range" max="8" min="1" defaultValue="4"  id="inputRange" style={{boxShadow: `0 0 ${"2"*(rangeValue-1)}px 0 rgba(255, 255, 255, ${0.1*rangeValue})`}} onChange={(e)=>setRangeValue(e.target.value)}/>
-               <style>{`
-        #inputRange::-webkit-slider-thumb {
-          width: ${rangeValue / 3 * 10+5}px;
-          height: ${rangeValue / 3  * 10+5}px;
-        }
-      `}</style>
-              <span style={{left: `calc(${(rangeValue / 8) * 100}% - 25px)`}} className="range-value">{rangeValue}</span>
+              <input
+                type="range"
+                max="8"
+                min="1"
+                defaultValue="4"
+                id="inputRange"
+                style={{
+                  boxShadow: `0 0 ${
+                    "2" * (rangeValue - 1)
+                  }px 0 rgba(255, 255, 255, ${0.1 * rangeValue})`,
+                }}
+                onChange={(e) => setRangeValue(e.target.value)}
+              />
+              <style>
+                {`
+                  #inputRange::-webkit-slider-thumb {
+                      width: ${(rangeValue / 3) * 10 + 5}px;
+                      height: ${(rangeValue / 3) * 10 + 5}px;
+                  }
+                `}
+              </style>
+              <span
+                style={{ left: `calc(${(rangeValue / 8) * 100}% - 25px)` }}
+                className="range-value"
+              >
+                {rangeValue}
+              </span>
               <div className="info-icon">
                 <img src="./assets/img/icons8-info-120.png" alt="" />
                 <div className="icon">
-                  <span>nombre de personnes durant le séjour</span>
+                  <span>Nombre de personnes durant le séjour</span>
                 </div>
               </div>
             </div>

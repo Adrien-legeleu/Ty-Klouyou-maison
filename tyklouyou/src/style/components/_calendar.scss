@@ -21,7 +21,7 @@
     .calendar-date {
       grid-area: b;
       padding: 0 20px 10px;
-      color: white;
+      color: black;
       display: flex;
       flex-direction: column;
       .btn-choice-month {
@@ -45,48 +45,42 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 85%;
+        width: 355px;
         margin: 15px auto 0;
-        background: $green1;
+        background: white;
         padding: 20px;
         border-radius: 30px;
         .day-text {
           display: grid;
+        width: 315px;
           grid-template-columns: repeat(7, 1fr);
           align-items: center;
           justify-content: space-between;
-
           gap: 5px;
           li {
-            text-transform: uppercase;
+            text-transform: capitalize;
             font-family: $fontR;
             text-align: center;
-
-            width: 35px;
+            width: 100%;
           }
         }
 
         .date {
           display: grid;
-          grid-template-columns: repeat(7, 1fr);
+          width: 315px;
+          height: 270px;
+          grid-template-columns: repeat(7, 45px);
+          grid-template-rows: repeat(6, 45px);
+          gap: 5px;
           align-items: center;
           justify-content: space-between;
           margin-top: 15px;
-          gap: 5px;
           font-size: 1rem;
 
           .day {
-            text-align: center;
-            background: rgb(235, 235, 235);
-            @include AlignChild(row, center, center);
-            height: 35px;
-            width: 35px;
+            height: 100%;
+            width: 100%;
             border-radius: 50%;
-            font-family: $fontR;
-            color: black;
-            cursor: pointer;
-            transition: 0.25s ease-in-out;
-
             &:hover {
               background: $green2;
               color: white;
@@ -96,8 +90,8 @@
           .next-date {
             text-align: center;
             background: rgba(192, 192, 192, 0.8);
-            height: 35px;
-            width: 35px;
+            height: 100%;
+            width: 100%;
             @include AlignChild(row, center, center);
             border-radius: 50%;
             font-family: $fontR;
@@ -147,6 +141,7 @@
         .choice-year {
           color: rgb(199, 199, 199);
           opacity: 0.7;
+          @include AlignChild(column , center,center);
           li {
             cursor: pointer;
             transition: 0.5s ease-out;
@@ -207,6 +202,39 @@
               border-bottom-left-radius: 50%;
               border-top-right-radius: 50%;
               border-top-left-radius: 50%;
+            }
+          }
+          .info-icon{
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translate(50% ,-25%);
+            height: 20px;
+            width: 20px;
+            &:hover .icon{
+                visibility: visible;
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+            img{
+                height:100%;
+                width: 100%;
+            }
+            .icon{
+                position: absolute;
+                background: rgb(199, 199, 199);
+                color: black;
+                font-family: $fontR;
+                padding:10px 15px;
+                font-size: 0.8rem;
+                width:200px;
+                visibility: hidden;
+                border-radius: 25px;
+                text-align: center;
+                top: 0;
+                opacity: 0;
+                transform: translateY(-70%);
+                transition: .25s ease-out;
             }
           }
         }
