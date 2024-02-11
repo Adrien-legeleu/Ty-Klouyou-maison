@@ -21,18 +21,21 @@
     .calendar-date {
       grid-area: b;
       padding: 0 20px 10px;
-      color: black;
+      color: $blue;
       display: flex;
       flex-direction: column;
       .btn-choice-month {
         @include AlignChild(row, center, space-between);
         width: 60%;
         margin: 0 auto;
-        padding: 10px;
+        padding: 10px 20px;
+        background: white;
+        border-radius: 50px;
+        font-family: $fontR;
+        letter-spacing: 2px;
 
         .img {
           cursor: pointer;
-          filter: invert(100%);
           &:first-child {
             transform: rotate(-90deg);
           }
@@ -41,67 +44,59 @@
           }
         }
       }
-      .calendar-content {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 355px;
-        margin: 15px auto 0;
+      .calendar-content{
+        width: 80%;
         background: white;
-        padding: 20px;
-        border-radius: 30px;
-        .day-text {
-          display: grid;
-        width: 315px;
-          grid-template-columns: repeat(7, 1fr);
-          align-items: center;
-          justify-content: space-between;
-          gap: 5px;
-          li {
-            text-transform: capitalize;
-            font-family: $fontR;
-            text-align: center;
-            width: 100%;
-          }
-        }
+        height:100%;
+        margin: 15px auto 0;
+        border-radius: 50px;
+        padding: 15px 10px;
 
-        .date {
-          display: grid;
-          width: 315px;
-          height: 270px;
-          grid-template-columns: repeat(7, 45px);
-          grid-template-rows: repeat(6, 45px);
-          gap: 5px;
-          align-items: center;
-          justify-content: space-between;
-          margin-top: 15px;
-          font-size: 1rem;
-
-          .day {
-            height: 100%;
-            width: 100%;
-            border-radius: 50%;
-            &:hover {
-              background: $green2;
-              color: white;
+        .day-text{
+            display: grid;
+            grid-template-columns: repeat(7,50px);
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            li{
+                flex: 1;
+                text-align: center;
+                color: rgb(173, 173, 173);
+                font-family: $fontR;
+                text-transform: capitalize;
             }
-          }
-          .prev-date,
-          .next-date {
-            text-align: center;
-            background: rgba(192, 192, 192, 0.8);
-            height: 100%;
-            width: 100%;
-            @include AlignChild(row, center, center);
-            border-radius: 50%;
-            font-family: $fontR;
-            opacity: 0.35;
-          }
-          .disabled {
-            background: gray;
-            color: rgb(49, 49, 49);
-            cursor: not-allowed;
-          }
+        }
+        .date{
+            display: grid;
+            grid-template-columns: repeat(7, 50px);
+                align-items: center;
+                justify-content: center;
+            gap: 5px;
+            margin-top: 20px;
+            .prev-date {
+                min-width: 50px;
+                min-height: 50px;
+            }
+            .day{
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                @include AlignChild(row,center,center);
+                font-family: $fontR;
+                font-weight: 800;
+                cursor: pointer;
+                &:hover{
+                    border: 1.5px solid $blue;
+                }
+            }
+            .disabled{
+                color: gray;
+                cursor: default;
+                &:hover{
+                    border: none;
+                }
+            }
         }
       }
     }

@@ -18,9 +18,6 @@ const Calendar = () => {
   const [arrayDays, setArrayDays] = useState([]);
   const [totalPrice, setTotalPrice] = useState(280);
 
-  const [prevYearChoiced, setPrevYearChoiced] = useState(null);
-  const [isCurrentYear, setIsCurrentYear] = useState(true);
-
   const [rangeValue, setRangeValue] = useState(4);
 
   useEffect(() => {
@@ -55,6 +52,7 @@ const Calendar = () => {
     }
     calculTotalPrice();
   }, [secondDay]);
+
 
   useEffect(() => {
     switch (monthYearIndex[0]) {
@@ -202,8 +200,8 @@ const Calendar = () => {
   const monthYearIndexDown = () => {
     let currentMonth = monthYearIndex[0];
     let currentYear = monthYearIndex[1];
-    if (currentMonth == 0) {
-      if (currentYear == yearChoice[0]) {
+    if (currentMonth === 0) {
+      if (currentYear === yearChoice[0]) {
         currentMonth = 0;
         currentYear = yearChoice[0];
       } else {
@@ -219,8 +217,8 @@ const Calendar = () => {
   const monthYearIndexUp = () => {
     let currentMonth = monthYearIndex[0];
     let currentYear = monthYearIndex[1];
-    if (currentMonth == 11) {
-      if (currentYear == yearChoice[2]) {
+    if (currentMonth === 11) {
+      if (currentYear === yearChoice[2]) {
         currentMonth = 11;
         currentYear = yearChoice[2];
       } else {
@@ -241,6 +239,9 @@ const Calendar = () => {
       return today.toLocaleDateString();
     }
   };
+
+
+
 
   const calculTotalPrice = () => {
     const pricePerNight = 280;
@@ -313,21 +314,7 @@ const Calendar = () => {
     const nbrDayPrev =
       new Date(monthYearIndex[1], monthYearIndex[0], 1).getDay() - 1;
     let nbrDay = [];
-    let dayMax = 31;
-    switch (arrayDays.length) {
-      case 31:
-        dayMax = monthYearIndex[0] === 0 || monthYearIndex[0] === 6 ? 31 : 30;
-        break;
-      case 30:
-        dayMax = 31;
-        break;
-      case (29, 28):
-        dayMax = 31;
-        break;
-      default:
-        break;
-    }
-    for (let i = dayMax; i > dayMax - nbrDayPrev; i--) {
+    for (let i = 0; i < nbrDayPrev ; i++) {
       nbrDay.push(i);
     }
 
@@ -346,28 +333,6 @@ const Calendar = () => {
     }
 
     return nbrDay;
-  };
-
-  const choiceYear = (e) => {
-    const yearClicked = e.target;
-    if (prevYearChoiced) {
-      prevYearChoiced.style.color = "";
-      prevYearChoiced.style.opacity = "";
-      prevYearChoiced.style.transform = "";
-      prevYearChoiced.style.textShadow = "";
-    }
-    if (yearClicked.textContent !== yearChoice[0]) {
-      setIsCurrentYear(false);
-    } else {
-      setIsCurrentYear(true);
-    }
-
-    setPrevYearChoiced(yearClicked);
-    setMonthYearIndex([monthYearIndex[0], yearClicked.textContent]);
-    yearClicked.style.color = "white";
-    yearClicked.style.opacity = "1";
-    yearClicked.style.transform = "scale(1.3)";
-    yearClicked.style.textShadow = "0 0px 10px rgba(255, 255, 255, 0.5)";
   };
 
   return (
@@ -403,22 +368,11 @@ const Calendar = () => {
             </ul>
             <div className="date">
               {prevDayMonth().map((day) => {
-                const prevMonth =
-                  monthYearIndex[0] === 0 ? 11 : monthYearIndex[0] - 1;
-                const prevYear =
-                  monthYearIndex[0] === 0
-                    ? monthYearIndex[1] - 1
-                    : monthYearIndex[1];
                 return (
                   <div
-                    className={`prev-date ${
-                      new Date(prevYear, prevMonth, day) < tomorrow
-                        ? "disabled"
-                        : ""
-                    }`}
+                    className="prev-date"
                     key={day}
                   >
-                    {day}
                   </div>
                 );
               })}
@@ -443,9 +397,6 @@ const Calendar = () => {
                   {day}
                 </div>
               ))}
-              {nextDayMonth().map((day) => {
-                return <div className="next-date">{day}</div>;
-              })}
             </div>
             <p className="text-infos" ref={textInfo}></p>
           </div>
@@ -465,20 +416,11 @@ const Calendar = () => {
           <div className="choice-parameter">
             <ul className="choice-year">
               <li
-                style={{
-                  color: isCurrentYear ? "white" : "",
-                  transform: isCurrentYear ? "scale(1.3)" : "",
-                  textShadow: isCurrentYear
-                    ? "0 0px 10px rgba(255, 255, 255, 0.5)"
-                    : "",
-                  opacity: isCurrentYear ? "1" : "",
-                }}
-                onClick={(e) => choiceYear(e)}
               >
                 {yearChoice[0]}
               </li>
-              <li onClick={(e) => choiceYear(e)}>{yearChoice[1]}</li>
-              <li onClick={(e) => choiceYear(e)}>{yearChoice[2]}</li>
+              <li>{yearChoice[1]}</li>
+              <li>{yearChoice[2]}</li>
             </ul>
             <div className="choice-personn">
               <input
