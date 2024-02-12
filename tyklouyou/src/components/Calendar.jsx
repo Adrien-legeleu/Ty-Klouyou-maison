@@ -1,7 +1,6 @@
-import { isCursorAtEnd } from "@testing-library/user-event/dist/utils";
 import React, { useEffect, useRef, useState } from "react";
 
-const Calendar = () => {
+const Calendar = ({ isActive, setIsActive , setCalendarOpacity , calendarOpacity }) => {
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
@@ -19,8 +18,6 @@ const Calendar = () => {
   const [totalPrice, setTotalPrice] = useState(280);
 
   const [rangeValue, setRangeValue] = useState(4);
-
-  const [calendarOpacity , setCalendarOpacity]=useState(1)
 
   useEffect(() => {
     const currentMonth = today.toLocaleDateString().split("/")[1][1];
@@ -54,7 +51,6 @@ const Calendar = () => {
     }
     calculTotalPrice();
   }, [secondDay]);
-
 
   useEffect(() => {
     switch (monthYearIndex[0]) {
@@ -240,9 +236,6 @@ const Calendar = () => {
     }
   };
 
-
-
-
   const calculTotalPrice = () => {
     const pricePerNight = 280;
     let totalPrice = 0;
@@ -314,7 +307,7 @@ const Calendar = () => {
     const nbrDayPrev =
       new Date(monthYearIndex[1], monthYearIndex[0], 1).getDay() - 1;
     let nbrDay = [];
-    for (let i = 0; i < nbrDayPrev ; i++) {
+    for (let i = 0; i < nbrDayPrev; i++) {
       nbrDay.push(i);
     }
 
@@ -335,17 +328,28 @@ const Calendar = () => {
     return nbrDay;
   };
 
-  const isYear=(year)=>{
+  const isYear = (year) => {
     if (year === monthYearIndex[1]) {
-      return "current-year"
+      return "current-year";
+    } else {
+      return "";
     }
-    else{
-      return ""
-    }
-  }
+  };
 
   return (
-    <div className="calendar-container" style={{opacity : calendarOpacity , transform: calendarOpacity === 0 ? "translate(-50% , -50%) scale(0)" : "translate(-50% , -50%)"}}>
+    <div
+      className="calendar-container"
+      style={{
+        opacity: calendarOpacity,
+        transform:
+          calendarOpacity === 0 && !isActive
+            ? "translate(-50% , -50%) scale(0)"
+            : "translate(-50% , -50%)",
+        visibility: isActive ? "visible" : "hidden",
+        backdropFilter: "blur(5px)"
+      }}
+    >
+      <div className="calendar-container-blur"></div>
       <div className="calendar">
         <div className="calendar-date">
           <div className="btn-choice-month">
@@ -377,13 +381,7 @@ const Calendar = () => {
             </ul>
             <div className="date">
               {prevDayMonth().map((day) => {
-                return (
-                  <div
-                    className="prev-date"
-                    key={day}
-                  >
-                  </div>
-                );
+                return <div className="prev-date" key={day}></div>;
               })}
 
               {arrayDays.map((day) => (
@@ -412,7 +410,20 @@ const Calendar = () => {
         </div>
         <div className="btn">
           <button>Valider</button>
-          <button onClick={()=>setCalendarOpacity(0)} onMouseEnter={()=>setCalendarOpacity(0.5)} onMouseLeave={()=>calendarOpacity === 0 ? setCalendarOpacity(calendarOpacity) : setCalendarOpacity(1)}>Fermer</button>
+          <button
+            onClick={() => {
+              setCalendarOpacity(0);
+              setIsActive(false);
+            }}
+            onMouseEnter={() => setCalendarOpacity(0.5)}
+            onMouseLeave={() =>
+              calendarOpacity === 0
+                ? setCalendarOpacity(calendarOpacity)
+                : setCalendarOpacity(1)
+            }
+          >
+            Fermer
+          </button>
         </div>
         <div className="infos-container">
           <h3>Infos</h3>
@@ -425,13 +436,17 @@ const Calendar = () => {
           </div>
           <div className="choice-parameter">
             <ul className="choice-year">
-              {
-                yearChoice.map((year)=>(
-                  <li onClick={()=>setMonthYearIndex([monthYearIndex[0] , year])} className={isYear(year)} key={year}>{year}</li>
-                ))
-              }
+              {yearChoice.map((year) => (
+                <li
+                  onClick={() => setMonthYearIndex([monthYearIndex[0], year])}
+                  className={isYear(year)}
+                  key={year}
+                >
+                  {year}
+                </li>
+              ))}
             </ul>
-            
+
             <div className="choice-personn">
               <input
                 type="range"

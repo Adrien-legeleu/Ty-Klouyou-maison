@@ -8,7 +8,7 @@
   top: 53%;
   left: 50%;
   transform: translate(-50% , -50%);
-  transition:  .25s ease-out;
+  transition:  .35s ease-out;
   @include AlignChild(row, center, center);
 
   .calendar {

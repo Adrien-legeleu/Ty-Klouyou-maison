@@ -6,6 +6,9 @@ import Calendar from "../components/Calendar";
 
 const Contact = () => {
   const [isVisibleStay, setIsVisibleStay] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [calendarOpacity, setCalendarOpacity] = useState(1);
+
   const stay = useRef();
 
   useEffect(() => {
@@ -50,7 +53,7 @@ const Contact = () => {
             <div className="stay-container">
               <p
                 className={`text-visible ${isVisibleStay ? "croix" : ""}`}
-                onClick={() => setIsVisibleStay(!isVisibleStay)}
+                onClick={()=>setIsVisibleStay(!isVisibleStay)}
               >
                 Informations sur votre séjour
               </p>
@@ -61,7 +64,11 @@ const Contact = () => {
                   <span>28/01/24</span>
                 </div>
                 <div className="btn-date">
-                  <button>Changer date</button>
+                  <button onClick={(e)=>{
+                    e.preventDefault()
+                    setIsActive(true)
+                    setCalendarOpacity(1)
+                  }}>Changer date</button>
                 </div>
               </div>
             </div>
@@ -98,7 +105,7 @@ const Contact = () => {
         </div>
       </div>
       <span className="signature">designed by WebLuxury</span>
-      <Calendar/>
+      <Calendar isActive={isActive} setIsActive={setIsActive}  calendarOpacity={calendarOpacity} setCalendarOpacity={setCalendarOpacity}/>
       <Footer className="footer-container" />
     </div>
   );
