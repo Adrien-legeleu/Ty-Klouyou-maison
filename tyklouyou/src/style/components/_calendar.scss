@@ -7,7 +7,8 @@
   height: 75vh;
   top: 53%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50% , -50%);
+  transition:  .25s ease-out;
   @include AlignChild(row, center, center);
 
   .calendar {
@@ -102,7 +103,20 @@
     }
     .btn {
       grid-area: d;
-      @include AlignChild(row, center, center);
+      @include AlignChild(row, center, space-around);
+      button{
+        width: 35%;
+        background: #4547b6;
+        &:last-child{
+          background: rgba(255, 0, 0, 0.6);
+          &:hover{
+            background: rgba(255, 0, 0, 0.3);
+          }
+          &:hover + .calendar-container{
+            background: #000;
+          }
+        }
+      }
     }
     .infos-container {
       grid-area: c;
@@ -118,28 +132,33 @@
         margin-bottom: 15px;
       }
       .info-date {
-        color: white;
+        color: black;
         padding: 10px;
         font-family: $fontR;
-        background: $green1;
+        background: whitesmoke;
         border-radius: 15px;
         text-align: center;
       }
       .choice-parameter {
         padding: 10px;
         font-family: $fontR;
-        background: $green1;
+        background: whitesmoke;
         border-radius: 15px;
         text-align: center;
         margin: 35px 0 0;
 
         .choice-year {
-          color: rgb(199, 199, 199);
+          color: black;
           opacity: 0.7;
           @include AlignChild(column , center,center);
           li {
             cursor: pointer;
             transition: 0.5s ease-out;
+          }
+          .current-year{
+            color: black;
+            transform: scale(1.5);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.438);
           }
         }
 
