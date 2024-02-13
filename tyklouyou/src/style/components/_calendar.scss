@@ -8,6 +8,7 @@
   top: 53%;
   left: 50%;
   transform: translate(-50% , -50%);
+  z-index: 50;
   transition:  .35s ease-out;
   @include AlignChild(row, center, center);
 

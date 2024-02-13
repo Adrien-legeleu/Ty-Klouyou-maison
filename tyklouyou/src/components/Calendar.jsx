@@ -346,7 +346,6 @@ const Calendar = ({ isActive, setIsActive , setCalendarOpacity , calendarOpacity
             ? "translate(-50% , -50%) scale(0)"
             : "translate(-50% , -50%)",
         visibility: isActive ? "visible" : "hidden",
-        backdropFilter: "blur(5px)"
       }}
     >
       <div className="calendar-container-blur"></div>
