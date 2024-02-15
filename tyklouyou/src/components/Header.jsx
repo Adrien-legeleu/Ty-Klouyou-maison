@@ -46,17 +46,18 @@ const Header = ({ toggleDate }) => {
       <div
         className="header"
         ref={header}
-        style={{ color: navigationShow || toggleDate ? "white" : "rgb(119, 119, 119)" }}
+        style={{ color: navigationShow || toggleDate ? "white" : "" }}
         onMouseOver={() => setIsNotHoverHeader(false)}
       >
         <div className="date">
           <img
             className="icon"
-            src={`${
+            src={"./assets/img/soleil.svg"}
+            style={{ filter: `${
               navigationShow || toggleDate
-                ? "./assets/img/soleil.svg"
-                : "../assets/img/icons8-soleil-100.png"
-            }`}
+                ? "invert(0)"
+                : ""
+            }`}}
             alt="sun/moon tyklouyou"
           />
           <span>
@@ -69,7 +70,7 @@ const Header = ({ toggleDate }) => {
             style={{
               display: titleResponsive ? "none" : "flex",
               opacity: isNotHoverHeader ? "0" : "1",
-              color: navigationShow ? "white" : "rgb(119, 119, 119)",
+              color: navigationShow ? "white" : "",
             }}
           >
             <motion.span drag dragConstraints={header} dragSnapToOrigin="true">
@@ -81,8 +82,8 @@ const Header = ({ toggleDate }) => {
           <button
             onClick={() => setNavigationShow(!navigationShow)}
             style={{
-              color: navigationShow ? "white" : "gray",
-              border: navigationShow ? "1px solid white" : "1px solid rgb(119, 119, 119)",
+              color: navigationShow ? "white" : "",
+              border: navigationShow ? "1.5px solid white" : "",
             }}
           >
             Menu
@@ -92,7 +93,7 @@ const Header = ({ toggleDate }) => {
                 style={{
                   transform: navigationShow ? "rotate(130deg)" : "rotate(0)",
                   top: navigationShow ? "50%" : "0",
-                  backgroundColor: navigationShow ? "white" : "rgb(119, 119, 119)",
+                  backgroundColor: navigationShow ? "white" : "",
                 }}
               ></div>
               <div
@@ -100,7 +101,7 @@ const Header = ({ toggleDate }) => {
                 style={{
                   transform: navigationShow ? "rotate(-130deg)" : "rotate(0)",
                   top: navigationShow ? "50%" : "100%",
-                  backgroundColor: navigationShow ? "white" : "rgb(119, 119, 119)",
+                  backgroundColor: navigationShow ? "white" : "",
                 }}
               ></div>
             </div>

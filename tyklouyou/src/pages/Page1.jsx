@@ -14,27 +14,6 @@ const Page1 = () => {
     "Une Incroyable maison !"
   ];
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     let top = Math.random() * 50 + 15;
-  //     const randomValue = Math.random() * 80;
-  //     let left = (randomValue > 20 && randomValue < 60) ? (Math.random() >0.4 ? 10 : 75) : randomValue + 0;
-  //     let rotate = (Math.random() * 30) * (Math.random() > 0.4 ? 1 : -1);
-
-  //     setPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-  //     setCurrentPhrase(phrases[phraseIndex]);
-
-  //     spanRef.current.style.top = top + "%";
-  //     spanRef.current.style.left = left + "%";
-  //     spanRef.current.style.transform = `rotate(${rotate}deg)`;
-  //     spanRef.current.classList.add("span-animation");
-
-  //     setTimeout(() => {
-  //       spanRef.current.classList.remove("span-animation");
-  //     }, 5100);
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, [phraseIndex]);
 
 
   return (
@@ -42,7 +21,6 @@ const Page1 = () => {
       <div className="page1-container">
         <img src="./assets/img/logoSea.png" alt="" />
         <h1>Ty Klouyou</h1>
-        {/* <span className="span" ref={spanRef}>{currentPhrase}</span> */}
         <a href="#footer">
            by <i>W3bLuxury Design</i><img src="./assets/img/angle-vers-le-haut.png" alt="arrow-down-webLuxury" />
         </a>

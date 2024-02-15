@@ -13,6 +13,7 @@ const Act1 = () => {
   const span1 = useRef(null);
   const span2 = useRef(null);
   const timeBar = useRef(null);
+  const ballRender=useRef(null)
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -22,13 +23,10 @@ const Act1 = () => {
             trigger: imgContent.current,
             pin: imgContent.current,
             scrub: 3,
-            start: "top top",
           },
         })
         .to(img.current, {
-          transform: "rotate(0) scale(1.5)",
-          width: "75%",
-          height: "70%",
+          transform: "rotate(0) scale(1)", borderRadius:"10px"
         })
         .to(
           span1.current,
@@ -41,7 +39,7 @@ const Act1 = () => {
           { x: 800, transform: "scale(4)", opacity: 0 },
           0.01,
           "<"
-        );
+        )
     });
 
     return () => ctx.revert();
@@ -81,7 +79,7 @@ useLayoutEffect(() => {
 
   return (
     <div className="act1">
-      <div className="ball-header"></div>
+      <div className="ball-header" ref={ballRender}></div>
       <Header />
       <div className="img-content" ref={imgContent}>
         <div className="img" ref={img}>

@@ -1,17 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useState } from "react";
 import dataPhtAll from "../data/dataPhtAll";
-import { motion } from "framer-motion";
 import PhtSlider from "../components/PhtSlider";
 
 const Pht2 = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isSliderShow, setIsSliderShow] = useState(false);
-  const [slideAnim, setSlideAnim] = useState(true);
-  const slider = useRef(null);
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
-  }, []);
 
   const showSliderAll = (index) => {
     setSlideIndex(index);
@@ -20,16 +13,11 @@ const Pht2 = () => {
 
   return (
     <div className="slider-photos-container">
-      <motion.div
-        ref={slider}
-        drag
-        dragConstraints={{ right: 0, left: -width, top: 0, bottom: 0 }}
+      <div
         className="slider-photos"
-        onMouseEnter={()=>setSlideAnim(false)}
-        onMouseLeave={()=>setSlideAnim(true)}
         
       >
-        <div className="slide" style={{animation: slideAnim && !isSliderShow ? "scroll 20s linear infinite" : "none"}}>
+        <div className="slide" style={{animation:"scroll 20s linear infinite"}}>
           {dataPhtAll.map((pht, index) => (
             <div
               className="photo"
@@ -49,11 +37,11 @@ const Pht2 = () => {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
       <div className="text-infos">
         <h3>
           <img src="./assets/img/cliquez-sur.png" alt="click" />
-          slide & click</h3>
+          click</h3>
       </div>
       <PhtSlider
         setSlideIndex={setSlideIndex}

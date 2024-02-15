@@ -54,32 +54,5 @@
                 transform: rotate(-90deg) translateX(-1px);
             }
         }
-
-        .span{
-            position: absolute;
-            font-size: 2rem;
-            font-weight: 900;
-            color: $white;
-            filter: opacity(0.8);
-            font-family: $fontR;
-            opacity: 0;
-            @media screen and (max-width:900px) {
-                display: none;
-            }
-        }
-        .span-animation{
-            animation: spanShow 4s ease-in-out forwards;
-        }
-        @keyframes spanShow {
-            0%{
-                opacity: 0;
-            }
-            70%{
-                opacity: 1;
-            }
-            100%{
-                opacity: 0;
-            }
-        }
     }
 }

@@ -3,11 +3,43 @@
   position: relative;
   overflow-x: hidden;
   background: $blue;
+
+  .header {
+    
+    .date{
+      color: rgb(0, 0, 0);
+      .icon{
+          filter: invert(100%);
+        }
+      }
+  
+      .title {
+        color: rgb(0, 0, 0);
+      }
+  
+      .menu {
+        button {
+          color: rgb(0, 0, 0);
+          border: 1.5px solid;
+        }
+        .icon-menu{
+          .icon1 {
+            background-color: rgb(0, 0, 0);
+          }
+    
+          .icon2 {
+            background-color: rgb(0, 0, 0);
+          }
+        }
+      }
+    }
+
   .ball-header{
     position: absolute;
     top: 0;
     right: 0;
     transform: translate(50% , -50%);
+    transform-origin: top;
     background: rgb(244, 244, 244);
     width: 400px;
     height: 400px;
@@ -31,28 +63,32 @@
         }
     }
   }
-  .img-content {
-    width: 100%;
-    height: 100vh;
-    @include AlignChild(row, center, center);
-    z-index: 1;
-    .img {
-      height: 240px;;
-      width: 350px;
-      transform: rotate(0);
-      @media screen and (max-width:500px) {
-            transform: rotate(320deg);
-            height: 180px;
-            width: 360px;
-          }
-
-      img {
+    .img-content {
+      width: 100%;
+      height: 100vh;
+      @include AlignChild(row, center, center);
+      z-index: 1;
+  
+      .img {
         height: 100%;
         width: 100%;
-        object-fit: cover;
-        border-radius: 15px;
+        transform: scale(0.3) rotate(10deg);
+        border-radius: 80px;
+        overflow: hidden;
+  
+        @media screen and (max-width:500px) {
+          transform: rotate(320deg);
+          height: 100%;
+          width: 100%;
+        }
+  
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
       }
-    }
+    
     .title {
       position: absolute;
       h1 {
