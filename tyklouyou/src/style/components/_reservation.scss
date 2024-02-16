@@ -1,313 +1,69 @@
-.reservation {
-  @include AlignChild(row,center,center);
-  img {
-    width: 40px;
-    @media screen and (max-width: 750px) {
-      width: 30px;
-    }
-    @media screen and (max-width: 650px) {
-        width: 20px;
-      }
+.reservation-container{
+  position: fixed;
+  bottom: 50px;
+  width: 80px;
+  height: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 30px;
+  transition: .5s ease-in-out;
+  &:hover{
+    width: 60vw;
+    border-radius: 80px;
   }
-  .on-footer{
-    animation:isOnFooter 1.25s ease-in-out forwards ;
-    bottom: -300px;
+  &:hover .reservation-is-not-hover{
     opacity: 0;
-  }
-  .not-on-footer{
-    animation:notIsOnFooter 1s ease-in-out forwards ;
-    bottom: 50px;
-    opacity: 1;
+    visibility: hidden;
   }
 
-  .reservation-container {
-    position: fixed;
-    bottom: 50px;
+  .reservation-is-not-hover{
+    position: absolute;
+    transition: .25s ease-in-out;
+    top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid white;
+
+     &::before{
+      position: absolute;
+      content: "";
+      bottom: 50%;
+      left: 100%;
+      transform: translate(0 , 100%) rotate(-45deg);
+      width: 2px;
+      height: 10px;
+      border-radius: 30px;
+      background: white;
+    }
+  }
+  .reservation{
+    visibility: visible;
     display: grid;
-    max-width: 1300px;
-    grid-template-columns: 1fr 1fr;
-    width: 80vw;
-    padding: 15px 0px;
+    position: relative;
+    grid-template-columns: 60% 40%;
     align-items: center;
     justify-content: center;
-    border-radius: 60px;
-    color: $white;
-    font-weight: 900;
-    font-family: $fontR;
-    z-index: 10;
-    @media screen and (max-width: 1000px) {
-      grid-template-columns: 1fr;
-      width: 50vw;
+    gap: 50px;
+    height: 100%;
+    &::before{
+      position: absolute;
+      content: "";
+      height: 65%;
+      width: 2px;
+      background: white;
+      top: 50%;
+      left: 60%;
+      transform: translate(-50%, -50%);
     }
-    @media screen and (max-width: 600px) {
-      bottom: 20px;
-      width: 70vw;
-    }
-
-    .date-text {
-      @include AlignChild(row, center, space-around);
-      margin-left: 20px;
-      border-right: 1px solid rgb(187, 182, 182);
-      @media screen and (max-width: 1000px) {
-        border-right: none;
-      }
-      @media screen and (max-width: 750px) {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-        margin-left: 5px;
-      }
-      @media screen and (max-width: 700px) {
-        font-size: 0.75rem;
-        letter-spacing: 1px;
-        margin-left: 5px;
-      }
-      @media screen and (max-width: 700px) {
-        font-size: 0.65rem;
-        letter-spacing: 1px;
-        margin-left: 5px;
-      }
-      
-
-      .angle-true {
-        background: $green2;
-        border-radius: 50%;
-        padding: 5px;
-        cursor: pointer;
-        transition: 0.25s ease-in;
-        @media screen and (max-width: 1000px) {
-          height: 30px;
-          width: 30px;
-        }
-
-        &:hover {
-          filter: brightness(120%);
-          transform: translateY(5px) rotate(170deg);
-          @media screen and (max-width: 1000px) {
-            transform: translateY(0) rotate(180deg);
-          }
-        }
-      }
-      .angle-false {
-        background: $green1;
-        border-radius: 50%;
-        padding: 5px;
-        cursor: pointer;
-        transition: 0.25s ease-in;
-        @media screen and (max-width: 1000px) {
-          height: 30px;
-          width: 30px;
-        }
-
-        &:hover {
-          filter: brightness(120%);
-          transform: translateY(-5px) rotate(10deg);
-          @media screen and (max-width: 1000px) {
-            transform: translateY(0) rotate(0);
-          }
-        }
-      }
-      .angle-rotated {
-        transform: rotate(180deg);
-      }
+    img{
+      width: 30px;
     }
 
-    .people-button {
-      display: grid;
-      grid-template-columns: 0.8fr 0.2fr;
-      align-items: center;
-      justify-content: center;
-      @media screen and (max-width: 1000px) {
-        position: fixed;
-        opacity: 0;
-        background-color: $green1;
-        padding: 10px;
-        border-radius: 20px;
-        width: 50%;
-        z-index: -1;
-      }
-      @media screen and (max-width: 700px) {
-        display: flex;
-        flex-direction: column-reverse;
-        gap: 10px;
-        background: transparent;
-      }
-      @media screen and (max-width: 600px) {
-        width: 70%;
-      }
-
-      .people {
-        @include AlignChild(row, center, space-between);
-        border-right: 1px solid gray;
-        @media screen and (max-width: 700px) {
-          border-right: none;
-          border-radius: 15px;
-          padding: 10px;
-        }
-
-        .people-container {
-          @include AlignChild(row, center, center);
-          margin-right: 20px;
-          @media screen and (max-width: 750px) {
-            font-size: 0.9rem;
-          }
-        }
-        .number {
-          @include AlignChild(row, center, center);
-          gap: 10px;
-          margin-right: 30px;
-          @media screen and (max-width: 1050px) {
-            margin-right: 10px;
-          }
-          span {
-            border-radius: 50%;
-            height: 40px;
-            width: 40px;
-            @include AlignChild(row, center, center);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: 0.25s ease-in;
-            @media screen and (max-width: 1050px) {
-              height: 30px;
-              width: 30px;
-            }
-            @media screen and (max-width: 750px) {
-              font-size: 1.2rem;
-              width: 25px;
-              height: 25px;
-            }
-            &:hover {
-              filter: brightness(120%);
-              transform: scale(0.95);
-            }
-          }
-          input {
-            background: transparent;
-            border: none;
-            width: 20px;
-            outline: none;
-            text-align: left;
-            color: $white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            // Cachez les boutons de contrôle (spinner)
-            &::-webkit-inner-spin-button,
-            &::-webkit-outer-spin-button {
-              -webkit-appearance: none;
-              margin: 0;
-            }
-            @media screen and (max-width: 750px) {
-              font-size: 0.9rem;
-            }
-          }
-        }
-      }
-      .reserve {
-        margin-left: 30px;
-        @media screen and (max-width: 1050px) {
-          margin-left: 10px;
-        }
-        button{
-          @media screen and (max-width: 700px) {
-            background: red;
-          }
-        }
-      }
-    }
-    .people-button-open-responsive1 {
-      opacity: 1;
-      transform: translate(0, -130%);
-      animation: peopleButtonResponsiveOpen1 1s forwards;
-    }
-    .people-button-close-responsive1 {
-      opacity: 0;
-      transform: translate(-50%, 0);
-      animation: peopleButtonResponsiveClose1 1s forwards;
-    }
-
-    @keyframes peopleButtonResponsiveOpen1 {
-      0% {
-        opacity: 0.4;
-        transform: translate(0, 0);
-      }
-      100% {
-        opacity: 1;
-        transform: translate(0, -130%);
-      }
-    }
-    @keyframes peopleButtonResponsiveClose1 {
-      0% {
-        opacity: 1;
-        transform: translate(0, -130%);
-      }
-      50% {
-        opacity: 0;
-        transform: translate(0, 0);
-      }
-      100% {
-        display: none;
-      }
-    }
-  }
-
-  .people-button-open-responsive2 {
-    opacity: 1;
-    transform: translate(0, -80%);
-    animation: peopleButtonResponsiveOpen2 1s forwards;
-  }
-
-  .people-button-close-responsive2 {
-    opacity: 0;
-    transform: translate(-50%, 0);
-    animation: peopleButtonResponsiveClose2 1s forwards;
-  }
-
-  @keyframes peopleButtonResponsiveOpen2 {
-    0% {
-      opacity: 0.4;
-      transform: translate(0, 0);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translate(0, -80%);
-    }
-  }
-
-  @keyframes peopleButtonResponsiveClose2 {
-    0% {
-      opacity: 1;
-      transform: translate(0, -80%);
-    }
-
-    50% {
-      opacity: 0;
-      transform: translate(0, 0);
-    }
-
-    100% {
-      display: none;
+    .date-text{
+      @include AlignChild(row,center,space-around)
     }
   }
 }
-@keyframes isOnFooter {
-  0%{
-    bottom: 50px;
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-    bottom: -300px;
-  }
-}
-@keyframes notIsOnFooter {
-  0% {
-    bottom: -300px;
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-    bottom: 50px;
-  }
-}
-

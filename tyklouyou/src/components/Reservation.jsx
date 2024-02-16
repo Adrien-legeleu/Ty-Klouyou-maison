@@ -9,7 +9,6 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
       key: "selection",
     },
   ]);
-  const [inputvalue, setInputvalue] = useState(3);
   const [peopleReservationResponsive1, setPeopleReservationResponsive1] = useState(false);
   const [peopleReservationResponsive2, setPeopleReservationResponsive2] = useState(false);
   const [responsive, setResponsive] = useState(false);
@@ -30,17 +29,6 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
     };
   }, []);
 
-  const upNumber = () => {
-    if (inputvalue < 8) {
-      setInputvalue(inputvalue + 1);
-    }
-  };
-
-  const downNumber = () => {
-    if (inputvalue > 0) {
-      setInputvalue(inputvalue - 1);
-    }
-  };
   const reservationPeopleResponsive=()=>{
     if (window.innerWidth < 1000) {
       setResponsive(true)
@@ -65,15 +53,17 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
   },[toggleDate])
 
   return (
-    <div className="reservation">
       <div
         className={`reservation-container ${isOnFooter ? "on-footer" : "not-on-footer"} `}
         style={{
-          transition: "1s",
           backgroundColor: toggleDate ? "#006D77" : "#003444",
         }}
       >
-        <div
+        <div className="reservation-is-not-hover">
+
+        </div>
+        <div className="reservation">
+          <div
           className="date-text"
           onClick={() => {
             setToggleDate(!toggleDate);
@@ -92,35 +82,7 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
             }`}
           />
         </div>
-        <div className={`${!responsive ? "people-button" : (peopleReservationResponsive1 ? "people-button people-button-open-responsive1" : (peopleReservationResponsive2 ? "people-button people-button-open-responsive2" : (peopleReservationResponsive1 ? "people-button people-button-close-responsive1" : "people-button people-button-close-responsive2" )))}`}>
-          <div className="people" style={{ backgroundColor:peopleReservationResponsive2 ? (toggleDate ? "#006D77" : "#003444") : ""}}>
-            <div className="people-container">
-              <img src="./assets/img/la-personne.png" alt="personn" />
-              <p>Voyageurs</p>
-            </div>
-            <div className="number">
-              <span
-                onClick={() => downNumber()}
-                style={{
-                  transition: "1s",
-                  backgroundColor: toggleDate ? "#003444" : "#006D77",
-                }}
-              >
-                -
-              </span>
-              <input type="number" value={"0" + inputvalue} />
-              <span
-                onClick={() => upNumber()}
-                style={{
-                  transition: "1s",
-                  backgroundColor: toggleDate ? "#003444" : "#006D77",
-                }}
-              >
-                +
-              </span>
-            </div>
-          </div>
-          <div className="reserve">
+          <div className={`${!responsive ? "reserve" : (peopleReservationResponsive1 ? "reserve reserve-open-responsive1" : (peopleReservationResponsive2 ? "reserve reserve-open-responsive2" : (peopleReservationResponsive1 ? "reserve reserve-close-responsive1" : "reserve reserve-close-responsive2" )))}`}>
             <button
               style={{
                 transition: "1s",
@@ -131,8 +93,7 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
             </button>
           </div>
         </div>
-      </div>
-    </div>
+        </div>
   );
 };
 
