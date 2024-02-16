@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 
-const Reservation = ({ setToggleDate, toggleDate }) => {
+const Reservation = () => {
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -9,86 +9,52 @@ const Reservation = ({ setToggleDate, toggleDate }) => {
       key: "selection",
     },
   ]);
-  const [peopleReservationResponsive1, setPeopleReservationResponsive1] = useState(false);
-  const [peopleReservationResponsive2, setPeopleReservationResponsive2] = useState(false);
-  const [responsive, setResponsive] = useState(false);
    const [isOnFooter, setIsOnFooter] = useState(false);
+   const [isNotLandingPage, setIsNotLandingPage] = useState(false);
 
-
-  const handleScroll = () => {
+  const handleScrollFooter = () => {
     const footer = document.getElementById("footer");
     const footerRect = footer.getBoundingClientRect();
-    setIsOnFooter(footerRect.top <= window.innerHeight && footerRect.bottom >= 0);
+    setIsOnFooter(footerRect.top <= window.innerHeight-30 && footerRect.bottom >= 0);
+  };
+    const handleScrollLanding = () => {
+    const page2 = document.getElementById("page2");
+    const page2Rect = page2.getBoundingClientRect();
+    setIsNotLandingPage(page2Rect.top <= window.innerHeight  ? true : false);
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollFooter);
+    window.addEventListener("scroll", handleScrollLanding);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollFooter);
+      window.removeEventListener("scroll", handleScrollLanding);
     };
   }, []);
 
-  const reservationPeopleResponsive=()=>{
-    if (window.innerWidth < 1000) {
-      setResponsive(true)
-      if (window.innerWidth > 700) {
-        setPeopleReservationResponsive1(true)
-      }else{
-        setPeopleReservationResponsive2(true)
-      }
-    }else{
-      setPeopleReservationResponsive1(false)
-      setPeopleReservationResponsive2(false)
-      setResponsive(false)
-    }
-  }
-  useEffect(()=>{
-    if (toggleDate) {
-        reservationPeopleResponsive()
-    }else{
-      setPeopleReservationResponsive1(false)
-      setPeopleReservationResponsive2(false)
-    }
-  },[toggleDate])
-
   return (
       <div
-        className={`reservation-container ${isOnFooter ? "on-footer" : "not-on-footer"} `}
-        style={{
-          backgroundColor: toggleDate ? "#006D77" : "#003444",
-        }}
+        className={`reservation-container ${isOnFooter ? "on-footer" : "not-on-footer"} `} style={{backgroundColor: !isNotLandingPage ? "#141342" : "white"}}
       >
         <div className="reservation-is-not-hover">
 
         </div>
         <div className="reservation">
           <div
-          className="date-text"
-          onClick={() => {
-            setToggleDate(!toggleDate);
-          }}
-        >
-          <img src="./assets/img/time-and-calendar.png" alt="calendar" />
-          <span>{`du ${format(date[0].startDate, "MM/dd/yyyy")} au ${format(
-            date[0].endDate,
-            "MM/dd/yyyy"
-          )}`}</span>
-          <img
-            src="./assets/img/fleche-vers-le-bas.png"
-            alt="angle-down"
-            className={`${
-              toggleDate ? "angle-rotated angle-true" : "angle-false"
-            }`}
-          />
+          className="date">
+            <div className="date-text">
+              <img src="./assets/img/time-and-calendar.png" alt="calendar" />
+            <p className="date-text" style={{color: isNotLandingPage ? "black" : "white"}} >{`du ${format(date[0].startDate, "MM/dd/yyyy")} au ${format(
+              date[0].endDate,
+              "MM/dd/yyyy"
+              )}`}</p>
+          </div>          
+          <p className="personn-text"  style={{color: isNotLandingPage ? "black" : "white"}}>8 personnes</p>
+          <button>modifier</button>
         </div>
-          <div className={`${!responsive ? "reserve" : (peopleReservationResponsive1 ? "reserve reserve-open-responsive1" : (peopleReservationResponsive2 ? "reserve reserve-open-responsive2" : (peopleReservationResponsive1 ? "reserve reserve-close-responsive1" : "reserve reserve-close-responsive2" )))}`}>
-            <button
-              style={{
-                transition: "1s",
-                backgroundColor: responsive ? "red" :  (toggleDate ? "#003444" : "#006D77"),
-              }}
-            >
+          <div className="reserve">
+            <button style={{backgroundColor: isNotLandingPage ? "#141342" : "white" , color: !isNotLandingPage ? "#141342" : "white"}}>
               Réserver
             </button>
           </div>

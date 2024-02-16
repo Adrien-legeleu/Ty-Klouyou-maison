@@ -1,9 +1,6 @@
-import React, {  useState, useRef, useEffect } from "react";
+import React from "react";
 
 const Page1 = () => {
-  const spanRef = useRef();
-  const [phraseIndex , setPhraseIndex] = useState(0)
-  const [currentPhrase , setCurrentPhrase] = useState("Une magnifique aventure !")
 
   const phrases = [
     "En bord de mer !",

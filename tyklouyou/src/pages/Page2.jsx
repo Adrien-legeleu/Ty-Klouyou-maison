@@ -2,7 +2,7 @@ import React from "react";
 
 const Page2 = () => {
   return (
-    <div className="page2-container">
+    <div className="page2-container" id="page2">
       <div className="page2">
       <div className="title">
         <h2>Vivez votre expérience Ty Klouyou</h2>
