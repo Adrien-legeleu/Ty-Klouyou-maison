@@ -30,15 +30,11 @@ const Act1 = () => {
         })
         .to(
           span1.current,
-          { x: -800, transform: "scale(4)", opacity: 0 },
-          0.01,
-          "<"
+          { x: -800, transform: "scale(4)", opacity: 0 }
         )
         .to(
           span2.current,
-          { x: 800, transform: "scale(4)", opacity: 0 },
-          0.01,
-          "<"
+          { x: 800, transform: "scale(4)", opacity: 0 } , "<"
         )
     });
 
