@@ -22,11 +22,11 @@ const Act1 = () => {
           scrollTrigger: {
             trigger: imgContent.current,
             pin: imgContent.current,
-            scrub: 3,
+            scrub:3,
           },
         })
         .to(img.current, {
-          transform: "rotate(0) scale(1)", borderRadius:"10px"
+          transform: "rotate(0) scale(1)", borderRadius:"5px"
         })
         .to(
           span1.current,
@@ -90,7 +90,7 @@ useLayoutEffect(() => {
             />
           ) : (
             <img
-              src="./assets/img/vanne/De Vannes à Locmariaquer et Port-Crouesty, week-end de charme dans le Morbihan.jpg"
+              src="./assets/img/img-8k/fd-paysage (2).jpeg"
               alt=""
             />
           )}

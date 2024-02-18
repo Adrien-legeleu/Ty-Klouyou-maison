@@ -18,33 +18,23 @@
   }
   &:hover .reservation{
     visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .reservation-is-not-hover{
     position: absolute;
     transition: .25s ease-in-out;
+    left: 50%;
     top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid white;
-
-     &::before{
-      position: absolute;
-      content: "";
-      bottom: 50%;
-      left: 100%;
-      transform: translate(0 , 100%) rotate(-45deg);
-      width: 2px;
-      height: 10px;
-      border-radius: 30px;
-      background: white;
+    transform: translate(-50% , -50%);
+    img{
+      width: 40px;
     }
   }
   .reservation{
     visibility: hidden;
+    opacity: 0;
     display: grid;
     position: relative;
     grid-template-columns: 80% 20%;
@@ -52,8 +42,10 @@
     justify-content: center;
     gap: 5px;
     height: 100%;
-    transition: .25s  ease-in-out ;
-    
+    transform: translateY(100%);
+
+    transition: .25s ease-in-out;
+
     &::before{
       position: absolute;
       content: "";
