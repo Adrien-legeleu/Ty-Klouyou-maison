@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
 
 const Reservation = () => {
   const [date, setDate] = useState([
@@ -35,13 +37,48 @@ const Reservation = () => {
     };
   }, []);
 
+   const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) {
+      gsap.to(".reservation-container", {
+        borderRadius: "10px",
+        width: "60%",
+        duration: 0.3
+      });
+
+      gsap.to(".reservation", {
+        visibility: "visible",
+        opacity: 1,
+        duration: 0.3,
+      });
+    } else {
+      gsap.to(".reservation-container", {
+        borderRadius: "30px",
+        width: "80px",
+        duration: 0.3
+      });
+
+      gsap.to(".reservation", {
+        visibility: "hidden",
+        opacity: 0,
+        duration: 0.3
+      });
+    }
+  }, [isHovered]);
+
+    
+
   return (
     <div
       className={`reservation-container ${
         isOnFooter ? "on-footer" : "not-on-footer"
       } `}
       style={{ backgroundColor: !isNotLandingPage ? "#141342" : "white" }}
+      onMouseEnter={()=>setIsHovered(!isHovered)}
+      onMouseLeave={()=>setIsHovered(!isHovered)}
     >
+    
       <div className="reservation-is-not-hover">
         {!isNotLandingPage ? (
           <img src="./assets/img/icon-search (1).png" alt="" />

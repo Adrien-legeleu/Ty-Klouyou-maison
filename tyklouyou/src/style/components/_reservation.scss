@@ -6,20 +6,10 @@
   left: 50%;
   transform: translateX(-50%);
   border-radius: 30px;
-  transition: .5s ease-in-out;
   z-index: 10;
-  &:hover{
-    width: 60vw;
-    border-radius: 80px;
-  }
   &:hover .reservation-is-not-hover{
     opacity: 0;
     visibility: hidden;
-  }
-  &:hover .reservation{
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .reservation-is-not-hover{
@@ -42,7 +32,6 @@
     justify-content: center;
     gap: 5px;
     height: 100%;
-    transform: translateY(100%);
 
     transition: .25s ease-in-out;
 
