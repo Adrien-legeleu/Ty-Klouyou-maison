@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import dataPht from "../data/dataPht";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
 import Pht2 from "./Pht2";
 import Pht3 from "./Pht3";
 import Footer from "../components/Footer";
@@ -9,6 +10,28 @@ import Header from "../components/Header";
 
 
 const Photos = () => {
+
+  const imageAll = useRef()
+
+
+  useGSAP(
+   ()=>{
+   const images=gsap.utils.toArray(".image")
+    images.forEach((image)=>{
+      gsap.to(image , {
+        y:-150,
+        scrollTrigger:{
+          trigger: image,
+          start:"-30% top",
+          markers: true,
+          scrub: 1,
+        }
+      })
+    })
+  }
+    
+    
+  )
 
 
   return (
@@ -18,7 +41,7 @@ const Photos = () => {
         <div className="title">
           <h1>Photos</h1>
         </div>
-        <div className="images">
+        <div className="images" ref={imageAll}>
           {dataPht.map((pht) => (
             <div className="image" key={pht.id} >
               <img src={pht.src} alt="photos ty klouyou" />

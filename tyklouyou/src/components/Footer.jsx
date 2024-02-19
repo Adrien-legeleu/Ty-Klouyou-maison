@@ -10,7 +10,7 @@ const Footer = () => {
       <img src={isSun ? "./assets/img/icons8-sun.svg" : "./assets/img/icons8-symbole-de-la-lune-60.png"} alt="sun-moon-tyKlouyou" />
       </div>
       <div className="logo-container" style={{color: isSun ? "black" : "white" , boxShadow:isSun ? "inset 0 0 10px rgba(0, 0, 0, 0.151)" : " 0 0 15px rgba(255, 255, 255, 0.25)"}}>
-      <h3>Designed by <a href="#" style={{color: isSun ? "black" : "white"}}>W3bLuxury</a></h3>
+      <h3>Designed by <a href="#" style={{color: isSun ? "black" : "white"}}>GGREGERB</a></h3>
       <p>création de site web design</p>
       <a href="#" style={{color: isSun ? "black" : "white"}}>en savoir plus</a>
       </div>
