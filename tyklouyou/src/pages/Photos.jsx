@@ -12,6 +12,7 @@ import Header from "../components/Header";
 const Photos = () => {
 
   const imageAll = useRef()
+  const title=useRef()
 
 
   useGSAP(
@@ -23,15 +24,28 @@ const Photos = () => {
         scrollTrigger:{
           trigger: image,
           start:"-30% top",
-          markers: true,
           scrub: 1,
         }
       })
+      
     })
   }
     
-    
   )
+useGSAP(
+   ()=>{
+     const title = document.querySelector(".title-photos");
+     gsap.to(".title-photos" , {
+       x: "-100%",
+       scrollTrigger:{
+         trigger: title,
+         start:"top top",
+         scrub: 1,
+       }
+     });
+   }
+)
+
 
 
   return (
@@ -39,7 +53,7 @@ const Photos = () => {
       <Header />
       <div className="photos-accueil" >
         <div className="title">
-          <h1>Photos</h1>
+          <h1 ref={title} className="title-photos">Photos</h1>
         </div>
         <div className="images" ref={imageAll}>
           {dataPht.map((pht) => (
