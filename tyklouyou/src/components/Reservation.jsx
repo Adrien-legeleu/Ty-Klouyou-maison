@@ -42,28 +42,27 @@ const Reservation = () => {
   useEffect(() => {
     if (isHovered) {
       gsap.to(".reservation-container", {
-        borderRadius: "10px",
-        width: "60%",
-        duration: 0.3
-      });
+      borderRadius: "80px",
+      width: "60%",
+      onComplete: () => {
+        gsap.to(".reservation", {
+          visibility: "visible",
+          opacity: 1,
+        });
+      }
+    });
 
-      gsap.to(".reservation", {
-        visibility: "visible",
-        opacity: 1,
-        duration: 0.3,
-      });
     } else {
-      gsap.to(".reservation-container", {
-        borderRadius: "30px",
-        width: "80px",
-        duration: 0.3
-      });
-
-      gsap.to(".reservation", {
-        visibility: "hidden",
-        opacity: 0,
-        duration: 0.3
-      });
+      gsap.to(".reservation" , {
+        visibility:"hidden", 
+        opacity:1,
+        onComplete:()=>{
+          gsap.to(".reservation-container", {
+            borderRadius:"30px",
+            width:"80px",
+          })
+        }
+      })
     }
   }, [isHovered]);
 
