@@ -79,6 +79,9 @@ useLayoutEffect(() => {
       <Header />
       <div className="img-content" ref={imgContent}>
         <div className="img" ref={img}>
+          <div className="bottom-arrow">
+            <img src="./assets/img/angle-vers-le-haut.png" alt="bottom-arrow" />
+          </div>
           {window.innerWidth - window.innerHeight < 250 ? (
             <img
               src="./assets/img/vanne/10 Best Places In The North Of France To Visit.jpg"

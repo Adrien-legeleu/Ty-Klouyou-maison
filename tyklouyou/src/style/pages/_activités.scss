@@ -72,6 +72,7 @@
       .img {
         height: 100%;
         width: 100%;
+        position: relative;
         transform: scale(0.3) rotate(10deg);
         border-radius: 50px;
         overflow: hidden;
@@ -81,6 +82,14 @@
           transform: rotate(320deg);
           height: 100%;
           width: 100%;
+        }
+
+        .bottom-arrow{
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 200px;
         }
   
         img {
