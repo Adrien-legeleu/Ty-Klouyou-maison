@@ -89,7 +89,20 @@
           bottom: 10px;
           left: 50%;
           transform: translateX(-50%);
-          width: 200px;
+          opacity: 0;
+          @include AlignChild(column, center,center);
+
+          h2{
+            font-size: 4rem;
+            text-transform: capitalize;
+            font-family: $fontTR;
+            text-align: center;
+            color: white;
+            letter-spacing: 3px;
+          }
+          img{
+            width: 200px;
+          }
         }
   
         img {

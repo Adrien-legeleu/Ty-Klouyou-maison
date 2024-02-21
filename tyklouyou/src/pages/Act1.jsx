@@ -36,6 +36,9 @@ const Act1 = () => {
           span2.current,
           { x: 800, transform: "scale(4)", opacity: 0 } ,0.01 
         )
+        .to(".bottom-arrow", {
+          opacity:1
+        }, 0.2)
     });
 
     return () => ctx.revert();
@@ -80,6 +83,7 @@ useLayoutEffect(() => {
       <div className="img-content" ref={imgContent}>
         <div className="img" ref={img}>
           <div className="bottom-arrow">
+            <h2>Découvres nos activités</h2>
             <img src="./assets/img/angle-vers-le-haut.png" alt="bottom-arrow" />
           </div>
           {window.innerWidth - window.innerHeight < 250 ? (
