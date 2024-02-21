@@ -13,7 +13,7 @@ const Act1 = () => {
   const span1 = useRef(null);
   const span2 = useRef(null);
   const timeBar = useRef(null);
-  const ballRender=useRef(null)
+  const ballRender = useRef(null);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -22,23 +22,23 @@ const Act1 = () => {
           scrollTrigger: {
             trigger: imgContent.current,
             pin: imgContent.current,
-            scrub:3,
+            scrub: 3,
           },
         })
         .to(img.current, {
-          transform: "rotate(0) scale(1)", borderRadius:"5px"
+          transform: "rotate(0) scale(1)",
+          borderRadius: "5px",
         })
+        .to(span1.current, { x: -800, transform: "scale(4)", opacity: 0 }, 0.01)
+        .to(span2.current, { x: 800, transform: "scale(4)", opacity: 0 }, 0.01)
         .to(
-          span1.current,
-          { x: -800, transform: "scale(4)", opacity: 0 } , 0.01
-        )
-        .to(
-          span2.current,
-          { x: 800, transform: "scale(4)", opacity: 0 } ,0.01 
-        )
-        .to(".bottom-arrow", {
-          opacity:1
-        }, 0.2)
+          ".bottom-arrow",
+          {
+            opacity: 1,
+            transform:"translateY(0deg)"
+          },
+          0.35
+        );
     });
 
     return () => ctx.revert();
@@ -47,29 +47,31 @@ const Act1 = () => {
   const slides = useRef(null);
   const slide_container = useRef(null);
 
-useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (slides.current && slide_container.current && timeBar.current) {
       const slidesWidth = slide_container.current.offsetWidth;
       const amountToScroll = slidesWidth - window.innerWidth;
 
       let ctx = gsap.context(() => {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: slides.current,
-            pin: slides.current,
-            scrub: 1,
-          },
-        })
-        .to(slide_container.current, { x: -amountToScroll });
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: slides.current,
+              pin: slides.current,
+              scrub: 1,
+            },
+          })
+          .to(slide_container.current, { x: -amountToScroll });
 
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: slides.current,
-            start: 'top top',
-            scrub: 1,
-          },
-        })
-        .to(timeBar.current, { width: '60%' });
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: slides.current,
+              start: "top top",
+              scrub: 1,
+            },
+          })
+          .to(timeBar.current, { width: "60%" });
       });
 
       return () => ctx.revert();
@@ -84,7 +86,13 @@ useLayoutEffect(() => {
         <div className="img" ref={img}>
           <div className="bottom-arrow">
             <h2>Découvres nos activités</h2>
-            <img src="./assets/img/angle-vers-le-haut.png" alt="bottom-arrow" />
+            <div className="arrow">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
           {window.innerWidth - window.innerHeight < 250 ? (
             <img
@@ -92,10 +100,7 @@ useLayoutEffect(() => {
               alt=""
             />
           ) : (
-            <img
-              src="./assets/img/img-8k/fd-paysage (2).jpeg"
-              alt=""
-            />
+            <img src="./assets/img/img-8k/fd-paysage (2).jpeg" alt="" />
           )}
         </div>
         <div className="title">
