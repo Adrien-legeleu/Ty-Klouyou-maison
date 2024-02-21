@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="footer-container" id='footer'>
       <div className='footer' style={{backgroundColor: isSun ? "white" : "black"}}>
       <div className="sun-night" onClick={()=>setIsSun(!isSun)}>
-      <img src={isSun ? "./assets/img/icons8-sun.svg" : "./assets/img/icons8-symbole-de-la-lune-60.png"} alt="sun-moon-tyKlouyou" />
+      <img src={isSun ? "./assets/img/soleil.svg" : "./assets/img/icons8-symbole-de-la-lune-60.png"} alt="sun-moon-tyKlouyou"  style={{ filter: isSun ? "invert(100%)" : ""}}/>
       </div>
       <div className="logo-container" style={{color: isSun ? "black" : "white" , boxShadow:isSun ? "inset 0 0 10px rgba(0, 0, 0, 0.151)" : " 0 0 15px rgba(255, 255, 255, 0.25)"}}>
       <h3>Designed by <a href="#" style={{color: isSun ? "black" : "white"}}>GGREGERB</a></h3>

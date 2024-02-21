@@ -142,10 +142,10 @@
   }
   .link-container {
     display: grid;
-    grid-template-columns: 50% 30% 20%;
+    grid-template-columns: 40% 40% 20%;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
     width: 100%;
     @media screen and (max-width: 1000px) {
       grid-template-columns: 1fr 1fr;
@@ -160,9 +160,8 @@
       gap: 0;
     }
     ul {
-      @include AlignChild(row, center, space-between);
+      @include AlignChild(row, center, space-around);
       transition: 0.5s ease-in;
-      gap: 15px;
       width: 100%;
       li {
         cursor: pointer;

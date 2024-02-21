@@ -5,40 +5,39 @@
   background: $blue;
 
   .header {
-    
-    .date{
+    .date {
       color: rgb(0, 0, 0);
-      .icon{
-          filter: invert(100%);
-        }
-      }
-  
-      .title {
-        color: rgb(0, 0, 0);
-      }
-  
-      .menu {
-        button {
-          color: rgb(0, 0, 0);
-          border: 1.5px solid;
-        }
-        .icon-menu{
-          .icon1 {
-            background-color: rgb(0, 0, 0);
-          }
-    
-          .icon2 {
-            background-color: rgb(0, 0, 0);
-          }
-        }
+      .icon {
+        filter: invert(100%);
       }
     }
 
-  .ball-header{
+    .title {
+      color: rgb(0, 0, 0);
+    }
+
+    .menu {
+      button {
+        color: rgb(0, 0, 0);
+        border: 1.5px solid;
+      }
+      .icon-menu {
+        .icon1 {
+          background-color: rgb(0, 0, 0);
+        }
+
+        .icon2 {
+          background-color: rgb(0, 0, 0);
+        }
+      }
+    }
+  }
+
+  .ball-header {
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(50% , -50%);
+    transform: translate(50%, -50%);
     transform-origin: top;
     background: rgb(244, 244, 244);
     width: 400px;
@@ -46,128 +45,120 @@
     border-radius: 50%;
     animation: ballGrow 25s ease-out infinite;
     transition: 5s ease-in-out;
-    @media screen and (max-width:600) {
-        width: 300px;
-            height: 300px;
+    @media screen and (max-width: 600) {
+      width: 300px;
+      height: 300px;
     }
 
     @keyframes ballGrow {
-        0%{
-            transform: translate(50%, -50%) scale(1);
-        }
-        60%{
-            transform: translate(50%, -50%) scale(1.35);
-        }
-        100%{
-            transform: translate(50%, -50%) scale(1);
-        }
+      0% {
+        transform: translate(50%, -50%) scale(1);
+      }
+      60% {
+        transform: translate(50%, -50%) scale(1.35);
+      }
+      100% {
+        transform: translate(50%, -50%) scale(1);
+      }
     }
   }
-    .img-content {
+  .img-content {
+    width: 100%;
+    height: 100vh;
+    @include AlignChild(row, center, center);
+    z-index: 1;
+
+    .img {
+      height: 100%;
       width: 100%;
-      height: 100vh;
-      @include AlignChild(row, center, center);
-      z-index: 1;
-  
-      .img {
+      position: relative;
+      transform: scale(0.3) rotate(10deg);
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 0 0 500px 0px rgba(255, 255, 255, 0.5);
+
+      @media screen and (max-width: 500px) {
+        transform: rotate(320deg);
         height: 100%;
         width: 100%;
-        position: relative;
-        transform: scale(0.3) rotate(10deg);
-        border-radius: 50px;
-        overflow: hidden;
-        box-shadow: 0 0 500px 0px rgba(255, 255, 255, 0.5);
-  
-        @media screen and (max-width:500px) {
-          transform: rotate(320deg);
-          height: 100%;
-          width: 100%;
+      }
+
+      .bottom-arrow {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50% , -15%);
+        @include AlignChild(column, center, center);
+        padding: 50px;
+
+        h2 {
+          font-size: 4rem;
+          text-transform: capitalize;
+          font-family: $fontTR;
+          text-align: center;
+          color: white;
+          letter-spacing: 3px;
         }
+        .arrow {
+          position: relative;
+          width: 40px;
+          height: 40px;
+          margin: 20px 0;
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border-bottom: 3px solid white;
+            border-right: 3px solid white;
+            transform: rotate(45deg);
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 2px;
+            border-top-right-radius: 2px;
+            opacity: 0;
+            animation: arrowAnim 1s ease-in-out infinite;
+            &:nth-child(1) {
+              top: 40px;
+              animation-delay: 0.8s;
+            }
+            &:nth-child(2) {
+              top: 20px;
+              animation-delay: 0.6s;
+            }
+            &:nth-child(3) {
+              top: 0px;
+              animation-delay: 0.4s;
+            }
+            &:nth-child(4) {
+              top: -20px;
+              animation-delay: 0.2s;
+            }
 
-        .bottom-arrow{
-          position: absolute;
-          bottom: 10px;
-          left: 50%;
-          transform: translateX(-50%);
-          opacity: 0;
-          @include AlignChild(column, center,center);
-          padding: 50px;
-          transform: translateY(-100%);
-
-          h2{
-            font-size: 4rem;
-            text-transform: capitalize;
-            font-family: $fontTR;
-            text-align: center;
-            color: white;
-            letter-spacing: 3px;
-          }
-          .arrow{
-            position: relative;
-            width: 50px;
-            height: 50px;
-            margin-top: 40px;
-            span{
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background: transparent;
-              border-bottom: 3px solid white;
-              border-right: 3px solid white;
-              transform: rotate(45deg);
-              border-bottom-right-radius: 5px;
-              border-bottom-left-radius: 2px;
-              border-top-right-radius: 2px;
-              opacity: 0;
-              animation: arrowAnim 1s ease-in-out  infinite;
-              &:nth-child(1){
-                top: 40px;
-                animation-delay: 0.8s;
+            @keyframes arrowAnim {
+              0% {
+                opacity: 1;
               }
-              &:nth-child(2){
-                top: 20px;
-                
-                animation-delay: 0.6s
+              20% {
+                opacity: 1;
               }
-              &:nth-child(3){
-                top: 0px;
-                
-                animation-delay: 0.4s;
-              }
-              &:nth-child(4){
-                top: -20px;
-                
-                animation-delay: 0.2s;
-              }
-              &:nth-child(5){
-                top: -40px;
-                animation-delay: 0s;
-              }
-
-              @keyframes arrowAnim {
-                0%{
-                  opacity: 1;
-                }
-                20%{
-                  opacity: 1;
-                }
-                100%{
-                  opacity: 0.3;
-                }
+              100% {
+                opacity: 0.3;
               }
             }
           }
         }
-  
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-        }
       }
-    
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
     .title {
       position: absolute;
       h1 {
@@ -178,10 +169,10 @@
         display: flex;
         gap: 10px;
         text-shadow: 0 5px 10px rgb(85, 84, 84);
-        mix-blend-mode:overlay;
-        @media screen and (max-width:500px) {
-            font-size: 5rem;
-            }
+        mix-blend-mode: overlay;
+        @media screen and (max-width: 500px) {
+          font-size: 5rem;
+        }
       }
     }
   }
@@ -194,36 +185,36 @@
     background: white;
   }
 
-    .time-bar{
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 15;
-        background: rgb(61, 60, 60);
-        width: 5px;
-        height: 3px;
-        border-radius: 300px;
-    }
+  .time-bar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 15;
+    background: rgb(61, 60, 60);
+    width: 5px;
+    height: 3px;
+    border-radius: 300px;
+  }
 
-    .control-night {
-        position: absolute;
-        bottom: 40px;
-        left: 60px;
-      display: flex;
-      align-items: end;
-      justify-content: end;
-        height: 40px;
-        width: 40px;
-        z-index: 15;
-        cursor: pointer;
+  .control-night {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    height: 40px;
+    width: 40px;
+    z-index: 15;
+    cursor: pointer;
 
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        transform: translateX(-25px);
-      }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transform: translateX(-25px);
     }
+  }
   .actSlider {
     height: 100%;
     position: relative;
@@ -240,11 +231,11 @@
       grid-template-columns: 45% 55%;
       align-items: center;
       padding: 20px;
-      @media screen and (max-width:900px) {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
+      @media screen and (max-width: 900px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
 
       .text {
         display: flex;
@@ -255,23 +246,23 @@
         margin-left: 20px;
         align-items: center;
         justify-content: center;
-        @media screen and (max-width:900px) {
-            margin-top: 50px;
-            gap: 40px;
-            width: 80%;
-            flex: 1;
+        @media screen and (max-width: 900px) {
+          margin-top: 50px;
+          gap: 40px;
+          width: 80%;
+          flex: 1;
         }
-        @media screen and (max-width:500px) {
-            width: 100%;
+        @media screen and (max-width: 500px) {
+          width: 100%;
         }
         h2 {
           font-size: 2.5rem;
           letter-spacing: 3px;
           font-family: $fontTR;
-          @media screen and (max-width:1000px) {
+          @media screen and (max-width: 1000px) {
             font-size: 2.1rem;
           }
-          @media screen and (max-width:900px) {
+          @media screen and (max-width: 900px) {
             font-size: 2rem;
           }
         }
@@ -279,7 +270,7 @@
           font-family: $fontR;
           font-size: 1.2rem;
           line-height: 35px;
-          @media screen and (max-width:1000px) {
+          @media screen and (max-width: 1000px) {
             font-size: 1rem;
           }
         }
@@ -291,29 +282,29 @@
         height: 100%;
         align-items: center;
         justify-content: center;
-        @media screen and (max-width:900px) {
-            justify-content: center;
-            align-items: baseline;
-            flex: 1;
-            }
+        @media screen and (max-width: 900px) {
+          justify-content: center;
+          align-items: baseline;
+          flex: 1;
+        }
 
         .video {
           width: 550px;
           height: 350px;
           position: relative;
-          @media screen and (max-width:1100px) {
+          @media screen and (max-width: 1100px) {
             width: 450px;
             height: 280px;
           }
-          @media screen and (max-width:1000px) {
+          @media screen and (max-width: 1000px) {
             width: 380px;
             height: 240px;
           }
-          @media screen and (max-width:900px) {
+          @media screen and (max-width: 900px) {
             width: 450px;
             height: 280px;
           }
-          @media screen and (max-width:500px) {
+          @media screen and (max-width: 500px) {
             width: 320px;
             height: 200px;
           }

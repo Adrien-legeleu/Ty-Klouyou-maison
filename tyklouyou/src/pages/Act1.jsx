@@ -35,9 +35,9 @@ const Act1 = () => {
           ".bottom-arrow",
           {
             opacity: 1,
-            transform:"translateY(0deg)"
+            transform: "translate(-50% , 0)"
           },
-          0.35
+          0.3
         );
     });
 
@@ -87,7 +87,6 @@ const Act1 = () => {
           <div className="bottom-arrow">
             <h2>Découvres nos activités</h2>
             <div className="arrow">
-              <span></span>
               <span></span>
               <span></span>
               <span></span>
