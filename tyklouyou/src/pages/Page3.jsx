@@ -1,15 +1,47 @@
 import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { useGSAP } from '@gsap/react';
 
 const Page3 = () => {
+
+    useGSAP(()=>{
+    const images = gsap.utils.toArray(".image-activity")
+    const links = gsap.utils.toArray(".link")
+    images.forEach(img => {
+      gsap.to(
+      img , {
+      y:-100,
+      scrollTrigger:{
+          trigger: img,
+          start:"top bottom",
+          scrub: 2
+        }
+      }
+    )
+    })
+    links.forEach(link => {
+      gsap.to(
+      link , {
+      y:-150,
+      scrollTrigger:{
+          trigger: link,
+          start:"-50% bottom",
+          scrub: 2,
+        }
+      }
+    )
+    });
+  })
+
   return (
     <div className="page3">
       <div className="page3-container">
       <h2>Des activités à couper le souffle !</h2>
       <div className="activities-container">
         <div className="activity">
-          <div className="image">
+          <div className="image-activity">
             <img
               src="./assets/img/ile/houat.jpg"
               alt="ile proche de villa ty klouyou"
@@ -26,7 +58,7 @@ const Page3 = () => {
           </motion.div>
         </div>
         <div className="activity">
-          <div className="image">
+          <div className="image-activity">
             <img
               src="./assets/img/vanne/10 Best Places In The North Of France To Visit.jpg"
               alt="Vannes"
@@ -43,7 +75,7 @@ const Page3 = () => {
           </motion.div>
         </div>
         <div className="activity">
-          <div className="image">
+          <div className="image-activity">
             <img
               src="./assets/img/ile/golfe.jpg"
               alt="golfe du morbihan"

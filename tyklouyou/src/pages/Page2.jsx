@@ -15,7 +15,6 @@ const Page2 = () => {
           trigger: img,
           start:"top bottom",
           scrub: 2,
-          markers:true
         }
       }
     )

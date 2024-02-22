@@ -89,7 +89,7 @@
             position: relative;
             z-index: 1;
 
-            .image{
+            .image-activity{
                 width: 270px;
                 height: 320px;
                 @media  screen and (min-width:1400px) {
@@ -144,7 +144,7 @@
             }
 
             &:nth-child(1){
-                top: -10px;
+                top: 50px;
                 @media screen and (max-width:900px) {
                    top: 0;
                    right: 180px;
@@ -156,7 +156,7 @@
                    right: 80px;
                 }
 
-                .image{
+                .image-activity{
                     transform: rotate(-10deg);
                 }
                 .link{
@@ -165,7 +165,7 @@
                 }
             }
             &:nth-child(2){
-                top: 80px;
+                top: 140px;
                 @media screen and (max-width:900px) {
                    top: -50px;
                    left: 150px;
@@ -179,7 +179,7 @@
                    top: -80px;
                 }
 
-                .image{
+                .image-activity{
                     transform: rotate(-1deg);
                     @media screen and (max-width:900px) {
                         transform: rotate(5deg);
@@ -191,7 +191,7 @@
                 }
             }
             &:nth-child(3){
-                top: 30px;
+                top: 90px;
                 @media screen and (max-width:900px) {
                    top:-100px;
                    right: 130px;
@@ -203,7 +203,7 @@
                    right:80px;
                 }
 
-                .image{
+                .image-activity{
                     transform: rotate(7deg);
                     @media screen and (max-width:900px) {
                         transform: rotate(-3deg);

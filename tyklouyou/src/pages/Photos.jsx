@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import dataPht from "../data/dataPht";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
 import Pht2 from "./Pht2";
 import Pht3 from "./Pht3";
