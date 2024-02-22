@@ -11,7 +11,6 @@ import Header from "../components/Header";
 
 const Photos = () => {
 
-  const imageAll = useRef()
   const title=useRef()
 
 
@@ -55,7 +54,7 @@ useGSAP(
         <div className="title">
           <h1 ref={title} className="title-photos">Photos</h1>
         </div>
-        <div className="images" ref={imageAll}>
+        <div className="images">
           {dataPht.map((pht) => (
             <div className="image" key={pht.id} >
               <img src={pht.src} alt="photos ty klouyou" />
