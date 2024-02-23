@@ -8,13 +8,12 @@ const Act2 = ({ data }) => {
 
   useGSAP(() => {
   gsap.to(".video", {
-    transform:'translate(0)',
+    x:-300,
     scrollTrigger: {
-      trigger: ".video", // Le déclencheur est la vidéo
-      start: "right right", // Commencer l'animation lorsque la droite de la vidéo atteint la droite de la fenêtre
-      end: "+=100%", // Facultatif : vous pouvez spécifier quand terminer l'animation
-      scrub: 2,
-      markers: true // Pour le débogage, retirez-le si vous ne l'utilisez pas
+      trigger: ".video", 
+      start: "10% right", 
+      end: "+=99% ",
+      scrub:1,
     }
   });
 });
