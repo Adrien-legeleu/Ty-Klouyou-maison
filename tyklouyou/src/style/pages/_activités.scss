@@ -88,7 +88,7 @@
         bottom: 10px;
         left: 50%;
         opacity: 0;
-        transform: translate(-50% , -15%);
+        transform: translate(-50%, -15%);
         @include AlignChild(column, center, center);
         padding: 50px;
 
@@ -122,7 +122,7 @@
             animation: arrowAnim 1.3s ease-in-out infinite;
             &:nth-child(1) {
               top: 40px;
-              animation-delay:1.3s;
+              animation-delay: 1.3s;
             }
             &:nth-child(2) {
               top: 20px;
@@ -222,104 +222,157 @@
     flex-direction: row;
     gap: 150px;
     transition: 0.5s ease-out;
-    .slide {
-      width: 100vw;
-      min-width: 100vw;
-      height: 100%;
-      min-height: 100%;
-      display: grid;
-      grid-template-columns: 45% 55%;
-      align-items: center;
-      padding: 20px;
-      @media screen and (max-width: 900px) {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
 
-      .text {
-        display: flex;
-        gap: 80px;
-        flex-direction: column;
-        text-align: center;
-        padding: 0 20px;
-        margin-left: 20px;
-        align-items: center;
-        justify-content: center;
-        @media screen and (max-width: 900px) {
-          margin-top: 50px;
-          gap: 40px;
-          width: 80%;
-          flex: 1;
-        }
-        @media screen and (max-width: 500px) {
-          width: 100%;
-        }
-        h2 {
-          font-size: 2.5rem;
-          letter-spacing: 3px;
-          font-family: $fontTR;
-          @media screen and (max-width: 1000px) {
-            font-size: 2.1rem;
-          }
-          @media screen and (max-width: 900px) {
-            font-size: 2rem;
-          }
-        }
-        p {
-          font-family: $fontR;
-          font-size: 1.2rem;
-          line-height: 35px;
-          @media screen and (max-width: 1000px) {
-            font-size: 1rem;
-          }
+    .act2-slide {
+      &:nth-child(1) {
+
+        .video-container{
+          left: 150px;
         }
       }
+      &:nth-child(2) {
+        .video-container {
+            left: 220px;
+          }
+      }
+      &:nth-child(3) {
+        .video-container {
+            left: 320px;
+          }
+      }
+      &:nth-child(4) {
+        .video-container {
+           left: 440px;
+          }
+      }
 
-      .video-container {
-        display: flex;
-        width: 100%;
+      .slide {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
         height: 100%;
+        min-height: 100%;
+        display: grid;
+        grid-template-columns: 45% 55%;
         align-items: center;
-        justify-content: center;
-        transform: translateX(250px);
+        padding: 20px;
+
         @media screen and (max-width: 900px) {
+          display: flex;
+          flex-direction: column;
           justify-content: center;
-          align-items: baseline;
-          flex: 1;
         }
 
-        .video {
-          width: 550px;
-          height: 350px;
-          position: relative;
-          box-shadow: 0 300px 50px 0 black;
-          @media screen and (max-width: 1100px) {
-            width: 450px;
-            height: 280px;
-          }
-          @media screen and (max-width: 1000px) {
-            width: 380px;
-            height: 240px;
-          }
+        .text {
+          display: flex;
+          gap: 80px;
+          flex-direction: column;
+          text-align: center;
+          padding: 0 20px;
+          margin-left: 20px;
+          align-items: center;
+          justify-content: center;
+
           @media screen and (max-width: 900px) {
-            width: 450px;
-            height: 280px;
-          }
-          @media screen and (max-width: 500px) {
-            width: 320px;
-            height: 200px;
+            margin-top: 50px;
+            gap: 40px;
+            width: 80%;
+            flex: 1;
           }
 
-          .iframe {
-            position: absolute;
-            height: 100%;
+          @media screen and (max-width: 500px) {
             width: 100%;
-            border: none;
-            border-radius: 35px;
-            .fullscreen {
-              width: 100%;
+          }
+
+          h2 {
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            font-family: $fontTR;
+
+            @media screen and (max-width: 1000px) {
+              font-size: 2.1rem;
+            }
+
+            @media screen and (max-width: 900px) {
+              font-size: 2rem;
+            }
+          }
+
+          p {
+            font-family: $fontR;
+            font-size: 1.2rem;
+            line-height: 35px;
+
+            @media screen and (max-width: 1000px) {
+              font-size: 1rem;
+            }
+          }
+        }
+
+        .video-container {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+
+          @media screen and (max-width: 900px) {
+            justify-content: center;
+            align-items: baseline;
+            flex: 1;
+          }
+
+          .video {
+            width: 550px;
+            height: 350px;
+            position: relative;
+
+            &::before {
+              position: absolute;
+              content: "";
+              width: 90%;
+              height: 1%;
+              background: rgba(0, 0, 0, 0.39);
+              backdrop-filter: blur(0px);
+              box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.4);
+              border-radius: 50%;
+              bottom: -40px;
+              left: 50%;
+              transform: translateX(-50%);
+            }
+
+            @media screen and (max-width: 1100px) {
+              width: 450px;
+              height: 280px;
+            }
+
+            @media screen and (max-width: 1000px) {
+              width: 380px;
+              height: 240px;
+            }
+
+            @media screen and (max-width: 900px) {
+              width: 450px;
+              height: 280px;
+            }
+
+            @media screen and (max-width: 500px) {
+              width: 320px;
+              height: 200px;
+            }
+
+            .iframe {
+              position: absolute;
               height: 100%;
+              width: 100%;
+              border: none;
+              border-radius: 35px;
+
+              .fullscreen {
+                width: 100%;
+                height: 100%;
+              }
             }
           }
         }

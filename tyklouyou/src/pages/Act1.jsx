@@ -120,7 +120,9 @@ const Act1 = () => {
           ref={slide_container}
         >
           {dataAct.map((data, id) => (
-            <Act2 data={data} key={id} />
+            <div className="act2-slide">
+              <Act2 data={data} key={id} />
+            </div>
           ))}
         </div>
       </div>

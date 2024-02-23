@@ -7,12 +7,11 @@ const Act2 = ({ data }) => {
 
 
   useGSAP(() => {
-  gsap.to(".video", {
-    x:-300,
+  gsap.to(".video-container", {
+    x:-500,
     scrollTrigger: {
-      trigger: ".video", 
-      start: "10% right", 
-      end: "+=99% ",
+      trigger: ".video-container", 
+      start: "left right",
       scrub:1,
     }
   });
