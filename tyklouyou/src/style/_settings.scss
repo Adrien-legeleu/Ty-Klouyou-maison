@@ -58,16 +58,8 @@ body {
   background: $colorM;
   overflow-x: hidden;
   touch-action: none;
-  &::-webkit-scrollbar-track {
-  background: rgba(245, 245, 245, 0.8);
-  }
   &::-webkit-scrollbar {
-    width: auto;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: rgb(31, 16, 69);
-    border-radius: 10px;
-    border:  2px solid rgba(245, 245, 245, 0.8);
+    display: none;
   }
 }
 
