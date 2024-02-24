@@ -58,10 +58,16 @@ const Contact = () => {
                 Informations sur votre séjour
               </p>
               <div className="stay" ref={stay}>
-                <p>Départ / Arrivée : </p>
+                <div className="stay-date">
+                  <p>Départ / Arrivée : </p>
                 <div className="date-content">
                   <span>15/01/24</span>
                   <span>28/01/24</span>
+                </div>
+                <div className="stay-price">
+                  <p>prix:</p>
+                  <p>450$</p>
+                </div>
                 </div>
                 <div className="btn-date">
                   <button onClick={(e)=>{
