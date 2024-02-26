@@ -5,31 +5,9 @@ import Footer from "../components/Footer";
 import Calendar from "../components/Calendar";
 
 const Contact = () => {
-  const [isVisibleStay, setIsVisibleStay] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [calendarOpacity, setCalendarOpacity] = useState(1);
 
-  const stay = useRef();
-
-  useEffect(() => {
-    if (isVisibleStay) {
-      gsap.to(stay.current, {
-        duration: 1.5,
-        visibility: "visible",
-        height: "100%",
-        marginTop: "10px",
-        padding: "8px",
-      });
-    } else {
-      gsap.to(stay.current, {
-        duration: 1.5,
-        height: 0,
-        visibility: "hidden",
-        marginTop: "0px",
-        padding: "0",
-      });
-    }
-  }, [isVisibleStay]);
 
   return (
     <div className="contact-container">
@@ -52,29 +30,32 @@ const Contact = () => {
 
             <div className="stay-container">
               <p
-                className={`text-visible ${isVisibleStay ? "croix" : ""}`}
-                onClick={()=>setIsVisibleStay(!isVisibleStay)}
+                className={`text-visible`}
               >
                 Informations sur votre séjour
               </p>
-              <div className="stay" ref={stay}>
+              <div className="stay" >
                 <div className="stay-date">
                   <p>Départ / Arrivée : </p>
-                <div className="date-content">
-                  <span>15/01/24</span>
-                  <span>28/01/24</span>
-                </div>
-                <div className="stay-price">
-                  <p>prix:</p>
-                  <p>450$</p>
-                </div>
+                  <div className="date-content">
+                    <span>15/01/24</span>
+                    <span>28/01/24</span>
+                  </div>
+                  <div className="stay-price">
+                    <p>prix:</p>
+                    <p>450$</p>
+                  </div>
                 </div>
                 <div className="btn-date">
-                  <button onClick={(e)=>{
-                    e.preventDefault()
-                    setIsActive(true)
-                    setCalendarOpacity(1)
-                  }}>Changer date</button>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsActive(true);
+                      setCalendarOpacity(1);
+                    }}
+                  >
+                    Changer date
+                  </button>
                 </div>
               </div>
             </div>
@@ -111,7 +92,12 @@ const Contact = () => {
         </div>
       </div>
       <span className="signature">designed by WebLuxury</span>
-      <Calendar isActive={isActive} setIsActive={setIsActive}  calendarOpacity={calendarOpacity} setCalendarOpacity={setCalendarOpacity}/>
+      <Calendar
+        isActive={isActive}
+        setIsActive={setIsActive}
+        calendarOpacity={calendarOpacity}
+        setCalendarOpacity={setCalendarOpacity}
+      />
       <Footer className="footer-container" />
     </div>
   );
