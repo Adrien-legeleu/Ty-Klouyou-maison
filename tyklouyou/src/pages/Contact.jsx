@@ -84,13 +84,13 @@ const Contact = () => {
               que le propriétaire aura pris connaissance de votre message.
             </p>
           </div>
+        </div>
+      </div>
           <ul className="info-legal">
             <li>Règlement Intérieur</li>
             <li>Mentions légales</li>
             <li>© WebLuxury Design 2024</li>
           </ul>
-        </div>
-      </div>
       <span className="signature">designed by WebLuxury</span>
       <Calendar
         isActive={isActive}
