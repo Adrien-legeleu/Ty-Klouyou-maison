@@ -31,12 +31,12 @@ const Contact = () => {
 
             <div className="stay-container">
               <p
-                className={`text-visible ${isInfo ? "anim-info-visible" : "anim-info-hidden"}  `} onClick={()=>setIsInfo(!isInfo)}
+                className={`text-visible  `} onClick={()=>setIsInfo(!isInfo)}
               >
                 Informations sur votre séjour
               </p>
-              <div className="stay" >
-                <div className="stay-date">
+              <div className={`stay ${isInfo ? "anim-info-visible" : "anim-info-hidden"}  `} >
+                <div className={`stay-date ${isInfo ? "anim-info-visible-text" : "anim-info-hidden-text"}  `}>
                   <p>Départ / Arrivée : </p>
                   <div className="date-content">
                     <span>15/01/24</span>
@@ -47,7 +47,7 @@ const Contact = () => {
                     <p>450$</p>
                   </div>
                 </div>
-                <div className="btn-date">
+                <div className={`btn-date ${isInfo ? "anim-info-visible-text" : "anim-info-hidden-text"}  `}>
                   <button
                     onClick={(e) => {
                       e.preventDefault();

@@ -85,6 +85,7 @@
           .stay-container {
             @include AlignChild(row , center,center);
             grid-area: e;
+            position: relative;
             .text-visible {
               padding: 10px 20px;
               background: #8a8a8a59;
@@ -94,10 +95,43 @@
               cursor: pointer;
               margin: 5px 0;
             }
-        
+
+            
             .stay {
               position: absolute;
               visibility: hidden;
+              z-index: 5;
+              transform: translate(-50%, -50%);
+              right: -100%;
+
+              .stay-date , .btn-date{
+                visibility: hidden;
+              }
+              .anim-info-visible-text{
+              animation: infoVisibleText 2s ease-in forwards;
+              animation-delay: 1.5s;
+
+              @keyframes infoVisibleText {
+                to{
+                  visibility: visible;
+                }
+              }
+            }
+
+            }
+            .anim-info-visible{
+              animation: infoVisible 2s ease-in forwards;
+
+              @keyframes infoVisible {
+                to{
+                  background: $green1;
+                  padding: 100px;
+                  border-radius: 50% 120px 80px 3px;
+                  visibility: visible;
+                  
+                  
+                }
+              }
             }
           }
           .btn{
