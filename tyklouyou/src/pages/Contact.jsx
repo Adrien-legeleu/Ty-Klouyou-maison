@@ -7,6 +7,7 @@ import Calendar from "../components/Calendar";
 const Contact = () => {
   const [isActive, setIsActive] = useState(false);
   const [calendarOpacity, setCalendarOpacity] = useState(1);
+  const [isInfo , setIsInfo] = useState(false)
 
 
   return (
@@ -30,7 +31,7 @@ const Contact = () => {
 
             <div className="stay-container">
               <p
-                className={`text-visible`}
+                className={`text-visible ${isInfo ? "anim-info-visible" : "anim-info-hidden"}  `} onClick={()=>setIsInfo(!isInfo)}
               >
                 Informations sur votre séjour
               </p>
@@ -68,9 +69,6 @@ const Contact = () => {
         <div className="contact-text">
           <div className="title">
             <h1>Contactez-nous !</h1>
-            <h2>
-              et passez vos <span>MEILLEURES</span> vacances !
-            </h2>
           </div>
           <div className="text">
             <p>
