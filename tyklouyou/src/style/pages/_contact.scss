@@ -101,8 +101,9 @@
               position: absolute;
               visibility: hidden;
               z-index: 5;
-              transform: translate(-50%, -50%);
+              transform: translate(-100%, -50%);
               right: -100%;
+              padding: 60px;
 
               .stay-date , .btn-date{
                 visibility: hidden;
@@ -117,19 +118,41 @@
                 }
               }
             }
+            .anim-info-hidden-text{
+              animation: infoHiddenText 2s ease-in forwards;
+
+              @keyframes infoHiddenText {
+                to{
+                  visibility: hidden;
+                }
+              }
+            }
 
             }
             .anim-info-visible{
-              animation: infoVisible 2s ease-in forwards;
+              animation: infoVisible 1s ease-in-out forwards;
 
               @keyframes infoVisible {
                 to{
                   background: $green1;
-                  padding: 100px;
                   border-radius: 50% 120px 80px 3px;
-                  visibility: visible;
-                  
-                  
+                  visibility: visible;            
+                }
+              }
+            }
+            .anim-info-hidden{
+              animation: infoHidden 1s ease-in-out forwards;
+
+              @keyframes infoHidden {
+                from {
+                    background: $green1;
+                    border-radius: 80px;
+                    visibility: visible;
+                  }
+                to{
+                  background: transparent;
+                  border-radius: 0;
+                  visibility: hidden;                  
                 }
               }
             }
