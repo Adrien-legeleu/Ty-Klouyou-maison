@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext , createContext} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Activity from "./pages/Activity";
 import Photos from "./pages/Photos";
 import Contact from "./pages/Contact";
 
+const USerContext = createContext("John")
+
 const App = () => {
+
   return (
     <BrowserRouter>
       <Routes>
