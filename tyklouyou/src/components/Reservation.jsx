@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { format } from "date-fns";
-import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import DateContext from "../date.context";
+
+
 
 const Reservation = () => {
+
+  const {arrivalDate , departDate} = useContext(DateContext)
+
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -98,10 +103,7 @@ const Reservation = () => {
             <p
               className="date-text"
               style={{ color: isNotLandingPage ? "black" : "white" }}
-            >{`du ${format(date[0].startDate, "MM/dd/yyyy")} au ${format(
-              date[0].endDate,
-              "MM/dd/yyyy"
-            )}`}</p>
+            >{`du ${arrivalDate} au ${departDate}`}</p>
           </div>
           <p
             className="personn-text"
