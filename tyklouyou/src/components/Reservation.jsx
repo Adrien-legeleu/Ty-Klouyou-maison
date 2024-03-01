@@ -75,7 +75,9 @@ const Reservation = () => {
 
   return (
    <div className="reservation">
-      <Calendar/>
+      <Calendar style={{
+        display : isCalendar ? "grid" : "none",
+      }}/>
        <div
       className={`reservation-container ${
         isOnFooter ? "on-footer" : "not-on-footer"

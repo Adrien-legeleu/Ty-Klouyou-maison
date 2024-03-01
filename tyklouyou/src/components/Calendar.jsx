@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDateContext } from "../date.context"; 
 
-const Calendar = ({ isActive, setIsActive  }) => {
+const Calendar = ({style}) => {
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
@@ -343,14 +343,8 @@ const Calendar = ({ isActive, setIsActive  }) => {
   };
 
   return (
-    <div
-      className="calendar-container"
-      style={{
-        visibility: isActive ? "visible" : "hidden",
-      }}
-    >
-      <div className="calendar-container-blur"></div>
-      <div className="calendar">
+      <div className="calendar-container"style={style}>
+        <div className="calendar">
         <div className="calendar-date">
           <div className="btn-choice-month">
             <div
@@ -410,9 +404,7 @@ const Calendar = ({ isActive, setIsActive  }) => {
         </div>
         <div className="btn">
           <button>Valider</button>
-          <button
-            onClick={() =>setIsActive(false)}
-          >
+          <button>
             Fermer
           </button>
         </div>
@@ -476,7 +468,7 @@ const Calendar = ({ isActive, setIsActive  }) => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 
