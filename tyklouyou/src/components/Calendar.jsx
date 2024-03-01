@@ -1,10 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDateContext } from "../date.context"; 
 
-const Calendar = ({ isActive, setIsActive , setCalendarOpacity , calendarOpacity }) => {
+const Calendar = ({ isActive, setIsActive  }) => {
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
   const textInfo = useRef();
+  const { arrivalDateContext, setArrivalDateContext, departDateContext, setDepartDateContext } = useDateContext();
+  
+
 
   const [yearChoice, setYearChoice] = useState([2024, 2025, 2026]);
   const [monthYearIndex, setMonthYearIndex] = useState([
@@ -129,6 +133,7 @@ const Calendar = ({ isActive, setIsActive , setCalendarOpacity , calendarOpacity
         );
         setFirstDay(startDateDay);
         setDayName([day, dayName[1]]);
+        setArrivalDateContext(startDateDay)
       }
     } else if (firstDay && !secondDay) {
       if (day.classList.contains("disabled")) {
@@ -141,6 +146,7 @@ const Calendar = ({ isActive, setIsActive , setCalendarOpacity , calendarOpacity
         );
         setSecondDay(lastDateDay);
         setDayName([dayName[0], day]);
+        setDepartDateContext(lastDateDay)
       }
     }
   };
@@ -340,11 +346,6 @@ const Calendar = ({ isActive, setIsActive , setCalendarOpacity , calendarOpacity
     <div
       className="calendar-container"
       style={{
-        opacity: calendarOpacity,
-        transform:
-          calendarOpacity === 0 && !isActive
-            ? "translate(-50% , -50%) scale(0)"
-            : "translate(-50% , -50%)",
         visibility: isActive ? "visible" : "hidden",
       }}
     >
@@ -410,16 +411,7 @@ const Calendar = ({ isActive, setIsActive , setCalendarOpacity , calendarOpacity
         <div className="btn">
           <button>Valider</button>
           <button
-            onClick={() => {
-              setCalendarOpacity(0);
-              setIsActive(false);
-            }}
-            onMouseEnter={() => setCalendarOpacity(0.5)}
-            onMouseLeave={() =>
-              calendarOpacity === 0
-                ? setCalendarOpacity(calendarOpacity)
-                : setCalendarOpacity(1)
-            }
+            onClick={() =>setIsActive(false)}
           >
             Fermer
           </button>
@@ -428,8 +420,8 @@ const Calendar = ({ isActive, setIsActive , setCalendarOpacity , calendarOpacity
           <h3>Infos</h3>
           <div className="info-date">
             <p>
-              du <span> {transformDate(firstDay)} </span> au{" "}
-              <span>{transformDate(secondDay)}</span>{" "}
+              du <span> {transformDate(arrivalDateContext)} </span> au{" "}
+              <span>{transformDate(departDateContext)}</span>{" "}
             </p>
             <p>{totalPrice}€</p>
           </div>

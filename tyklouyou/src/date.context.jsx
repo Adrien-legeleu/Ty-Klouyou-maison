@@ -1,20 +1,30 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-const DateContext= createContext({
-    arrivalDate: new Date().toLocaleDateString(),
-    departDate: new Date().toLocaleDateString(),
-})
+// Création du contexte
+const DateContext = createContext({
+    arrivalDate: new Date(),
+    departDate: new Date(),
+});
 
-export const DateContextProvider = ({children})=>{
-    const [arrivalDateContext ,setArrivalDateContext ] = useState(new Date().toLocaleDateString())
-    const [departDateContext ,setdepartDateContext ] = useState(new Date().toLocaleDateString())
+// Composant Provider
+export const DateContextProvider = ({ children }) => {
+    const [arrivalDateContext, setArrivalDateContext] = useState(new Date());
+    const [departDateContext, setDepartDateContext] = useState(new Date());
 
     return (
-        <DateContext.Provider value={{ arrivalDateContext, setArrivalDateContext , setdepartDateContext, departDateContext  }}>
+        <DateContext.Provider value={{ arrivalDateContext, setArrivalDateContext, setDepartDateContext, departDateContext }}>
             {children}
         </DateContext.Provider>
     );
-}
+};
 
-export const useDateContext = ()=>useContext(DateContext)
+// Hook personnalisé pour utiliser le contexte
+export const useDateContext = () => useContext(DateContext);
+
+export default DateContext
+
+
+
+
+
 

@@ -4,13 +4,14 @@ import Home from "./pages/Home";
 import Activity from "./pages/Activity";
 import Photos from "./pages/Photos";
 import Contact from "./pages/Contact";
+import { DateContextProvider } from "./date.context";
 
-const USerContext = createContext("John")
 
 const App = () => {
 
   return (
-    <BrowserRouter>
+    <DateContextProvider>
+      <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/activity" element={<Activity/>} />
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/contact" element={<Contact/>}/>
       </Routes>
     </BrowserRouter>
+    </DateContextProvider>
   );
 };
 

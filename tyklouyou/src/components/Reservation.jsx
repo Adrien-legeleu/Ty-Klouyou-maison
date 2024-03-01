@@ -1,24 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
-import { format } from "date-fns";
+import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
-import DateContext from "../date.context";
-
+import  { useDateContext } from "../date.context";
+import Calendar from "./Calendar";
 
 
 const Reservation = () => {
 
-  const {arrivalDate , departDate} = useContext(DateContext)
-
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
+  const [isCalendar , setIsCalendar] = useState(false)
+  
   const [isOnFooter, setIsOnFooter] = useState(false);
   const [isNotLandingPage, setIsNotLandingPage] = useState(false);
-
+  const { arrivalDateContext , departDateContext} = useDateContext()
+  
   const handleScrollFooter = () => {
     const footer = document.getElementById("footer");
     const footerRect = footer.getBoundingClientRect();
@@ -31,6 +24,13 @@ const Reservation = () => {
     const page2Rect = page2.getBoundingClientRect();
     setIsNotLandingPage(page2Rect.top <= window.innerHeight ? true : false);
   };
+  const transformDate = (date) => {
+      if (date) {
+        return date.toLocaleDateString();
+      } else {
+        return " / / ";
+      }
+    };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScrollFooter);
@@ -74,7 +74,9 @@ const Reservation = () => {
     
 
   return (
-    <div
+   <div className="reservation">
+      <Calendar/>
+       <div
       className={`reservation-container ${
         isOnFooter ? "on-footer" : "not-on-footer"
       } `}
@@ -82,7 +84,6 @@ const Reservation = () => {
       onMouseEnter={()=>setIsHovered(!isHovered)}
       onMouseLeave={()=>setIsHovered(!isHovered)}
     >
-    
       <div className="reservation-is-not-hover">
         {!isNotLandingPage ? (
           <img src="./assets/img/icon-search (1).png" alt="" />
@@ -103,7 +104,7 @@ const Reservation = () => {
             <p
               className="date-text"
               style={{ color: isNotLandingPage ? "black" : "white" }}
-            >{`du ${arrivalDate} au ${departDate}`}</p>
+            >{`du ${transformDate(arrivalDateContext)} au ${transformDate(departDateContext)}`}</p>
           </div>
           <p
             className="personn-text"
@@ -111,7 +112,7 @@ const Reservation = () => {
           >
             8 personnes
           </p>
-          <button>modifier</button>
+          <button onClick={()=>setIsCalendar(!isCalendar)}>modifier</button>
         </div>
         <div className="reserve">
           <button
@@ -125,6 +126,7 @@ const Reservation = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 };
 

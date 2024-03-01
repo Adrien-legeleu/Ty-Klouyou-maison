@@ -1,13 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
-import { gsap } from "gsap";
 import Footer from "../components/Footer";
 import Calendar from "../components/Calendar";
+import { useDateContext } from "../date.context";
 
 const Contact = () => {
   const [isActive, setIsActive] = useState(false);
-  const [calendarOpacity, setCalendarOpacity] = useState(1);
   const [isInfo , setIsInfo] = useState(false)
+  const {arrivalDateContext , departDateContext}= useDateContext()
+
+  const transformDate = (date) => {
+    if (date) {
+      return date.toLocaleDateString();
+    } else {
+      return ' / / ';
+    }
+  };
 
 
   return (
@@ -39,8 +47,8 @@ const Contact = () => {
                 <div className={`stay-date ${isInfo ? "anim-info-visible-text" : "anim-info-hidden-text"}  `}>
                   <p>Départ / Arrivée : </p>
                   <div className="date-content">
-                    <span>15/01/24</span>
-                    <span>28/01/24</span>
+                    <span>{transformDate(arrivalDateContext)}</span>
+                    <span>{transformDate(departDateContext)}</span>
                   </div>
                   <div className="stay-price">
                     <p>prix:</p>
@@ -52,7 +60,7 @@ const Contact = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       setIsActive(true);
-                      setCalendarOpacity(1);
+                      
                     }}
                   >
                     Changer date
@@ -92,10 +100,7 @@ const Contact = () => {
       <span className="signature">designed by WebLuxury</span>
       <Calendar
         isActive={isActive}
-        setIsActive={setIsActive}
-        calendarOpacity={calendarOpacity}
-        setCalendarOpacity={setCalendarOpacity}
-      />
+        setIsActive={setIsActive} />
       <Footer className="footer-container" />
     </div>
   );

@@ -1,111 +1,128 @@
-.reservation-container{
-  position: fixed;
-  bottom: 50px;
-  width: 80px;
-  height: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 30px;
-  z-index: 10;
-  &:hover .reservation-is-not-hover{
-    opacity: 0;
-    visibility: hidden;
+.reservation{
+  .calendrier-reservation{
+   position: absolute;
   }
 
-  .reservation-is-not-hover{
-    position: absolute;
-    transition: .25s ease-in-out;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50% , -50%);
-    img{
-      width: 40px;
-    }
-  }
-  .reservation{
-    visibility: hidden;
-    opacity: 0;
-    display: grid;
-    position: relative;
-    grid-template-columns: 80% 20%;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    height: 100%;
-
-    transition: .25s ease-in-out;
-
-    &::before{
-      position: absolute;
-      content: "";
-      height: 65%;
-      width: 2px;
-      background: white;
-      top: 50%;
-      left: 80%;
-      transform: translate(-50%, -50%);
-    }
-    img{
-      width: 30px;
-    }
-
-    .date{
-      @include AlignChild(row,center,space-around);
-      padding:0 20px;
-      color: white;
-      font-family: $fontR;
-      .date-text{
+  .reservation-container {
+      position: fixed;
+      bottom: 50px;
+      width: 80px;
+      height: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 30px;
+      z-index: 10;
+  
+      &:hover .reservation-is-not-hover {
+        opacity: 0;
+        visibility: hidden;
+      }
+  
+      .reservation-is-not-hover {
+        position: absolute;
+        transition: .25s ease-in-out;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+  
+        img {
+          width: 40px;
+        }
+      }
+  
+      .reservation {
+        visibility: hidden;
+        opacity: 0;
+        display: grid;
+        position: relative;
+        grid-template-columns: 80% 20%;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        height: 100%;
+  
+        transition: .25s ease-in-out;
+  
+        &::before {
+          position: absolute;
+          content: "";
+          height: 65%;
+          width: 2px;
+          background: white;
+          top: 50%;
+          left: 80%;
+          transform: translate(-50%, -50%);
+        }
+  
+        img {
+          width: 30px;
+        }
+  
+        .date {
+          @include AlignChild(row, center, space-around);
+          padding: 0 20px;
+          color: white;
+          font-family: $fontR;
+  
+          .date-text {
             @include AlignChild(row, center, center);
             gap: 10px;
+          }
+  
+          p {
+            border-right: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 0 25px;
+          }
+  
+          button {
+            margin-left: 20px;
+            background: rgb(228, 228, 228);
+            color: black;
+            font-size: 1rem;
+            padding: 12px 20px;
+            border-radius: 50px;
+          }
+        }
+  
+        .reserve {
+          @include AlignChild(row, center, center);
+  
+          button {
+            background: white;
+            color: black;
+          }
+        }
       }
-      p{
-        border-right: 1px solid rgba(255, 255, 255, 0.5);
-        padding:0  25px;
-      }
-            button {
-              margin-left: 20px;
-              background: rgb(228, 228, 228);
-              color: black;
-              font-size: 1rem;
-              padding: 12px 20px;
-              border-radius: 50px;
-            }
     }
-    .reserve{
-      @include AlignChild(row,center,center);
-      button{
-        background: white;
-        color: black;
+  
+    .on-footer {
+      animation: isOnFooter .25s ease-in forwards;
+  
+      @keyframes isOnFooter {
+        0% {
+          transform: translate(-50%, 0);
+        }
+  
+        100% {
+          transform: translate(-50%, 200%);
+          visibility: hidden;
+        }
       }
     }
-  }
-}
-
-.on-footer{
-  animation: isOnFooter .25s ease-in forwards;
-  @keyframes isOnFooter {
-    0%{
-      transform: translate(-50% , 0);
-    }
-    100%{
-      transform: translate(-50% , 200%);
-      visibility: hidden;
-    }
-  }
-}
-.not-on-footer {
-  animation: isNotOnFooter .25s ease-out forwards;
-
-  @keyframes isNotOnFooter {
-    0% {
-      transform: translate(-50% , 200%);
-        visibility: hidden;
-    }
-
-    100% {
-          transform: translate(-50% , 0);
+  
+    .not-on-footer {
+      animation: isNotOnFooter .25s ease-out forwards;
+  
+      @keyframes isNotOnFooter {
+        0% {
+          transform: translate(-50%, 200%);
+          visibility: hidden;
+        }
+  
+        100% {
+          transform: translate(-50%, 0);
           visibility: visible;
+        }
+      }
     }
-  }
 }
-
