@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navgiation from "./Navigation";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import { useCalendarContext } from "../calendar.context";
 
 const Header = ({ toggleDate }) => {
   const [currentTime, setCurrentTime] = useState("13:06");
@@ -9,6 +10,7 @@ const Header = ({ toggleDate }) => {
   const [titleResponsive, setTitleResponsive] = useState(false);
   const [isNotHoverHeader, setIsNotHoverHeader] = useState(false);
   const header = useRef();
+  const {isCalendar} = useCalendarContext()
 
   useEffect(() => {
     setTimeout(() => {
@@ -42,11 +44,11 @@ const Header = ({ toggleDate }) => {
   }, [navigationShow]);
 
   return (
-    <div className="header-container">
+    <div className="header-container" >
       <div
         className="header"
         ref={header}
-        style={{ color: navigationShow || toggleDate ? "white" : "" }}
+        style={{ color: navigationShow || toggleDate ? "white" : ""  , display: isCalendar ?"none" : "grid"}}
         onMouseOver={() => setIsNotHoverHeader(false)}
       >
         <div className="date">

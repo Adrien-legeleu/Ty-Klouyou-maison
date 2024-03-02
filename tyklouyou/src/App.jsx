@@ -5,12 +5,14 @@ import Activity from "./pages/Activity";
 import Photos from "./pages/Photos";
 import Contact from "./pages/Contact";
 import { DateContextProvider } from "./date.context";
+import { CalendarContextProvider } from "./calendar.context";
 
 
 const App = () => {
 
   return (
-    <DateContextProvider>
+    <CalendarContextProvider>
+      <DateContextProvider>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,6 +22,7 @@ const App = () => {
       </Routes>
     </BrowserRouter>
     </DateContextProvider>
+    </CalendarContextProvider>
   );
 };
 

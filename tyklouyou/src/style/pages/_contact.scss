@@ -82,80 +82,112 @@
             grid-area: f;
           }
         
-          .stay-container {
-            @include AlignChild(row , center,center);
+          .stay-content{
             grid-area: e;
-            position: relative;
-            .text-visible {
-              padding: 10px 20px;
-              background: #8a8a8a59;
-              border-radius: 35px;
-              text-align: center;
-              position: relative;
-              cursor: pointer;
-              margin: 5px 0;
-            }
+            @include AlignChild(row, center, center);
 
+            .stay-container {
+                position: relative;
             
-            .stay {
-              position: absolute;
-              visibility: hidden;
-              z-index: 5;
-              transform: translate(-100%, -50%);
-              right: -100%;
-              padding: 60px;
-
-              .stay-date , .btn-date{
-                visibility: hidden;
-              }
-              .anim-info-visible-text{
-              animation: infoVisibleText 2s ease-in forwards;
-              animation-delay: 1.5s;
-
-              @keyframes infoVisibleText {
-                to{
-                  visibility: visible;
+                .text-visible {
+                  padding: 10px 20px;
+                  background: whitesmoke;
+                  border-radius: 35px;
+                  text-align: center;
+                  position: relative;
+                  cursor: pointer;
+                  margin: 5px 0;
                 }
-              }
-            }
-            .anim-info-hidden-text{
-              animation: infoHiddenText 2s ease-in forwards;
-
-              @keyframes infoHiddenText {
-                to{
+            
+            
+                .stay {
+                  position: absolute;
                   visibility: hidden;
-                }
-              }
-            }
-
-            }
-            .anim-info-visible{
-              animation: infoVisible 1s ease-in-out forwards;
-
-              @keyframes infoVisible {
-                to{
-                  background: $green1;
-                  border-radius: 50% 120px 80px 3px;
-                  visibility: visible;            
-                }
-              }
-            }
-            .anim-info-hidden{
-              animation: infoHidden 1s ease-in-out forwards;
-
-              @keyframes infoHidden {
-                from {
-                    background: $green1;
-                    border-radius: 80px;
-                    visibility: visible;
+                  opacity: 0;
+                  z-index: 5;
+                  right: -100%;
+                  bottom: 100%;
+                  padding: 10px;
+                  width: 300px;
+                  height: 200px;
+                  background: rgb(245, 245, 245);
+                  border-radius: 80px;
+                  @include AlignChild(column, center, center);
+                  &::before{
+                      position: absolute;
+                      content: "";
+                      background: rgb(245, 245, 245);
+                      width: 150px;
+                      height: 150px;
+                      bottom: -6px;
+                      left: 25px;
+                      border-radius: 100% 0% 100% 0% / 100% 58% 42% 2%;
+                      z-index: -1;
                   }
-                to{
-                  background: transparent;
-                  border-radius: 0;
-                  visibility: hidden;                  
+                  &::after{
+                      position: absolute;
+                      content: "";
+                      background: rgb(245, 245, 245);
+                      width: 100px;
+                      height: 100px;
+                      bottom: 5px;
+                      left: 15px;
+                      border-radius: 50% 50% 50% 40%;
+                      z-index: -1;
+                  }
+            
+                  .stay-date,
+                  .btn-date {
+                    opacity: 0;
+                  }
+                  .stay-date{
+                    @include AlignChild(column, start, center);
+                    font-size: 1.2rem;
+                    .date-content {
+                        @include AlignChild(row, center, center);
+                        gap: 15px;
+                        margin: 5px 0 10px;
+                        color: rgb(77, 77, 77)
+                      }
+                    
+                      .stay-price {
+                        @include AlignChild(row, center, center);
+                        gap: 5px;
+                        margin-bottom: 15px;
+                        p{
+                          &:last-child{
+                            color: rgb(77, 77, 77)
+                          }
+                        }
+                      }
+                  }
+            
+                  .anim-info-visible-text {
+                    opacity: 1;
+                    transition: .25s ease-out;
+                    transition-delay: .15s;
+                  }
+            
+                  .anim-info-hidden-text {
+                    opacity: 0;
+                    transition: .15s ease-out;
+                  }
+            
+                }
+            
+                .anim-info-visible {
+                  visibility: visible;
+                  opacity: 1;
+                  transition: .15s ease-out;
+                }
+            
+                .anim-info-hidden {
+                  visibility: hidden;
+                  opacity: 0;
+                  transition: .15s ease-in;
+                  transition-delay: .15s;
                 }
               }
-            }
           }
           .btn{
             grid-area: g;

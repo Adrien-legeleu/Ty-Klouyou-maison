@@ -3,11 +3,13 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Calendar from "../components/Calendar";
 import { useDateContext } from "../date.context";
+import { useCalendarContext } from "../calendar.context";
 
 const Contact = () => {
   const [isActive, setIsActive] = useState(false);
   const [isInfo , setIsInfo] = useState(false)
-  const {arrivalDateContext , departDateContext}= useDateContext()
+  const {arrivalDateContext , departDateContext , priceContext}= useDateContext()
+  const {isCalendar , setIsCalendar}= useCalendarContext()
 
   const transformDate = (date) => {
     if (date) {
@@ -37,9 +39,10 @@ const Contact = () => {
               <input type="text" placeholder="Téléphone" />
             </div>
 
-            <div className="stay-container">
+           <div className="stay-content">
+             <div className="stay-container" onMouseEnter={()=>setIsInfo(!isInfo)} onMouseLeave={()=>setIsInfo(!isInfo)}>
               <p
-                className={`text-visible  `} onClick={()=>setIsInfo(!isInfo)}
+                className={`text-visible  `} 
               >
                 Informations sur votre séjour
               </p>
@@ -51,8 +54,8 @@ const Contact = () => {
                     <span>{transformDate(departDateContext)}</span>
                   </div>
                   <div className="stay-price">
-                    <p>prix:</p>
-                    <p>450$</p>
+                    <p>Prix:</p>
+                    <p>{priceContext}€</p>
                   </div>
                 </div>
                 <div className={`btn-date ${isInfo ? "anim-info-visible-text" : "anim-info-hidden-text"}  `}>
@@ -60,7 +63,7 @@ const Contact = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       setIsActive(true);
-                      
+                      setIsCalendar(!isCalendar)
                     }}
                   >
                     Changer date
@@ -68,6 +71,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
+           </div>
             <textarea placeholder="Entrez un message"></textarea>
             <div className="btn">
               <button type="submit">Envoyer</button>

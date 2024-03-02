@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import  { useDateContext } from "../date.context";
 import Calendar from "./Calendar";
+import { useCalendarContext } from "../calendar.context";
 
 
 const Reservation = () => {
-
-  const [isCalendar , setIsCalendar] = useState(false)
+    const { isCalendar , setIsCalendar} = useCalendarContext()
   
   const [isOnFooter, setIsOnFooter] = useState(false);
   const [isNotLandingPage, setIsNotLandingPage] = useState(false);
@@ -75,9 +75,7 @@ const Reservation = () => {
 
   return (
    <div className="reservation">
-      <Calendar style={{
-        display : isCalendar ? "grid" : "none",
-      }}/>
+      <Calendar/>
        <div
       className={`reservation-container ${
         isOnFooter ? "on-footer" : "not-on-footer"

@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDateContext } from "../date.context"; 
+import { useCalendarContext } from "../calendar.context";
 
-const Calendar = ({style}) => {
+const Calendar = () => {
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
   const textInfo = useRef();
-  const { arrivalDateContext, setArrivalDateContext, departDateContext, setDepartDateContext } = useDateContext();
+  const { arrivalDateContext, setArrivalDateContext, departDateContext, setDepartDateContext , priceContext , setPriceContext } = useDateContext();
+  const { isCalendar , setIsCalendar} = useCalendarContext()
   
 
 
@@ -19,7 +21,6 @@ const Calendar = ({style}) => {
   const [firstDay, setFirstDay] = useState();
   const [secondDay, setSecondDay] = useState();
   const [arrayDays, setArrayDays] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(280);
 
   const [rangeValue, setRangeValue] = useState(4);
 
@@ -252,7 +253,7 @@ const Calendar = ({style}) => {
       totalPrice = night * pricePerNight;
     }
 
-    setTotalPrice(totalPrice);
+    setPriceContext(totalPrice);
   };
 
   const [dayColorHover, setDayColorHover] = useState([]);
@@ -343,8 +344,8 @@ const Calendar = ({style}) => {
   };
 
   return (
-      <div className="calendar-container"style={style}>
-        <div className="calendar">
+      <div className={`calendar-container ${isCalendar ? "visible-calendar-container" : "hidden-calendar-container"}`}>
+        <div className={`calendar ${isCalendar ? "visible-calendar" : "hidden-calendar"}`}>
         <div className="calendar-date">
           <div className="btn-choice-month">
             <div
@@ -403,8 +404,7 @@ const Calendar = ({style}) => {
           </div>
         </div>
         <div className="btn">
-          <button>Valider</button>
-          <button>
+          <button onClick={()=> setIsCalendar(!isCalendar)}>
             Fermer
           </button>
         </div>
@@ -415,7 +415,7 @@ const Calendar = ({style}) => {
               du <span> {transformDate(arrivalDateContext)} </span> au{" "}
               <span>{transformDate(departDateContext)}</span>{" "}
             </p>
-            <p>{totalPrice}€</p>
+            <p>{priceContext}€</p>
           </div>
           <div className="choice-parameter">
             <ul className="choice-year">
