@@ -92,10 +92,11 @@ const Page3 = () => {
           </motion.div>
         </div>
       </div>
-      <NavLink to="/activity" onClick={()=>window.scrollY(0)}>
-
+      <div className="btn-activity">
+        <NavLink to="/activity" onClick={()=>window.scrollY(0)}>
       <button>Voir toutes les activités</button>
       </NavLink>
+      </div>
     </div>
     </div>
   );

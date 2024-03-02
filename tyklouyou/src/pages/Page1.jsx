@@ -18,9 +18,6 @@ const Page1 = () => {
       <div className="page1-container">
         <img src="./assets/img/logoSea.png" alt="" />
         <h1>Ty Klouyou</h1>
-        <a href="#footer">
-           by <i>W3bLuxury Design</i><img src="./assets/img/angle-vers-le-haut.png" alt="arrow-down-webLuxury" />
-        </a>
       </div>
     </div>
   );

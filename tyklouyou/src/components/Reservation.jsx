@@ -28,7 +28,7 @@ const Reservation = () => {
       if (date) {
         return date.toLocaleDateString();
       } else {
-        return " / / ";
+        return ".../.../... ";
       }
     };
 

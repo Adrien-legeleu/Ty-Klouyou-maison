@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDateContext } from "../date.context"; 
+import { useDateContext } from "../date.context";
 import { useCalendarContext } from "../calendar.context";
 
 const Calendar = () => {
@@ -7,10 +7,15 @@ const Calendar = () => {
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
   const textInfo = useRef();
-  const { arrivalDateContext, setArrivalDateContext, departDateContext, setDepartDateContext , priceContext , setPriceContext } = useDateContext();
-  const { isCalendar , setIsCalendar} = useCalendarContext()
-  
-
+  const {
+    arrivalDateContext,
+    setArrivalDateContext,
+    departDateContext,
+    setDepartDateContext,
+    priceContext,
+    setPriceContext,
+  } = useDateContext();
+  const { isCalendar, setIsCalendar } = useCalendarContext();
 
   const [yearChoice, setYearChoice] = useState([2024, 2025, 2026]);
   const [monthYearIndex, setMonthYearIndex] = useState([
@@ -134,7 +139,7 @@ const Calendar = () => {
         );
         setFirstDay(startDateDay);
         setDayName([day, dayName[1]]);
-        setArrivalDateContext(startDateDay)
+        setArrivalDateContext(startDateDay);
       }
     } else if (firstDay && !secondDay) {
       if (day.classList.contains("disabled")) {
@@ -147,7 +152,7 @@ const Calendar = () => {
         );
         setSecondDay(lastDateDay);
         setDayName([dayName[0], day]);
-        setDepartDateContext(lastDateDay)
+        setDepartDateContext(lastDateDay);
       }
     }
   };
@@ -344,8 +349,16 @@ const Calendar = () => {
   };
 
   return (
-      <div className={`calendar-container ${isCalendar ? "visible-calendar-container" : "hidden-calendar-container"}`}>
-        <div className={`calendar ${isCalendar ? "visible-calendar" : "hidden-calendar"}`}>
+    <div
+      className={`calendar-container ${
+        isCalendar ? "visible-calendar-container" : "hidden-calendar-container"
+      }`}
+    >
+      <div
+        className={`calendar ${
+          isCalendar ? "visible-calendar" : "hidden-calendar"
+        }`}
+      >
         <div className="calendar-date">
           <div className="btn-choice-month">
             <div
@@ -403,11 +416,6 @@ const Calendar = () => {
             <p className="text-infos" ref={textInfo}></p>
           </div>
         </div>
-        <div className="btn">
-          <button onClick={()=> setIsCalendar(!isCalendar)}>
-            Fermer
-          </button>
-        </div>
         <div className="infos-container">
           <h3>Infos</h3>
           <div className="info-date">
@@ -444,14 +452,6 @@ const Calendar = () => {
                 }}
                 onChange={(e) => setRangeValue(e.target.value)}
               />
-              <style>
-                {`
-                  #inputRange::-webkit-slider-thumb {
-                      width: ${(rangeValue / 3) * 10 + 5}px;
-                      height: ${(rangeValue / 3) * 10 + 5}px;
-                  }
-                `}
-              </style>
               <span
                 style={{ left: `calc(${(rangeValue / 8) * 100}% - 25px)` }}
                 className="range-value"
@@ -466,9 +466,12 @@ const Calendar = () => {
               </div>
             </div>
           </div>
+          <div className="btn">
+            <button onClick={() => setIsCalendar(!isCalendar)}>Fermer</button>
+          </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 

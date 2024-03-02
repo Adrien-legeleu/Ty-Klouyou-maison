@@ -24,9 +24,10 @@
         margin-bottom: 100px;       
         position: relative;
         width: 100%;
+        z-index: 1;
         @media screen and (max-width:900px) {
                 grid-template-columns: 1fr;
-                margin-bottom:-50px;
+                margin-bottom:0px;
         }
         &::after{
             content: "";
@@ -38,6 +39,7 @@
             filter: brightness(0.85);
             top: -25px;
             right: 50px;
+            z-index: -1;
             animation: circleGrow 30s ease-in infinite;
             @media screen and (min-width:1400px) {
                     width: 800px;
@@ -62,6 +64,7 @@
             filter: brightness(0.9);
             bottom: 25px;
             left: 50px;
+            z-index: -1;
             animation: circleGrow 20s ease-in infinite;
             @media screen and (min-width:1400px) {
                     width: 650px;
@@ -216,8 +219,10 @@
             }
         }
     }
-    button{
-        font-size: 1.3rem;
-        z-index: 1;
-    }
+   .btn-activity{
+    z-index: 1;
+    button {
+            font-size: 1.3rem;
+        }
+   }
 }

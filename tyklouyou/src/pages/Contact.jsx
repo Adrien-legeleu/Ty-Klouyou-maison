@@ -15,7 +15,7 @@ const Contact = () => {
     if (date) {
       return date.toLocaleDateString();
     } else {
-      return ' / / ';
+      return ' .../.../...';
     }
   };
 
