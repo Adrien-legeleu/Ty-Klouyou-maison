@@ -5,21 +5,26 @@
   height: 100vh;
   @include AlignChild(column, center, center);
   position: relative;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1000px) {
     height: 100%;
   }
 
   .footer-container {
-    display: none;
-    @media screen and (max-width: 850px) {
+    display: none;                
+    @media screen and (max-width: 1000px) {
       display: flex;
+      width: 100%;
     }
   }
 
   .contact {
     display: flex;
-    flex-wrap: wrap;
     margin-top: 80px;
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
     .contact-form {
       flex: 1;
@@ -28,12 +33,26 @@
       padding-right: 130px;
       width: 100%;
       font-family: $fontR;
+      @media screen and (max-width: 1000px) {
+          width: 50%;
+          padding-right: 0;
+          padding-left: 0;
+        }
+         @media screen and (max-width: 700px) {
+          width: 80%;
+        }
+        @media screen and (max-width: 500px) {
+          width: 90%;
+        }
       .form{
         display: grid;
         grid-template-areas: " a b" "c c" "d d" "e e" "f f" "g g";
         align-items: center;
         justify-content: center;
         width: 100%;
+        @media screen and (max-width: 1000px) {
+            grid-template-areas: " a b" "c d" "e e" "f f" "g g";
+          }
         .input {
             input{
               background: transparent;
@@ -63,9 +82,17 @@
             }
             &:nth-child(3) {
               grid-area: c;
+              @media screen and (max-width: 1000px) {
+                  margin-right: 10px;
+                  margin-top: 15px;
+                }
             }
             &:nth-child(4) {
               grid-area: d;
+              @media screen and (max-width: 1000px) {
+                  margin-left: 10px;
+                  margin-top: 15px;
+                }
             }
           }
         
@@ -80,6 +107,9 @@
             padding: 5px;
             font-size: 1.3rem;
             grid-area: f;
+            @media screen and (max-width: 1000px) {
+               height: 150px;
+              }
           }
         
           .stay-content{
@@ -97,6 +127,9 @@
                   position: relative;
                   cursor: pointer;
                   margin: 5px 0;
+                  @media screen and (max-width: 1000px) {
+                      margin:15px
+                    }
                 }
             
             
@@ -113,6 +146,15 @@
                   background: rgb(245, 245, 245);
                   border-radius: 80px;
                   @include AlignChild(column, center, center);
+                  @media screen and (max-width: 1000px) {
+                      right: 0;
+                      top:90%;
+                      border-radius: 40px;
+                      padding: 0;
+                      height: 140px;
+                      width: 100%;
+                    }
+                  
                   &::before{
                       position: absolute;
                       content: "";
@@ -123,6 +165,9 @@
                       left: 25px;
                       border-radius: 100% 0% 100% 0% / 100% 58% 42% 2%;
                       z-index: -1;
+                      @media screen and (max-width: 1000px) {
+                          display: none;
+                        }
                   }
                   &::after{
                       position: absolute;
@@ -134,15 +179,28 @@
                       left: 15px;
                       border-radius: 50% 50% 50% 40%;
                       z-index: -1;
+                      @media screen and (max-width: 1000px) {
+                          display: none;
+                        }
                   }
             
                   .stay-date,
                   .btn-date {
                     opacity: 0;
                   }
+                  .btn-date {
+                    button{
+                      @media screen and (max-width: 1000px) {
+                          font-size: 0.9rem;
+                        }
+                    }
+                  }
                   .stay-date{
                     @include AlignChild(column, start, center);
                     font-size: 1.2rem;
+                    @media screen and (max-width: 1000px) {
+                      font-size: 0.9rem;
+                    }
                     .date-content {
                         @include AlignChild(row, center, center);
                         gap: 15px;
@@ -211,13 +269,31 @@
       width: 100%;
       margin-bottom: 100px;
       font-family: $fontR;
-      h1{
+      @media screen and (max-width: 1100px) {
+          padding-right: 50px;
+        }
+        @media screen and (max-width: 1000px) {
+          width: 50%;
+          padding-right: 0;
+          text-align: center;
+          margin: 100px 0;
+        }
+        @media screen and (max-width: 700px) {
+          width: 80%;
+        }
+        @media screen and (max-width: 500px) {
+          width: 90%;
+        }
+        h1{
         font-family: $fontTR;
         font-size: 3.5rem;
         text-align: center;
         letter-spacing: 3px;
         margin-bottom: 35px;
         color: $green2;
+        @media screen and (max-width: 1100px) {
+           font-size: 3rem;
+          }
       }
 
       .text{
@@ -227,6 +303,9 @@
         line-height: 20px;
         font-size: 1.1rem;
         backdrop-filter: blur(1px);
+        @media screen and (max-width: 1100px) {
+            font-size: 1rem;
+          }
       }
     }
   }
