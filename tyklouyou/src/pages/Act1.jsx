@@ -5,7 +5,6 @@ import dataAct from "../data/dataAct";
 import Act2 from "./Act2";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { Calendar } from "react-date-range";
 gsap.registerPlugin(ScrollTrigger);
 
 const Act1 = () => {

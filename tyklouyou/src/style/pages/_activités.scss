@@ -35,8 +35,8 @@
 
   .ball-header {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -130px;
+    right: 30px;
     transform: translate(50%, -50%);
     transform-origin: top;
     background: rgb(244, 244, 244);
@@ -45,9 +45,11 @@
     border-radius: 50%;
     animation: ballGrow 25s ease-out infinite;
     transition: 5s ease-in-out;
-    @media screen and (max-width: 600) {
-      width: 300px;
-      height: 300px;
+    @media screen and (max-width: 600px) {
+      width: 280px;
+      height: 280px;
+      top: -80px;
+      right: 30px;
     }
 
     @keyframes ballGrow {
@@ -55,7 +57,7 @@
         transform: translate(50%, -50%) scale(1);
       }
       60% {
-        transform: translate(50%, -50%) scale(1.35);
+        transform: translate(50%, -50%) scale(1.3);
       }
       100% {
         transform: translate(50%, -50%) scale(1);
@@ -78,9 +80,7 @@
       box-shadow: 0 0 500px 0px rgba(255, 255, 255, 0.5);
 
       @media screen and (max-width: 500px) {
-        transform: rotate(320deg);
-        height: 100%;
-        width: 100%;
+        transform: scale(0.3) rotate(320deg);
       }
 
       .bottom-arrow {
@@ -225,25 +225,55 @@
 
     .act2-slide {
       &:nth-child(1) {
+        .slide {
+          position: relative;
 
-        .video-container{
-          left: 250px;
+          .video-container {
+            left: 700px;
+
+            @media screen and (max-width: 900px) {
+              left: 10px;
+            }
+          }
         }
       }
       &:nth-child(2) {
-        .video-container {
-            left: 300px;
+        .slide {
+          position: relative;
+
+          .video-container {
+            left: 800px;
+
+            @media screen and (max-width: 900px) {
+              left: 10px;
+            }
           }
+        }
       }
       &:nth-child(3) {
-        .video-container {
-            left: 350px;
+        .slide {
+          position: relative;
+
+          .video-container {
+            left: 900px;
+
+            @media screen and (max-width: 900px) {
+              left: 10px;
+            }
           }
+        }
       }
       &:nth-child(4) {
-        .video-container {
-           left: 440px;
+        .slide {
+          position: relative;
+          .video-container {
+            left: 950px;
+
+            @media screen and (max-width: 900px) {
+              left: 10px;
+            }
           }
+        }
       }
 
       .slide {
@@ -256,6 +286,7 @@
         grid-template-columns: 45% 55%;
         align-items: center;
         padding: 20px;
+        position: relative;
 
         @media screen and (max-width: 900px) {
           display: flex;
@@ -332,7 +363,7 @@
               position: absolute;
               content: "";
               width: 90%;
-              height: 1%;
+              height: 0;
               background: rgba(0, 0, 0, 0.39);
               backdrop-filter: blur(0px);
               box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.4);
@@ -340,6 +371,9 @@
               bottom: -40px;
               left: 50%;
               transform: translateX(-50%);
+              @media screen and (max-width: 900px) {
+                box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.3);
+              }
             }
 
             @media screen and (max-width: 1100px) {
