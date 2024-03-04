@@ -11,6 +11,9 @@ const Contact = () => {
   const {arrivalDateContext , departDateContext , priceContext}= useDateContext()
   const {isCalendar , setIsCalendar}= useCalendarContext()
 
+  const contactContainer = useRef()
+  const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact.jpg")
+
   const transformDate = (date) => {
     if (date) {
       return date.toLocaleDateString();
@@ -18,10 +21,17 @@ const Contact = () => {
       return ' .../.../...';
     }
   };
+  useEffect(()=>{
+    const contactContainerWidth = contactContainer.current.offsetWidth
+    console.log(contactContainerWidth);
+    if (contactContainerWidth >1000) {
+      
+    }
+  }, [])
 
 
   return (
-    <div className="contact-container">
+    <div ref={contactContainer} className="contact-container" style={{ background: "url('./assets/img/img-8k/fd-contact.jpg') center/cover ,  linear-gradient(180deg,  rgba(0, 0, 0, 0.4) 12%, white 88%)" , backgroundBlendMode: "darken" }}>
       <Header />
       <div className="contact">
         <div className="contact-form">

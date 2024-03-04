@@ -224,57 +224,57 @@
     transition: 0.5s ease-out;
 
     .act2-slide {
-      &:nth-child(1) {
-        .slide {
-          position: relative;
+      // &:nth-child(1) {
+      //   .slide {
+      //     position: relative;
 
-          .video-container {
-            left: 700px;
+      //     .video-container {
+      //       left: 700px;
 
-            @media screen and (max-width: 900px) {
-              left: 10px;
-            }
-          }
-        }
-      }
-      &:nth-child(2) {
-        .slide {
-          position: relative;
+      //       @media screen and (max-width: 900px) {
+      //         left: 10px;
+      //       }
+      //     }
+      //   }
+      // }
+      // &:nth-child(2) {
+      //   .slide {
+      //     position: relative;
 
-          .video-container {
-            left: 800px;
+      //     .video-container {
+      //       left: 800px;
 
-            @media screen and (max-width: 900px) {
-              left: 10px;
-            }
-          }
-        }
-      }
-      &:nth-child(3) {
-        .slide {
-          position: relative;
+      //       @media screen and (max-width: 900px) {
+      //         left: 10px;
+      //       }
+      //     }
+      //   }
+      // }
+      // &:nth-child(3) {
+      //   .slide {
+      //     position: relative;
 
-          .video-container {
-            left: 900px;
+      //     .video-container {
+      //       left: 900px;
 
-            @media screen and (max-width: 900px) {
-              left: 10px;
-            }
-          }
-        }
-      }
-      &:nth-child(4) {
-        .slide {
-          position: relative;
-          .video-container {
-            left: 950px;
+      //       @media screen and (max-width: 900px) {
+      //         left: 10px;
+      //       }
+      //     }
+      //   }
+      // }
+      // &:nth-child(4) {
+      //   .slide {
+      //     position: relative;
+      //     .video-container {
+      //       left: 950px;
 
-            @media screen and (max-width: 900px) {
-              left: 10px;
-            }
-          }
-        }
-      }
+      //       @media screen and (max-width: 900px) {
+      //         left: 10px;
+      //       }
+      //     }
+      //   }
+      // }
 
       .slide {
         width: 100vw;
