@@ -12,7 +12,7 @@ const Contact = () => {
   const {isCalendar , setIsCalendar}= useCalendarContext()
 
   const contactContainer = useRef()
-  const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact.jpg")
+  const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact (2).jpg")
 
   const transformDate = (date) => {
     if (date) {
@@ -25,13 +25,15 @@ const Contact = () => {
     const contactContainerWidth = contactContainer.current.offsetWidth
     console.log(contactContainerWidth);
     if (contactContainerWidth >1000) {
-      
+      setContactImg("./assets/img/img-8k/fd-contact.jpg")
+    }else{
+      setContactImg("./assets/img/img-8k/fd-contact (2).jpg")
     }
   }, [])
 
 
   return (
-    <div ref={contactContainer} className="contact-container" style={{ background: "url('./assets/img/img-8k/fd-contact.jpg') center/cover ,  linear-gradient(180deg,  rgba(0, 0, 0, 0.4) 12%, white 88%)" , backgroundBlendMode: "darken" }}>
+    <div ref={contactContainer} className="contact-container" style={{ background: `url("${contactImg}") center/cover ,  linear-gradient(180deg,  rgba(0, 0, 0, 0.4) 12%, white 88%)` , backgroundBlendMode: "darken" }}>
       <Header />
       <div className="contact">
         <div className="contact-form">

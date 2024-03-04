@@ -1,7 +1,17 @@
 import React from "react";
 import dataInfos from "../data/dataPhtInfos";
+import { NavLink } from "react-router-dom";
+import gsap from "gsap"
 
 const Pht3 = () => {
+
+   const handleLinkClick = () => {
+    gsap.to(window, {
+      duration: 0,
+      scrollTo: 0,
+      ease: "power2.inOut",
+    });
+  };
   return (
     <div className="infos-container" id="pht3">
       <h2>toutes les infos</h2>
@@ -46,9 +56,11 @@ const Pht3 = () => {
               </ul>
             </div>
           ))}
-          <div className="contact">
+          <NavLink to="/contact" onClick={handleLinkClick}>
+            <div className="contact">
             <p>Contactez-nous dès maintenant !</p>
           </div>
+          </NavLink>
         </div>
         </div>
       </div>

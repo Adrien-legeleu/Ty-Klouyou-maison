@@ -66,7 +66,7 @@ const Header = ({ toggleDate }) => {
             <span>{currentTime}</span> | Saint-gildas de rhuys
           </span>
         </div>
-        <NavLink to="/" onClick={() => window.scrollY(0)}>
+        <NavLink to="/" onClick={() => window.scrollTo(0, 0)}>
           <div
             className="title"
             style={{

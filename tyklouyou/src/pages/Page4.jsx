@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import gsap from "gsap"
 
 // Import Swiper styles
 import "swiper/css";
@@ -23,6 +24,14 @@ useEffect(() => {
   }
 }, []);
 
+ const handleLinkClick = () => {
+    gsap.to(window, {
+      duration: 0,
+      scrollTo: 0,
+      ease: "power2.inOut",
+    });
+  };
+
 
   return (
     <div className="page4">
@@ -31,7 +40,7 @@ useEffect(() => {
       <div className="infos">
         <div className="slider">
           <SliderPhotos />
-          <NavLink to="/photos"  onClick={()=>window.scrollY(0)}>
+          <NavLink to="/photos"  onClick={handleLinkClick}>
 
           <button>Voir toutes les photos</button>
           </NavLink>
@@ -71,7 +80,7 @@ useEffect(() => {
                     2 lits doubles
                   </li>
                   <li>
-                    <NavLink to="/photos" onClick={()=>window.scrollY(0)}>
+                    <NavLink to="/photos" onClick={handleLinkClick}>
                       <span>voir plus</span>
                     </NavLink>
                   </li>
@@ -107,7 +116,7 @@ useEffect(() => {
                     vue sur la mer
                   </li>
                   <li>
-                    <NavLink  to="/photos" onClick={()=>window.scrollY(0)}>
+                    <NavLink  to="/photos" onClick={handleLinkClick}>
                       <span>voir plus</span>
                     </NavLink>
                   </li>
@@ -143,7 +152,7 @@ useEffect(() => {
                     grand jardin
                   </li>
                   <li>
-                    <NavLink  to="/photos#pht3" >
+                    <NavLink  to="/photos#pht3" onClick={handleLinkClick}>
                       <span>voir plus</span>
                     </NavLink>
                   </li>
