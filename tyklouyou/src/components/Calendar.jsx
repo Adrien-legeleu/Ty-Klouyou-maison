@@ -59,7 +59,6 @@ const Calendar = () => {
       setSecondDay(firstDay);
       setFirstDay(dayChange);
     }
-    calculTotalPrice();
   }, [secondDay]);
 
   useEffect(() => {
@@ -248,18 +247,6 @@ const Calendar = () => {
     }
   };
 
-  const calculTotalPrice = () => {
-    const pricePerNight = 280;
-    let totalPrice = 0;
-
-    if (secondDay && firstDay) {
-      const oneDay = 24 * 60 * 60 * 1000;
-      const night = Math.round(Math.abs((secondDay - firstDay) / oneDay));
-      totalPrice = night * pricePerNight;
-    }
-
-    setPriceContext(totalPrice);
-  };
 
   const [dayColorHover, setDayColorHover] = useState([]);
 
@@ -320,20 +307,6 @@ const Calendar = () => {
       new Date(monthYearIndex[1], monthYearIndex[0], 1).getDay() - 1;
     let nbrDay = [];
     for (let i = 0; i < nbrDayPrev; i++) {
-      nbrDay.push(i);
-    }
-
-    return nbrDay;
-  };
-
-  const nextDayMonth = () => {
-    const maxDaysOnCalendar = 42;
-    const nbrDayPrev =
-      new Date(monthYearIndex[1], monthYearIndex[0], 1).getDay() - 1;
-    const nbrDaysNext = maxDaysOnCalendar - nbrDayPrev - arrayDays.length;
-    let nbrDay = [];
-
-    for (let i = 1; i <= nbrDaysNext; i++) {
       nbrDay.push(i);
     }
 

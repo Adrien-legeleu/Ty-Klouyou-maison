@@ -12,7 +12,7 @@ const Contact = () => {
   const {isCalendar , setIsCalendar}= useCalendarContext()
 
   const contactContainer = useRef()
-  const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact (2).jpg")
+  const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact.jpeg")
 
   const transformDate = (date) => {
     if (date) {
@@ -27,7 +27,7 @@ const Contact = () => {
     if (contactContainerWidth >1000) {
       setContactImg("./assets/img/img-8k/fd-contact.jpg")
     }else{
-      setContactImg("./assets/img/img-8k/fd-contact (2).jpg")
+      setContactImg("./assets/img/img-8k/fd-contact.jpeg")
     }
   }, [])
 
