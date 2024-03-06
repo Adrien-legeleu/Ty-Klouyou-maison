@@ -7,7 +7,8 @@ doubleTomorrow.setDate(doubleTomorrow  .getDate() + 2);
 const DateContext = createContext({
     arrivalDate: new Date(),
     departDate: doubleTomorrow,
-    price: null
+    price: null,
+    people : 4,
 });
 
 
@@ -15,7 +16,8 @@ export const DateContextProvider = ({ children }) => {
     const [arrivalDateContext, setArrivalDateContext] = useState(new Date());
     const [departDateContext, setDepartDateContext] = useState(doubleTomorrow);
     const [priceContext, setPriceContext] = useState(null);
-    const [pricePerNight , setPricePerNight] = useState(null)
+    const [pricePerNight , setPricePerNight] = useState(null);
+    const [people , setPeople] = useState(4)
 
     useEffect(()=>{
         pricePerMonth()
@@ -60,7 +62,7 @@ const pricePerMonth = () => {
 
 
     return (
-        <DateContext.Provider value={{ arrivalDateContext, setArrivalDateContext, setDepartDateContext, departDateContext , priceContext , setPriceContext }}>
+        <DateContext.Provider value={{ arrivalDateContext, setArrivalDateContext, setDepartDateContext, departDateContext , priceContext , setPriceContext  ,people , setPeople }}>
             {children}
         </DateContext.Provider>
     );

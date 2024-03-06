@@ -8,7 +8,7 @@ import { useCalendarContext } from "../calendar.context";
 const Contact = () => {
   const [isActive, setIsActive] = useState(false);
   const [isInfo , setIsInfo] = useState(false)
-  const {arrivalDateContext , departDateContext , priceContext}= useDateContext()
+  const {arrivalDateContext , departDateContext , priceContext , people}= useDateContext()
   const {isCalendar , setIsCalendar}= useCalendarContext()
 
   const contactContainer = useRef()
@@ -68,6 +68,10 @@ const Contact = () => {
                   <div className="stay-price">
                     <p>Prix:</p>
                     <p>{priceContext}€</p>
+                  </div>
+                  <div className="stay-people">
+                    <p>Personnes:</p>
+                    <p>{people}</p>
                   </div>
                 </div>
                 <div className={`btn-date ${isInfo ? "anim-info-visible-text" : "anim-info-hidden-text"}  `}>

@@ -59,28 +59,59 @@
         }
   
         .date {
-          @include AlignChild(row, center, space-around);
-          padding: 0 20px;
+          @include AlignChild(row, center, space-between);
+          padding: 0 10px 0 20px;
           color: white;
           font-family: $fontR;
   
           .date-text {
             @include AlignChild(row, center, center);
             gap: 10px;
+            @media screen and (max-width : 1150px) {
+              font-size: 0.9rem;
+            }
+            @media screen and (max-width : 1000px) {
+              font-size: 0.8rem;
+            }
           }
-  
-          p {
+
+          .text-personn-price{
+            @include AlignChild(column, center,center);
             border-right: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
             padding: 0 25px;
-          }
-  
+            p{
+              &:last-child{
+                font-size: 1.05rem;
+              }
+            }
+            @media screen and (max-width : 1150px) {
+                font-size: 0.9rem;
+                p {
+                    &:last-child {
+                      font-size: 1rem;
+                    }
+                  }
+            }
+            @media screen and (max-width : 1000px) {
+                font-size: 0.8rem;
+                p {
+                    &:last-child {
+                      font-size: 0.9rem;
+                    }
+                  }
+            }
+          } 
           button {
-            margin-left: 20px;
+            margin-left: 0px;
             background: rgb(228, 228, 228);
             color: black;
             font-size: 1rem;
             padding: 12px 20px;
             border-radius: 50px;
+            @media screen and (max-width : 1000px) {
+                padding: 10px 15px ;
+              }
           }
         }
   

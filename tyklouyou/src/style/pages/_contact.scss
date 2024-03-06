@@ -232,6 +232,15 @@
                 .stay-price {
                   @include AlignChild(row, center, center);
                   gap: 5px;
+                  p {
+                    &:last-child {
+                      color: rgb(77, 77, 77);
+                    }
+                  }
+                }
+                .stay-people {
+                  @include AlignChild(row, center, center);
+                  gap: 5px;
                   margin-bottom: 15px;
                   p {
                     &:last-child {

@@ -13,7 +13,8 @@ const Calendar = () => {
     departDateContext,
     setDepartDateContext,
     priceContext,
-    setPriceContext,
+    people,
+    setPeople
   } = useDateContext();
   const { isCalendar, setIsCalendar } = useCalendarContext();
 
@@ -27,7 +28,6 @@ const Calendar = () => {
   const [secondDay, setSecondDay] = useState();
   const [arrayDays, setArrayDays] = useState([]);
 
-  const [rangeValue, setRangeValue] = useState(4);
 
   useEffect(() => {
     const currentMonth = today.toLocaleDateString().split("/")[1][1];
@@ -418,18 +418,14 @@ const Calendar = () => {
                 min="1"
                 defaultValue="4"
                 id="inputRange"
-                style={{
-                  boxShadow: `0 0 ${
-                    "2" * (rangeValue - 1)
-                  }px 0 rgba(255, 255, 255, ${0.1 * rangeValue})`,
-                }}
-                onChange={(e) => setRangeValue(e.target.value)}
+                
+                onChange={(e) => setPeople(e.target.value)}
               />
               <span
-                style={{ left: `calc(${(rangeValue / 8) * 100}% - 25px)` }}
+                style={{ left: `calc(${(people / 8) * 100}% - 25px)` }}
                 className="range-value"
               >
-                {rangeValue}
+                {people}
               </span>
               <div className="info-icon">
                 <img src="./assets/img/icons8-info-120.png" alt="" />
