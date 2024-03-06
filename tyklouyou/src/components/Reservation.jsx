@@ -55,14 +55,38 @@ const Reservation = () => {
   },[])
 
   useEffect(() => {
-    if (isHovered) {
+    if (isResponsive) {
+      if (isHovered) {
+      gsap.to(".reservation-container", {
+        borderRadius: "50px",
+        width: "50%",
+        height : "60%",
+        onComplete: () => {
+          gsap.to(".reservation", {
+            visibility: "visible",
+          });
+        },
+      });
+    } else {
+      gsap.to(".reservation", {
+        visibility: "hidden",
+        onComplete: () => {
+          gsap.to(".reservation-container", {
+            borderRadius: "30px",
+            width: "80px",
+            height:"60px"
+          });
+        },
+      });
+    }
+    } else {
+      if (isHovered) {
       gsap.to(".reservation-container", {
         borderRadius: "80px",
         width: "65%",
         onComplete: () => {
           gsap.to(".reservation", {
             visibility: "visible",
-            opacity: 1,
           });
         },
       });
@@ -77,6 +101,7 @@ const Reservation = () => {
           });
         },
       });
+    }
     }
   }, [isHovered]);
 
