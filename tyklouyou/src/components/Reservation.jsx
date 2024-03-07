@@ -43,67 +43,78 @@ const Reservation = () => {
   }, []);
 
   const [isHovered, setIsHovered] = useState(false);
-  const [isResponsive, setIsResponsive] = useState(false);
-  const reservationContainer=useRef()
-
-  useEffect(()=>{
-    if (reservationContainer.current.offsetWidth > 900) {
-      setIsResponsive(false)
-    }else{
-      setIsResponsive(true)
-    }
-  },[])
+  const [isResponsiveReservation, setIsResponsiveReservation] = useState(false);
+  const reservationContainer = useRef();
 
   useEffect(() => {
-    if (isResponsive) {
+    const handleResize = () => {
+      if (reservationContainer.current.offsetWidth > 900) {
+        setIsResponsiveReservation(false);
+      } else {
+        setIsResponsiveReservation(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(isResponsiveReservation);
+    if (isResponsiveReservation) {
       if (isHovered) {
-      gsap.to(".reservation-container", {
-        borderRadius: "50px",
-        width: "50%",
-        height : "60%",
-        onComplete: () => {
-          gsap.to(".reservation", {
-            visibility: "visible",
-          });
-        },
-      });
-    } else {
-      gsap.to(".reservation", {
-        visibility: "hidden",
-        onComplete: () => {
-          gsap.to(".reservation-container", {
-            borderRadius: "30px",
-            width: "80px",
-            height:"60px"
-          });
-        },
-      });
-    }
+        gsap.to(".reservation-container", {
+          borderRadius: "50px",
+          width: "50%",
+          height: "55%",
+          onComplete: () => {
+            gsap.to(".reservation", {
+              visibility: "visible",
+            });
+          },
+        });
+      } else {
+        gsap.to(".reservation", {
+          visibility: "hidden",
+          onComplete: () => {
+            gsap.to(".reservation-container", {
+              borderRadius: "30px",
+              width: "80px",
+              height: "60px",
+            });
+          },
+        });
+      }
     } else {
       if (isHovered) {
-      gsap.to(".reservation-container", {
-        borderRadius: "80px",
-        width: "65%",
-        onComplete: () => {
-          gsap.to(".reservation", {
-            visibility: "visible",
-          });
-        },
-      });
-    } else {
-      gsap.to(".reservation", {
-        visibility: "hidden",
-        opacity: 1,
-        onComplete: () => {
-          gsap.to(".reservation-container", {
-            borderRadius: "30px",
-            width: "80px",
-          });
-        },
-      });
+        gsap.to(".reservation-container", {
+          borderRadius: "80px",
+          width: "65%",
+          height: "60px",
+          onComplete: () => {
+            gsap.to(".reservation", {
+              visibility: "visible",
+            });
+          },
+        });
+      } else {
+        gsap.to(".reservation", {
+          visibility: "hidden",
+          opacity: 1,
+          onComplete: () => {
+            gsap.to(".reservation-container", {
+              borderRadius: "30px",
+              width: "80px",
+              height: "60px",
+            });
+          },
+        });
+      }
     }
-    }
-  }, [isHovered]);
+  }, [isHovered, isResponsiveReservation]);
 
   return (
     <div className="reservation">
@@ -113,8 +124,8 @@ const Reservation = () => {
           isOnFooter ? "on-footer" : "not-on-footer"
         } `}
         style={{ backgroundColor: !isNotLandingPage ? "#141342" : "white" }}
-        onMouseEnter={() => setIsHovered(!isHovered)}
-        onMouseLeave={() => setIsHovered(!isHovered)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         ref={reservationContainer}
       >
         <div className="reservation-is-not-hover">
