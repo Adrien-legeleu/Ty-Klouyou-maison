@@ -44,9 +44,7 @@
         transition: .25s ease-in-out;
 
         @media screen and (max-width : 900px) {
-            grid-template-areas: "a a" "b c" "d e";
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: repeat(4 , 1fr);
+            @include AlignChild(column, center,center);
           }
   
         &::before {
@@ -70,9 +68,11 @@
           color: white;
           font-family: $fontR;
           @media screen and (max-width : 900px) {
-              grid-area: a;
+              flex-direction: column;
+              margin-bottom: 40px;
+              gap: 15px;
             }
-  
+
           .date-text {
             @include AlignChild(row, center, center);
             gap: 10px;
@@ -82,6 +82,9 @@
             @media screen and (max-width : 1000px) {
               font-size: 0.8rem;
             }
+            @media screen and (max-width : 900px) {
+                grid-area: a;
+              }
           }
 
           .text-personn-price{
@@ -91,12 +94,13 @@
             padding: 0 25px;
             .personn-text{
               @media screen and (max-width : 900px) {
-                  grid-area: b;
+                  @include AlignChild(row,center , center);
                 }
             }
             .price-text{
               @media screen and (max-width : 900px) {
-                  grid-area: c;
+                @include AlignChild(row, center, end);
+                text-align: center;
                 }
             }
             p{
@@ -119,6 +123,20 @@
                       font-size: 0.9rem;
                     }
                   }
+            }
+            @media screen and (max-width : 900px) {
+                border-right: none;
+                  border-left: none;
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  background: #2b2c6b;
+                  width: 100%;
+                  font-size: 1.3rem;
+                  p {
+                      &:last-child {
+                        font-size: 1.4rem;
+                      }
+                    }
             }
           } 
           button {
