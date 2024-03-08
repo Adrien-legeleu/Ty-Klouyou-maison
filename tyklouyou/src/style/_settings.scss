@@ -48,6 +48,17 @@ $cream: #ff9e2c;
   user-select: none;
 }
 
+.cursor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  position: fixed;
+  z-index: 10000000000;
+  transform: translate(-50% , -50%);
+  pointer-events: none;
+}
+
 html {
   touch-action: none;
   scroll-behavior: smooth;

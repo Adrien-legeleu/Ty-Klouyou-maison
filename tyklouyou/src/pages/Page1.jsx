@@ -2,14 +2,7 @@ import React from "react";
 
 const Page1 = () => {
 
-  const phrases = [
-    "En bord de mer !",
-    "Une grande terrasse !",
-    "Vue sur mer !",
-    "Une énorme villa !",
-    "Pleins d'activités !",
-    "Une Incroyable maison !"
-  ];
+
 
 
 
