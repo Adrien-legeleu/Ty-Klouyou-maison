@@ -75,9 +75,9 @@ const Header = ({ toggleDate }) => {
               color: navigationShow ? "white" : "",
             }}
           >
-            <motion.span drag dragConstraints={header} dragSnapToOrigin="true">
+            <span className="link-cursor">
               Ty Klouyou
-            </motion.span>
+            </span>
           </div>
         </NavLink>
         <div className="menu" style={{ display: toggleDate ? "none" : "flex" }}>
@@ -87,6 +87,7 @@ const Header = ({ toggleDate }) => {
               color: navigationShow ? "white" : "",
               border: navigationShow ? "1.5px solid white" : "",
             }}
+            className=" link-cursor"
           >
             Menu
             <div className="icon-menu">

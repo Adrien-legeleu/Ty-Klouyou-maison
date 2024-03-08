@@ -52,9 +52,9 @@ const Footer = () => {
         </div>
         <div className="link-container">
           <ul className="legal" style={{ color: isSun ? "black" : "white" }}>
-            <li>Règlement Intérieur</li>
-            <li>Mentions légales</li>
-            <li>© WebLuxury Design 2024</li>
+            <li className=" link-cursor">Règlement Intérieur</li>
+            <li className=" link-cursor">Mentions légales</li>
+            <li className=" link-cursor">© WebLuxury Design 2024</li>
           </ul>
           <ul className="pages">
             <NavLink
@@ -62,33 +62,33 @@ const Footer = () => {
               style={{ color: isSun ? "black" : "white" }}
               onClick={handleLinkClick}
             >
-              <li>Accueil</li>
+              <li  className=" link-cursor">Accueil</li>
             </NavLink>
             <NavLink
               to="/photos"
               style={{ color: isSun ? "black" : "white" }}
               onClick={handleLinkClick}
             >
-              <li>Photos</li>
+              <li className=" link-cursor">Photos</li>
             </NavLink>
             <NavLink
               to="/activity"
               style={{ color: isSun ? "black" : "white" }}
               onClick={handleLinkClick}
             >
-              <li>Activités</li>
+              <li className=" link-cursor">Activités</li>
             </NavLink>
             <NavLink
               to="/contact"
               style={{ color: isSun ? "black" : "white" }}
               onClick={handleLinkClick}
             >
-              <li>Contact</li>
+              <li className=" link-cursor">Contact</li>
             </NavLink>
           </ul>
           <div className="btn">
             <NavLink to="/contact" onClick={handleLinkClick}>
-              <button>Contactez Ty Klouyou</button>
+              <button className=" link-cursor">Contactez Ty Klouyou</button>
             </NavLink>
           </div>
         </div>

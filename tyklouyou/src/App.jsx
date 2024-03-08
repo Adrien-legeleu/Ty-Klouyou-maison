@@ -9,18 +9,29 @@ import { CalendarContextProvider } from "./calendar.context";
 
 const App = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isLinkCursor, setIsLinkCursor] = useState(false);
 
   const moveCursor = (e) => {
     const x = e.pageX;
     const y = e.pageY;
     setCursorPosition({ x, y });
+    onLinkCursor(e)
   };
+
+  const onLinkCursor=(e)=>{
+    const element = e.target
+    if (element.classList.contains("link-cursor")) {
+      setIsLinkCursor(true)
+    }else{
+      setIsLinkCursor(false)
+    }
+  }
 
   return (
     <CalendarContextProvider>
       <DateContextProvider>
         <BrowserRouter>
-          <div className="app" onMouseMove={moveCursor}>
+          <div onMouseMove={moveCursor}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/activity" element={<Activity />} />
@@ -32,6 +43,10 @@ const App = () => {
               style={{
                 left: `${cursorPosition.x}px`,
                 top: `${cursorPosition.y}px`,
+                background: isLinkCursor ? "rgba(0, 0, 0, 0.2)" : "white",
+                border: isLinkCursor ? "2px solid whitesmoke" : "none",
+                width: isLinkCursor ? "80px" : "20px",
+                height: isLinkCursor ? "80px" : "20px",
               }}
             ></div>
           </div>

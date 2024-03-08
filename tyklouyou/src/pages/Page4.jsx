@@ -42,7 +42,7 @@ useEffect(() => {
           <SliderPhotos />
           <NavLink to="/photos"  onClick={handleLinkClick}>
 
-          <button>Voir toutes les photos</button>
+          <button className=" link-cursor">Voir toutes les photos</button>
           </NavLink>
         </div>
         {isSliderResponsive ? (
@@ -81,7 +81,7 @@ useEffect(() => {
                   </li>
                   <li>
                     <NavLink to="/photos" onClick={handleLinkClick}>
-                      <span>voir plus</span>
+                      <span className=" link-cursor">voir plus</span>
                     </NavLink>
                   </li>
                 </ul>
@@ -117,7 +117,7 @@ useEffect(() => {
                   </li>
                   <li>
                     <NavLink  to="/photos" onClick={handleLinkClick}>
-                      <span>voir plus</span>
+                      <span className=" link-cursor">voir plus</span>
                     </NavLink>
                   </li>
                 </ul>
@@ -153,7 +153,7 @@ useEffect(() => {
                   </li>
                   <li>
                     <NavLink  to="/photos#pht3" onClick={handleLinkClick}>
-                      <span>voir plus</span>
+                      <span className=" link-cursor">voir plus</span>
                     </NavLink>
                   </li>
                 </ul>
@@ -200,10 +200,10 @@ const BeforePage = () => {
     );
   };
   return (
-    <div className="before-page" onClick={handleClick}>
-      <h3>56730 Saint-Gildas-de-Rhuys</h3>
-      <p>adresse exacte donnée après réservation</p>
-      <img src="./assets/img/cliquez-sur.png" alt="icon-click-maps-tyKlouyou" />
+    <div className="before-page link-cursor" onClick={handleClick}>
+      <h3 className=" link-cursor">56730 Saint-Gildas-de-Rhuys</h3>
+      <p className=" link-cursor">adresse exacte donnée après réservation</p>
+      <img className=" link-cursor" src="./assets/img/cliquez-sur.png" alt="icon-click-maps-tyKlouyou" />
     </div>
   );
 };

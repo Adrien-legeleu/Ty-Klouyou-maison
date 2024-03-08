@@ -46,18 +46,9 @@ $cream: #ff9e2c;
   list-style: none;
   text-decoration: none;
   user-select: none;
+  cursor: none;
 }
 
-.cursor{
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: white;
-  position: fixed;
-  z-index: 10000000000;
-  transform: translate(-50% , -50%);
-  pointer-events: none;
-}
 
 html {
   touch-action: none;
@@ -74,6 +65,16 @@ body {
   }
 }
 
+.cursor {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10000000000;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  cursor: none;
+transition-property: left, top, all;
+  transition-duration: .15s, .15s, 5s;
+  transition-timing-function: ease-in-out;}
 
 button {
   padding: 10px 15px;
@@ -82,12 +83,12 @@ button {
   border: none;
   font-size: 1.2rem;
   color: $white;
-  cursor: pointer;
   transition: 0.25s ease-in-out;
 
   @media screen and (max-width: 1050px) {
     font-size: 1rem;
   }
+
 
   &:hover {
     transform: scale(1.2);

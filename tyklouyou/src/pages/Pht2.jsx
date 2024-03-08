@@ -20,7 +20,7 @@ const Pht2 = () => {
         <div className="slide" style={{animation:"scroll 20s linear infinite"}}>
           {dataPhtAll.map((pht, index) => (
             <div
-              className="photo"
+              className="photo link-cursor"
               key={index}
               onClick={() => showSliderAll(index)}
             >
@@ -29,7 +29,7 @@ const Pht2 = () => {
           ))}
           {dataPhtAll.map((pht, index) => (
             <div
-              className="photo"
+              className="photo link-cursor"
               key={index}
               onClick={() => showSliderAll(index)}
             >

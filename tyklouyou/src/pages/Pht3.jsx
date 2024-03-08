@@ -57,8 +57,8 @@ const Pht3 = () => {
             </div>
           ))}
           <NavLink to="/contact" onClick={handleLinkClick}>
-            <div className="contact">
-            <p>Contactez-nous dès maintenant !</p>
+            <div className="contact link-cursor">
+            <p className=" link-cursor">Contactez-nous dès maintenant !</p>
           </div>
           </NavLink>
         </div>

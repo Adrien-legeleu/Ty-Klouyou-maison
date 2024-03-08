@@ -50,7 +50,7 @@ const Page3 = () => {
   }, []);
 
   const handleLinkClick = () => {
-    gsap.to(window, {
+     gsap.to(window, {
       duration: 0,
       scrollTo: 0,
       ease: "power2.inOut",
@@ -75,7 +75,7 @@ const Page3 = () => {
               dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
             >
               <NavLink to="/activity" onClick={handleLinkClick}>
-                <h4>Découvrir les Iles Bretonnes</h4>
+                <h4 className=" link-cursor">Découvrir les Iles Bretonnes</h4>
               </NavLink>
             </div>
           </div>
@@ -92,7 +92,7 @@ const Page3 = () => {
               dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
             >
               <NavLink to="/activity" onClick={handleLinkClick}>
-                <h4>Découvrir Vannes</h4>
+                <h4 className=" link-cursor">Découvrir Vannes</h4>
               </NavLink>
             </div>
           </div>
@@ -109,14 +109,14 @@ const Page3 = () => {
               dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
             >
               <NavLink to="/activity" onClick={handleLinkClick}>
-                <h4>Découvrir le Golfe du Morbihan</h4>
+                <h4 className=" link-cursor">Découvrir le Golfe du Morbihan</h4>
               </NavLink>
             </div>
           </div>
         </div>
         <div className="btn-activity">
           <NavLink to="/activity" onClick={handleLinkClick}>
-            <button>Voir toutes les activités</button>
+            <button className=" link-cursor">Voir toutes les activités</button>
           </NavLink>
         </div>
       </div>

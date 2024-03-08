@@ -166,7 +166,7 @@ const Reservation = () => {
                 {priceContext}€
               </p>
             </div>
-            <button onClick={() => setIsCalendar(!isCalendar)}>modifier</button>
+            <button className=" link-cursor" onClick={() => setIsCalendar(!isCalendar)}>modifier</button>
           </div>
           <div className="reserve">
             <button
@@ -174,6 +174,7 @@ const Reservation = () => {
                 backgroundColor: isNotLandingPage ? "#141342" : "white",
                 color: !isNotLandingPage ? "#141342" : "white",
               }}
+              className=" link-cursor"
             >
               Réserver
             </button>
