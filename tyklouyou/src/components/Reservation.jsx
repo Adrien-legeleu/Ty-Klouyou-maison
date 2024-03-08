@@ -44,32 +44,31 @@ const Reservation = () => {
 
   const [isHovered, setIsHovered] = useState(false);
   const [isResponsiveReservation, setIsResponsiveReservation] = useState(false);
-  const reservationContainer = useRef();
+  const [isWideScreen , setIsWideScreen] = useState(false)
+
+ useEffect(() => {
+    if (window.innerWidth > 900) {
+      setIsResponsiveReservation(false);
+    } else {
+      setIsResponsiveReservation(true);
+    }
+    if (window.innerWidth < 600) {
+      setIsWideScreen(true)
+    }else{
+      setIsWideScreen(false)
+    }
+    console.log(isWideScreen);
+}, []);
+
+
 
   useEffect(() => {
-    const handleResize = () => {
-      if (reservationContainer.current.offsetWidth > 900) {
-        setIsResponsiveReservation(false);
-      } else {
-        setIsResponsiveReservation(true);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    console.log(isResponsiveReservation);
     if (isResponsiveReservation) {
       if (isHovered) {
         gsap.to(".reservation-container", {
           borderRadius: "50px",
-          width: "50%",
-          height: "55%",
+          width: isWideScreen ? "65%" : "50%",
+          height: isWideScreen ? "40%" : "55%",
           onComplete: () => {
             gsap.to(".reservation", {
               visibility: "visible",
@@ -117,7 +116,7 @@ const Reservation = () => {
   }, [isHovered, isResponsiveReservation]);
 
   return (
-    <div className="reservation">
+    <div className="reservation" >
       <Calendar />
       <div
         className={`reservation-container ${
@@ -126,7 +125,7 @@ const Reservation = () => {
         style={{ backgroundColor: !isNotLandingPage ? "#141342" : "white" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        ref={reservationContainer}
+        
       >
         <div className="reservation-is-not-hover">
           {!isNotLandingPage ? (
