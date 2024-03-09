@@ -65,6 +65,10 @@ body {
   }
 }
 
+.magnetic-link{
+  transition: .25s ease-in-out;
+}
+
 .cursor {
   border-radius: 50%;
   position: absolute;
@@ -72,9 +76,8 @@ body {
   transform: translate(-50%, -50%);
   pointer-events: none;
   cursor: none;
-transition-property: left, top, all;
-  transition-duration: .15s, .15s, 5s;
-  transition-timing-function: ease-in-out;}
+  transition: left 0s cubic-bezier(.37,.7,.45,.99), top 0s cubic-bezier(.37,.7,.45,.99), background 0.5s cubic-bezier(.37,.7,.45,.99), border 0.5s cubic-bezier(.37,.7,.45,.99), width 0.5s cubic-bezier(.37,.7,.45,.99), height 0.5s cubic-bezier(.37,.7,.45,.99);
+}
 
 button {
   padding: 10px 15px;

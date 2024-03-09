@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import emailjs, { send } from "@emailjs/browser"
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Calendar from "../components/Calendar";
@@ -6,6 +7,10 @@ import { useDateContext } from "../date.context";
 import { useCalendarContext } from "../calendar.context";
 
 const Contact = () => {
+
+  const serviceId = process.env.YOUR_SERVICE_ID
+  const templateId = process.env.YOUR_TEMPLATE_ID
+
   const [isActive, setIsActive] = useState(false);
   const [isInfo , setIsInfo] = useState(false)
   const {arrivalDateContext , departDateContext , priceContext , people}= useDateContext()
@@ -13,6 +18,7 @@ const Contact = () => {
 
   const contactContainer = useRef()
   const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact.jpeg")
+  const form= useRef()
 
   const transformDate = (date) => {
     if (date) {
@@ -32,29 +38,46 @@ const Contact = () => {
   }, [])
 
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_yv4ot6" , "template_n5a4a7m", form.current, {
+        publicKey: "yHqYcrEoxMUfEpn4K" , })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      )
+    }
+
+
   return (
     <div ref={contactContainer} className="contact-container" style={{ background: `url("${contactImg}") center/cover ,  linear-gradient(180deg,  rgba(0, 0, 0, 0.4) 12%, white 88%)` , backgroundBlendMode: "darken" }}>
       <Header />
       <div className="contact">
         <div className="contact-form">
-          <form className="form">
+          <form className="form" onSubmit={sendEmail} ref={form}>
             <div className="input">
-              <input type="text" placeholder="Prénom" />
+              <input type="text" placeholder="Prénom" name="user_firstname" />
             </div>
             <div className="input">
-              <input type="text" placeholder="Nom" />
+              <input type="text" placeholder="Nom" name="user_name" />
             </div>
             <div className="input">
-              <input type="text" placeholder="E-mail" />
+              <input type="text" placeholder="E-mail"  name="user_email"/>
             </div>
             <div className="input">
-              <input type="text" placeholder="Téléphone" />
+              <input type="text" placeholder="Téléphone" name="user_tel"/>
             </div>
 
            <div className="stay-content">
              <div className="stay-container" onMouseEnter={()=>setIsInfo(!isInfo)} onMouseLeave={()=>setIsInfo(!isInfo)}>
               <p
-                className={`text-visible  `} 
+                className={`text-visible link-cursor `} 
               >
                 Informations sur votre séjour
               </p>
@@ -81,6 +104,7 @@ const Contact = () => {
                       setIsActive(true);
                       setIsCalendar(!isCalendar)
                     }}
+                    className=" link-cursor"
                   >
                     Changer date
                   </button>
@@ -88,9 +112,9 @@ const Contact = () => {
               </div>
             </div>
            </div>
-            <textarea placeholder="Entrez un message"></textarea>
+            <textarea placeholder="Entrez un message" name="message"></textarea>
             <div className="btn">
-              <button type="submit">Envoyer</button>
+              <button type="submit" className=" link-cursor">Envoyer</button>
             </div>
           </form>
         </div>
@@ -113,9 +137,9 @@ const Contact = () => {
         </div>
       </div>
           <ul className="info-legal">
-            <li>Règlement Intérieur</li>
-            <li>Mentions légales</li>
-            <li>© WebLuxury Design 2024</li>
+            <li className=" link-cursor">Règlement Intérieur</li>
+            <li className=" link-cursor">Mentions légales</li>
+            <li className=" link-cursor">© WebLuxury Design 2024</li>
           </ul>
       <span className="signature">designed by WebLuxury</span>
       <Calendar

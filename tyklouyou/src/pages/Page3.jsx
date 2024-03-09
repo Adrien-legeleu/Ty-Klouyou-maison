@@ -70,9 +70,7 @@ const Page3 = () => {
               />
             </div>
             <div
-              className="link"
-              drag
-              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+              className="link magnetic-link"
             >
               <NavLink to="/activity" onClick={handleLinkClick}>
                 <h4 className=" link-cursor">Découvrir les Iles Bretonnes</h4>
@@ -87,11 +85,9 @@ const Page3 = () => {
               />
             </div>
             <div
-              className="link"
-              drag
-              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+              className="link magnetic-link"
             >
-              <NavLink to="/activity" onClick={handleLinkClick}>
+              <NavLink to="/activity" onClick={handleLinkClick} >
                 <h4 className=" link-cursor">Découvrir Vannes</h4>
               </NavLink>
             </div>
@@ -104,9 +100,7 @@ const Page3 = () => {
               />
             </div>
             <div
-              className="link"
-              drag
-              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+              className="link magnetic-link"
             >
               <NavLink to="/activity" onClick={handleLinkClick}>
                 <h4 className=" link-cursor">Découvrir le Golfe du Morbihan</h4>

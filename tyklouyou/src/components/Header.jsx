@@ -1,3 +1,5 @@
+// Header.js
+
 import React, { useEffect, useRef, useState } from "react";
 import Navgiation from "./Navigation";
 import { motion } from "framer-motion";
@@ -10,7 +12,7 @@ const Header = ({ toggleDate }) => {
   const [titleResponsive, setTitleResponsive] = useState(false);
   const [isNotHoverHeader, setIsNotHoverHeader] = useState(false);
   const header = useRef();
-  const {isCalendar} = useCalendarContext()
+  const { isCalendar } = useCalendarContext();
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,6 +39,7 @@ const Header = ({ toggleDate }) => {
       setTitleResponsive(false);
     }
   }, [toggleDate]);
+
   useEffect(() => {
     if (navigationShow) {
       window.scrollTo(0, 0);
@@ -44,22 +47,25 @@ const Header = ({ toggleDate }) => {
   }, [navigationShow]);
 
   return (
-    <div className="header-container" >
+    <div className="header-container">
       <div
         className="header"
         ref={header}
-        style={{ color: navigationShow || toggleDate ? "white" : ""  , display: isCalendar ?"none" : "grid"}}
+        style={{
+          color: navigationShow || toggleDate ? "white" : "",
+          display: isCalendar ? "none" : "grid",
+        }}
         onMouseOver={() => setIsNotHoverHeader(false)}
       >
         <div className="date">
           <img
             className="icon"
             src={"./assets/img/soleil.svg"}
-            style={{ filter: `${
-              navigationShow || toggleDate
-                ? "invert(0)"
-                : ""
-            }`}}
+            style={{
+              filter: `${
+                navigationShow || toggleDate ? "invert(0)" : ""
+              }`,
+            }}
             alt="sun/moon tyklouyou"
           />
           <span>
@@ -75,19 +81,20 @@ const Header = ({ toggleDate }) => {
               color: navigationShow ? "white" : "",
             }}
           >
-            <span className="link-cursor">
-              Ty Klouyou
-            </span>
+            <span className="link-cursor">Ty Klouyou</span>
           </div>
         </NavLink>
-        <div className="menu" style={{ display: toggleDate ? "none" : "flex" }}>
+        <div
+          className="menu"
+          style={{ display: toggleDate ? "none" : "flex" }}
+        >
           <button
             onClick={() => setNavigationShow(!navigationShow)}
             style={{
               color: navigationShow ? "white" : "",
               border: navigationShow ? "1.5px solid white" : "",
             }}
-            className=" link-cursor"
+            className="link-cursor"
           >
             Menu
             <div className="icon-menu">
@@ -111,7 +118,7 @@ const Header = ({ toggleDate }) => {
           </button>
         </div>
       </div>
-        <Navgiation navigationShow={navigationShow} />
+      <Navgiation navigationShow={navigationShow} />
     </div>
   );
 };

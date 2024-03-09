@@ -27,7 +27,7 @@ const Navigation = ({ navigationShow }) => {
         </NavLink>
         <NavLink to="/contact" className={`menu link-cursor ${navigationShow ? "menu4-anim-open" : "menu4-anim-close" } `}  style={{ visibility: !navigationShow ? "visible" : "hidden"}}>
           <h2 className=" link-cursor">Contactez</h2>
-          <img className=" link-cursor" src="./assets/img/icons8-arrow-96.png" alt="flèche gauche" />
+          <img  className=" link-cursor" src="./assets/img/icons8-arrow-96.png" alt="flèche gauche" />
         </NavLink>
       </div>
     </div>

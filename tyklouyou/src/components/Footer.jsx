@@ -20,7 +20,7 @@ const Footer = () => {
         style={{ backgroundColor: isSun ? "white" : "black" }}
       >
         <div className="sun-night" onClick={() => setIsSun(!isSun)}>
-          <img
+          <img className=" link-cursor"
             src={
               isSun
                 ? "./assets/img/soleil.svg"
@@ -41,12 +41,12 @@ const Footer = () => {
         >
           <h3>
             Designed by{" "}
-            <a href="#" style={{ color: isSun ? "black" : "white" }}>
+            <a className=" link-cursor" href="#" style={{ color: isSun ? "black" : "white" }}>
               GGREGERB
             </a>
           </h3>
           <p>création de site web design</p>
-          <a href="#" style={{ color: isSun ? "black" : "white" }}>
+          <a className=" link-cursor" href="#" style={{ color: isSun ? "black" : "white" }}>
             en savoir plus
           </a>
         </div>

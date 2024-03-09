@@ -6,6 +6,7 @@
   @media screen and (max-width: 1000px) {
     height: 100%;
   }
+  
 
   .footer-container {
     display: none;
@@ -147,7 +148,7 @@
               border-radius: 35px;
               text-align: center;
               position: relative;
-              cursor: pointer;
+              
               margin: 5px 0;
               @media screen and (max-width: 1000px) {
                 margin: 15px;
@@ -358,7 +359,7 @@
 
     li {
       transition: 0.25s ease-in-out;
-      cursor: pointer;
+      
 
       &:hover {
         transform: scale(1.05) translate(5px, -2px);
