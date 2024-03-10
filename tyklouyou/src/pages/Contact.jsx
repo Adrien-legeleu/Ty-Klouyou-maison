@@ -5,11 +5,14 @@ import Footer from "../components/Footer";
 import Calendar from "../components/Calendar";
 import { useDateContext } from "../date.context";
 import { useCalendarContext } from "../calendar.context";
+import { useNavigate} from 'react-router-dom'
 
 const Contact = () => {
 
   const serviceId = process.env.YOUR_SERVICE_ID
   const templateId = process.env.YOUR_TEMPLATE_ID
+
+  const navigate = useNavigate()
 
   const [isActive, setIsActive] = useState(false);
   const [isInfo , setIsInfo] = useState(false)
@@ -20,6 +23,8 @@ const Contact = () => {
   const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact.jpeg")
   const form= useRef()
 
+  const [messageError , setMessageError] = useState(false)
+
   const transformDate = (date) => {
     if (date) {
       return date.toLocaleDateString();
@@ -29,7 +34,6 @@ const Contact = () => {
   };
   useEffect(()=>{
     const contactContainerWidth = contactContainer.current.offsetWidth
-    console.log(contactContainerWidth);
     if (contactContainerWidth >1000) {
       setContactImg("./assets/img/img-8k/fd-contact.jpg")
     }else{
@@ -37,41 +41,71 @@ const Contact = () => {
     }
   }, [])
 
+const canSendEmail=(e)=>{
+  e.preventDefault()
+  if (priceContext !==0) {
+    sendEmail()
+    setMessageError(false)
+    navigate('/contact/remerciement');
+  }else{
+    setMessageError(true)
+    setTimeout(() => {
+      setMessageError(false)
+    }, 10000);
+  }
+}
 
-  const sendEmail = (e) => {
-    e.preventDefault();
 
-    emailjs
-      .sendForm("service_yv4ot6" , "template_n5a4a7m", form.current, {
-        publicKey: "yHqYcrEoxMUfEpn4K" , })
-      .then(
-        () => {
-          console.log('SUCCESS!');
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-        },
-      )
-    }
+const sendEmail = () => {
+  emailjs
+    .sendForm("service_yv4ot6c", "template_n5a4a7m", form.current, {
+      publicKey: "yHqYcrEoxMUfEpn4K",
+    })
+    .then(
+      () => {
+        console.log("SUCCESS!");
+      },
+      (error) => {
+        console.log("FAILED...", error.text);
+      }
+    );
+};
+
 
 
   return (
     <div ref={contactContainer} className="contact-container" style={{ background: `url("${contactImg}") center/cover ,  linear-gradient(180deg,  rgba(0, 0, 0, 0.4) 12%, white 88%)` , backgroundBlendMode: "darken" }}>
       <Header />
       <div className="contact">
+        <div className="message-send-email-error" style={{visibility: messageError ? "visible" : "hidden" , transform : messageError ? "translateX(0)" : "translateX(50%)" ,opacity: messageError ? 1 :0}}>
+            <p style={{animation: messageError ? "Bounce 2.5s infinite ease-in-out " : "none"}}>Vous n'avez pas complété les <strong>informations sur votre séjour</strong></p>
+            <div className="cross" onClick={()=> setMessageError(false)}></div>
+        </div>
         <div className="contact-form">
-          <form className="form" onSubmit={sendEmail} ref={form}>
+          <form className="form" onSubmit={canSendEmail} ref={form}>
             <div className="input">
-              <input type="text" placeholder="Prénom" name="user_firstname" />
+              <input type="text" placeholder="Prénom" name="user_firstname" required />
             </div>
             <div className="input">
-              <input type="text" placeholder="Nom" name="user_name" />
+              <input type="text" placeholder="Nom" name="user_name" required/>
             </div>
             <div className="input">
-              <input type="text" placeholder="E-mail"  name="user_email"/>
+              <input type="text" placeholder="E-mail"  name="user_email" required/>
             </div>
             <div className="input">
-              <input type="text" placeholder="Téléphone" name="user_tel"/>
+              <input type="text" placeholder="Téléphone" name="user_tel" required/>
+            </div>
+            <div className="info-hidden">
+              <input type="hidden" name="people" value={people}/>
+            </div>
+            <div className="info-hidden">
+              <input type="hidden" name="price" value={priceContext}/>
+            </div>
+            <div className="info-hidden">
+              <input type="hidden" name="arrival_date" value={arrivalDateContext.toLocaleDateString()} />
+            </div>
+            <div className="info-hidden">
+              <input type="hidden" name="depart_date" value={departDateContext.toLocaleDateString()}/>
             </div>
 
            <div className="stay-content">
@@ -112,7 +146,7 @@ const Contact = () => {
               </div>
             </div>
            </div>
-            <textarea placeholder="Entrez un message" name="message"></textarea>
+            <textarea placeholder="Entrez un message" name="message" required></textarea>
             <div className="btn">
               <button type="submit" className=" link-cursor">Envoyer</button>
             </div>

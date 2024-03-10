@@ -6,6 +6,7 @@ import Photos from "./pages/Photos";
 import Contact from "./pages/Contact";
 import { DateContextProvider } from "./date.context";
 import { CalendarContextProvider } from "./calendar.context";
+import MessageSuccess from "./pages/MessageSuccess";
 
 const App = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -16,7 +17,6 @@ const App = () => {
     const y = e.pageY;
     setCursorPosition({ x, y });
     onLinkCursor(e);
-    // onMagneticLinkHover(e);
   };
 
   const onLinkCursor = (e) => {
@@ -24,23 +24,6 @@ const App = () => {
     setIsLinkCursor(element.classList.contains("link-cursor"));
   };
 
-  // const onMagneticLinkHover = (e) => {
-  //   const element = e.target;
-  //   if (element.classList.contains("magnetic-link")) {
-  //     const rect = element.getBoundingClientRect();
-  //     const x = e.clientX - rect.left;
-  //     const y = e.clientY - rect.top;
-  //     const transX = x - element.offsetWidth / 2;
-  //     const transY = y - element.offsetHeight / 2;
-  //     element.style.transform = `translate(${transX}px, ${transY}px)`;
-  //   }
-  // };
-  // const notMagneticHover = (e) => {
-  //   const element = e.target;
-  //   if (element.classList.contains("magnetic-link")) {
-  //     element.style.transform = "";
-  //   }
-  // };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -48,7 +31,6 @@ const App = () => {
     };
 
     document.addEventListener("mousemove", handleMouseMove);
-    // document.addEventListener("mouseout", notMagneticHover);
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
@@ -65,6 +47,7 @@ const App = () => {
               <Route path="/activity" element={<Activity />} />
               <Route path="/photos" element={<Photos />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/contact/remerciement" element={<MessageSuccess />} />
             </Routes>
             <div
               className="cursor"
