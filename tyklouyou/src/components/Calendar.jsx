@@ -338,7 +338,7 @@ const Calendar = () => {
               className="img"
               onClick={() => setMonthYearIndex(monthYearIndexDown())}
             >
-              <img src="./assets/img/angle-up-solid (1).svg" alt="" />
+              <img className="link-cursor-calendar" src="./assets/img/angle-up-solid (1).svg" alt="" />
             </div>
             <div className="month">
               <h2 className="month-text">{month[monthYearIndex[0]]}</h2>
@@ -347,7 +347,7 @@ const Calendar = () => {
               className="img"
               onClick={() => setMonthYearIndex(monthYearIndexUp())}
             >
-              <img src="./assets/img/angle-up-solid (1).svg" alt="" />
+              <img className="link-cursor-calendar" src="./assets/img/angle-up-solid (1).svg" alt="" />
             </div>
           </div>
           <div className="calendar-content">
@@ -367,7 +367,7 @@ const Calendar = () => {
 
               {arrayDays.map((day) => (
                 <div
-                  className={`day ${
+                  className={`day link-cursor-calendar ${
                     new Date(monthYearIndex[1], monthYearIndex[0], day) <
                     tomorrow
                       ? "disabled"
@@ -399,11 +399,11 @@ const Calendar = () => {
             <p>{priceContext}€</p>
           </div>
           <div className="choice-parameter">
-            <ul className="choice-year">
+            <ul className="choice-year link-cursor-calendar">
               {yearChoice.map((year) => (
                 <li
                   onClick={() => setMonthYearIndex([monthYearIndex[0], year])}
-                  className={isYear(year)}
+                  className={`link-cursor-calendar ${isYear(year)}`}
                   key={year}
                 >
                   {year}
@@ -411,32 +411,32 @@ const Calendar = () => {
               ))}
             </ul>
 
-            <div className="choice-personn">
+            <div className="choice-personn link-cursor-calendar">
               <input
                 type="range"
                 max="8"
                 min="1"
                 defaultValue="4"
                 id="inputRange"
-                
+                className="link-cursor-calendar"
                 onChange={(e) => setPeople(e.target.value)}
               />
               <span
                 style={{ left: `calc(${(people / 8) * 100}% - 25px)` }}
-                className="range-value"
+                className="range-value "
               >
                 {people}
               </span>
-              <div className="info-icon">
-                <img src="./assets/img/icons8-info-120.png" alt="" />
-                <div className="icon">
-                  <span>Nombre de personnes durant le séjour</span>
+              <div className="info-icon link-cursor-calendar">
+                <img className="link-cursor-calendar" src="./assets/img/icons8-info-120.png" alt="" />
+                <div className="icon link-cursor-calendar">
+                  <span className="link-cursor-calendar">Nombre de personnes durant le séjour</span>
                 </div>
               </div>
             </div>
           </div>
           <div className="btn">
-            <button onClick={() => setIsCalendar(!isCalendar)}>Fermer</button>
+            <button className="link-cursor" onClick={() => setIsCalendar(!isCalendar)}>Fermer</button>
           </div>
         </div>
       </div>
