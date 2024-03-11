@@ -1,0 +1,80 @@
+.message-success-container{
+    @include AlignChild(row,center,center);
+    position: relative;
+    background: $blue;
+    height: 100vh;
+    width: 100%;
+
+    .bubble{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: whitesmoke;
+        position: absolute;
+        bottom: -50%;
+        animation: toTop 4s forwards;
+        @keyframes toTop {
+            0%{
+                transform: translateY(0);
+            }
+            100%{
+                transform: translateY(-100%);
+            }
+        }
+    }
+
+    .message-success {
+        z-index: 1;
+            width: 60%;
+            height: 80%;
+            border-radius: 70px;
+            background: #141342;
+            box-shadow: inset 15px -15px 30px #100f33,
+            inset -15px 15px 30px #181751;
+             color: white;
+             padding: 30px 50px 30px 50px;
+             @include AlignChild(column,center, space-between);
+             font-family: $fontR;
+
+             .titles{
+                @include AlignChild(column , center,center);
+                gap: 15px;
+                h1 {
+                        font-family: $fontTR;
+                        letter-spacing: 3px;
+                        font-size: 3rem;
+                    }
+             }
+             .home{
+                button{
+                    background: red;
+                    font-size: 1.5rem;
+                    padding: 10px 20px;
+                }
+             }
+
+             .pub{
+                cursor: not-allowed;
+                text-align: center;
+                @include AlignChild(column, center, center);
+                gap: 10px;
+                color: black;
+                padding: 10px;
+                border-radius: 30px;
+                    background: #e6e6e6;
+                    box-shadow: 50px -50px 100px #1b165b,
+                        -50px 50px 100px #171a5c;
+                .pub-text{
+                    line-height: 23px;
+                }
+                a{
+                    color: rgb(101, 101, 101);
+                }
+                .pub-link{
+                    a{
+                        text-decoration: underline;
+                    }
+                }
+             }
+        }
+}
