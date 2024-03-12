@@ -399,7 +399,7 @@ const Calendar = () => {
             <p>{priceContext}€</p>
           </div>
           <div className="choice-parameter">
-            <ul className="choice-year link-cursor-calendar">
+            <ul className="choice-year">
               {yearChoice.map((year) => (
                 <li
                   onClick={() => setMonthYearIndex([monthYearIndex[0], year])}

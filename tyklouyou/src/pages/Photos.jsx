@@ -6,6 +6,7 @@ import Pht2 from "./Pht2";
 import Pht3 from "./Pht3";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Reservation from "../components/Reservation";
 
 
 const Photos = () => {

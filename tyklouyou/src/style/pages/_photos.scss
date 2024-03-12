@@ -137,7 +137,6 @@
             }
 
             &:hover p {
-              color: $cream;
               transform: scale(1.05);
             }
 
@@ -145,6 +144,7 @@
               font-size: 2rem;
               font-family: $fontR;
               text-align: center;
+              color: black;
               transition: 0.25s ease-in-out;
             }
           }

@@ -11,6 +11,7 @@ import MessageSuccess from "./pages/MessageSuccess";
 const App = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isLinkCursor, setIsLinkCursor] = useState(false);
+  const [isLinkCursorCalendar, setIsLinkCursorCalendar] = useState(false);
 
   const moveCursor = (e) => {
     const x = e.pageX;
@@ -21,6 +22,7 @@ const App = () => {
 
   const onLinkCursor = (e) => {
     const element = e.target;
+    setIsLinkCursorCalendar(element.classList.contains("link-cursor-calendar"))
     setIsLinkCursor(element.classList.contains("link-cursor"));
   };
 
@@ -54,10 +56,10 @@ const App = () => {
               style={{
                 left: `${cursorPosition.x}px`,
                 top: `${cursorPosition.y}px`,
-                background: isLinkCursor ? "rgb(255, 255, 255)" : "rgb(215, 215, 215)",
-                width: isLinkCursor ? "60px" : "20px",
-                height: isLinkCursor ? "60px" : "20px",
-                mixBlendMode: isLinkCursor ? "exclusion" : "normal",
+                background: isLinkCursorCalendar ? "rgba(0, 0, 0, 0.5)" :(isLinkCursor ? "rgb(255, 255, 255)" : "rgb(215, 215, 215)"),
+                width: isLinkCursorCalendar ? "15px" : (isLinkCursor ? "60px" : "20px"),
+                height:isLinkCursorCalendar ? "15px" : (isLinkCursor ? "60px" : "20px"),
+                mixBlendMode: isLinkCursorCalendar ? "normal" : (isLinkCursor ? "exclusion" : "normal"),
               }}
             ></div>
           </div>

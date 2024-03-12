@@ -22,7 +22,7 @@ const Act1 = () => {
           scrollTrigger: {
             trigger: imgContent.current,
             pin: imgContent.current,
-            scrub: 3,
+            scrub: 5,
           },
         })
         .to(img.current, {

@@ -48,7 +48,7 @@ const MessageSuccess = () => {
                 </div>
             </div>
             {bubbles.map(bubble => (
-                <div key={bubble.id} className="bubble" style={{ width: bubble.size + "px", height: bubble.size + "px", left: bubble.left + "%" }} />
+                <figure key={bubble.id} className="bubble ball" style={{ width: bubble.size + "px", height: bubble.size + "px", left: bubble.left + "%" }}></figure>
             ))}
         </div>
     );

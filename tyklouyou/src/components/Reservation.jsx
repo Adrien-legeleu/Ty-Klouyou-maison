@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { useDateContext } from "../date.context";
 import Calendar from "./Calendar";
 import { useCalendarContext } from "../calendar.context";
+import { NavLink } from "react-router-dom";
 
 const Reservation = () => {
   const { isCalendar, setIsCalendar } = useCalendarContext();
@@ -169,7 +170,8 @@ const Reservation = () => {
             <button className=" link-cursor" onClick={() => setIsCalendar(!isCalendar)}>modifier</button>
           </div>
           <div className="reserve">
-            <button
+            <NavLink to="/contact">
+              <button
               style={{
                 backgroundColor: isNotLandingPage ? "#141342" : "white",
                 color: !isNotLandingPage ? "#141342" : "white",
@@ -178,6 +180,7 @@ const Reservation = () => {
             >
               Réserver
             </button>
+            </NavLink>
           </div>
         </div>
       </div>
