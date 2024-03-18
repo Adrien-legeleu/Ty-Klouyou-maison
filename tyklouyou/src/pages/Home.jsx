@@ -13,13 +13,13 @@ const Home = () => {
 
   return (
     <div className="accueil">
-      <Header  toggleDate={toggleDate}/>
+       <Header  toggleDate={toggleDate}/>
       <Reservation toggleDate={toggleDate} setToggleDate={setToggleDate}/>
       <Page1/>
       <Page2/>
       <Page3/>
       <Page4/>
-      <Footer/>
+      <Footer/> 
     </div>
   );
 };

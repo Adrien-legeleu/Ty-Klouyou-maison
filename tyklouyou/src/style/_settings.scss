@@ -51,7 +51,7 @@ $cream: #ff9e2c;
 
 
 html {
-  touch-action: none;
+  touch-action: auto;
   scroll-behavior: smooth;
   overscroll-behavior: none;
 }
@@ -59,15 +59,13 @@ html {
 body {
   background: $colorM;
   overflow-x: hidden;
-  touch-action: none;
+  touch-action: auto;
+  width: 100%;
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
-.magnetic-link{
-  transition: .25s ease-in-out;
-}
 
 .cursor {
   border-radius: 50%;
@@ -96,4 +94,11 @@ button {
   &:hover {
     transform: scale(1.2);
   }
+}
+
+.accueil{
+  width: 100%;
+  background: #ad4141;
+  height: 300vh;
+  z-index: 10000000000;
 }

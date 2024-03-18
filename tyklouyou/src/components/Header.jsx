@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Navgiation from "./Navigation";
-import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { useCalendarContext } from "../calendar.context";
 

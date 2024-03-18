@@ -11,13 +11,11 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100vw;
-            max-width: 1700px;
             z-index: 1000;
+            width: 100%;
     
             @media screen and (max-width:900px) {
                 grid-template-columns: 1fr 1fr;
-                justify-content: space-between;
                 padding: 30px 0px 0 20px;
             }
     
@@ -102,3 +100,4 @@
             }
         }
 }
+

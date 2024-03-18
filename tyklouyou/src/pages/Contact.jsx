@@ -175,7 +175,7 @@ const sendEmail = () => {
             <li className=" link-cursor">Mentions légales</li>
             <li className=" link-cursor">© WebLuxury Design 2024</li>
           </ul>
-      <span className="signature">designed by WebLuxury</span>
+      <span className="signature">designed by MINO</span>
       <Calendar
         isActive={isActive}
         setIsActive={setIsActive} />

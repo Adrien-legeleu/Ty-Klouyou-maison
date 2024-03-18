@@ -42,7 +42,7 @@ const Footer = () => {
           <h3>
             Designed by{" "}
             <a className=" link-cursor" href="#" style={{ color: isSun ? "black" : "white" }}>
-              GGREGERB
+              MINO
             </a>
           </h3>
           <p>création de site web design</p>
@@ -54,7 +54,7 @@ const Footer = () => {
           <ul className="legal" style={{ color: isSun ? "black" : "white" }}>
             <li className=" link-cursor">Règlement Intérieur</li>
             <li className=" link-cursor">Mentions légales</li>
-            <li className=" link-cursor">© WebLuxury Design 2024</li>
+            <li className=" link-cursor">© Mino design 2024</li>
           </ul>
           <ul className="pages">
             <NavLink
