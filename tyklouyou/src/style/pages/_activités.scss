@@ -76,75 +76,6 @@
       position: relative;
       overflow: hidden;
 
-      .bottom-arrow {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        opacity: 0;
-        transform: translate(-50%, -15%);
-        @include AlignChild(column, center, center);
-        padding: 50px;
-
-        h2 {
-          font-size: 4rem;
-          text-transform: capitalize;
-          font-family: $fontTR;
-          text-align: center;
-          color: white;
-          letter-spacing: 3px;
-        }
-        .arrow {
-          position: relative;
-          width: 30px;
-          height: 30px;
-          margin: 20px 0;
-          span {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border-bottom: 3px solid white;
-            border-right: 3px solid white;
-            transform: rotate(45deg);
-            border-bottom-right-radius: 3px;
-            border-bottom-left-radius: 2px;
-            border-top-right-radius: 2px;
-            opacity: 0;
-            animation: arrowAnim 1.3s ease-in-out infinite;
-            &:nth-child(1) {
-              top: 40px;
-              animation-delay: 1.3s;
-            }
-            &:nth-child(2) {
-              top: 20px;
-              animation-delay: 0.9s;
-            }
-            &:nth-child(3) {
-              top: 0px;
-              animation-delay: 0.5s;
-            }
-            &:nth-child(4) {
-              top: -20px;
-              animation-delay: 0.1s;
-            }
-
-            @keyframes arrowAnim {
-              0% {
-                opacity: 1;
-              }
-              20% {
-                opacity: 1;
-              }
-              100% {
-                opacity: 0.3;
-              }
-            }
-          }
-        }
-      }
-
       img {
         height: 100%;
         width: 100%;
@@ -155,7 +86,7 @@
     .title {
       position: absolute;
       h1 {
-        font-size: 8rem;
+        font-size: 15rem;
         color: white;
         font-family: $fontTR;
         letter-spacing: 10px;
@@ -163,6 +94,9 @@
         gap: 10px;
         text-shadow: 0 5px 10px rgb(85, 84, 84);
         mix-blend-mode: overlay;
+        @media screen and (max-width: 1000px) {
+          font-size: 10rem;
+        }
         @media screen and (max-width: 500px) {
           font-size: 5rem;
         }

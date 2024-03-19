@@ -21,8 +21,6 @@ const Contact = () => {
   const {arrivalDateContext , departDateContext , priceContext , people}= useDateContext()
   const {isCalendar , setIsCalendar}= useCalendarContext()
 
-  const contactContainer = useRef()
-  const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact.jpeg")
   const form= useRef()
 
 
@@ -33,20 +31,12 @@ const Contact = () => {
       return ' .../.../...';
     }
   };
-  useEffect(()=>{
-    const contactContainerWidth = contactContainer.current.offsetWidth
-    if (contactContainerWidth >1000) {
-      setContactImg("./assets/img/img-8k/fd-contact.jpg")
-    }else{
-      setContactImg("./assets/img/img-8k/fd-contact.jpeg")
-    }
-  }, [])
+
 
 const canSendEmail=(e)=>{
   e.preventDefault()
   if (priceContext !==0) {
     sendEmail()
-    navigate('/contact/remerciement');
   }else{
     toast.error("Informations sur votre séjour requises !")
   }
@@ -55,12 +45,13 @@ const canSendEmail=(e)=>{
 
 const sendEmail = () => {
   emailjs
-    .sendForm("service_yv4ot6c", "template_n5a4a7m", form.current, {
+  .sendForm("service_yv4ot6c", "template_n5a4a7m", form.current, {
       publicKey: "yHqYcrEoxMUfEpn4K",
     })
     .then(
       () => {
         console.log("SUCCESS!");
+        toast.success("Email bien envoyé!")
       },
       (error) => {
         console.log("FAILED...", error.text);
@@ -71,7 +62,7 @@ const sendEmail = () => {
 
 
   return (
-    <div ref={contactContainer} className="contact-container" style={{ background: `url("${contactImg}") center/cover ,  linear-gradient(180deg,  rgba(0, 0, 0, 0.4) 12%, white 88%)` , backgroundBlendMode: "darken" }}>
+    <div  className="contact-container" >
       <div className="contact">
       <Header />
       <ToastContainer />

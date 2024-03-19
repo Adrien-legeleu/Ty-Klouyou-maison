@@ -17,29 +17,32 @@ const Act1 = () => {
   const slides = useRef(null);
   const slide_container = useRef(null);
 
-  useLayoutEffect(()=>{
-    gsap.to(span1.current ,{
-      x:-1000,
-      opacity:0,
-      scrollTrigger:{
-        trigger : imgContent.current,
-        pin: imgContent.current,
-        scrub:1,
-      }
-    })
-  } , [])
-  useLayoutEffect(()=>{
-    gsap.to(span2.current ,{
-      x:1000,
-      scale:2,
-      opacity:0,
-      scrollTrigger:{
-        trigger : imgContent.current,
-        pin: imgContent.current,
-        scrub:1,
-      }
-    })
-  } , [])
+  useEffect(() => {
+
+    gsap.to(span1.current, {
+      scrollTrigger: {
+        trigger: span1.current,
+        start: "top top ",
+        end: "bottom 80%", 
+        scrub:5,
+      },
+      x: -1000, 
+      scale: 2, 
+      opacity: 0, 
+    });
+
+    gsap.to(span2.current, {
+      scrollTrigger: {
+        trigger: span2.current,
+        start: "top top",
+        end: "bottom 80%", 
+        scrub:5,
+      },
+      x: 1000, 
+      scale: 2, 
+      opacity: 0, 
+    });
+  }, []);
 
   useLayoutEffect(() => {
     if (slides.current && slide_container.current && timeBar.current) {

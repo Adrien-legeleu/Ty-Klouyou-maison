@@ -71,7 +71,7 @@ const Footer = () => {
             >
               <li className=" link-cursor">Photos</li>
             </NavLink>
-            <NavLink
+           <NavLink
               to="/activity"
               style={{ color: isSun ? "black" : "white" }}
               onClick={handleLinkClick}
