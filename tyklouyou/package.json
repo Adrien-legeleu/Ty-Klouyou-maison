@@ -18,6 +18,7 @@
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
+    "react-toastify": "^10.0.5",
     "sass": "^1.69.5",
     "scrolltrigger": "^1.0.1",
     "slick-carousel": "^1.8.1",

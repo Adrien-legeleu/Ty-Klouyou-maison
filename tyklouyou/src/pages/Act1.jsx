@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dataAct from "../data/dataAct";
@@ -9,43 +9,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Act1 = () => {
   const imgContent = useRef(null);
-  const img = useRef(null);
   const span1 = useRef(null);
   const span2 = useRef(null);
   const timeBar = useRef(null);
   const ballRender = useRef(null);
 
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: imgContent.current,
-            pin: imgContent.current,
-            scrub: 5,
-          },
-        })
-        .to(img.current, {
-          transform: "rotate(0) scale(1)",
-          borderRadius: "5px",
-        })
-        .to(span1.current, { x: -800, transform: "scale(4)", opacity: 0 }, 0.01)
-        .to(span2.current, { x: 800, transform: "scale(4)", opacity: 0 }, 0.01)
-        .to(
-          ".bottom-arrow",
-          {
-            opacity: 1,
-            transform: "translate(-50% , 0)"
-          },
-          0.3
-        );
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   const slides = useRef(null);
   const slide_container = useRef(null);
+
+  useLayoutEffect(()=>{
+    gsap.to(span1.current ,{
+      x:-1000,
+      opacity:0,
+      scrollTrigger:{
+        trigger : imgContent.current,
+        pin: imgContent.current,
+        scrub:1,
+      }
+    })
+  } , [])
+  useLayoutEffect(()=>{
+    gsap.to(span2.current ,{
+      x:1000,
+      scale:2,
+      opacity:0,
+      scrollTrigger:{
+        trigger : imgContent.current,
+        pin: imgContent.current,
+        scrub:1,
+      }
+    })
+  } , [])
 
   useLayoutEffect(() => {
     if (slides.current && slide_container.current && timeBar.current) {
@@ -83,16 +77,7 @@ const Act1 = () => {
       <div className="ball-header" ref={ballRender}></div>
       <Header />
       <div className="img-content" ref={imgContent}>
-        <div className="img" ref={img}>
-          <div className="bottom-arrow">
-            <h2>Découvres nos activités</h2>
-            <div className="arrow">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
+        <div className="img">
           {window.innerWidth - window.innerHeight < 250 ? (
             <img
               src="./assets/img/vanne/10 Best Places In The North Of France To Visit.jpg"

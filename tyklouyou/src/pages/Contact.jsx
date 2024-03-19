@@ -6,6 +6,8 @@ import Calendar from "../components/Calendar";
 import { useDateContext } from "../date.context";
 import { useCalendarContext } from "../calendar.context";
 import { useNavigate} from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
 
@@ -23,7 +25,6 @@ const Contact = () => {
   const [contactImg , setContactImg] = useState("./assets/img/img-8k/fd-contact.jpeg")
   const form= useRef()
 
-  const [messageError , setMessageError] = useState(false)
 
   const transformDate = (date) => {
     if (date) {
@@ -45,13 +46,9 @@ const canSendEmail=(e)=>{
   e.preventDefault()
   if (priceContext !==0) {
     sendEmail()
-    setMessageError(false)
     navigate('/contact/remerciement');
   }else{
-    setMessageError(true)
-    setTimeout(() => {
-      setMessageError(false)
-    }, 10000);
+    toast.error("Informations sur votre séjour requises !")
   }
 }
 
@@ -75,12 +72,9 @@ const sendEmail = () => {
 
   return (
     <div ref={contactContainer} className="contact-container" style={{ background: `url("${contactImg}") center/cover ,  linear-gradient(180deg,  rgba(0, 0, 0, 0.4) 12%, white 88%)` , backgroundBlendMode: "darken" }}>
-      <Header />
       <div className="contact">
-        <div className="message-send-email-error" style={{visibility: messageError ? "visible" : "hidden" , transform : messageError ? "translateX(0)" : "translateX(50%)" ,opacity: messageError ? 1 :0}}>
-            <p style={{animation: messageError ? "Bounce 2.5s infinite ease-in-out " : "none"}}>Vous n'avez pas complété les <strong>informations sur votre séjour</strong></p>
-            <div className="cross" onClick={()=> setMessageError(false)}></div>
-        </div>
+      <Header />
+      <ToastContainer />
         <div className="contact-form">
           <form className="form" onSubmit={canSendEmail} ref={form}>
             <div className="input">

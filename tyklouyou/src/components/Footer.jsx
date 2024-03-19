@@ -88,7 +88,7 @@ const Footer = () => {
           </ul>
           <div className="btn">
             <NavLink to="/contact" onClick={handleLinkClick}>
-              <button className=" link-cursor">Contactez Ty Klouyou</button>
+              <button className=" link-cursor">Contactez-nous</button>
             </NavLink>
           </div>
         </div>

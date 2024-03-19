@@ -74,14 +74,7 @@
       height: 100%;
       width: 100%;
       position: relative;
-      transform: scale(0.3) rotate(10deg);
-      border-radius: 50px;
       overflow: hidden;
-      box-shadow: 0 0 500px 0px rgba(255, 255, 255, 0.5);
-
-      @media screen and (max-width: 500px) {
-        transform: scale(0.3) rotate(320deg);
-      }
 
       .bottom-arrow {
         position: absolute;

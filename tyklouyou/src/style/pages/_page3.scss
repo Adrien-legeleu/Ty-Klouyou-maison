@@ -2,6 +2,7 @@
   background: $blue;
   @include AlignChild(column, center, center);
   width: 100%;
+  z-index: 10000;
   .page3-container {
     background: $blue;
     padding: 100px 0;
@@ -30,6 +31,7 @@
       @media screen and (max-width: 900px) {
         grid-template-columns: 1fr;
         margin-bottom: 0px;
+        padding-top: 150px;
         overflow-x: hidden;
       }
 
@@ -41,7 +43,7 @@
         border-radius: 50%;
         background: $blue;
         filter: brightness(0.85);
-        top: -25px;
+        top: 50px;
         right: 50px;
         z-index: -1;
         animation: circleGrow 30s ease-in infinite;

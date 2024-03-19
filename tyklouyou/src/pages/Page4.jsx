@@ -39,9 +39,9 @@ useEffect(() => {
       <h2>Votre Villa</h2>
       <div className="infos">
         <div className="slider">
-          {/* <div className="slider-content">
+          <div className="slider-content">
           <SliderPhotos />
-          </div> */}
+          </div>
           <NavLink to="/photos"  onClick={handleLinkClick}>
 
           <button className=" link-cursor">Voir toutes les photos</button>
