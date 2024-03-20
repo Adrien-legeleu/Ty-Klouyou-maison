@@ -32,6 +32,12 @@
     @media screen and (max-width: 750px) {
       padding: 50px 30px 80px;
     }
+    @media screen and (max-width: 450px) {
+      padding: 50px 20px 80px;
+    }
+    @media screen and (max-width: 350px) {
+      padding: 50px 10px 80px;
+    }
 
     h2 {
       font-family: $fontTR;
@@ -156,6 +162,9 @@
             min-width: 100%;
             min-height: 300px;
             transition: 0.25s ease-in-out;
+            @media screen and (max-width: 450px) {
+                padding: 20px  10px;
+              }
 
             &:hover {
               background: rgb(206, 206, 206);
@@ -206,6 +215,12 @@
                   text-transform: capitalize;
                   @media screen and (max-width: 750px) {
                     font-size: 0.9rem;
+                  }
+                  @media screen and (max-width: 450px) {
+                    font-size: 0.8rem;
+                  }
+                  @media screen and (max-width: 350px) {
+                    font-size: 0.75rem;
                   }
                 }
               }
