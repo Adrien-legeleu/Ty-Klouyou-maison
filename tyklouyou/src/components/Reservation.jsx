@@ -68,8 +68,8 @@ const Reservation = () => {
       if (isHovered) {
         gsap.to(".reservation-container", {
           borderRadius: "50px",
-          width: isWideScreen ? "65%" : "50%",
-          height: isWideScreen ? "40%" : "55%",
+          width: isWideScreen ? "80%" : "60%",
+          height: isWideScreen ? "30%" : "25%",
           onComplete: () => {
             gsap.to(".reservation", {
               visibility: "visible",
@@ -117,7 +117,7 @@ const Reservation = () => {
   }, [isHovered, isResponsiveReservation]);
 
   return (
-    <div className="reservation" >
+    <div className="reservation-content" >
       <Calendar />
       <div
         className={`reservation-container ${
@@ -153,7 +153,7 @@ const Reservation = () => {
                 departDateContext
               )}`}</p>
             </div>
-            <div className="text-personn-price">
+            <div className="text-personn-price" style={{ borderLeft: isResponsiveReservation ?  "none"  : (isNotLandingPage ? "1px solid rgba(0, 0, 0, 0.5)" : "1px solid rgba(255, 253, 253, 0.5)") , borderRight: isResponsiveReservation ? "none" : (isNotLandingPage ? "1px solid rgba(0, 0, 0, 0.5)" : "1px solid rgba(255, 253, 253, 0.5)") }}>
               <p
                 className="personn-text"
                 style={{ color: isNotLandingPage ? "black" : "white" }}
@@ -167,16 +167,16 @@ const Reservation = () => {
                 {priceContext}€
               </p>
             </div>
-            <button className=" link-cursor" onClick={() => setIsCalendar(!isCalendar)}>modifier</button>
           </div>
-          <div className="reserve">
+          <div className="reserve-change">
+            <button className=" link-cursor btn-change" onClick={() => setIsCalendar(!isCalendar)}>modifier</button>
             <NavLink to="/contact">
               <button
               style={{
                 backgroundColor: isNotLandingPage ? "#141342" : "white",
                 color: !isNotLandingPage ? "#141342" : "white",
               }}
-              className=" link-cursor"
+              className=" link-cursor btn-reserve"
             >
               Réserver
             </button>
