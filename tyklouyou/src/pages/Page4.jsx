@@ -213,23 +213,23 @@ const BeforePage = () => {
 const DataSlider = [
   {
     id: "1",
-    src: "./assets/img/chambre/3d-rendering-luxury-modern-bedroom-suite-hotel-with-tv-cabinet.jpg",
+    src: "./assets/img/salon/salon (4).jpg",
   },
   {
     id: "2",
-    src: "./assets/img/cuisine/beautiful-shot-modern-house-kitchen.jpg",
+    src: "./assets/img/cuisine/cuisine.jpg",
   },
   {
     id: "3",
-    src: "./assets/img/extérieur/beautiful-shot-chaplin-s-world-museum-switzerland-surrounded-by-lush-nature.jpg",
+    src: "./assets/img/extérieur/maison (1).jpg",
   },
   {
     id: "4",
-    src: "./assets/img/salle de bain/3d-rendering-modern-design-marble-tile-toilet-bathroom.jpg",
+    src: "./assets/img/salle de bain/sallebain (2).jpg",
   },
   {
     id: "5",
-    src: "./assets/img/salon/interior-with-bid-dining-room-modern-private-house.jpg",
+        src: "./assets/img/chambre/chambre (5).jpg",
   },
 ];
 

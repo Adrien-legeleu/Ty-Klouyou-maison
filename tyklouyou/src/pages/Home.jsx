@@ -17,8 +17,8 @@ const Home = () => {
       <Reservation toggleDate={toggleDate} setToggleDate={setToggleDate}/>
       <Page1/>
       <Page2/>
-      <Page3/>
       <Page4/>
+      <Page3/>
       <Footer/> 
     </div>
   );

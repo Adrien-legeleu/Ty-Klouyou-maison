@@ -30,13 +30,13 @@ const Page2 = () => {
       <div className="img-container" >
         <div className="img">
           <img
-            src="./assets/img/extérieur/beautiful-modern-house-cement-view-from-garden.jpg"
+            src="./assets/img/extérieur/maison (1).jpg"
             alt="image-vilkla-tyklouyou"
           />
         </div>
         <div className="img">
           <img
-            src="./assets/img/salon/3d-rendering-loft-luxury-living-room-with-bookshelf-near-bookshelf.jpg"
+            src="./assets/img/salon/salon (2).jpg"
             alt="image-salon-tyklouyou"
           />
         </div>

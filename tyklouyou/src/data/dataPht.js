@@ -1,19 +1,19 @@
 const dataPht = [
   {
     id: 1,
-    src: "./assets/img/chambre/3d-rendering-luxury-modern-bedroom-suite-hotel-with-tv-cabinet.jpg",
+    src: "./assets/img/salon/salon (4).jpg",
   },
   {
     id: 2,
-    src: "./assets/img/extérieur/beautiful-shot-chaplin-s-world-museum-switzerland-surrounded-by-lush-nature.jpg",
+    src: "./assets/img/extérieur/maison (1).jpg",
   },
   {
     id: 3,
-    src: "./assets/img/salon/3d-rendering-loft-luxury-living-room-with-bookshelf-near-bookshelf.jpg",
+    src: "./assets/img/chambre/chambre (5).jpg",
   },
   {
     id: 4,
-    src: "./assets/img/salle de bain/bathroom-background-zoom-calls.jpg",
+    src: "./assets/img/salle de bain/sallebain (2).jpg",
   },
 ];
 export default dataPht;
