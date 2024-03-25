@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, {  useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dataAct from "../data/dataAct";
@@ -9,40 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Act1 = () => {
   const imgContent = useRef(null);
-  const span1 = useRef(null);
-  const span2 = useRef(null);
   const timeBar = useRef(null);
   const ballRender = useRef(null);
 
   const slides = useRef(null);
   const slide_container = useRef(null);
-
-  useEffect(() => {
-
-    gsap.to(span1.current, {
-      scrollTrigger: {
-        trigger: span1.current,
-        start: "top top ",
-        end: "bottom 80%", 
-        scrub:5,
-      },
-      x: -1000, 
-      scale: 2, 
-      opacity: 0, 
-    });
-
-    gsap.to(span2.current, {
-      scrollTrigger: {
-        trigger: span2.current,
-        start: "top top",
-        end: "bottom 80%", 
-        scrub:5,
-      },
-      x: 1000, 
-      scale: 2, 
-      opacity: 0, 
-    });
-  }, []);
 
   useLayoutEffect(() => {
     if (slides.current && slide_container.current && timeBar.current) {
@@ -92,8 +63,8 @@ const Act1 = () => {
         </div>
         <div className="title">
           <h1>
-            <span ref={span1}>Acti</span>
-            <span ref={span2}>Vité</span>
+            <span>Acti</span>
+            <span>Vité</span>
           </h1>
         </div>
       </div>

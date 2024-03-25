@@ -1,28 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
-import emailjs, { send } from "@emailjs/browser"
+import React, { useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Calendar from "../components/Calendar";
 import { useDateContext } from "../date.context";
 import { useCalendarContext } from "../calendar.context";
-import { useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
 
-  const serviceId = process.env.YOUR_SERVICE_ID
-  const templateId = process.env.YOUR_TEMPLATE_ID
-
-  const navigate = useNavigate()
 
   const [isActive, setIsActive] = useState(false);
   const [isInfo , setIsInfo] = useState(false)
   const {arrivalDateContext , departDateContext , priceContext , people}= useDateContext()
   const {isCalendar , setIsCalendar}= useCalendarContext()
-
-  const form= useRef()
-
+  const form = useRef();
+  const serviceId = process.env.REACT_APP_SERVICE_ID;
+const templateId = process.env.REACT_APP_TEMPLATE_ID;
 
   const transformDate = (date) => {
     if (date) {
@@ -32,34 +27,23 @@ const Contact = () => {
     }
   };
 
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-const canSendEmail=(e)=>{
-  e.preventDefault()
-  if (priceContext !==0) {
-    sendEmail()
-  }else{
-    toast.error("Informations sur votre séjour requises !")
-  }
-}
-
-
-const sendEmail = () => {
-  emailjs
-  .sendForm("service_yv4ot6c", "template_n5a4a7m", form.current, {
-      publicKey: "yHqYcrEoxMUfEpn4K",
-    })
-    .then(
-      () => {
-        console.log("SUCCESS!");
-        toast.success("Email bien envoyé!")
-      },
-      (error) => {
-        console.log("FAILED...", error.text);
-      }
-    );
-};
-
-
+    emailjs
+      .sendForm(serviceId, templateId, form.current, {
+        publicKey: 'q9xLxhpboGXB8QwLA',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          toast.success("Email send !")
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
 
   return (
     <div  className="contact-container" >
@@ -67,7 +51,7 @@ const sendEmail = () => {
       <Header />
       <ToastContainer />
         <div className="contact-form">
-          <form className="form" onSubmit={canSendEmail} ref={form}>
+          <form className="form" onSubmit={sendEmail} ref={form}>
             <div className="input">
               <input type="text" placeholder="Prénom" name="user_firstname" required />
             </div>
@@ -167,6 +151,11 @@ const sendEmail = () => {
       <Footer className="footer-container" />
     </div>
   );
+    
 };
 
-export default Contact;
+export default Contact
+
+
+
+

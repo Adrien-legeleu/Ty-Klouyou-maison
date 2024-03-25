@@ -1,44 +1,7 @@
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import React, { useEffect, useRef, useState } from "react";
+
+import React from "react";
 
 const Act2 = ({ data }) => {
-  // const [isGsap, setIsGsap] = useState(true);
-  // const slide = useRef();
-
-  // useEffect(() => {
-  //   const slideWidth = slide.current.offsetWidth;
-  //   if (slideWidth > 900) {
-  //     setIsGsap(true)
-  //   } else {
-  //     setIsGsap(false)
-  //     console.log("en dessous");
-  //   }
-  // }, []);
-
-  // useGSAP(() => {
-  //     if (isGsap) {
-  //       gsap.to(".video-container", {
-  //       x: -1000,
-  //       scrollTrigger: {
-  //         trigger: ".video-container",
-  //         start: "left right",
-  //         scrub: 1,
-  //       },
-  //     });
-  //     }
-  //     else{
-  //       gsap.to(".video-container", {
-  //       x: 0,
-  //       scrollTrigger: {
-  //         trigger: ".video-container",
-  //         start: "left right",
-  //         scrub: 1,
-  //       },
-  //     });
-  //     }
-  // });
-
 
   return (
     <div className="slide">

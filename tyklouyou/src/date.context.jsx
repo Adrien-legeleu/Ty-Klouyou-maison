@@ -36,12 +36,10 @@ export const DateContextProvider = ({ children }) => {
 
 const pricePerMonth = () => {
     const hightSeasonDate = [["15", "05"], ["14", "08"]];
-    const hightSeasonPrice = 387;
-    const averageSeasonDate1 = [["15", "08"], ["14", "11"]];
-    const averageSeasonDate2 = [["15", "02"], ["14", "05"]];
-    const averageSeasonPrice = 320;
+    const hightSeasonPrice = 340;
+    const averageSeasonPrice = 280;
     const lowSeasonDate = [["15", "11"], ["14", "02"]];
-    const lowSeasonPrice = 280;
+    const lowSeasonPrice = 240;
 
     const dayMonthArrivalDate = arrivalDateContext.toLocaleDateString().split('/').slice(0, 2)
 
@@ -62,7 +60,7 @@ const pricePerMonth = () => {
 
 
     return (
-        <DateContext.Provider value={{ arrivalDateContext, setArrivalDateContext, setDepartDateContext, departDateContext , priceContext , setPriceContext  ,people , setPeople }}>
+        <DateContext.Provider value={{ arrivalDateContext, setArrivalDateContext, setDepartDateContext, departDateContext , pricePerNight ,  priceContext , setPriceContext  ,people , setPeople }}>
             {children}
         </DateContext.Provider>
     );

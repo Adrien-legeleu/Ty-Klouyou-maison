@@ -13,6 +13,7 @@ const Calendar = () => {
     departDateContext,
     setDepartDateContext,
     priceContext,
+    pricePerNight,
     people,
     setPeople
   } = useDateContext();
@@ -396,7 +397,9 @@ const Calendar = () => {
               du <span> {transformDate(arrivalDateContext)} </span> au{" "}
               <span>{transformDate(departDateContext)}</span>{" "}
             </p>
-            <p>{priceContext}€</p>
+            <p>{pricePerNight}€/nuit</p>
+            <strong>total: {priceContext+120}€</strong>
+            <i className="frais">dont 120€ de frais de ménages</i>
           </div>
           <div className="choice-parameter">
             <ul className="choice-year">
@@ -414,7 +417,7 @@ const Calendar = () => {
             <div className="choice-personn link-cursor-calendar">
               <input
                 type="range"
-                max="8"
+                max="10"
                 min="1"
                 defaultValue="4"
                 id="inputRange"
@@ -422,7 +425,6 @@ const Calendar = () => {
                 onChange={(e) => setPeople(e.target.value)}
               />
               <span
-                style={{ left: `calc(${(people / 8) * 100}% - 25px)` }}
                 className="range-value "
               >
                 {people}
