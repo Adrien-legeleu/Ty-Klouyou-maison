@@ -26,17 +26,23 @@ const templateId = process.env.REACT_APP_TEMPLATE_ID;
       return ' .../.../...';
     }
   };
+  const canSendEmail=(e)=>{
+    e.preventDefault()
+    if (priceContext != 0) {
+      sendEmail()
+    } else {
+      toast.error("Veuillez définir un prix")
+    }
+  }
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const sendEmail = () => {
 
     emailjs
-      .sendForm(serviceId, templateId, form.current, {
+      .sendForm("service_wq6a24r", "template_nffaw5k", form.current, {
         publicKey: 'q9xLxhpboGXB8QwLA',
       })
       .then(
         () => {
-          console.log('SUCCESS!');
           toast.success("Email send !")
         },
         (error) => {
@@ -51,7 +57,7 @@ const templateId = process.env.REACT_APP_TEMPLATE_ID;
       <Header />
       <ToastContainer />
         <div className="contact-form">
-          <form className="form" onSubmit={sendEmail} ref={form}>
+          <form className="form" onSubmit={canSendEmail} ref={form}>
             <div className="input">
               <input type="text" placeholder="Prénom" name="user_firstname" required />
             </div>

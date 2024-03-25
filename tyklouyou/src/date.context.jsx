@@ -22,7 +22,7 @@ export const DateContextProvider = ({ children }) => {
     useEffect(()=>{
         pricePerMonth()
         calculTotalPrice()
-    }, [arrivalDateContext , departDateContext])
+    }, [arrivalDateContext , departDateContext , setDepartDateContext , setArrivalDateContext])
     const calculTotalPrice = () => {
     let totalPrice = 0;
     if (arrivalDateContext && departDateContext) {

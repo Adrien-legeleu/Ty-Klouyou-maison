@@ -182,8 +182,20 @@ const Calendar = () => {
           let newSecondDate = new Date(firstDay);
           newSecondDate.setDate(firstDay.getDate() + 18);
           setSecondDay(newSecondDate);
+          setDepartDateContext(newSecondDate)
           textInfo.current.textContent =
             "La durée du séjour est de 18 jours au maximum";
+          setTimeout(() => {
+            textInfo.current.textContent = "";
+          }, 2000);
+        }
+        if ((secondDay - firstDay) / 1000 / 24 / 3600 < 2) {
+          let newSecondDate = new Date(firstDay);
+          newSecondDate.setDate(firstDay.getDate() + 2);
+          setSecondDay(newSecondDate);
+          setDepartDateContext(newSecondDate)
+          textInfo.current.textContent =
+            "La durée du séjour est de 2 jours au minimum";
           setTimeout(() => {
             textInfo.current.textContent = "";
           }, 2000);
@@ -263,10 +275,15 @@ const Calendar = () => {
     let newDayColorHover = [];
 
     if (firstDay && (dayHoverDate - firstDay) / 1000 / 24 / 3600 > 18) {
-      let newDate = new Date(firstDay);
-      newDate.setDate(firstDay.getDate() + 18);
       textInfo.current.textContent =
         "La durée du séjour est de 18 jours au maximum";
+      setTimeout(() => {
+        textInfo.current.textContent = "";
+      }, 2000);
+    }
+    if (firstDay && (dayHoverDate - firstDay) / 1000 / 24 / 3600 < 2) {
+      textInfo.current.textContent =
+        "La durée du séjour est de 2 jours au minimum";
       setTimeout(() => {
         textInfo.current.textContent = "";
       }, 2000);
