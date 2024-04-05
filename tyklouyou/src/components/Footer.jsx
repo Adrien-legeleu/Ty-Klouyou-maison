@@ -52,9 +52,14 @@ const Footer = () => {
         </div>
         <div className="link-container">
           <ul className="legal" style={{ color: isSun ? "black" : "white" }}>
-            <li className=" link-cursor">Règlement Intérieur</li>
-            <li className=" link-cursor">Mentions légales</li>
-            <li className=" link-cursor">© Mino design 2024</li>
+            <NavLink to="/règlement">
+              <li className=" link-cursor">Règlement Intérieur</li>
+            </NavLink>
+             <li className=" link-cursor">
+              <NavLink to="/règlement">Mentions légales</NavLink>
+              
+              </li>
+            <li>© Mino design 2024</li>
           </ul>
           <ul className="pages">
             <NavLink
