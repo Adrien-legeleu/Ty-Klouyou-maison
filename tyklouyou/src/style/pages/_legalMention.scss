@@ -1,27 +1,24 @@
-.ruler-section {
+.legal-section{
     background: $blue;
     color: $white;
     font-family: $fontR;
-
-    h1 {
+    h1{
         color: $cream;
         font-size: 3rem;
         text-align: center;
     }
-
-    h4 {
+    h4{
         color: $cream;
         font-size: 1.5rem;
         font-family: $fontR;
         margin-bottom: 10px;
     }
-
-    h6 {
+    h6{
         font-size: 1rem;
     }
 
-    .text-content {
-        padding: 150px 15% 250px 15%;
+    .text-content{
+        padding: 150px 15%  250px 15%;
 
         .content {
             display: flex;
@@ -34,7 +31,7 @@
                 list-style-type: circle;
             }
 
-            .text {
+            .text{
                 line-height: 25px;
 
             }

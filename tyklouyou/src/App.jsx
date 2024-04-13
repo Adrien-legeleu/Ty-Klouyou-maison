@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import { DateContextProvider } from "./date.context";
 import { CalendarContextProvider } from "./calendar.context";
 import Ruler from "./pages/Ruler";
+import LegalMention from "./pages/LegalMention";
 
 const App = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -49,7 +50,8 @@ const App = () => {
               <Route path="/activity" element={<Activity />} />
               <Route path="/photos" element={<Photos />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/règlement" element={<Ruler />} />
+              <Route path="/mentions légales" element={<Ruler />} />
+              <Route path="/règlement intérieur" element={<LegalMention />} />
             </Routes>
             <div
               className="cursor"

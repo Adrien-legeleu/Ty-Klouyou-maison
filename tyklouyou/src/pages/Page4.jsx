@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import gsap from "gsap"
@@ -42,13 +43,13 @@ useEffect(() => {
           <div className="slider-content">
           <SliderPhotos />
           </div>
-          <NavLink to="/photos"  onClick={handleLinkClick}>
+          <Link to="/photos#pth3"  onClick={handleLinkClick}>
 
           <button className=" link-cursor">Voir toutes les photos</button>
-          </NavLink>
+          </Link>
         </div>
         {isSliderResponsive ? (
-          <SliderCard/>
+          <SliderCard handleClick={handleLinkClick}/>
         ) : (
           <div className="card-infos">
             <div className="cards-container">
@@ -82,9 +83,9 @@ useEffect(() => {
                     2 lits doubles
                   </li>
                   <li>
-                    <NavLink to="/photos" onClick={handleLinkClick}>
+                    <Link to="/photos#pht3" onClick={handleLinkClick}>
                       <span className=" link-cursor">voir plus</span>
-                    </NavLink>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -118,9 +119,9 @@ useEffect(() => {
                     vue sur la mer
                   </li>
                   <li>
-                    <NavLink  to="/photos" onClick={handleLinkClick}>
+                    <Link  to="/photos#pht3" onClick={handleLinkClick}>
                       <span className=" link-cursor">voir plus</span>
-                    </NavLink>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -154,9 +155,9 @@ useEffect(() => {
                     grand jardin
                   </li>
                   <li>
-                    <NavLink  to="/photos#pht3" onClick={handleLinkClick}>
+                    <Link  to="/photos#pht3" onClick={handleLinkClick}>
                       <span className=" link-cursor">voir plus</span>
-                    </NavLink>
+                    </Link>
                   </li>
                 </ul>
               </div>

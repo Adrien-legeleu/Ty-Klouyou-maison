@@ -41,24 +41,24 @@ const Footer = () => {
         >
           <h3>
             Designed by{" "}
-            <a className=" link-cursor" href="#" style={{ color: isSun ? "black" : "white" }}>
+            <a className=" link-cursor" href="https://mino-design.netlify.app" target="_blank" style={{ color: isSun ? "black" : "white" }}>
               MINO
             </a>
           </h3>
           <p>création de site web design</p>
-          <a className=" link-cursor" href="#" style={{ color: isSun ? "black" : "white" }}>
+          <a className=" link-cursor" href="https://mino-design.netlify.app" target="_blank" style={{ color: isSun ? "black" : "white" }}>
             en savoir plus
           </a>
         </div>
         <div className="link-container">
           <ul className="legal" style={{ color: isSun ? "black" : "white" }}>
-            <NavLink to="/règlement">
-              <li className=" link-cursor">Règlement Intérieur</li>
+            <NavLink to="/règlement intérieur">
+              <li className=" link-cursor" style={{color:"black"}}>Règlement Intérieur</li>
             </NavLink>
-             <li className=" link-cursor">
-              <NavLink to="/règlement">Mentions légales</NavLink>
+              <NavLink to="/mentions légales"><li className="link-cursor"style={{color:"black"}} >Mentions légales</li>
+              </NavLink>
               
-              </li>
+
             <li>© Mino design 2024</li>
           </ul>
           <ul className="pages">

@@ -150,7 +150,7 @@ const templateId = process.env.REACT_APP_TEMPLATE_ID;
             <li className=" link-cursor">Mentions légales</li>
             <li className=" link-cursor">© WebLuxury Design 2024</li>
           </ul>
-      <span className="signature">designed by MINO</span>
+      <span className="signature">designed by <a className="link-cursor" href="https://mino-design.netlify.app" target="_">MINO</a></span>
       <Calendar
         isActive={isActive}
         setIsActive={setIsActive} />

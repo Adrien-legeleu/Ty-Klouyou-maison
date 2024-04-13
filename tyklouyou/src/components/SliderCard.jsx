@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { HashLink as Link } from "react-router-hash-link";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -11,7 +12,7 @@ import 'swiper/css/effect-cards';
 import { EffectCards } from 'swiper/modules';
 import { NavLink } from 'react-router-dom';
 
-export default function App() {
+export default function App({handleClick}) {
   return (
     <>
       <Swiper
@@ -45,9 +46,9 @@ export default function App() {
                     2 lits doubles
                   </li>
                   <li>
-                    <NavLink to="/" className="link">
+                    <Link to="/photos#pht3" className="link" >
                       <span>voir plus</span>
-                    </NavLink>
+                    </Link>
                   </li>
                 </ul>
         </SwiperSlide>
@@ -76,9 +77,9 @@ export default function App() {
                     vue sur la mer
                   </li>
                   <li>
-                    <NavLink to="/" className="link">
+                    <Link to="/photos#pht3" className="link" >
                       <span>voir plus</span>
-                    </NavLink>
+                    </Link>
                   </li>
                 </ul>
             
@@ -108,15 +109,15 @@ export default function App() {
                     grand jardin
                   </li>
                   <li>
-                    <NavLink to="/" className="link">
+                    <Link to="/photos#pht3" className="link">
                       <span>voir plus</span>
-                    </NavLink>
+                    </Link>
                   </li>
                 </ul>
               
         </SwiperSlide>
         <SwiperSlide className='slide' style={{ "--i": "#A6938D" }}>
-            <NavLink to="/" className="link-alone">
+            <NavLink to="/photos" className="link-alone" onClick={handleClick}>
                 <h4>Voir toutes les infos</h4>
             </NavLink>
         </SwiperSlide>
