@@ -41,7 +41,7 @@ const Contact = () => {
   };
   const canSendEmail = (e) => {
     e.preventDefault();
-    if (priceContext !== 0) {
+    if (priceContext > 0 && priceContext !== "∅") {
       sendEmail();
     } else {
       toast.error("Veuillez définir un prix");
@@ -59,28 +59,28 @@ const Contact = () => {
         <div className="contact-form">
           <form className="form" onSubmit={canSendEmail} ref={form}>
             <div className="input">
-              <input type="text" placeholder="Prénom" id="user_firstname" required />
+              <input type="text" placeholder="Prénom" name="user_firstname" required />
             </div>
             <div className="input">
-              <input type="text" placeholder="Nom" id="user_name" required/>
+              <input type="text" placeholder="Nom" name="user_name" required/>
             </div>
             <div className="input">
-              <input type="email" placeholder="E-mail"  id="user_email" required/>
+              <input type="email" placeholder="E-mail"  name="user_email" required/>
             </div>
             <div className="input">
-              <input type="tel" placeholder="Téléphone" id="user_tel" required/>
+              <input type="tel" placeholder="Téléphone" name="user_tel" required/>
             </div>
             <div className="info-hidden">
-              <input type="hidden" id="people" value={people}/>
+              <input type="hidden" name="people" value={people}/>
             </div>
             <div className="info-hidden">
-              <input type="hidden" id="price" value={priceContext}/>
+              <input type="hidden" name="price" value={priceContext}/>
             </div>
             <div className="info-hidden">
-              <input type="hidden" id="arrival_date" value={arrivalDateContext.toLocaleDateString()} />
+              <input type="hidden" name="arrival_date" value={arrivalDateContext.toLocaleDateString()} />
             </div>
             <div className="info-hidden">
-              <input type="hidden" id="depart_date" value={departDateContext.toLocaleDateString()}/>
+              <input type="hidden" name="depart_date" value={departDateContext.toLocaleDateString()}/>
             </div>
 
            <div className="stay-content">
@@ -121,7 +121,7 @@ const Contact = () => {
               </div>
             </div>
            </div>
-            <textarea placeholder="Entrez un message" id="message" required></textarea>
+            <textarea placeholder="Entrez un message" name="message" required></textarea>
             <div className="btn">
               <button type="submit" className=" link-cursor">Envoyer</button>
             </div>

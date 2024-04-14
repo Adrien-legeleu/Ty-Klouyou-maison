@@ -415,7 +415,7 @@ const Calendar = () => {
               <span>{transformDate(departDateContext)}</span>{" "}
             </p>
             <p>{pricePerNight}€/nuit</p>
-            <strong>total: {priceContext+120}€</strong>
+            <strong>total: {priceContext}€</strong>
             <i className="frais">dont 120€ de frais de ménages</i>
           </div>
           <div className="choice-parameter">
