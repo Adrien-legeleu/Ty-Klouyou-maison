@@ -9,15 +9,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
-
-
   const [isActive, setIsActive] = useState(false);
-  const [isInfo , setIsInfo] = useState(false)
-  const {arrivalDateContext , departDateContext , priceContext , people}= useDateContext()
-  const {isCalendar , setIsCalendar}= useCalendarContext()
+  const [isInfo, setIsInfo] = useState(false);
+  const { arrivalDateContext, departDateContext, priceContext, people } = useDateContext();
+  const { isCalendar, setIsCalendar } = useCalendarContext();
   const form = useRef();
-  const serviceId = process.env.REACT_APP_SERVICE_ID;
-const templateId = process.env.REACT_APP_TEMPLATE_ID;
+  
 
   const transformDate = (date) => {
     if (date) {
@@ -26,30 +23,33 @@ const templateId = process.env.REACT_APP_TEMPLATE_ID;
       return ' .../.../...';
     }
   };
-  const canSendEmail=(e)=>{
-    e.preventDefault()
-    if (priceContext != 0) {
-      sendEmail()
-    } else {
-      toast.error("Veuillez définir un prix")
-    }
-  }
 
   const sendEmail = () => {
-
     emailjs
-      .sendForm("service_wq6a24r", "template_nffaw5k", form.current, {
+      .sendForm("service_h5knh4n", "template_tho2w82", form.current, {
         publicKey: 'q9xLxhpboGXB8QwLA',
       })
       .then(
         () => {
-          toast.success("Email send !")
+          console.log('SUCCESS!');
+          toast.success("Email envoyé !");
         },
         (error) => {
           console.log('FAILED...', error.text);
         },
       );
   };
+  const canSendEmail = (e) => {
+    e.preventDefault();
+    if (priceContext !== 0) {
+      sendEmail();
+    } else {
+      toast.error("Veuillez définir un prix");
+    }
+  };
+
+
+// Utilisez la fonction sendFeedback pour envoyer l'e-mail lorsque vous en avez besoin
 
   return (
     <div  className="contact-container" >
@@ -59,28 +59,28 @@ const templateId = process.env.REACT_APP_TEMPLATE_ID;
         <div className="contact-form">
           <form className="form" onSubmit={canSendEmail} ref={form}>
             <div className="input">
-              <input type="text" placeholder="Prénom" name="user_firstname" required />
+              <input type="text" placeholder="Prénom" id="user_firstname" required />
             </div>
             <div className="input">
-              <input type="text" placeholder="Nom" name="user_name" required/>
+              <input type="text" placeholder="Nom" id="user_name" required/>
             </div>
             <div className="input">
-              <input type="text" placeholder="E-mail"  name="user_email" required/>
+              <input type="email" placeholder="E-mail"  id="user_email" required/>
             </div>
             <div className="input">
-              <input type="text" placeholder="Téléphone" name="user_tel" required/>
+              <input type="tel" placeholder="Téléphone" id="user_tel" required/>
             </div>
             <div className="info-hidden">
-              <input type="hidden" name="people" value={people}/>
+              <input type="hidden" id="people" value={people}/>
             </div>
             <div className="info-hidden">
-              <input type="hidden" name="price" value={priceContext}/>
+              <input type="hidden" id="price" value={priceContext}/>
             </div>
             <div className="info-hidden">
-              <input type="hidden" name="arrival_date" value={arrivalDateContext.toLocaleDateString()} />
+              <input type="hidden" id="arrival_date" value={arrivalDateContext.toLocaleDateString()} />
             </div>
             <div className="info-hidden">
-              <input type="hidden" name="depart_date" value={departDateContext.toLocaleDateString()}/>
+              <input type="hidden" id="depart_date" value={departDateContext.toLocaleDateString()}/>
             </div>
 
            <div className="stay-content">
@@ -121,7 +121,7 @@ const templateId = process.env.REACT_APP_TEMPLATE_ID;
               </div>
             </div>
            </div>
-            <textarea placeholder="Entrez un message" name="message" required></textarea>
+            <textarea placeholder="Entrez un message" id="message" required></textarea>
             <div className="btn">
               <button type="submit" className=" link-cursor">Envoyer</button>
             </div>
